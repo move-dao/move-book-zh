@@ -27,9 +27,9 @@
 
 ### 12. Abort and Assert (@ruyisu)
 
-### 13. Conditionals
+### 13. Conditionals (@Kusou1)
 
-### 14. While and Loop
+### 14. While and Loop (@Kusou1)
 
 ### 15. Functions
 
