@@ -21,11 +21,11 @@
 
 ### 9. Tuples and Unit
 
-### 10. Local Variables and Scopes (ruyisu)
+### 10. Local Variables and Scopes (@ruyisu)
 
-### 11. Equality (ruyisu)
+### 11. Equality (@ruyisu)
 
-### 12. Abort and Assert (ruyisu)
+### 12. Abort and Assert (@ruyisu)
 
 ### 13. Conditionals
 
