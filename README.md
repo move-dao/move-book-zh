@@ -11,11 +11,11 @@
 
 ### 4. Bool
 
-### 5. Address
+### 5. Address (@stephenLee)
 
-### 6. Vector
+### 6. Vector (@stephenLee)
 
-### 7. Signer
+### 7. Signer (@stephenLee)
 
 ### 8. References
 
