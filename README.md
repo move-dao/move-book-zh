@@ -3,13 +3,13 @@
 
 ## Move book 目录
 
-### 1. Modules and Scripts  译者:
+### 1. Modules and Scripts  译者:（Tom）
 
 ### 2. Move Tutorial
 
-### 3. Integers
+### 3. Integers（Tom）
 
-### 4. Bool
+### 4. Bool（Tom）
 
 ### 5. Address (@stephenLee)
 
