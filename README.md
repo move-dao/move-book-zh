@@ -53,6 +53,6 @@
 
 ### 25. Global Storage Operators
 
-### 26. Standard Library
+### 26. Standard Library (@MagicGordon)
 
-### 27. Coding Conventions
+### 27. Coding Conventions (@MagicGordon)
