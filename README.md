@@ -31,11 +31,11 @@
 
 ### 14. While and Loop (@Kusou1)
 
-### 15. Functions
+### 15. Functions(@nosalt99)
 
-### 16. Structs and Resources
+### 16. Structs and Resource(@nosalt99)
 
-### 17. Constants
+### 17. Constants(@nosalt99)
 
 ### 18. Generics
 
