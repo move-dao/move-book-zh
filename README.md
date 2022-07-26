@@ -17,9 +17,9 @@
 
 ### 7. Signer (@stephenLee)
 
-### 8. References
+### 8. References(container)
 
-### 9. Tuples and Unit
+### 9. Tuples and Unit(container)
 
 ### 10. Local Variables and Scopes (@ruyisu)
 
@@ -37,21 +37,21 @@
 
 ### 17. Constants(@nosalt99)
 
-### 18. Generics
+### 18. Generics(小川)
 
-### 19. Type Abilities
+### 19. Type Abilities(小川)
 
-### 20. Uses and Aliases
+### 20. Uses and Aliases(小川)
 
 ### 21. Friends(@xiaochuan891102)
 
 ### 22. Packages(@xiaochuan891102)
 
-### 23. Unit Tests
+### 23. Unit Tests(ywwm)
 
-### 24. Global Storage Structure
+### 24. Global Storage Structure(ywwm)
 
-### 25. Global Storage Operators
+### 25. Global Storage Operators(ywwm)
 
 ### 26. Standard Library (@MagicGordon)
 
