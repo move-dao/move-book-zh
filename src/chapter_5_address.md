@@ -48,7 +48,7 @@ module std::other_module {  // Can use a named address as a namespace item to de
 }
 ```
 
-## 全局存储操作
+## 全局存储操作(Global Storage Operations)
 
 `地址`值主要用来与全局存储操作进行交互。
 
@@ -56,7 +56,7 @@ module std::other_module {  // Can use a named address as a namespace item to de
 
 只有`move_to`全局存储操作不使用`地址`, 使用[`signer`](./signer.md).
 
-## 所有权
+## 所有权(Ownership)
 与Move语言内置的其他标量值一样，`地址` 值是隐式可复制的，这意味着它们可以在没有明确指令如[`copy`](./variables.md#move-and-copy)的情况下复制。
 
 
