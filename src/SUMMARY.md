@@ -32,12 +32,12 @@
 - [Uses and Aliases](uses.md)
 - [Friends](friends.md)
 - [Packages](packages.md)
-- [Unit Tests](unit-testing.md)
+- [单元测试](unit-testing.md)
 
 ## Global Storage
 
-- [Global Storage Structure](global-storage-structure.md)
-- [Global Storage Operators](global-storage-operators.md)
+- [全局存储结构](global-storage-structure.md)
+- [全局存储操作](global-storage-operators.md)
 
 ## Reference
 
