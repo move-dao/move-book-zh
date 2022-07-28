@@ -303,8 +303,7 @@ struct Balance has key {
 }
 ```
 
-大致上每个`Move blockchain state`区块大致看起来是这样:
-Roughly the Move blockchain state should look like this:
+区块链状态(`Move blockchain state`)大致看起来是这样:
 
 ![](diagrams/move_state.png)
 
@@ -322,7 +321,7 @@ public(script) fun transfer(from: signer, to: address, amount: u64) acquires Bal
 <details>
 <summary>与Ethereum/Solidity比较</summary>
 
-在大多数以太坊合约中，账户地址下钱包都是保存在类型为<code>mapping(address => uint256)</code>的_状态变量_中. 这个状态变量又是保存在一个单独的特殊智能合约中.
+在大多数以太坊合约中，账户地址下钱包都是保存在类型为<code>mapping(address => uint256)</code>的__状态变量__中. 这个状态变量又是保存在一个单独的特殊智能合约中.
 
 以太坊区块量状态看起来是这样的:
 
