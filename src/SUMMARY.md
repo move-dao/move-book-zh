@@ -11,8 +11,8 @@
 
 - [Integers](integers.md)
 - [Bool](bool.md)
-- [Address](address.md)
-- [Vector](vector.md)
+- [地址](address.md)
+- [数组](vector.md)
 - [Signer](signer.md)
 - [References](references.md)
 - [Tuples and Unit](tuples.md)
