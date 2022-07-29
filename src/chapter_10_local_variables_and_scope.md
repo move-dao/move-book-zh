@@ -3,7 +3,7 @@
 在Move语言中，局部变量的解析依赖于词法作用域（lexically scoped）或静态作用域（statically scoped）。我们使用`let`定义新的变量并追踪当前代码块内出现过的同名变量。这些局部变量是可更改的：他们可以被直接赋值或是被引用变量（mutable reference）更新。
 
 ## 声明局部变量
-### let 赋值
+### let 绑定
 Move程序使用`let`来给变量名赋值：
 ```
 let x = 1;
@@ -111,3 +111,60 @@ let z = loop (); // ERROR!
 //  ^ Could not infer this type. Try adding an annotation
 ```
 当一段代码属于无作用代码（dead code）或是没被使用的局部变量，加上类型注解可能会触发其它错误。尽管如此，这些例子对于理解类型注解是有帮助的。
+
+
+### 元组的多重声明
+
+### 结构体的多重声明
+
+### 针对引用进行解构
+
+### 忽略值
+
+### 一般的`let`语法
+
+## 变更
+
+### 赋值（Assignments）
+在声明一个局部变量后（使用`let`或是用一个函数参数（function parameter）），我们可以给赋一个新的值：
+```move
+x = e
+```
+不同于`let`的绑定，赋值属于表达式。在一些编程语言中，赋值表达式会返回被赋予的值，但是在move语言中，赋值返回的类型永远是`()`。
+```move
+(x = e: ())
+```
+实际应用中，赋值属于表达式意味着使用它们时不用添加额外表达块（expression block）的括号。（`{`...`}`）
+```move
+let x = 0;
+if (cond) x = 1 else x = 2;
+```
+赋值和`let`的绑定使用了一样的模式，语法和结构（same pattern syntax scheme）：
+```move=
+address 0x42 {
+module example {
+    struct X { f: u64 }
+
+    fun new_x(): X {
+        X { f: 1 }
+    }
+
+    // 以下的例子会因为未使用的变量和赋值报错。
+    fun example() {
+       let (x, _, z) = (0, 1, 3);
+       let (x, y, f, g);
+
+       (X { f }, X { f: x }) = (new_x(), new_x());
+       assert!(f + x == 2, 42);
+
+       (x, y, z, f, _, g) = (0, 0, 0, 0, 0, 0);
+    }
+}
+}
+```
+值得注意的是一个局部变量只能有一种类型，所以任一局部变量不能因赋值而改变类型。
+```move
+let x;
+x = 0;
+x = false; // 错误!
+```
