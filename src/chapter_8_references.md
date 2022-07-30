@@ -1,4 +1,4 @@
-# 引用
+# 引用(references)
 Move 支持两种类型的引用：不可变引用`&`和可变引用`&mut`。不可变引用是只读的，不能修改基础值（或其任何字段）。可变引用通过写入该引用进行修改。Move的类型系统强制执行所有权规则，以避免引用错误。
 
 更多有关引用规则的详细信息，请参阅：[结构和资源](https://move-language.github.io/move/structs-and-resources.html).

@@ -1,4 +1,4 @@
-# 局部变量和作用域
+# 局部变量和作用域(Local Variables and Scopes)
 
 在Move语言中，局部变量的解析依赖于词法作用域（lexically scoped）或静态作用域（statically scoped）。我们使用`let`定义新的变量并追踪当前代码块内出现过的同名变量。这些局部变量是可更改的：他们可以被直接赋值或是被引用变量（mutable reference）更新。
 
