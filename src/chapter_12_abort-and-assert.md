@@ -1,10 +1,10 @@
 
 # 中止和断言
 
-[`return`](./functions.md) 和 `abort` 是两种结束程序执行的控制流结构。前者针对当前函数，后者针对整个事务。
+[`return`](./chapter_15_functions.md) 和 `abort` 是两种结束程序执行的控制流结构。前者针对当前函数，后者针对整个事务。
 
 
- [`return`](./functions.md)的更多信息可以参考链接中的文章。
+ [`return`](./chapter_15_functions.md)的更多信息可以参考链接中的文章。
 
 ## `abort`中止
 
@@ -18,7 +18,7 @@ abort 42
 
 幸运的是，在Move里事务的计算要么完全执行要么完全不执行。这意味着只有在事务成功时，任何对全局存储状态的改变才会被一并执行。由于这种对于所有更改的事务承诺，在`abort`之后我们不需要担心去回滚任何更改。尽管这种方法缺少灵活性，它还是难以置信的简单和可预测的。
 
-与 [`return`](./functions.md)相似, 在一些条件无法被满足的时候，`abort` 可以被用于退出控制流（control flow）。
+与 [`return`](./chapter_15_functions.md)相似, 在一些条件无法被满足的时候，`abort` 可以被用于退出控制流（control flow）。
 
 在以下示例中，目标函数会从vector里弹出两个元素，但是如果vector中并没有两个元素，函数会提前中止。
 
@@ -187,4 +187,3 @@ let b =
     else abort 42;
 //       ^^^^^^^^ `abort 42` 的类型是 `bool`
 ```
-````
