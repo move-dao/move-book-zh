@@ -117,8 +117,7 @@ module example {
 
 ## Avoid Extra Copies
 
-While a programmer _can_ compare any value whose type has [`drop`](./abilities.md), a programmer
-should often compare by reference to avoid expensive copies.
+当编程者 _可以_ 比较其类型含有[`掉落` 能力](./abilities.md)的任意值时，他们应该尽可能多地使用引用变量来比较，以此来节省昂贵的副本。
 
 ```move=
 let v1: vector<u8> = function_that_returns_vector();
@@ -133,9 +132,7 @@ assert!(copy s1 == copy s2, 42);
 //     ^^^^       ^^^^
 use_two_foos(s1, s2);
 ```
-
-This code is perfectly acceptable (assuming `Foo` has [`drop`](./abilities.md)), just not efficient.
-The highlighted copies can be removed and replaced with borrows
+以上代码是完全可以接受的（假设`Foo`含有[`掉落`](./abilities.md)能力），但它不是最有效的写法。被高亮的副本可以被借值所替换。
 
 ```move=
 let v1: vector<u8> = function_that_returns_vector();
@@ -150,6 +147,4 @@ assert!(&s1 == &s2, 42);
 //     ^      ^
 use_two_foos(s1, s2);
 ```
-
-The efficiency of the `==` itself remains the same, but the `copy`s are removed and thus the program
-is more efficient.
+`==`本身的效率还是和之前一样，但是副本`copy`被移除后整个程序会比之前更有效率。
