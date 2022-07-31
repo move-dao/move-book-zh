@@ -30,8 +30,8 @@
 - [Generics](chapter_18_generics.md)
 - [Type Abilities](chapter_19_abilities.md)
 - [Uses and Aliases](chapter_20_uses.md)
-- [Friends](chapter_21_friends.md)
-- [Packages](chapter_22_packages.md)
+- [友元函数(Friends)](chapter_21_friends.md)
+- [程序包(Packages)](chapter_22_packages.md)
 - [单元测试(Unit Tests)](chapter_23_unit-testing.md)
 
 ## Global Storage
