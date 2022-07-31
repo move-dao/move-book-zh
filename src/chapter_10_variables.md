@@ -99,107 +99,6 @@ let v2: vector<u64> = vector::empty(); // 正确
 ```
 极少数情况下，Move的类型系统并不能推断出一段发散式代码（divergent code）的类型，因为这些代码无法直接访问。在Move中，`return`和`abort`都属于表达式，它们可以返回任何类型。如果一段`loop`有`break`语句，那么它的返回类型是`()`；然而如果它不包含`break`语句，它的返回类型是多种多样的。如果无法推断这些类型，类型注解是必须的。比如：
 ```move
-# 局部变量和作用域
-
-在Move语言中，局部变量的解析依赖于词法作用域（lexically scoped）或静态作用域（statically scoped）。我们使用`let`定义新的变量并追踪当前代码块内出现过的同名变量。这些局部变量是可更改的：他们可以被直接赋值或是被引用变量（mutable reference）更新。
-
-## 声明局部变量
-### let 绑定
-Move程序使用`let`来给变量名赋值：
-```
-let x = 1;
-let y = x + x:
-```
-`let`使用时也可以不绑定任何数值。
-```
-let x;
-```
-这些局部变量可以被稍后赋值。
-```
-let x;
-if (cond) {
-  x = 1
-} else {
-  x = 0
-}
-```
-从循环中提取一个默认值不确定的变量时，这个功能(稍后赋值)会非常有用。
-```
-let x;
-let cond = true;
-let i = 0;
-loop {
-    (x, cond) = foo(i);
-    if (!cond) break;
-    i = i + 1;
-}
-```
-### 变量在使用前必须被赋值
-Move语言的类型编译器会阻止一个局部变量在赋值前被使用。
-```
-let x;
-x + x // 错误!
-```
-```
-let x;
-if (cond) x = 0;
-x + x // 错误!
-```
-```
-let x;
-while (cond) x = 0;
-x + x // 错误!
-```
-### 有效的变量名
-变量名可以包含下划线`_`，小写字母`a`到`z`，大写字母`A`到`Z`，或者是数字`0`到`9`。值得注意的是，变量名必须以下划线`_`或者以小写字母`a`到`z`开头。他们**不可以**以大写字母`A`到`Z`开头。
-```move
-// 正确写法
-let x = e;
-let _x = e;
-let _A = e;
-let x0 = e;
-let xA = e;
-let foobar_123 = e;
-
-// 非正确写法
-let X = e; // 错误!
-let Foo = e; // 错误!
-```
-### 类型注解
-Move语言的类型系统几乎可以识别所有局部变量的类型。但是为了易读性、明确性和可调试性，Move也允许公开的类型注解。类型注解的语法如下：
-```move
-let x: T = e; // "变量 x 的类型 T 被定义为表达式 e"
-```
-一些公开的类型注解的例子：
-```move=
-address 0x42 {
-module example {
-
-    struct S { f: u64, g: u64 }
-
-    fun annotated() {
-        let u: u8 = 0;
-        let b: vector<u8> = b"hello";
-        let a: address = @0x0;
-        let (x, y): (&u64, &mut u64) = (&0, &mut 1);
-        let S { f, g: f2 }: S = S { f: 0, g: 1 };
-    }
-}
-}
-```
-值得注意的是，类型注解必须放在一个或多个变量的右边：
-```move
-let (x: &u64, y: &mut u64) = (&0, &mut 1); // 错误! 正确写法是 let (x, y): ... =
-```
-### 注解什么时候是必须的
-在一些情况下，Move的类型系统不能推断出局部变量的具体类型，所以需要提供注解。这常常发生于无法推断某个泛型（generic type）的类型参数时。比如：
-```move
-let _v1 = vector::empty(); // 错误!
-//        ^^^^^^^^^^^^^^^ 无法推断它的类型。 请加上注解
-let v2: vector<u64> = vector::empty(); // 正确
-```
-极少数情况下，Move的类型系统并不能推断出一段发散式代码（divergent code）的类型，因为这些代码无法直接访问。在Move中，`return`和`abort`都属于表达式，它们可以返回任何类型。如果一段`loop`有`break`语句，那么它的返回类型是`()`；然而如果它不包含`break`语句，它的返回类型是多种多样的。如果无法推断这些类型，类型注解是必须的。比如：
-```move
 let a: u8 = return ();
 let b: bool = abort 0;
 let c: signer = loop ();
@@ -311,10 +210,9 @@ assert!(*vector::borrow(&v, 0) == 100, 42)
 
 ## 作用域（Scopes）
 
-Any local declared with `let` is available for any subsequent expression, _within that scope_.
-Scopes are declared with expression blocks, `{`...`}`.
+使用 `let` 声明的任何局部变量都可用于任何后续表达式，_在该范围内_。作用域用表达式块（expression blocks）声明，`{`...`}`。
 
-Locals cannot be used outside of the declared scope.
+局部变量不能在声明的作用域之外使用。
 
 ```move
 let x = 0;
@@ -325,19 +223,19 @@ x + y // ERROR!
 //  ^ unbound local 'y'
 ```
 
-But, locals from an outer scope _can_ be used in a nested scope.
+但是，来自外部作用域的本地变量 _可以_ 在嵌套作用域中使用。
 
 ```move
 {
     let x = 0;
     {
-        let y = x + 1; // valid
+        let y = x + 1; // 合规范的
     }
 }
 ```
 
-Locals can be mutated in any scope where they are accessible. That mutation survives with the local,
-regardless of the scope that performed the mutation.
+局部变量可以在允许访问的任何作用域内进行变更（mutation）。与进行变更的作用域无关，这种变更会跟随局部变量的生命周期。
+
 
 ```move
 let x = 0;
@@ -350,68 +248,59 @@ assert!(x == 1, 42);
 assert!(x == 2, 42);
 ```
 
-### Expression Blocks
+### 表达式块
 
-An expression block is a series of statements separated by semicolons (`;`). The resulting value of
-an expression block is the value of the last expression in the block.
+表达式块是由分号 (`;`) 分隔的一系列语句。结果值为表达式块是块中最后一个表达式的值。
 
 ```move
 { let x = 1; let y = 1; x + y }
 ```
 
-In this example, the result of the block is `x + y`.
+在此示例中, 此区块的结果是 `x + y`.
 
-A statement can be either a `let` declaration or an expression. Remember that assignments (`x = e`)
-are expressions of type `()`.
+语句可以是 `let` 声明或表达式。请记住赋值(`x = e`)是 `()` 类型的表达式。
 
 ```move
 { let x; let y = 1; x = 1; x + y }
 ```
-
-Function calls are another common expression of type `()`. Function calls that modify data are
-commonly used as statements.
+函数调用是 `()` 类型的另一种常见表达方式。修改数据的函数调用通常被用作语句表达（`statements`）。
 
 ```move
 { let v = vector::empty(); vector::push_back(&mut v, 1); v }
 ```
 
-This is not just limited to `()` types---any expression can be used as a statement in a sequence!
+这不仅限于 `()` 类型——任何表达式都可以用作序列中的语句！
 
 ```move
 {
     let x = 0;
-    x + 1; // value is discarded
-    x + 2; // value is discarded
-    b"hello"; // value is discarded
+    x + 1; // 值会被丢弃
+    x + 2; // 值会被丢弃
+    b"hello"; // 值会被丢弃
 }
 ```
 
-But! If the expression contains a resource (a value without the `drop` [ability](./abilities.md)),
-you will get an error. This is because Move's type system guarantees that any value that is dropped
-has the `drop` [ability](./abilities.md). (Ownership must be transferred or the value must be
-explicitly destroyed within its declaring module.)
+但是！如果表达式包含一个没有 `drop` [特性](./abilities.md) 的值的资源，程序会返回错误。这是因为 Move 的类型系统保证任何被丢弃的值有`drop` [特性](./abilities.md)。 （所有权必须被转让或一个值必须在其声明模块中被显式销毁。）
 
 ```move
 {
     let x = 0;
     Coin { value: x }; // ERROR!
-//  ^^^^^^^^^^^^^^^^^ unused value without the `drop` ability
+//  ^^^^^^^^^^^^^^^^^ 没有 `drop` 特性的未使用值
     x
 }
 ```
 
-If a final expression is not present in a block---that is, if there is a trailing semicolon `;`,
-there is an implicit unit `()` value. Similarly, if the expression block is empty, there is an
-implicit unit `()` value.
+如果块中不存在最终表达式---也就是说，如果有一个尾随分号`;`，有一个隐含的单位`()`值。同样，如果表达式块为空，则存在隐式单位`()`值。
 
 ```move
-// Both are equivalent
+// 两者是相同的
 { x = x + 1; 1 / x; }
 { x = x + 1; 1 / x; () }
 ```
 
 ```move
-// Both are equivalent
+// 两者是相同的
 { }
 { () }
 ```
@@ -575,6 +464,9 @@ let addr2 = @0x42; // copy
 let x_ref2 = x_ref; // copy
 let coin_ref2 = coin_ref; // copy
 ```
+
+
+
 
 
 
