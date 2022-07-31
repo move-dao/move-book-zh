@@ -1,5 +1,5 @@
 
-# Move book zh https://github.com/move-language/move/tree/main/language/documentation/book
+# [Move book 中文版](https://movechina.github.io/move-book-zh/)
 
 ## Move book 目录
 
