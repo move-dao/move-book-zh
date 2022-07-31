@@ -17,6 +17,7 @@ Move 语言术语中英文对照表由 MoveChina 中文翻译项目组提供，�
 | mutation  | 变更     |   |
 | S |  |   
 | scope  | 作用域     |   |
+| statement  | 语句     |   |
 | T |  |   
 | type  | 类型     |   |
 | V |  |                                                                  |
