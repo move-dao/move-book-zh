@@ -12,6 +12,9 @@ Move 语言术语中英文对照表由 MoveChina 中文翻译项目组提供，�
 | D |  |   
 | destroy  | 销毁     |   |
 | drop  | 掉落     |   |
+| M |  |   
+| mutate  | 变更     |   |
+| mutation  | 变更     |   |
 | S |  |   
 | scope  | 作用域     |   |
 | T |  |   
