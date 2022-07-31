@@ -219,8 +219,8 @@ let x = 0;
 {
     let y = 1;
 };
-x + y // ERROR!
-//  ^ unbound local 'y'
+x + y // 错误!
+//  ^ 未绑定的局部变量“y”
 ```
 
 但是，来自外部作用域的本地变量 _可以_ 在嵌套作用域中使用。
@@ -305,9 +305,7 @@ assert!(x == 2, 42);
 { () }
 ```
 
-An expression block is itself an expression and can be used anyplace an expression is used. (Note:
-The body of a function is also an expression block, but the function body cannot be replaced by
-another expression.)
+表达式块本身就是一个表达式，可以在任何使用表达式的地方使用。 （注意：函数体也是表达式块，但函数体不能被另一个表达式替换。）
 
 ```move
 let my_vector: vector<vector<u8>> = {
@@ -318,28 +316,27 @@ let my_vector: vector<vector<u8>> = {
 };
 ```
 
-(The type annotation is not needed in this example and only added for clarity.)
+（此示例中不需要类型注释，只是为了清楚起见而添加。）
 
-### Shadowing
+### 隐蔽（shadowing）
 
-If a `let` introduces a local variable with a name already in scope, that previous variable can no
-longer be accessed for the rest of this scope. This is called _shadowing_.
+如果一个 `let` 引入了一个名称已经在作用域内的局部变量，那么之前的变量不能继续在此作用域的其余部分访问。这称为 _隐蔽_ （ _shadowing_ ）。
 
 ```move
 let x = 0;
 assert!(x == 0, 42);
 
-let x = 1; // x is shadowed
+let x = 1; // x被隐蔽了
 assert!(x == 1, 42);
 ```
 
-When a local is shadowed, it does not need to retain the same type as before.
+当局部变量被隐蔽时，它不需要保留与以前相同的类型。
 
 ```move
 let x = 0;
 assert!(x == 0, 42);
 
-let x = b"hello"; // x is shadowed
+let x = b"hello"; // x被隐蔽了
 assert!(x == b"hello", 42);
 ```
 
@@ -464,6 +461,9 @@ let addr2 = @0x42; // copy
 let x_ref2 = x_ref; // copy
 let coin_ref2 = coin_ref; // copy
 ```
+
+
+
 
 
 
