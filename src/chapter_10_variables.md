@@ -113,15 +113,212 @@ let z = loop (); // ERROR!
 当一段代码属于无作用代码（dead code）或是没被使用的局部变量，加上类型注解可能会触发其它错误。尽管如此，这些例子对于理解类型注解是有帮助的。
 
 
-### 元组的多重声明
+### 元组的多重声明 （Multiple declarations with tuples）
 
-### 结构体的多重声明
+`let` 可以使用元组一次引入多个局部变量。在括号里面声明的局部变量会被初始化为元组中的相应值。
 
-### 针对引用进行解构
+```move
+let () = ();
+let (x0, x1) = (0, 1);
+let (y0, y1, y2) = (0, 1, 2);
+let (z0, z1, z2, z3) = (0, 1, 2, 3);
+```
 
-### 忽略值
+表达式的类型必须与元组模式的数量完全匹配。
+
+```move
+let (x, y) = (0, 1, 2); // 错误!
+let (x, y, z, q) = (0, 1, 2); // 错误!
+```
+
+您不能在单个 `let` 中声明多个具有相同名称的局部变量。
+
+```move
+let (x, x) = 0; // 错误!
+```
+
+### 结构体的多重声明（Multiple declarations with structs）
+
+`let` 也可以在解构（或匹配）结构时一次引入多个局部变量。在这种形式中，`let` 创建了一组局部变量，这些变量被初始化为结构中的字段的值。语法如下所示：
+
+```move
+struct T { f1: u64, f2: u64 }
+```
+
+```move
+let T { f1: local1, f2: local2 } = T { f1: 1, f2: 2 };
+// local1: u64
+// local2: u64
+```
+
+这里是一个更复杂的示例：
+
+```move
+address 0x42 {
+module example {
+    struct X { f: u64 }
+    struct Y { x1: X, x2: X }
+
+    fun new_x(): X {
+        X { f: 1 }
+    }
+
+    fun example() {
+        let Y { x1: X { f }, x2 } = Y { x1: new_x(), x2: new_x() };
+        assert!(f + x2.f == 2, 42);
+
+        let Y { x1: X { f: f1 }, x2: X { f: f2 } } = Y { x1: new_x(), x2: new_x() };
+        assert!(f1 + f2 == 2, 42);
+    }
+}
+}
+```
+
+结构的字段可以起到双重作用：识别要绑定的字段 _和_ 命名变量。这有时被称为双关语。
+
+```move
+let X { f } = e;
+```
+
+和以下写法相同：
+
+```move
+let X { f: f } = e;
+```
+如元组所示，您不能在单个 `let` 中声明多个具有相同名称的局部变量。
+
+```move
+let Y { x1: x, x2: x } = e; // 错误!
+```
+
+### 针对引用进行解构（Destructuring against references）
+
+在上面的结构示例中，let 中的绑定值被移动了，这破坏了结构值并同时绑定了结构里的字段。
+
+```move
+struct T { f1: u64, f2: u64 }
+```
+
+```move
+let T { f1: local1, f2: local2 } = T { f1: 1, f2: 2 };
+// local1: u64
+// local2: u64
+```
+
+在这种情况下结构值 `T { f1: 1, f2: 2 }` 会在 `let`后消失.
+
+如果您希望不移动和破坏结构值，则可以借用其中的每个字段。比如说：
+
+```move
+let t = T { f1: 1, f2: 2 };
+let T { f1: local1, f2: local2 } = &t;
+// local1: &u64
+// local2: &u64
+```
+
+与可变引用类似：
+
+```move
+let t = T { f1: 1, f2: 2 };
+let T { f1: local1, f2: local2 } = &mut t;
+// local1: &mut u64
+// local2: &mut u64
+```
+
+此特性也适用于嵌套结构。
+
+```move
+address 0x42 {
+module example {
+    struct X { f: u64 }
+    struct Y { x1: X, x2: X }
+
+    fun new_x(): X {
+        X { f: 1 }
+    }
+
+    fun example() {
+        let y = Y { x1: new_x(), x2: new_x() };
+
+        let Y { x1: X { f }, x2 } = &y;
+        assert!(*f + x2.f == 2, 42);
+
+        let Y { x1: X { f: f1 }, x2: X { f: f2 } } = &mut y;
+        *f1 = *f1 + 1;
+        *f2 = *f2 + 1;
+        assert!(*f1 + *f2 == 4, 42);
+    }
+}
+}
+```
+
+### 忽略值（Ignoring Values）
+
+在 `let` 绑定中，忽略某些值通常很有帮助。以 `_` 开头的局部变量将被忽略并且不会引入新变量
+
+```move
+fun three(): (u64, u64, u64) {
+    (0, 1, 2)
+}
+```
+
+```move
+let (x1, _, z1) = three();
+let (x2, _y, z2) = three();
+assert!(x1 + z1 == x2 + z2)
+```
+
+这有时是必要的，因为编译器会在未使用的局部变量上出错
+
+```move
+let (x1, y, z1) = three(); // 错误!
+//       ^ 未被使用的局部变量 'y'
+```
 
 ### 一般的`let`语法
+
+`let` 中的所有不同结构都可以组合！有了这个，我们撰写了`let`语句的通用语法：
+
+> _let-binding_ → **let** _pattern-or-list_ _type-annotation_<sub>_opt_</sub>
+> _initializer_<sub>_opt_</sub> > _pattern-or-list_ → _pattern_ | **(** _pattern-list_ **)** >
+> _pattern-list_ → _pattern_ **,**<sub>_opt_</sub> | _pattern_ **,** _pattern-list_ >
+> _type-annotation_ → **:** _type_ _initializer_ → **=** _expression_
+
+引入绑定（binding）的项（item）的通用术语是 _pattern_。这种模式（pattern）用于解构数据（可能递归）并引入绑定。模式语法如下：
+
+> _pattern_ → _local-variable_ | _struct-type_ **{** _field-binding-list_ **}** >
+> _field-binding-list_ → _field-binding_ **,**<sub>_opt_</sub> | _field-binding_ **,**
+> _field-binding-list_ > _field-binding_ → _field_ | _field_ **:** _pattern_
+
+应用此语法的一些具体示例：
+
+```move
+    let (x, y): (u64, u64) = (0, 1);
+//       ^                           局部变量
+//       ^                           模式
+//          ^                        局部变量
+//          ^                        模式
+//          ^                        模式列表
+//       ^^^^                        模式列表
+//      ^^^^^^                       模式或列表
+//            ^^^^^^^^^^^^           类型注解
+//                         ^^^^^^^^  初始化的值
+//  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ let-绑定
+
+    let Foo { f, g: x } = Foo { f: 0, g: 1 };
+//      ^^^                                    结构类型
+//            ^                                字段
+//            ^                                字段绑定
+//               ^                             字段
+//                  ^                          局部变量
+//                  ^                          模式
+//               ^^^^                          字段绑定
+//            ^^^^^^^                          字段绑定列表
+//      ^^^^^^^^^^^^^^^                        模式
+//      ^^^^^^^^^^^^^^^                        模式或列表
+//                      ^^^^^^^^^^^^^^^^^^^^   初始化的值
+//  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ let-绑定
+```
 
 ## 变更
 
@@ -280,13 +477,13 @@ assert!(x == 2, 42);
 }
 ```
 
-但是！如果表达式包含一个没有 `drop` [特性](./abilities.md) 的值的资源，程序会返回错误。这是因为 Move 的类型系统保证任何被丢弃的值有`drop` [特性](./abilities.md)。 （所有权必须被转让或一个值必须在其声明模块中被显式销毁。）
+但是！如果表达式包含一个没有 `drop` [能力](./abilities.md) 的值的资源，程序会返回错误。这是因为 Move 的类型系统保证任何被丢弃的值有`drop` [能力](./abilities.md)。 （所有权必须被转让或一个值必须在其声明模块中被显式销毁。）
 
 ```move
 {
     let x = 0;
     Coin { value: x }; // ERROR!
-//  ^^^^^^^^^^^^^^^^^ 没有 `drop` 特性的未使用值
+//  ^^^^^^^^^^^^^^^^^ 没有 `drop` 能力的未使用值
     x
 }
 ```
@@ -339,11 +536,7 @@ assert!(x == 0, 42);
 let x = b"hello"; // x被隐蔽了
 assert!(x == b"hello", 42);
 ```
-
-After a local is shadowed, the value stored in the local still exists, but will no longer be
-accessible. This is important to keep in mind with values of types without the
-[`drop` ability](./abilities.md), as ownership of the value must be transferred by the end of the
-function.
+一个局部变量被隐蔽后，该变量中存储的值仍然存在，但将变得不再可访问。对于没有[`drop` 能力](./abilities.md)的类型的值，请记住这一点很重要，因为值的所有权必须在函数结束时转移。
 
 ```move
 address 0x42 {
@@ -351,19 +544,17 @@ address 0x42 {
         struct Coin has store { value: u64 }
 
         fun unused_resource(): Coin {
-            let x = Coin { value: 0 }; // ERROR!
-//              ^ This local still contains a value without the `drop` ability
+            let x = Coin { value: 0 }; // 错误!
+//              ^ 这个局部变量仍然包含一个没有 `drop` 能力的值
             x.value = 1;
             let x = Coin { value: 10 };
             x
-//          ^ Invalid return
+//          ^ 不合规范的返回
         }
     }
 }
 ```
-
-When a local is shadowed inside a scope, the shadowing only remains for that scope. The shadowing is
-gone once that scope ends.
+当局部变量在作用域内被隐蔽时，该隐蔽仅保留在该作用域内。一旦该作用域结束，隐蔽就会自动消失。
 
 ```move
 let x = 0;
@@ -374,7 +565,7 @@ let x = 0;
 assert!(x == 0, 42);
 ```
 
-Remember, locals can change type when they are shadowed.
+请记住，局部变量在被隐蔽时可以更改类型。
 
 ```move
 let x = 0;
@@ -385,16 +576,12 @@ let x = 0;
 assert!(x == 0, 42);
 ```
 
-## Move and Copy
+## 移动和复制（Move and Copy）
 
-All local variables in Move can be used in two ways, either by `move` or `copy`. If one or the other
-is not specified, the Move compiler is able to infer whether a `copy` or a `move` should be used.
-This means that in all of the examples above, a `move` or a `copy` would be inserted by the
-compiler. A local variable cannot be used without the use of `move` or `copy`.
 
-`copy` will likely feel the most familiar coming from other programming languages, as it creates a
-new copy of the value inside of the variable to use in that expression. With `copy`, the local
-variable can be used more than once.
+Move 中的所有局部变量都可以通过两种方式使用：通过 `move` 或 `copy`。如果其中一个未被使用时，Move 编译器能够推断是否应该使用 `copy` 或 `move`。这意味着在上述所有示例中，`move`或`copy`将被嵌入进编译器。不使用 `move` 或 `copy` 就不能使用局部变量。
+
+从其他编程语言来看，`copy` 可能会让人觉得最熟悉，因为它创建了一个要在该表达式中使用的变量内部值的新副本。使用 `copy`，本地变量可以多次使用。
 
 ```move
 let x = 0;
@@ -402,52 +589,46 @@ let y = copy x + 1;
 let z = copy x + 2;
 ```
 
-Any value with the `copy` [ability](./abilities.md) can be copied in this way.
 
-`move` takes the value out of the local variable _without_ copying the data. After a `move` occurs,
-the local variable is unavailable.
+任何带有 `copy` [能力](./abilities.md) 的值都可以通过这种方式复制。
 
+`move` 从局部变量中取出值 _而不用_ 复制数据。发生`移动`后，局部变量会不可用。
 ```move
 let x = 1;
 let y = move x + 1;
-//      ------ Local was moved here
-let z = move x + 2; // Error!
-//      ^^^^^^ Invalid usage of local 'x'
+//      ------ 局部变量被移动到这里了
+let z = move x + 2; // 错误!
+//      ^^^^^^ 不合规范的'x'使用方式
 y + z
 ```
 
-### Safety
+### 安全性（Safety）
 
-Move's type system will prevent a value from being used after it is moved. This is the same safety
-check described in [`let` declaration](#let-bindings) that prevents local variables from being used
-before it is assigned a value.
+Move 的类型系统会阻止一个值在移动后被使用。这和 [`let` 声明](#let-bindings) 中描述的防止在局部变量在赋值之前被使用是一样的安全检查。
 
 <!-- For more information, see TODO future section on ownership and move semantics. -->
 
-### Inference
+### 推断（Inference）
 
-As mentioned above, the Move compiler will infer a `copy` or `move` if one is not indicated. The
-algorithm for doing so is quite simple:
+如上所述，如果未指明，Move 编译器将推断出“复制”或“移动”。它的算法非常简单：
 
-- Any scalar value with the `copy` [ability](./abilities.md) is given a `copy`.
-- Any reference (both mutable `&mut` and immutable `&`) is given a `copy`.
-  - Except under special circumstances where it is made a `move` for predictable borrow checker
-    errors.
-- Any other value is given a `move`.
-  - This means that even though other values might be have the `copy` [ability](./abilities.md), it
-    must be done _explicitly_ by the programmer.
-  - This is to prevent accidental copies of large data structures.
+- 任何带有 `copy` [能力](./abilities.md) 的标量值都被赋予了 `copy`。
+- 任何引用（可变的`&mut`和不可变的`&`）都被赋予一个`copy`。
+  - 除非在特殊情况下对可预测的借用检查器错误（predictable borrow checker errors）进行“移动”。
+- 任何其他值都被赋予`Move`。
+  - 这意味着即使其他值可能具有 `copy` [能力](./abilities.md)，它必须由编程者 _明确地_ 声明。
+  - 这是为了防止意外复制很大的数据结构。
 
-For example:
+例如：
 
 ```move
 let s = b"hello";
 let foo = Foo { f: 0 };
 let coin = Coin { value: 0 };
 
-let s2 = s; // move
-let foo2 = foo; // move
-let coin2 = coin; // move
+let s2 = s; // 移动
+let foo2 = foo; // 移动
+let coin2 = coin; // 移动
 
 let x = 0;
 let b = false;
@@ -455,18 +636,11 @@ let addr = @0x42;
 let x_ref = &x;
 let coin_ref = &mut coin2;
 
-let x2 = x; // copy
-let b2 = b; // copy
-let addr2 = @0x42; // copy
-let x_ref2 = x_ref; // copy
-let coin_ref2 = coin_ref; // copy
+let x2 = x; // 复制
+let b2 = b; // 复制
+let addr2 = @0x42; // 复制
+let x_ref2 = x_ref; // 复制
+let coin_ref2 = coin_ref; // 复制
 ```
-
-
-
-
-
-
-
 
 
