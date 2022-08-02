@@ -162,7 +162,7 @@ module m {
 在此示例中， 类型参数`struct Coin<Currency>`是泛型的`Currency`，它指定`struct Coin`的货币类型，这样就允许代码选择是使用任意货币或者是指定的货币。即使`Currency`类型参数没有出现在定义的任何字段中，这种泛型性也适用`struct Coin`。
 
 ## [幻影类型参数]
-在上面的例子中，虽然`struct Coin`要求有`store`能力，但`Coin<Currency1>`和`Coin<Currency2>`都没有`store`能力。这是因为 [Conditional Abilities and Generic Types](https://move-language.github.io/move/abilities.html#conditional-abilities-and-generic-types)的规则以及Currency1和Currency2本身都没有实际`store`能力，尽管它们甚至没有在`struct Coin`的主体中使用. 这可能会导致一些不愉快的后果。例如，我们无法将`Coin<Currency1>`放入全局存储中的钱包。
+在上面的例子中，虽然`struct Coin`要求有`store`能力，但`Coin<Currency1>`和`Coin<Currency2>`都没有`store`能力。这是因为 [条件能力与泛型类型](https://github.com/movechina/move-book-zh/edit/main/src/chapter_19_abilities.md#%E6%9D%A1%E4%BB%B6%E8%83%BD%E5%8A%9B%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%B1%BB%E5%9E%8B)的规则以及Currency1和Currency2本身都没有实际`store`能力，尽管它们甚至没有在`struct Coin`的主体中使用. 这可能会导致一些不愉快的后果。例如，我们无法将`Coin<Currency1>`放入全局存储中的钱包。
 
 一种可能的解决方案是向`Currency1`和`Currency2` （即，`struct Currency1 has store {}`）添加虚假能力注释。但是，这可能会导致错误或安全漏洞，因为它削弱了具有不必要能力声明的类型。例如，我们永远不会期望全局存储中的资源具有`Currency1`类型的字段，但这对于虚假存储能力是可能的。此外，虚假注释具有传染性，需要在未使用的类型参数上泛型的许多函数也都包括必要的约束。
 
@@ -221,7 +221,7 @@ struct S<phantom T: copy> {}
 
 ## [约束]
 
-在上面的例子中，我们已经演示了如何使用类型参数来定义“未知”类型，这些类型可以在稍后被调用者插入。然而，这意味着类型系统几乎没有关于类型的信息，并且必须以非常保守的方式执行检查。从某种意义上说，类型系统必须假设不受约束的泛型的最坏情况。简单地说，默认情况下泛型类型参数没有[abilities](https://move-language.github.io/move/abilities.html)。
+在上面的例子中，我们已经演示了如何使用类型参数来定义“未知”类型，这些类型可以在稍后被调用者插入。然而，这意味着类型系统几乎没有关于类型的信息，并且必须以非常保守的方式执行检查。从某种意义上说，类型系统必须假设不受约束的泛型的最坏情况。简单地说，默认情况下泛型类型参数没有[能力](https://github.com/movechina/move-book-zh/edit/main/src/chapter_19_abilities.md#%E8%83%BD%E5%8A%9B)。
 
 这就是约束发挥作用的地方：它们提供了一种方法来指定这些未知类型具有哪些属性，因此类型系统可以允许原本不安全的操作。
 
@@ -292,7 +292,7 @@ fun foo(): (R, R) {
 }
 ```
 
-有关更多信息，请参阅有关条件[能力和泛型类型的能力部分](https://move-language.github.io/move/abilities.html#conditional-abilities-and-generic-types)
+有关更多信息，请参阅有关[条件能力与泛型类型](https://github.com/movechina/move-book-zh/edit/main/src/chapter_19_abilities.md#%E8%83%BD%E5%8A%9B)
 
 ## [递归的限制]
 
