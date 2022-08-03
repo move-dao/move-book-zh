@@ -45,7 +45,7 @@ if (condition) true_branch // implied default: else ()
 if (condition) true_branch else ()
 ```
 
-一般来说,[`if` 语句](https://move-language.github.io/move/conditionals.html)
+一般来说,[`if` 语句](https://movechina.github.io/move-book-zh/conditionals.html)
 与代码块一起使用.
 
 ```move
@@ -59,6 +59,6 @@ if (maximum < 10) {
 }
 ```
 
-## [条件语句的语法](https://move-language.github.io/move/conditionals.html#grammar-for-conditionals)
+## [条件语句的语法](https://movechina.github.io/move-book-zh/conditionals.html#grammar-for-conditionals)
 
 > *if-expression* → **if (** *expression* **)** *expression* *else-clause**opt* *else-clause* → **else** *expression*
