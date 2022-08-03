@@ -4,7 +4,7 @@ Move has two different types of programs: ***Modules*** and ***Scripts***. Modul
 
 A Move source file (or **compilation unit**) may contain multiple modules and scripts. However, publishing a module or executing a script are separate VM operations.
 
-Move有两种不同类型的程序:***Modules***和***Scripts**。Modules是定义结构类型以及对这些类型进行操作的函数的库。结构类型定义Move的[全局存储](https://move-language.github.io/move/global-storage-structure.html)的模式，模块函数定义更新存储的规则。模块本身也存储在全局存储中。Scripts是可执行的入口点，类似于传统语言中的主函数`main`。脚本通常调用已发布模块Modules的函数来更新全局存储。Scripts是暂时的代码片段，没有发布到全局存储中。
+Move有两种不同类型的程序:***Modules***和 ***Scripts***。Modules是定义结构类型以及对这些类型进行操作的函数的库。结构类型定义Move的[全局存储](https://move-language.github.io/move/global-storage-structure.html)的模式，模块函数定义更新存储的规则。模块本身也存储在全局存储中。Scripts是可执行的入口点，类似于传统语言中的主函数`main`。脚本通常调用已发布模块Modules的函数来更新全局存储。Scripts是暂时的代码片段，没有发布到全局存储中。
 
 一个Move源文件(或**编译单元**)可能包含多个模块和脚本。然而，发布模块或执行脚本都是独立的VM操作。
 
