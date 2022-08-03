@@ -33,13 +33,13 @@ Understanding that the capability to create custom modules on the Diem Payment N
 
 Beyond a hobbyist wanting to stay ahead of the curve for the core programming language is someone who may want to [contribute](https://diem.com/en-US/cla-sign/) directly to Move. Whether this includes submitting language improvements or even, in the future, adding core modules available on the Diem Payment Network, the core contributor will understand Move at a deep level.
 
-核心贡献者指那些不仅仅是超越爱好者并想在核心编程语言方面保持领先，还直接为 Move 做出贡献的人。~~具体来讲，包括~~无论是提交语言改进，甚至未来添加 Diem 支付网络上可用的核心模块等。核心贡献者都将深入了解Move~~要求对Move语言有更加深入的理解~~。
+核心贡献者指那些不仅仅是超越爱好者并想在核心编程语言方面保持领先，还直接为 Move 做出贡献的人。~~具体来讲，包括~~无论是提交语言改进，甚至未来添加 Diem 支付网络上可用的核心模块等。核心贡献者都将深入了解Move ~~要求对Move语言有更加深入的理解~~。
 
 ### Move不适用于哪些人？([Who Move is currently not targeting](https://move-language.github.io/move/introduction.html#who-move-is-currently-not-targeting))
 
 Currently, Move is not targeting developers who wish to create custom modules and contracts for use on the Diem Payment Network. We are also not targeting novice developers who expect a completely polished developer experience even in testing the language.
 
-目前，Move 并不适用那些希望在在 Diem 支付网络上创建自定义模块~~（custom modules）~~和合约~~，并在在 Diem 支付网络上使用~~的开发人员。~~同时，如果你是期望获得完美体验的新手开发者，处于发展早期的Move语言可能也不适合你。~~我们也不针对期望在测试语言时就能获得完美开发体验的初学开发者。
+目前，Move 并不适用那些希望在在 Diem 支付网络上创建自定义模块 ~~（custom modules）~~ 和合约 ~~，并在在 Diem 支付网络上使用~~ 的开发人员。~~同时，如果你是期望获得完美体验的新手开发者，处于发展早期的Move语言可能也不适合你。~~我们也不针对期望在测试语言时就能获得完美开发体验的初学开发者。
 
 ## 从哪里开始？([Where Do I Start?](https://move-language.github.io/move/introduction.html#where-do-i-start))
 

@@ -1,6 +1,6 @@
 # The Move Programming Language
 
-## [引言(Introduction)](introduction.md)
+## [引言(Introduction)](chapter_0_introduction.md)
 
 ## Getting Started
 
