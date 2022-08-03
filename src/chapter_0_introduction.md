@@ -3,7 +3,7 @@
 
 Welcome to Move, a next generation language for secure, sandboxed, and formally verified programming. Its first use case is for the Diem blockchain, where Move provides the foundation for its implementation. Move allows developers to write programs that flexibly manage and transfer assets, while providing the security and protections against attacks on those assets. However, Move has been developed with use cases in mind outside a blockchain context as well.
 
-欢迎来到Move的世界，~~Move是~~一种~~用于~~安全、沙盒式和~~正式~~形式化验证的下一代编程语言，它的第一个用例是 Diem 区块链(当时名字叫Libra,脸书团队开发的项目, 译者注), Move 为其实施提供了基础。 Move 允许开发人员编写灵活管理和转移数字资产的程序，同时提供安全保护，防止~~黑客~~对那些链上资产的攻击。不仅如此，Move 也可用于区块链世界之外的开发场景。
+欢迎来到Move的世界，~~Move是~~ 一种 ~~用于~~ 安全、沙盒式和 ~~正式~~ 形式化验证的下一代编程语言，它的第一个用例是 Diem 区块链(当时名字叫Libra,脸书团队开发的项目, 译者注), Move 为其实施提供了基础。 Move 允许开发人员编写灵活管理和转移数字资产的程序，同时提供安全保护，防止 ~~黑客~~ 对那些链上资产的攻击。不仅如此，Move 也可用于区块链世界之外的开发场景。
 
 Move takes its cue from [Rust](https://www.rust-lang.org/) by using resource types with move (hence the name) semantics as an explicit representation of digital assets, such as currency.
 
@@ -13,11 +13,11 @@ Move 的诞生从Rust中吸取了灵感，Move也是因为使用具有 移动(mo
 
 Move was designed and created as a secure, verified, yet flexible programming language. The first use of Move is for the implementation of the Diem blockchain. That said, the language is still evolving. Move has the potential to be a language for other blockchains, and even non-blockchain use cases as well.
 
-Move ~~诞生时就将自己定义~~被设计和创建为安全、可验证， 同时兼顾灵活性的编程语言。~~他~~Move 的第一个应用场景是用于Diem区块链的开发。~~现在~~也就是说，Move~~还~~仍在不断发展中~~和迭代~~。Move 有成为其他区块链~~的基础~~甚至非区块链用例开发语言的潜质~~，，甚至他还可以用于非区块链的开发场景~~。
+Move ~~诞生时就将自己定义~~ 被设计和创建为安全、可验证， 同时兼顾灵活性的编程语言。~~他~~ Move 的第一个应用场景是用于Diem区块链的开发。~~现在~~ 也就是说，Move ~~还~~仍在不断发展中 ~~和迭代~~。Move 有成为其他区块链 ~~的基础~~ 甚至非区块链用例开发语言的潜质 ~~，，甚至他还可以用于非区块链的开发场景~~。
 
 Given custom Move modules will not be supported at the [launch](https://diem.com/white-paper/#whats-next) of the Diem Payment Network (DPN), we are targeting an early Move Developer persona.
 
-鉴于在 Diem 支付网络 (DPN) 启动时将不支持自定义 Move 模块（custom Move modules），我们的目标是~~吸引更多~~早期的 Move 开发人员~~加入~~。
+鉴于在 Diem 支付网络 (DPN) 启动时将不支持自定义 Move 模块（custom Move modules），我们的目标是 ~~吸引更多~~ 早期的 Move 开发人员 ~~加入~~。
 
 The early Move Developer is one with some programming experience, who wants to begin understanding the core programming language and see examples of its usage.
 
@@ -33,13 +33,13 @@ Understanding that the capability to create custom modules on the Diem Payment N
 
 Beyond a hobbyist wanting to stay ahead of the curve for the core programming language is someone who may want to [contribute](https://diem.com/en-US/cla-sign/) directly to Move. Whether this includes submitting language improvements or even, in the future, adding core modules available on the Diem Payment Network, the core contributor will understand Move at a deep level.
 
-核心贡献者指那些不仅仅是超越爱好者并想在核心编程语言方面保持领先，还直接为 Move 做出贡献的人。~~具体来讲，包括~~无论是提交语言改进，甚至未来添加 Diem 支付网络上可用的核心模块等。核心贡献者都将深入了解Move ~~要求对Move语言有更加深入的理解~~。
+核心贡献者指那些不仅仅是超越爱好者并想在核心编程语言方面保持领先，还直接为 Move 做出贡献的人。~~具体来讲，包括~~ 无论是提交语言改进，甚至未来添加 Diem 支付网络上可用的核心模块等。核心贡献者都将深入了解Move ~~要求对Move语言有更加深入的理解~~。
 
 ### Move不适用于哪些人？([Who Move is currently not targeting](https://move-language.github.io/move/introduction.html#who-move-is-currently-not-targeting))
 
 Currently, Move is not targeting developers who wish to create custom modules and contracts for use on the Diem Payment Network. We are also not targeting novice developers who expect a completely polished developer experience even in testing the language.
 
-目前，Move 并不适用那些希望在在 Diem 支付网络上创建自定义模块 ~~（custom modules）~~ 和合约 ~~，并在在 Diem 支付网络上使用~~ 的开发人员。~~同时，如果你是期望获得完美体验的新手开发者，处于发展早期的Move语言可能也不适合你。~~我们也不针对期望在测试语言时就能获得完美开发体验的初学开发者。
+目前，Move 并不适用那些希望在在 Diem 支付网络上创建自定义模块 ~~（custom modules）~~ 和合约 ~~，并在在 Diem 支付网络上使用~~ 的开发人员。~~同时，如果你是期望获得完美体验的新手开发者，处于发展早期的Move语言可能也不适合你。~~ 我们也不针对期望在测试语言时就能获得完美开发体验的初学开发者。
 
 ## 从哪里开始？([Where Do I Start?](https://move-language.github.io/move/introduction.html#where-do-i-start))
 
