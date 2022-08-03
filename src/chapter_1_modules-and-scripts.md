@@ -1,16 +1,16 @@
-# [模块和脚本(Modules and Scripts)](https://movechina.github.io/move-book-zh/chapter_1_modules-and-scripts.html#modules-and-scripts)
+# 模块和脚本(Modules and Scripts)
 
 Move has two different types of programs: ***Modules*** and ***Scripts***. Modules are libraries that define struct types along with functions that operate on these types. Struct types define the schema of Move's [global storage](https://movechina.github.io/move-book-zh/chapter_25_global-storage-structure.html), and module functions define the rules for updating storage. Modules themselves are also stored in global storage. Scripts are executable entrypoints similar to a `main` function in a conventional language. A script typically calls functions of a published module that perform updates to global storage. Scripts are ephemeral code snippets that are not published in global storage.
 
 A Move source file (or **compilation unit**) may contain multiple modules and scripts. However, publishing a module or executing a script are separate VM operations.
 
-Move有两种不同类型的程序: ***Modules***和 ***Scripts***。模块(Modules, 相当于智能合约，译者注)是定义结构类型以及对这些类型进行操作的函数的库。结构类型定义Move的[全局存储](https://movechina.github.io/move-book-zh/chapter_25_global-storage-structure.html)的模式，模块函数定义更新存储的规则。模块本身也存储在全局存储中。脚本(Scripts)是可执行的入口点，类似于传统语言中的主函数 `main`。脚本通常调用已发布模块 ~~Modules~~ 的函数来更新全局存储。Scripts是暂时的代码片段，没有发布到全局存储中。
+Move有两种不同类型的程序: ***Modules***和 ***Scripts***。模块(Modules, 相当于智能合约，译者注)是定义结构类型以及对这些类型进行操作的函数的库。结构类型定义Move的[全局存储](https://movechina.github.io/move-book-zh/chapter_25_global-storage-structure.html)的模式，模块函数定义更新存储的规则。模块本身也存储在全局存储中。脚本(Scripts)是可执行的入口点，类似于传统语言中的主函数 `main`。脚本通常调用已发布模块的函数来更新全局存储。Scripts是暂时的代码片段，没有发布到全局存储中。
 
 一个Move源文件(或**编译单元**)可能包含多个模块和脚本。然而，发布模块或执行脚本都是独立的VM操作。
 
-## [语法(Syntax)](https://movechina.github.io/move-book-zh/chapter_1_modules-and-scripts.html#syntax)
+## 语法(Syntax)
 
-### [脚本(Scripts)](https://movechina.github.io/move-book-zh/chapter_1_modules-and-scripts.html#scripts)
+### 脚本(Scripts)
 
 A script has the following structure:
 script具有以下结构:
@@ -25,7 +25,7 @@ script {
 
 A `script` block must start with all of its [use](https://movechina.github.io/move-book-zh/chapter_20_uses.html) declarations, followed by any [constants](https://movechina.github.io/move-book-zh/chapter_17_constants.html) and (finally) the main [function](https://movechina.github.io/move-book-zh/chapter_15_functions.html) declaration. The main function can have any name (i.e., it need not be called `main`), is the only function in a script block, can have any number of arguments, and must not return a value. Here is an example with each of these components:
 
-一个 `script` 块必须在开头声明[use](https://movechina.github.io/move-book-zh/chapter_20_uses.html)，然后是[constants](https://movechina.github.io/move-book-zh/chapter_17_constants.html)的内容,最后声明 ~~main~~ 主函数 [function](https://movechina.github.io/move-book-zh/chapter_15_functions.html)。~~main~~ 主函数的名称可以是任意的(也就是说，它不一定是 `main`)，~~`main` 函数~~ 是script block中唯一的函数，可以有任意数量的参数，并且不能有返回值。下面是示例:
+一个 `script` 块必须在开头声明[use](https://movechina.github.io/move-book-zh/chapter_20_uses.html)，然后是[constants](https://movechina.github.io/move-book-zh/chapter_17_constants.html)的内容,最后声明主函数 [function](https://movechina.github.io/move-book-zh/chapter_15_functions.html)。主函数的名称可以是任意的(也就是说，它不一定是 `main`)，是script block中唯一的函数，可以有任意数量的参数，并且不能有返回值。下面是示例:
 
 ```move
 script {
@@ -43,9 +43,9 @@ script {
 
 Scripts have very limited power—they cannot declare friends, struct types or access global storage. Their primary purpose is to invoke module functions.
 
-脚本(Scripts) 的功能非常有限—它们不能声明友元、结构类型或访问全局存储， 他们的主要作用主要是调用 ~~module functions~~ 模块函数.
+脚本(Scripts) 的功能非常有限—它们不能声明友元、结构类型或访问全局存储， 他们的主要作用主要是调用模块函数.
 
-### [Modules](https://movechina.github.io/move-book-zh/chapter_1_modules-and-scripts.html#modules)
+### 模块(Modules)
 
 Module 具有以下结构:
 
@@ -114,7 +114,7 @@ script {
 
 and we compiled it with `my_addr` set to `0xC0FFEE`, then it would be equivalent to the following operationally:
 
-我们会将`my_addr`编译为`0xC0FFEE`，将和下面的代码是等 ~~同~~ 价的:
+我们会将`my_addr`编译为`0xC0FFEE`，将和下面的代码是等价的:
 
 ```move=
 script {
@@ -143,4 +143,4 @@ Typically, module names start with an uppercase letter. A module named `my_modul
 
 All elements inside a `module` block can appear in any order. Fundamentally, a module is a collection of [`types`](https://movechina.github.io/move-book-zh/chapter_16_structs-and-resources.html) and [`functions`](https://movechina.github.io/move-book-zh/chapter_15_functions.html). [Uses](https://movechina.github.io/move-book-zh/chapter_20_uses.html) import types from other modules. [Friends](https://movechina.github.io/move-book-zh/chapter_21_friends.html) specify a list of trusted modules. [Constants](https://movechina.github.io/move-book-zh/chapter_17_constants.html) define private constants that can be used in the functions of a module.
 
-`module` 块中的所有元素都可以以任何顺序出现。从根本上说，模块是[`types`](https://movechina.github.io/move-book-zh/chapter_16_structs-and-resources.html)和[`functions`](https://movechina.github.io/move-book-zh/chapter_15_functions.html)的集合。[Uses](https://movechina.github.io/move-book-zh/chapter_20_uses.html)从其他 ~~modules~~ 模块导入类型。[Friends](https://movechina.github.io/move-book-zh/chapter_21_friends.html)指定一个可信模块列表。[Constants](https://movechina.github.io/move-book-zh/chapter_17_constants.html)定义可以在模块函数中使用的私有常量。
+`module` 块中的所有元素都可以以任何顺序出现。从根本上说，模块是[`types`](https://movechina.github.io/move-book-zh/chapter_16_structs-and-resources.html)和[`functions`](https://movechina.github.io/move-book-zh/chapter_15_functions.html)的集合。[Uses](https://movechina.github.io/move-book-zh/chapter_20_uses.html)从其他模块导入类型。[Friends](https://movechina.github.io/move-book-zh/chapter_21_friends.html)指定一个可信模块列表。[Constants](https://movechina.github.io/move-book-zh/chapter_17_constants.html)定义可以在模块函数中使用的私有常量。

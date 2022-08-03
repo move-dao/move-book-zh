@@ -59,6 +59,6 @@ if (maximum < 10) {
 }
 ```
 
-## [条件语句的语法](https://movechina.github.io/move-book-zh/conditionals.html#grammar-for-conditionals)
+## 条件语句的语法
 
 > *if-expression* → **if (** *expression* **)** *expression* *else-clause**opt* *else-clause* → **else** *expression*

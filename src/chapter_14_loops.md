@@ -1,8 +1,8 @@
-# [While and Loop](https://movechina.github.io/move-book-zh/loops.html#while-and-loop)
+# While and Loop
 
 Move 提供了两种循环结构: `while` and `loop`.
 
-## [`while`循环](https://movechina.github.io/move-book-zh/loops.html#while-loops)
+## `while`循环
 
 `while`重复循环体(`unit`类型的表达式)直到条件(`bool`类型的表达式)执行结果为`false`
 
@@ -29,7 +29,7 @@ fun foo() {
 }
 ```
 
-### [`break`](https://movechina.github.io/move-book-zh/loops.html#break)
+### `break`
 
 `break`表达式可用于在条件计算结果为`false`之前退出循环。例如，这个循环使用`break`查找`n`大于1的最小因子:
 
@@ -48,7 +48,7 @@ fun smallest_factor(n: u64): u64 {
 
 `break`表达不能在循环之外使用.
 
-### [`continue`](https://movechina.github.io/move-book-zh/loops.html#continue)
+### `continue`
 
 `continue`表达式跳过当前循环的剩余部分,进行下一次的循环.下面的例子,使用`continue`去计算`1, 2, ..., n`除了能被10整除的数之外的数字之和:
 
@@ -68,7 +68,7 @@ fun sum_intermediate(n: u64): u64 {
 
 `continue`表达不能在循环之外使用.
 
-### [The type of `break` and `continue`](https://movechina.github.io/move-book-zh/loops.html#the-type-of-break-and-continue)
+### The type of `break` and `continue`
 
 `break`and`continue`, 和`return` and `abort`很相像, 可以是任何类型.下面的例子说明了这种灵活的类型在哪些方面有帮助:
 
@@ -111,7 +111,7 @@ fun pick(
 }
 ```
 
-## [`loop`表达式](https://movechina.github.io/move-book-zh/loops.html#the-loop-expression)
+## `loop`表达式
 
 The  expression repeats the loop body (an expression with type `()`) until it hits a `break`
 `loop`表达式重复循环体(类型为unit()的表达式) ，直到遇到`break`为止
@@ -159,7 +159,7 @@ fun sum_intermediate(n: u64): u64 {
 }
 ```
 
-## [`while` and `loop`的类型](https://movechina.github.io/move-book-zh/loops.html#the-type-of-while-and-loop)
+## `while` and `loop`的类型
 
 Move 是 类型化的表达式. `while` 表达式始终具有 `()` 类型.
 
