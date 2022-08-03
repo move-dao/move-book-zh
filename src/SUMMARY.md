@@ -1,11 +1,11 @@
 # The Move Programming Language
 
-[Introduction](introduction.md)
+## [引言(Introduction)](introduction.md)
 
 ## Getting Started
 
-- [Modules and Scripts](chapter_1_modules-and-scripts.md)
-- [Move Tutorial](chapter_2_move_tutorial.md)
+- [模块和脚本(Modules and Scripts)](chapter_1_modules-and-scripts.md)
+- [Move指南(Move Tutorial)](chapter_2_move_tutorial.md)
 
 ## Primitive Types
 
@@ -13,7 +13,7 @@
 - [布尔值(Bool)](chapter_4_bool.md)
 - [地址(Address)](chapter_5_address.md)
 - [数组(vector)](chapter_6_vector.md)
-- [Signer](chapter_7_signer.md)
+- [t签名(Signer)](chapter_7_signer.md)
 - [引用(References)](chapter_8_references.md)
 - [元组和单元(Tuples and Unit)](chapter_9_tuples-unit.md)
 
@@ -23,13 +23,13 @@
 - [等式(Equality)](chapter_11_equality.md)
 - [Abort and Assert](chapter_12_abort-and-assert.md)
 - [条件语句(Conditionals)](chapter_13_conditionals.md)
-- [While and Loop](chapter_14_loops.md)
+- [循环(While and Loop)](chapter_14_loops.md)
 - [函数(Functions)](chapter_15_functions.md)
-- [Structs and Resources](chapter_16_structs-and-resources.md)
+- [结构体和资源(Structs and Resources)](chapter_16_structs-and-resources.md)
 - [常量(constants)](chapter_17_constants.md)
-- [Generics](chapter_18_generics.md)
-- [Type Abilities](chapter_19_abilities.md)
-- [Uses and Aliases](chapter_20_uses.md)
+- [泛型(Generics)](chapter_18_generics.md)
+- [类型能力(Type Abilities)](chapter_19_abilities.md)
+- [导入和别名(Uses and Aliases)](chapter_20_uses.md)
 - [友元函数(Friends)](chapter_21_friends.md)
 - [程序包(Packages)](chapter_22_packages.md)
 - [单元测试(Unit Tests)](chapter_23_unit-testing.md)
