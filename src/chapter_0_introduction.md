@@ -7,7 +7,7 @@ Welcome to Move, a next generation language for secure, sandboxed, and formally 
 
 Move takes its cue from [Rust](https://www.rust-lang.org/) by using resource types with move (hence the name) semantics as an explicit representation of digital assets, such as currency.
 
-Move 的诞生从Rust中吸取了灵感，Move也是因为使用具有 移动(move)语义的资源类型作为数字资产（例如货币）的显式表示而得名。
+Move 的诞生从[Rust](https://www.rust-lang.org/)中吸取了灵感，Move也是因为使用具有 移动(move)语义的资源类型作为数字资产(例如货币)的显式表示而得名。
 
 ## Move是为谁准备的？[Who is Move for?](https://move-language.github.io/move/introduction.html#who-is-move-for)
 
@@ -17,7 +17,7 @@ Move ~~诞生时就将自己定义~~ 被设计和创建为安全、可验证， 
 
 Given custom Move modules will not be supported at the [launch](https://diem.com/white-paper/#whats-next) of the Diem Payment Network (DPN), we are targeting an early Move Developer persona.
 
-鉴于在 Diem 支付网络 (DPN) 启动时将不支持自定义 Move 模块（custom Move modules），我们的目标是 ~~吸引更多~~ 早期的 Move 开发人员 ~~加入~~。
+鉴于在 Diem 支付网络 (DPN) [启动](https://diem.com/white-paper/#whats-next)时将不支持自定义 Move 模块(custom Move modules)，我们的目标是 ~~吸引更多~~ 早期的 Move 开发人员 ~~加入~~。
 
 The early Move Developer is one with some programming experience, who wants to begin understanding the core programming language and see examples of its usage.
 
@@ -27,7 +27,7 @@ The early Move Developer is one with some programming experience, who wants to b
 
 Understanding that the capability to create custom modules on the Diem Payment Network will not be available at launch, the hobbyist Move Developer is interested in learning the intricacies of the language. She will understand the basic syntax, the standard libraries available, and write example code that can be executed using the Move CLI. The Move Developer may even want to dig into understanding how the Move Virtual Machine executes the code she writes.
 
-爱好 Move 的开发人员在了解 Diem 支付网络在发布时上创建自定义模块的功能是不可用后，有兴趣学习该语言的复杂性，会了解基本语法、可用的标准库，并编写可以使用 Move CLI 执行的示例代码。 Move 开发人员甚至可能想深入了解 Move 虚拟机如何执行其编写的代码。~~作为（Move语言）爱好者角色，首先需要明白在Diem支付网络上创建自定义模块（custom modules）是不可能的，其次，你还要对探索这门语言的复杂性保持兴趣。你将了解基本语法、可用的标准库，并编写可以用的Move CLI执行的示例代码。如果可能，你甚至可以去尝试体验Move虚拟机如何执行你自己编写的代码。~~
+爱好 Move 的开发人员在了解 Diem 支付网络在发布时上创建自定义模块的功能是不可用后，有兴趣学习该语言的复杂性，会了解基本语法、可用的标准库，并编写可以使用 Move CLI 执行的示例代码。 Move 开发人员甚至可能想深入了解 Move 虚拟机如何执行其编写的代码。~~作为(Move语言)爱好者角色，首先需要明白在Diem支付网络上创建自定义模块(custom modules)是不可能的，其次，你还要对探索这门语言的复杂性保持兴趣。你将了解基本语法、可用的标准库，并编写可以用的Move CLI执行的示例代码。如果可能，你甚至可以去尝试体验Move虚拟机如何执行你自己编写的代码。~~
 
 ### 核心贡献者([Core Contributor](https://move-language.github.io/move/introduction.html#core-contributor))
 
@@ -39,10 +39,10 @@ Beyond a hobbyist wanting to stay ahead of the curve for the core programming la
 
 Currently, Move is not targeting developers who wish to create custom modules and contracts for use on the Diem Payment Network. We are also not targeting novice developers who expect a completely polished developer experience even in testing the language.
 
-目前，Move 并不适用那些希望在在 Diem 支付网络上创建自定义模块 ~~（custom modules）~~ 和合约 ~~，并在在 Diem 支付网络上使用~~ 的开发人员。~~同时，如果你是期望获得完美体验的新手开发者，处于发展早期的Move语言可能也不适合你。~~ 我们也不针对期望在测试语言时就能获得完美开发体验的初学开发者。
+目前，Move 并不适用那些希望在在 Diem 支付网络上创建自定义模块 ~~(custom modules)~~ 和合约 ~~，并在在 Diem 支付网络上使用~~ 的开发人员。~~同时，如果你是期望获得完美体验的新手开发者，处于发展早期的Move语言可能也不适合你。~~ 我们也不针对期望在测试语言时就能获得完美开发体验的初学开发者。
 
 ## 从哪里开始？([Where Do I Start?](https://move-language.github.io/move/introduction.html#where-do-i-start))
 
 Begin with understanding [modules and scripts](https://move-language.github.io/move/modules-and-scripts.html) and then work through the [Move Tutorial](https://move-language.github.io/move/creating-coins.html).
 
-你可以从了解模块和脚本（[modules and scripts](https://move-language.github.io/move/modules-and-scripts.html) ）开始，然后跟随Move教程（[Move Tutorial](https://move-language.github.io/move/creating-coins.html).）进行练习。
+你可以从了解模块和脚本([modules and scripts](https://move-language.github.io/move/modules-and-scripts.html))开始，然后跟随Move教程([Move Tutorial](https://move-language.github.io/move/creating-coins.html))进行练习。
