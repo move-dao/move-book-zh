@@ -13,7 +13,7 @@
 - [布尔值(Bool)](chapter_4_bool.md)
 - [地址(Address)](chapter_5_address.md)
 - [数组(vector)](chapter_6_vector.md)
-- [t签名(Signer)](chapter_7_signer.md)
+- [签名(Signer)](chapter_7_signer.md)
 - [引用(References)](chapter_8_references.md)
 - [元组和单元(Tuples and Unit)](chapter_9_tuples-unit.md)
 
