@@ -40,7 +40,7 @@ The `Element` type can be both a `resource` or `copyable` type.
 
 Create a vector of length `1` containing the passed in `element`.
 
-创建一个长度为`1`的vector，并且包含传入的`e`。
+创建一个长度为`1`的vector，并且包含传入的`element`。
 
 ```move
     public fun singleton<Element>(e: Element): vector<Element>;
