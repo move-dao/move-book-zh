@@ -391,7 +391,7 @@ Will abort if `opt_elem` does not contain a value.
 Destroys the `opt_elem` value passed in. If `opt_elem` contained a value it
 will be returned otherwise, the passed in `default` value will be returned.
 
-析构传入的`opt_elem`。如果`opt_elem`包含值，它将被返回，否则将返回传入的`default`值。
+销毁传入的`opt_elem`。如果`opt_elem`包含值，它将被返回，否则将返回传入的`default`值。
 
 ```move
     public fun destroy_with_default<Element: copyable>(opt_elem: Option<Element>, default: Element): Element;
@@ -402,7 +402,7 @@ will be returned otherwise, the passed in `default` value will be returned.
 Destroys the `opt_elem` value passed in, `opt_elem` must be empty and not
 contain a value. Will abort if `opt_elem` contains a value.
 
-析构传入的`opt_elem`，`opt_elem`必须为空且不包含值。如果`opt_elem`包含一个值，则会终止操作。
+销毁传入的`opt_elem`，`opt_elem`必须为空且不包含值。如果`opt_elem`包含一个值，则会终止操作。
 
 ```move
     public fun destroy_none<Element>(opt_elem: Option<Element>);
