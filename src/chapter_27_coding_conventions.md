@@ -15,6 +15,8 @@ This section lays out some basic coding conventions for Move that the Move team 
 - **Script file names**: should be lower snake case and should match the name of the “main” function in the script.
 - **Mixed file names**: If the file contains multiple modules and/or scripts, the file name should be lower_snake_case, where the name does not match any particular module/script inside
 
+<br />
+
 - **模块命名**: 应该使用小写的蛇形命名法, 例如: `fixed_point32`, `vector`
 - **类型命名**: 如果不是原生数据类型, 应该使用驼峰命名法, 例如: `Coin`, `RoleId`
 - **函数命名**: 应该使用小写的蛇形命名法, 例如: `destroy_empty`
@@ -29,6 +31,8 @@ This section lays out some basic coding conventions for Move that the Move team 
 - All module `use` statements should be at the top of the module.
 - Functions should be imported and used fully qualified from the module in which they are declared, and not imported at the top level.
 - Types should be imported at the top-level. Where there are name clashes, `as` should be used to rename the type locally as appropriate.
+
+<br />
 
 - 所有模块的`use`语句都应该位于模块的顶部。
 - 函数应该从声明它们的模块中完全限定地导入和使用, 而不是在顶部导入。
@@ -86,6 +90,8 @@ module 0x1::importer {
 - Each module, struct, and public function declaration should be commented
 - Move has doc comments `///`, regular single-line comments `//`, block comments `/* */`, and block doc comments `/** */`
 
+<br />
+
 - 每个模块、结构体和公共函数声明都应该有对应的注释。
 - Move有文档注释 `///`, 常规单行注释 `//`, 块注释 `/* */`, 和块文档注释 `/** */`。
 
@@ -98,6 +104,8 @@ Move团队计划编写一个自动格式化程序来执行格式化规范。然�
 - Four space indentation should be used except for `script` and `address` blocks whose contents should not be indented
 - Lines should be broken if they are longer than 100 characters
 - Structs and constants should be declared before all functions in a module
+
+<br />
 
 - 除`script`和`address`块的内容外, 应使用四个空格的缩进。
 - 如果超过100个字符, 应该换行。
