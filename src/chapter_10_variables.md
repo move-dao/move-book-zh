@@ -857,7 +857,7 @@ algorithm for doing so is quite simple:
   - ~~除非在特殊情况下对可预测的借用检查器错误(predictable borrow checker errors)进行“移动”。~~
   - 除非在预估借用检查器出错的特殊情况下，会进行 `move` 操作.
 - 任何其他值都被赋予 `Move`。
-  - 这意味着即使其他值可能具有 `copy` [能力](./chapter_19_abilities.md)，它必须由编程员 _显式_ 声明。
+  - 这意味着即使其他值可能具有 `copy` [能力](./chapter_19_abilities.md)，它必须由程序员 _显式_ 声明。
   - 这是为了防止意外复制很大的数据结构。
 
 例如：
