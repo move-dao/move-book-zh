@@ -720,7 +720,7 @@ longer be accessed for the rest of this scope. This is called _shadowing_.
 let x = 0;
 assert!(x == 0, 42);
 
-let x = 1; // x被隐蔽了
+let x = 1; // x被遮蔽了
 assert!(x == 1, 42);
 ```
 
@@ -732,7 +732,7 @@ When a local is shadowed, it does not need to retain the same type as before.
 let x = 0;
 assert!(x == 0, 42);
 
-let x = b"hello"; // x被隐蔽了
+let x = b"hello"; // x被遮蔽了
 assert!(x == b"hello", 42);
 ```
 
