@@ -4,7 +4,7 @@ Local variables in Move are lexically (statically) scoped. New variables are int
 keyword `let`, which will shadow any previous local with the same name. Locals are mutable and can
 be updated both directly and via a mutable reference.
 
-在Move语言中，局部变量的解析依赖于词法作用域(lexically scoped)或静态作用域(statically scoped)。 ~~我们使用 `let` 定义新的变量并追踪当前代码块内出现过的任何同名变量。~~ 新变量通过关键字 `let` 引入的，它将遮蔽任何之前的局部同名变量。~~这些 局部变量是可更改：他们可接赋值或是被引用变量(mutable reference)更新。~~ 局部变量是可变的，可以直接更新，也可以通过可变引用更新。
+在Move语言中，局部变量的解析依赖于词法作用域(lexically scoped)或静态作用域(statically scoped)。新变量通过关键字 `let` 引入的，它将遮蔽任何之前的局部同名变量。局部变量是可变的，可以直接更新，也可以通过可变引用更新。
 
 ## 声明局部变量 (Declaring Local Variables)
 
@@ -42,7 +42,7 @@ if (cond) {
 
 This can be very helpful when trying to extract a value from a loop when a default value cannot be provided.
 
-~~ 从循环中提取一个默认值不确定的变量时，这个功能(稍后赋值)会非常有用~~ 当无法提供默认值时，且尝试从循环中提取值时非常有用。
+当无法提供默认值时，且尝试从循环中提取值时非常有用。
 
 ```move
 let x;
@@ -59,23 +59,23 @@ loop {
 
 Move's type system prevents a local variable from being used before it has been assigned.
 
-Move的类型 ~~编译器会阻止一个局部变量在赋值前被使用~~ 系统防止在赋值前使用局部变量。
+Move的类型系统防止在赋值前使用局部变量。
 
 ```move
 let x;
-x + x // ~~错误~~ ERROR!
+x + x // ERROR!
 ```
 
 ```move
 let x;
 if (cond) x = 0;
-x + x // ~~错误~~ ERROR!
+x + x // ERROR!
 ```
 
 ```move
 let x;
 while (cond) x = 0;
-x + x // ~~错误~~ ERROR!
+x + x // ERROR!
 ```
 
 
@@ -86,7 +86,7 @@ Variable names can contain underscores `_`, letters `a` to `z`, letters `A` to `
 to `9`. Variable names must start with either an underscore `_` or a letter `a` through `z`. They
 _cannot_ start with uppercase letters.
 
-变量名可以包含下划线 `_`，小写字母 `a` 到 `z` ，大写字母 `A` 到 `Z`，~~或者是~~ 和数字 `0` 到 `9` 。~~值得注意的是，~~ 变量名必须以下划线`_`或者以小写字母`a`到`z`开头。它们 _不可以_ ~~以~~ 用大写字母 ~~`A`到`Z`~~ 开头。
+变量名可以包含下划线 `_`，小写字母 `a` 到 `z` ，大写字母 `A` 到 `Z`， 和数字 `0` 到 `9` 。变量名必须以下划线`_`或者以小写字母`a`到`z`开头。它们 _不可以_ 用大写字母开头。
 
 ```move
 // 正确写法
@@ -98,24 +98,24 @@ let xA = e;
 let foobar_123 = e;
 
 // 非正确写法
-let X = e; // ~~错误~~ ERROR!
-let Foo = e; // ~~错误~~ ERROR!
+let X = e; // ERROR!
+let Foo = e; // ERROR!
 ```
 
-### 类型 ~~注解~~ 声明 (Type annotations)
+### 类型声明 (Type annotations)
 
 The type of a local variable can almost always be inferred by Move's type system. However, Move
 allows explicit type annotations that can be useful for readability, clarity, or debuggability. The
 syntax for adding a type annotation is:
 
-~~ Move语言的类型系统几乎可以识别所有局部变量的类型。但是为了易读性、明确性和可调试性，Move也允许公开的类型注解~~ 局部变量的类型几乎总是可以通过 Move 的类型系统推断出来。 但是，Move 允许显式声明类型，这对可读性、清晰性或可调试性很有用。 添加类型声明的语法如下：
+局部变量的类型几乎总是可以通过 Move 的类型系统推断出来。 但是，Move 允许显式声明类型，这对可读性、清晰性或可调试性很有用。 添加类型声明的语法如下：
 
 ```move
 let x: T = e; // "变量 x 的类型 T 被定义为表达式 e"
 ```
 
 Some examples of explicit type annotations:
-一些 ~~公开~~ 显式声明类型 ~~注解~~ 的例子：
+一些显式声明类型的例子：
 
 ```move=
 address 0x42 {
@@ -136,18 +136,18 @@ address 0x42 {
 
 Note that the type annotations must always be to the right of the pattern:
 
-值得注意的是，类型 ~~注解~~ 声明必须总是位于  ~~放在一个或多个~~ 变量右边的模式：
+值得注意的是，类型声明必须总是位于变量右边的模式：
 
 ```move
 let (x: &u64, y: &mut u64) = (&0, &mut 1); // 错误! 正确写法是 let (x, y): ... =
 ```
 
-### ~~注解~~ 需要(类型)声明时候 (When annotations are necessary)
+### 需要(类型)声明时候 (When annotations are necessary)
 
 In some cases, a local type annotation is required if the type system cannot infer the type. This
 commonly occurs when the type argument for a generic type cannot be inferred. For example:
 
-~~在一些情况下，Move的类型系统不能推断出局部变量的具体类型，所以需要提供注解~~ 在某些情况下，如果类型系统无法推断类型，则需要局部类型声明。。这常常发生于无法推断某个泛型(generic type)的类型参数时。比如：
+在某些情况下，如果类型系统无法推断类型，则需要局部类型声明。。这常常发生于无法推断某个泛型(generic type)的类型参数时。比如：
 
 ```move
 let _v1 = vector::empty(); // 错误!
@@ -161,7 +161,7 @@ and can have any type. A [`loop`](./loops.md) has type `()` if it has a `break`,
 break out of the `loop`, it could have any type. If these types cannot be inferred, a type
 annotation is required. For example, this code:
 
-在极少数情况下，Move的类型系统并不能推断出一段发散式代码(divergent code)的类型(~~因为这些~~ 后面所有代码无法 ~~直接~~ 访问)。在Move语言中，`return` 和 [`abort`](./chapter_12_abort-and-assert.md)都属于表达式，它们可以返回任何类型。如果一段 [`loop`](./chapter_14_loops.md) 有 `break` 语句，那么它的返回类型是`()`, 然而如果它不包含`break`语句，它的返回类型 ~~是多种多样的~~ 可以是任何类型。如果这些类型无法推断，类型 ~~注解~~ 声明是必须的。比如：
+在极少数情况下，Move的类型系统并不能推断出一段发散式代码(divergent code)的类型(后面所有代码无法访问)。在Move语言中，`return` 和 [`abort`](./chapter_12_abort-and-assert.md)都属于表达式，它们可以返回任何类型。如果一段 [`loop`](./chapter_14_loops.md) 有 `break` 语句，那么它的返回类型是`()`, 然而如果它不包含`break`语句，它的返回类型可以是任何类型。如果这些类型无法推断，类型声明是必须的。比如：
 
 ```move
 let a: u8 = return ();
@@ -179,7 +179,6 @@ let z = loop (); // ERROR!
 Adding type annotations to this code will expose other errors about dead code or unused local
 variables, but the example is still helpful for understanding this problem.
 
-~~当一段代码属于无作用代码(dead code)或是没被使用的局部变量，加上类型注解可能会触发其它错误。尽管如此，这些例子对于理解类型注解是有帮助的。~~
 在这段代码中添加类型声明会暴露其他关于死代码或未使用的局部变量的错误，无论如何这示例仍然有助于理解这个问题。
 
 
@@ -234,7 +233,7 @@ let T { f1: local1, f2: local2 } = T { f1: 1, f2: 2 };
 
 Here is a more complicated example:
 
-这 ~~里~~ 是一个更复杂的示例：
+这是一个更复杂的示例：
 
 ```move
 address 0x42 {
@@ -268,7 +267,7 @@ let X { f } = e;
 
 is equivalent to:
 
-~~和以下写法相同~~ 造价于：
+等价于：
 
 ```move
 let X { f: f } = e;
@@ -287,7 +286,7 @@ let Y { x1: x, x2: x } = e; // 错误!(两个x同名了，注者注)
 In the examples above for structs, the bound value in the let was moved, destroying the struct value
 and binding its fields.
 
-在上面的结构体示例中，`let` 中绑定的值被移动了，这 ~~破坏~~ 销毁了结构体的值并同时绑定了 ~~结构里~~ 它的字段(到变量)。
+在上面的结构体示例中，`let` 中绑定的值被移动了，这销毁了结构体的值并同时绑定了它的字段(到变量)。
 
 ```move
 struct T { f1: u64, f2: u64 }
@@ -304,9 +303,9 @@ In this scenario the struct value `T { f1: 1, f2: 2 }` no longer exists after th
 If you wish instead to not move and destroy the struct value, you can borrow each of its fields. For
 example:
 
-在这种 ~~情况~~ 场景下结构体的值 `T { f1: 1, f2: 2 }` 会在 `let` 后消失.
+在这种场景下结构体的值 `T { f1: 1, f2: 2 }` 会在 `let` 后消失.
 
-如果您希望不移动和 ~~破坏~~ 销毁结构体的值，则可以借用其中的每个字段。比如说：
+如果您希望不移动和销毁结构体的值，则可以借用其中的每个字段。比如说：
 
 ```move
 let t = T { f1: 1, f2: 2 };
@@ -328,7 +327,7 @@ let T { f1: local1, f2: local2 } = &mut t;
 
 This behavior can also work with nested structs.
 
-此 ~~特性~~ 行为也适用于嵌套结构体。
+此行为也适用于嵌套结构体。
 
 ```move
 address 0x42 {
@@ -376,14 +375,14 @@ assert!(x1 + z1 == x2 + z2)
 
 This can be necessary at times as the compiler will error on unused local variables。
 
-这有时是必要的，因为编译器会在检测到未使用的局部变量 ~~上出~~ 时报错。
+这有时是必要的，因为编译器会在检测到未使用的局部变量时报错。
 
 ```move
 let (x1, y, z1) = three(); // 错误!
 //       ^ 未被使用的局部变量 'y'
 ```
 
-### ~~一般~~ 通用的 `let` 语法 (General `let` grammar)
+### 通用的 `let` 语法 (General `let` grammar)
 
 All of the different structures in `let` can be combined! With that we arrive at this general
 grammar for `let` statements:
@@ -444,7 +443,7 @@ A few concrete examples with this grammar applied:
 After the local is introduced (either by `let` or as a function parameter), the local can be
 modified via an assignment:
 
-在 ~~声明~~ 引入一个局部变量后(使用`let`或是用作一个函数参数(function parameter))，~~我们可以给赋一个新的值~~ 局部(变量)可以通过赋值进行修改：
+在引入一个局部变量后(使用`let`或是用作一个函数参数(function parameter))，局部(变量)可以通过赋值进行修改：
 
 ```move
 x = e
@@ -471,7 +470,7 @@ if (cond) x = 1 else x = 2;
 
 The assignment uses the same pattern syntax scheme as `let` bindings:
 
-~~赋值和 `let` 的绑定使用了一样的模式，语法和结构(same pattern syntax scheme)~~ 赋值使用与 `let` 绑定相同的模式语法方案：：
+赋值使用与 `let` 绑定相同的模式语法方案：：
 
 ```move=
 address 0x42 {
@@ -499,7 +498,7 @@ address 0x42 {
 Note that a local variable can only have one type, so the type of the local cannot change between
 assignments.
 
-值得注意的是一个局部变量只能有一种类型，所以 ~~任一~~ 局部变量不能 ~~因~~ 在赋值之间(多次赋值)改变类型。
+值得注意的是一个局部变量只能有一种类型，所以局部变量不能在赋值之间(多次赋值)改变类型。
 
 ```move
 let x;
@@ -539,7 +538,7 @@ let r = if (cond) &mut x else &mut y;
 
 (2) You want another function to modify your local value.
 
-(2) 您想要另一个函数来修改您的 ~~本~地~ 局部(变量)值。
+(2) 您想要另一个函数来修改您的局部(变量)值。
 
 ```move
 let x = 0;
@@ -548,7 +547,7 @@ modify_ref(&mut x);
 
 This sort of modification is how you modify structs and vectors!
 
-这种修改就是你更改结构体和 ~~向量~~ 数组的方式！
+这种修改就是你更改结构体和数组的方式！
 
 ```move
 let v = vector::empty();
@@ -582,7 +581,7 @@ x + y // 错误!
 ```
 But, locals from an outer scope _can_ be used in a nested scope.
 
-但是，来自作用域外部的 ~~本地~~ 局部变量 _可以_ 在嵌套作用域中使用。
+但是，来自作用域外部的部变量 _可以_ 在嵌套作用域中使用。
 
 ```move
 {
@@ -707,14 +706,14 @@ let my_vector: vector<vector<u8>> = {
 
 (The type annotation is not needed in this example and only added for clarity.)
 
-(此示例中不需要类型 ~~注释~~ 声明，只是为了清 ~~楚起见~~ 晰而添加。)
+(此示例中不需要类型声明，只是为了清晰而添加。)
 
 ### 遮蔽(shadowing)
 
 If a `let` introduces a local variable with a name already in scope, that previous variable can no
 longer be accessed for the rest of this scope. This is called _shadowing_.
 
-如果一个 `let` 引入了一个 ~~名称~~ 已经在作用域内的同名局部变量，那么之前的变量不能继续在此作用域的其余部分访问。这称为 _遮蔽_ ( _shadowing_ )。
+如果一个 `let` 引入了一个已经在作用域内的同名局部变量，那么之前的变量不能继续在此作用域的其余部分访问。这称为 _遮蔽_ ( _shadowing_ )。
 
 ```move
 let x = 0;
@@ -741,7 +740,7 @@ accessible. This is important to keep in mind with values of types without the
 [`drop` ability](./abilities.md), as ownership of the value must be transferred by the end of the
 function.
 
-一个局部变量被遮蔽后，~~该变量中~~ 存储在局部变量的值仍然存在，但将变得不再可访问。对于没有[`drop` 能力](./chapter_19_abilities.md)的类型的值，请记住这一点很重要，因为值的所有权必须在函数结束时转移。
+一个局部变量被遮蔽后，存储在局部变量的值仍然存在，但将变得不再可访问。对于没有[`drop` 能力](./chapter_19_abilities.md)的类型的值，请记住这一点很重要，因为值的所有权必须在函数结束时转移。
 
 ```move
 address 0x42 {
@@ -798,9 +797,9 @@ compiler. A local variable cannot be used without the use of `move` or `copy`.
 new copy of the value inside of the variable to use in that expression. With `copy`, the local
 variable can be used more than once.
 
-Move 中的所有局部变量都可以通过两种方式使用：通过 `move` 或 `copy`。如果其中一个未被 ~~使用~~ 指定时，Move 编译器能够推断 ~~是否~~ 应该使用 `copy` 或 `move`。这意味着在上述所有示例中，`move` 或 `copy` 将被 ~~嵌入进~~ 编译器插入。不使用 `move` 或 `copy` 就不能使用局部变量。
+Move 中的所有局部变量都可以通过两种方式使用：通过 `move` 或 `copy`。如果其中一个未被指定时，Move 编译器能够推断应该使用 `copy` 或 `move`。这意味着在上述所有示例中，`move` 或 `copy` 将被编译器插入。不使用 `move` 或 `copy` 就不能使用局部变量。
 
-~~从其他编程语言来看，~~`copy` 对来自其他编程语言(的开发者)来说可能会 ~~让人~~ 觉得最熟悉，因为它创建了一个要在该表达式中使用的变量内部值的新副本。使用 `copy`，本地变量可以多次使用。
+`copy` 对来自其他编程语言(的开发者)来说可能会觉得最熟悉，因为它创建了一个要在该表达式中使用的变量内部值的新副本。使用 `copy`，本地变量可以多次使用。
 
 ```move
 let x = 0;
@@ -815,7 +814,7 @@ the local variable is unavailable.
 
 任何带有 `copy` [能力](./chapter_19_abilities.md) 的值都可以通过这种方式复制。
 
-`move` 从局部变量中取 ~~出~~ 走值 _而不是_ 复制数据。发生`移动`后，局部变量会不可用。
+`move` 从局部变量中取走值 _而不是_ 复制数据。发生`移动`后，局部变量会不可用。
 
 ```move
 let x = 1;
@@ -854,7 +853,6 @@ algorithm for doing so is quite simple:
 
 - 任何带有 `copy` [能力](./chapter_19_abilities.md) 的标量值都被赋予了 `copy`。
 - 任何引用(可变 `&mut`和不可变 `&`)都被赋予一个`copy`。
-  - ~~除非在特殊情况下对可预测的借用检查器错误(predictable borrow checker errors)进行“移动”。~~
   - 除非在预估借用检查器出错的特殊情况下，会进行 `move` 操作.
 - 任何其他值都被赋予 `Move`。
   - 这意味着即使其他值可能具有 `copy` [能力](./chapter_19_abilities.md)，它必须由程序员 _显式_ 声明。
