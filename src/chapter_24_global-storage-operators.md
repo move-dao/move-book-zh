@@ -2,7 +2,7 @@
 
 Move programs can create, delete, and update [resources](./structs-and-resources.md) in global storage using the following five instructions:
 
-Move 语言可以使用下面五种指令创建、删除、更新全局存储中的[资源](./structs-and-resources.md)：
+Move程序可以使用下面五种指令创建、删除、更新全局存储中的[资源](./structs-and-resources.md)：
 
 | Operation                              | Description                                                     | Aborts?                                 |
 ---------------------------------------- |---------------------------------------------------------------- |---------------------------------------- |
@@ -310,5 +310,4 @@ Line 16 acquires a reference to a global resource `m1::T`, then line 17 removes 
 Fancier type systems that would allow returning global references without sacrificing reference safety are possible, and we may consider them in future iterations of Move. We chose the current design because it strikes a good balance between expressivity, annotation burden, and type system complexity.
 
 允许返回全局引用而尽可能不牺牲引用安全的高级类型系统是可行的，我们将会在 Move 未来的迭代过程中考虑此事。我们选择目前的设计方式是因为它很好的平衡了语言表现力、复杂的注解和复杂的类型系统三者的关系。
-
 
