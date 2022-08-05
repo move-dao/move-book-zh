@@ -20,8 +20,7 @@
                 "code",
                 "doc",
                 "translation",
-                "infra",
-                "maintenance"
+                "infra"
             ]
         },
         {
@@ -32,8 +31,7 @@
             "contributions": [
                 "code",
                 "translation",
-                "doc",
-                "maintenance"
+                "doc"
             ]
         },
         {
@@ -44,7 +42,6 @@
             "contributions": [
                 "code",
                 "translation",
-                "maintenance",
                 "doc"
             ]
         },
@@ -56,7 +53,6 @@
             "contributions": [
                 "code",
                 "translation",
-                "maintenance",
                 "doc"
             ]
         },
@@ -68,7 +64,6 @@
             "contributions": [
                 "code",
                 "translation",
-                "maintenance",
                 "doc",
                 "infra"
             ]
