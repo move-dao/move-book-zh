@@ -1,155 +1,144 @@
 {
-  "projectName": "move-book-zh",
-  "projectOwner": "movechina",
-  "repoType": "github",
-  "repoHost": "https://github.com",
-  "files": [
-    "README.md"
-  ],
-  "imageSize": 100,
-  "commit": true,
-  "commitConvention": "none",
-  "skipCi": "true",
-  "contributors": [
-    {
-      "login": "Kusou1",
-      "name": "zhang",
-      "avatar_url": "https://avatars.githubusercontent.com/u/57334674?v=4",
-      "profile": "https://github.com/Kusou1",
-      "contributions": [
-        "code",
-        "doc",
-        "review",
-        "talk",
-        "tool",
-        "translation",
-        "infra",
-        "maintenance"
-      ]
-    },
-    {
-      "login": "ruy1su",
-      "name": "ruyisu",
-      "avatar_url": "https://avatars.githubusercontent.com/u/9391802?v=4",
-      "profile": "https://github.com/ruy1su",
-      "contributions": [
-        "code",
-        "translation",
-        "talk",
-        "doc",
-        "review",
-        "maintenance"
-      ]
-    },
-    {
-      "login": "lshoo",
-      "name": "lshoo",
-      "avatar_url": "https://avatars.githubusercontent.com/u/670440?v=4",
-      "profile": "https://github.com/lshoo",
-      "contributions": [
-        "code",
-        "translation",
-        "review",
-        "maintenance",
-        "talk",
-        "doc"
-      ]
-    },
-    {
-      "login": "Container-00",
-      "name": "Container",
-      "avatar_url": "https://avatars.githubusercontent.com/u/61052480?v=4",
-      "profile": "https://github.com/Container-00",
-      "contributions": [
-        "code",
-        "translation",
-        "review",
-        "maintenance",
-        "talk",
-        "doc"
-      ]
-    },
-    {
-      "login": "nosalt99",
-      "name": "nosalt",
-      "avatar_url": "https://avatars.githubusercontent.com/u/22558493?v=4",
-      "profile": "https://github.com/nosalt99",
-      "contributions": [
-        "code",
-        "translation",
-        "review",
-        "maintenance",
-        "talk",
-        "doc",
-        "infra"
-      ]
-    },
-    {
-      "login": "stephenreborn",
-      "name": "stephenreborn",
-      "avatar_url": "https://avatars.githubusercontent.com/u/6388610?v=4",
-      "profile": "https://github.com/stephenreborn",
-      "contributions": [
-        "code",
-        "translation",
-        "talk"
-      ]
-    },
-    {
-      "login": "666thi",
-      "name": "666thi",
-      "avatar_url": "https://avatars.githubusercontent.com/u/109965699?v=4",
-      "profile": "https://github.com/666thi",
-      "contributions": [
-        "code",
-        "translation",
-        "talk"
-      ]
-    },
-    {
-      "login": "MagicGordon",
-      "name": "MagicGordon",
-      "avatar_url": "https://avatars.githubusercontent.com/u/19465870?v=4",
-      "profile": "https://github.com/MagicGordon",
-      "contributions": [
-        "code",
-        "translation",
-        "talk"
-      ]
-    },
-    {
-      "login": "xixifusi1984",
-      "name": "xixifusi1984",
-      "avatar_url": "https://avatars.githubusercontent.com/u/39210551?v=4",
-      "profile": "https://github.com/xixifusi1984",
-      "contributions": [
-        "code",
-        "translation",
-        "talk"
-      ]
-    },
-    {
-      "login": "yvvw",
-      "name": "yvvw",
-      "avatar_url": "https://avatars.githubusercontent.com/u/15168529?v=4",
-      "profile": "https://github.com/yvvw",
-      "contributions": [
-        "code",
-        "translation",
-        "talk"
-      ]
-    },
-    {
-      "login": "xiaochuan891102",
-      "name": "xiaochuan891102",
-      "avatar_url": "https://avatars.githubusercontent.com/u/109952533?v=4",
-      "profile": "https://github.com/xiaochuan891102",
-      "contributions": [
-        "code",
-        "translation",
-        "talk"
-      ]
-    }
-  ],
-  "contributorsPerLine": 7
+    "projectName": "move-book-zh",
+    "projectOwner": "movechina",
+    "repoType": "github",
+    "repoHost": "https://github.com",
+    "files": [
+        "README.md"
+    ],
+    "imageSize": 100,
+    "commit": true,
+    "commitConvention": "none",
+    "skipCi": "true",
+    "contributors": [
+        {
+            "login": "Kusou1",
+            "name": "zhang",
+            "avatar_url": "https://avatars.githubusercontent.com/u/57334674?v=4",
+            "profile": "https://github.com/Kusou1",
+            "contributions": [
+                "code",
+                "doc",
+                "translation",
+                "infra",
+                "maintenance"
+            ]
+        },
+        {
+            "login": "ruy1su",
+            "name": "ruyisu",
+            "avatar_url": "https://avatars.githubusercontent.com/u/9391802?v=4",
+            "profile": "https://github.com/ruy1su",
+            "contributions": [
+                "code",
+                "translation",
+                "doc",
+                "maintenance"
+            ]
+        },
+        {
+            "login": "lshoo",
+            "name": "lshoo",
+            "avatar_url": "https://avatars.githubusercontent.com/u/670440?v=4",
+            "profile": "https://github.com/lshoo",
+            "contributions": [
+                "code",
+                "translation",
+                "maintenance",
+                "doc"
+            ]
+        },
+        {
+            "login": "Container-00",
+            "name": "Container",
+            "avatar_url": "https://avatars.githubusercontent.com/u/61052480?v=4",
+            "profile": "https://github.com/Container-00",
+            "contributions": [
+                "code",
+                "translation",
+                "maintenance",
+                "doc"
+            ]
+        },
+        {
+            "login": "nosalt99",
+            "name": "nosalt",
+            "avatar_url": "https://avatars.githubusercontent.com/u/22558493?v=4",
+            "profile": "https://github.com/nosalt99",
+            "contributions": [
+                "code",
+                "translation",
+                "maintenance",
+                "doc",
+                "infra"
+            ]
+        },
+        {
+            "login": "stephenreborn",
+            "name": "stephenreborn",
+            "avatar_url": "https://avatars.githubusercontent.com/u/6388610?v=4",
+            "profile": "https://github.com/stephenreborn",
+            "contributions": [
+                "code",
+                "translation",
+                "talk"
+            ]
+        },
+        {
+            "login": "666thi",
+            "name": "666thi",
+            "avatar_url": "https://avatars.githubusercontent.com/u/109965699?v=4",
+            "profile": "https://github.com/666thi",
+            "contributions": [
+                "code",
+                "translation",
+                "talk"
+            ]
+        },
+        {
+            "login": "MagicGordon",
+            "name": "MagicGordon",
+            "avatar_url": "https://avatars.githubusercontent.com/u/19465870?v=4",
+            "profile": "https://github.com/MagicGordon",
+            "contributions": [
+                "code",
+                "translation",
+                "talk"
+            ]
+        },
+        {
+            "login": "xixifusi1984",
+            "name": "xixifusi1984",
+            "avatar_url": "https://avatars.githubusercontent.com/u/39210551?v=4",
+            "profile": "https://github.com/xixifusi1984",
+            "contributions": [
+                "code",
+                "translation",
+                "talk"
+            ]
+        },
+        {
+            "login": "yvvw",
+            "name": "yvvw",
+            "avatar_url": "https://avatars.githubusercontent.com/u/15168529?v=4",
+            "profile": "https://github.com/yvvw",
+            "contributions": [
+                "code",
+                "translation",
+                "talk"
+            ]
+        },
+        {
+            "login": "xiaochuan891102",
+            "name": "xiaochuan891102",
+            "avatar_url": "https://avatars.githubusercontent.com/u/109952533?v=4",
+            "profile": "https://github.com/xiaochuan891102",
+            "contributions": [
+                "code",
+                "translation",
+                "talk"
+            ]
+        }
+    ],
+    "contributorsPerLine": 7
 }
