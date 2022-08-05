@@ -105,6 +105,17 @@
         "translation",
         "talk"
       ]
+    },
+    {
+      "login": "MagicGordon",
+      "name": "MagicGordon",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19465870?v=4",
+      "profile": "https://github.com/MagicGordon",
+      "contributions": [
+        "code",
+        "translation",
+        "talk"
+      ]
     }
   ],
   "contributorsPerLine": 7

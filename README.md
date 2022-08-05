@@ -1,6 +1,6 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 # [Move book 中文版](https://movechina.github.io/move-book-zh/)
 
@@ -117,6 +117,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/nosalt99"><img src="https://avatars.githubusercontent.com/u/22558493?v=4?s=100" width="100px;" alt=""/><br /><sub><b>nosalt</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=nosalt99" title="Code">💻</a> <a href="#translation-nosalt99" title="Translation">🌍</a> <a href="https://github.com/movechina/move-book-zh/pulls?q=is%3Apr+reviewed-by%3Anosalt99" title="Reviewed Pull Requests">👀</a> <a href="#maintenance-nosalt99" title="Maintenance">🚧</a> <a href="#talk-nosalt99" title="Talks">📢</a> <a href="https://github.com/movechina/move-book-zh/commits?author=nosalt99" title="Documentation">📖</a> <a href="#infra-nosalt99" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     <td align="center"><a href="https://github.com/stephenreborn"><img src="https://avatars.githubusercontent.com/u/6388610?v=4?s=100" width="100px;" alt=""/><br /><sub><b>stephenreborn</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=stephenreborn" title="Code">💻</a> <a href="#translation-stephenreborn" title="Translation">🌍</a> <a href="#talk-stephenreborn" title="Talks">📢</a></td>
     <td align="center"><a href="https://github.com/666thi"><img src="https://avatars.githubusercontent.com/u/109965699?v=4?s=100" width="100px;" alt=""/><br /><sub><b>666thi</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=666thi" title="Code">💻</a> <a href="#translation-666thi" title="Translation">🌍</a> <a href="#talk-666thi" title="Talks">📢</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/MagicGordon"><img src="https://avatars.githubusercontent.com/u/19465870?v=4?s=100" width="100px;" alt=""/><br /><sub><b>MagicGordon</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=MagicGordon" title="Code">💻</a> <a href="#translation-MagicGordon" title="Translation">🌍</a> <a href="#talk-MagicGordon" title="Talks">📢</a></td>
   </tr>
 </table>
 
