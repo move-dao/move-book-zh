@@ -1,6 +1,6 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 # [Move book 中文版](https://movechina.github.io/move-book-zh/)
 
@@ -115,6 +115,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/lshoo"><img src="https://avatars.githubusercontent.com/u/670440?v=4?s=100" width="100px;" alt=""/><br /><sub><b>lshoo</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=lshoo" title="Code">💻</a> <a href="#translation-lshoo" title="Translation">🌍</a> <a href="https://github.com/movechina/move-book-zh/pulls?q=is%3Apr+reviewed-by%3Alshoo" title="Reviewed Pull Requests">👀</a> <a href="#maintenance-lshoo" title="Maintenance">🚧</a> <a href="#talk-lshoo" title="Talks">📢</a> <a href="https://github.com/movechina/move-book-zh/commits?author=lshoo" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/Container-00"><img src="https://avatars.githubusercontent.com/u/61052480?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Container</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=Container-00" title="Code">💻</a> <a href="#translation-Container-00" title="Translation">🌍</a> <a href="https://github.com/movechina/move-book-zh/pulls?q=is%3Apr+reviewed-by%3AContainer-00" title="Reviewed Pull Requests">👀</a> <a href="#maintenance-Container-00" title="Maintenance">🚧</a> <a href="#talk-Container-00" title="Talks">📢</a> <a href="https://github.com/movechina/move-book-zh/commits?author=Container-00" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/nosalt99"><img src="https://avatars.githubusercontent.com/u/22558493?v=4?s=100" width="100px;" alt=""/><br /><sub><b>nosalt</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=nosalt99" title="Code">💻</a> <a href="#translation-nosalt99" title="Translation">🌍</a> <a href="https://github.com/movechina/move-book-zh/pulls?q=is%3Apr+reviewed-by%3Anosalt99" title="Reviewed Pull Requests">👀</a> <a href="#maintenance-nosalt99" title="Maintenance">🚧</a> <a href="#talk-nosalt99" title="Talks">📢</a> <a href="https://github.com/movechina/move-book-zh/commits?author=nosalt99" title="Documentation">📖</a> <a href="#infra-nosalt99" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/stephenreborn"><img src="https://avatars.githubusercontent.com/u/6388610?v=4?s=100" width="100px;" alt=""/><br /><sub><b>stephenreborn</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=stephenreborn" title="Code">💻</a> <a href="#translation-stephenreborn" title="Translation">🌍</a> <a href="#talk-stephenreborn" title="Talks">📢</a></td>
   </tr>
 </table>
 

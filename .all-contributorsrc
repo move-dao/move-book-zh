@@ -83,6 +83,17 @@
         "doc",
         "infra"
       ]
+    },
+    {
+      "login": "stephenreborn",
+      "name": "stephenreborn",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6388610?v=4",
+      "profile": "https://github.com/stephenreborn",
+      "contributions": [
+        "code",
+        "translation",
+        "talk"
+      ]
     }
   ],
   "contributorsPerLine": 7
