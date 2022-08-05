@@ -38,9 +38,9 @@ This section lays out some basic coding conventions for Move that the Move team 
 - 函数应该从声明它们的模块中完全限定地导入和使用, 而不是在顶部导入。
 - 类型应该在顶部导入。如果有名称冲突, 应使用`as`在本地重命名类型。
 
-For example, if there is a module
+For example, if there is a module:
 
-例如, 如果有一个模块:
+例如, 如果有一个模块：
 
 ```move=
 module 0x1::foo {
@@ -52,7 +52,7 @@ module 0x1::foo {
 ```
 this would be imported and used as:
 
-此时将被导入并使用:
+此时将被导入并使用：
 
 ```move=
 module 0x1::bar {
@@ -70,7 +70,7 @@ module 0x1::bar {
 ```
 And, if there is a local name-clash when importing two modules:
 
-并且, 如果在导入两个模块存在本地名称冲突时:
+并且, 如果在导入两个模块存在本地名称冲突时：
 
 ```move=
 module other_foo {
