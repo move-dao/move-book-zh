@@ -15,7 +15,7 @@
 - [数组(vector)](chapter_6_vector.md)
 - [签名(Signer)](chapter_7_signer.md)
 - [引用(References)](chapter_8_references.md)
-- [元组和单元(Tuples and Unit)](chapter_9_tuples-unit.md)
+- [元组和Unit(Tuples and Unit)](chapter_9_tuples-unit.md)
 
 ## Basic Concepts
 
