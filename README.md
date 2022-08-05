@@ -1,10 +1,10 @@
 # [Move book 中文版](https://movechina.github.io/move-book-zh/)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-![![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ![GitHub last commit](https://img.shields.io/github/last-commit/movechina/move-book-zh?color=gold)
-![GitHub contributors](https://img.shields.io/github/contributors/movechina/move-book-zh?color=pink)
+<!-- ![GitHub contributors](https://img.shields.io/github/contributors/movechina/move-book-zh?color=pink) -->
 
 > Chinese translation of [The Move Language][github-en]
 
