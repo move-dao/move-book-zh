@@ -147,7 +147,7 @@ let (x: &u64, y: &mut u64) = (&0, &mut 1); // 错误! 正确写法是 let (x, y)
 In some cases, a local type annotation is required if the type system cannot infer the type. This
 commonly occurs when the type argument for a generic type cannot be inferred. For example:
 
-在某些情况下，如果类型系统无法推断类型，则需要局部类型声明。。这常常发生于无法推断某个泛型(generic type)的类型参数时。比如：
+在某些情况下，如果类型系统无法推断类型，则需要局部类型声明。这常常发生于无法推断某个泛型(generic type)的类型参数时。比如：
 
 ```move
 let _v1 = vector::empty(); // 错误!
