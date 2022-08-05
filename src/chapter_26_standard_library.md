@@ -88,7 +88,7 @@ the index `i` is out of bounds for the vector `v`.
 Empty and destroy the `other` vector, and push each of the elements in
 the `other` vector onto the `lhs` vector in the same order as they occurred in `other`.
 
-清空并销毁`other`向量，并将`other`向量中的每个元素按顺序添加到`lhs`向量。
+清空并销毁`other`动态数组，并将`other`向量中的每个元素按顺序添加到`lhs`动态数组。
 
 ```move
     public fun append<Element>(lhs: &mut vector<Element>, other: vector<Element>);
