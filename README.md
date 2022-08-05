@@ -1,6 +1,10 @@
 
 # [Move book 中文版](https://movechina.github.io/move-book-zh/)
 
+```
+mdbook serve
+```
+
 ## Move book 目录
 
 ### 0. Introduction

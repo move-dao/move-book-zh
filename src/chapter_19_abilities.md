@@ -1,10 +1,10 @@
-# [能力]
+# 能力
 
 能力是Move语言中的一种输入功能，用于控制对给定类型的值允许哪些操作。 该系统对值的“线性”类型行为以及值是否可以以及如何在全局存储中使用提供细粒度控制。这是通过对某些字节码指令的进行访问控制来实现的，因此对于要与字节码指令一起使用的值，它必须具有所需的能力（如果需要的话，并非每条指令都由能力控制）
 
 The Four Abilities
 四种能力
-## [四种能力]
+## 四种能力
 这四种能力分别是：
 
 * `copy` 复制
@@ -27,7 +27,7 @@ The Four Abilities
 
 如果一个值具有`copy`能力，那么这个值内部的所有值都有`copy`能力。
 
-### [`drop` 丢弃] 
+### `drop` 丢弃
 
 `drop`能力允许类型的值被丢弃。通过被丢弃，程序执行后值会被有效的销毁而不再允许被转移。像这样，就会避免值在多种情况被忽略导致没有被销毁，包括：
 * 未被使用的局部变量或者参数
@@ -37,19 +37,19 @@ The Four Abilities
 
 如果一个值具有`drop`能力，那么这个值内部的所有值都有`drop`能力。
 
-### [`store` 存储] 
+### `store` 存储
 
 存储能力允许具有这种能力的类型的值存在于[全局存储](https://move-language.github.io/move/global-storage-operators.html)中的结构（资源）内部, 但不一定是全局存储中的顶级资源。 这是唯一不直接控制操作的能力。相反，当与`key`一起使用时，它会限制存在于全局存储中。
 
 如果一个值具有`store`能力，那么这个值内部的所有值都有`store`能力。
 
-### [`key` 键值] 
+### `key` 键值
 
 键值能力允许此类型作为全局存储中的`key`。它会对[全局存储](https://move-language.github.io/move/global-storage-operators.html)中的操作做限制，因此一个类型如果与`move_to`, `borrow_global`, `move_from`等一起使用，那么这个类型必须具备`key`能力。请注意，这些操作仍然必须在定义`key`类型的模块中使用（从某种意义上说，这些操作是此模块的私有操作）。
 
 如果有一个值有`key`能力，那么这个值包含的所有值也都具有`store`能力，`key`能力是唯一一个具有不对称性的能力。
 
-## [内置类型] 
+## 内置类型
 
 很多原始的，内置的类型具有`copy`，`drop`，以及`store`能力，`singer`除外，有一些只有`store`能力
 
@@ -62,7 +62,7 @@ The Four Abilities
 
 所有原始类型都没有`key`，这意味着它们都不能直接用于[全局存储操作](https://move-language.github.io/move/global-storage-operators.html)。
 
-## [注释结构] 
+## 注释结构
 
 要声明一个结构具有某个能力，它在结构名称之后但在字段之前用 `has <ability>` 声明。例如：
 
@@ -102,7 +102,7 @@ struct MyResource has key {
 }
 ```
 
-## [条件能力与泛型类型] 
+## 条件能力与泛型类型
 
 在泛型类型上注释能力时，并非该类型的所有实例都保证具有该能力。考虑这个结构声明：
 
@@ -129,7 +129,7 @@ vector<T> has copy, drop, store;
 
 以下是每个能力的条件系统的示例：
 
-### [例子：有条件的copy] 
+### 例子：有条件的copy
 ```move
 struct NoAbilities {}
 struct S has copy, drop { f: bool }
@@ -153,7 +153,7 @@ fun invalid(c_account: Cup<signer>, c_n: Cup<NoAbilities>) {
 }
 ```
 
-### [例子：有条件的drop] 
+### 例子：有条件的drop
 ```move
 struct NoAbilities {}
 struct S has copy, drop { f: bool }
@@ -205,7 +205,7 @@ struct MyResource has key {
 }
 ```
 
-### [例子：有条件的key] 
+### 例子：有条件的key 
 ```move
 struct NoAbilities {}
 struct MyResource<T> has key { f: T }

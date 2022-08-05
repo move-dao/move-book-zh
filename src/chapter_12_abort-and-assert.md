@@ -1,5 +1,5 @@
 
-# 中止和断言
+# 中止和断言(Abort and Assert)
 
 [`return`](./chapter_15_functions.md) 和 `abort` 是两种结束程序执行的控制流结构。前者针对当前函数，后者针对整个事务。
 

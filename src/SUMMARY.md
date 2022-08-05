@@ -21,7 +21,7 @@
 
 - [局部变量和作用域(Local Variables and Scopes)](chapter_10_variables.md)
 - [等式(Equality)](chapter_11_equality.md)
-- [Abort and Assert](chapter_12_abort-and-assert.md)
+- [中止和断言(Abort and Assert)](chapter_12_abort-and-assert.md)
 - [条件语句(Conditionals)](chapter_13_conditionals.md)
 - [循环(While and Loop)](chapter_14_loops.md)
 - [函数(Functions)](chapter_15_functions.md)
