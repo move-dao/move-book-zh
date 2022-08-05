@@ -54,6 +54,20 @@
         "talk",
         "doc"
       ]
+    },
+    {
+      "login": "Container-00",
+      "name": "Container",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61052480?v=4",
+      "profile": "https://github.com/Container-00",
+      "contributions": [
+        "code",
+        "translation",
+        "review",
+        "maintenance",
+        "talk",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7
