@@ -226,7 +226,7 @@ Move option类型在内部表示为一个单例向量，可能包含`资源`或`
 
 The API for the `option` module is as as follows
 
-`option`模块的API接口如下所示:
+`option`模块的API如下所示:
 
 ### 类型（Types）
 
