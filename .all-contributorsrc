@@ -17,7 +17,26 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/57334674?v=4",
       "profile": "https://github.com/Kusou1",
       "contributions": [
-        "code"
+        "code",
+        "doc",
+        "review",
+        "talk",
+        "tool",
+        "translation",
+        "infra",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "ruy1su",
+      "name": "ruyisu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9391802?v=4",
+      "profile": "https://github.com/ruy1su",
+      "contributions": [
+        "code",
+        "translation",
+        "review",
+        "maintenance"
       ]
     }
   ],

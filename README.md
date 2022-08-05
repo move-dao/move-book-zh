@@ -1,6 +1,6 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 # [Move book 中文版](https://movechina.github.io/move-book-zh/)
 
@@ -110,7 +110,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/Kusou1"><img src="https://avatars.githubusercontent.com/u/57334674?v=4?s=100" width="100px;" alt=""/><br /><sub><b>zhang</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=Kusou1" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Kusou1"><img src="https://avatars.githubusercontent.com/u/57334674?v=4?s=100" width="100px;" alt=""/><br /><sub><b>zhang</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=Kusou1" title="Code">💻</a> <a href="https://github.com/movechina/move-book-zh/commits?author=Kusou1" title="Documentation">📖</a> <a href="https://github.com/movechina/move-book-zh/pulls?q=is%3Apr+reviewed-by%3AKusou1" title="Reviewed Pull Requests">👀</a> <a href="#talk-Kusou1" title="Talks">📢</a> <a href="#tool-Kusou1" title="Tools">🔧</a> <a href="#translation-Kusou1" title="Translation">🌍</a> <a href="#infra-Kusou1" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-Kusou1" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://github.com/ruy1su"><img src="https://avatars.githubusercontent.com/u/9391802?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ruyisu</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=ruy1su" title="Code">💻</a> <a href="#translation-ruy1su" title="Translation">🌍</a> <a href="https://github.com/movechina/move-book-zh/pulls?q=is%3Apr+reviewed-by%3Aruy1su" title="Reviewed Pull Requests">👀</a> <a href="#maintenance-ruy1su" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
