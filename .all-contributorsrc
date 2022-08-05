@@ -9,6 +9,7 @@
   "imageSize": 100,
   "commit": true,
   "commitConvention": "none",
+  "skipCi": "true",
   "contributors": [],
   "contributorsPerLine": 7
 }
