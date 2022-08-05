@@ -1,7 +1,7 @@
 # [Move book 中文版](https://movechina.github.io/move-book-zh/)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ![GitHub last commit](https://img.shields.io/github/last-commit/movechina/move-book-zh?color=gold)
 <!-- ![GitHub contributors](https://img.shields.io/github/contributors/movechina/move-book-zh?color=pink) -->
@@ -67,6 +67,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/xixifusi1984"><img src="https://avatars.githubusercontent.com/u/39210551?v=4?s=100" width="100px;" alt=""/><br /><sub><b>xixifusi1984</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=xixifusi1984" title="Code">💻</a> <a href="#translation-xixifusi1984" title="Translation">🌍</a> <a href="#talk-xixifusi1984" title="Talks">📢</a></td>
     <td align="center"><a href="https://github.com/yvvw"><img src="https://avatars.githubusercontent.com/u/15168529?v=4?s=100" width="100px;" alt=""/><br /><sub><b>yvvw</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=yvvw" title="Code">💻</a> <a href="#translation-yvvw" title="Translation">🌍</a> <a href="#talk-yvvw" title="Talks">📢</a></td>
     <td align="center"><a href="https://github.com/xiaochuan891102"><img src="https://avatars.githubusercontent.com/u/109952533?v=4?s=100" width="100px;" alt=""/><br /><sub><b>xiaochuan891102</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=xiaochuan891102" title="Code">💻</a> <a href="#translation-xiaochuan891102" title="Translation">🌍</a> <a href="#talk-xiaochuan891102" title="Talks">📢</a></td>
+    <td align="center"><a href="https://github.com/stephenLee"><img src="https://avatars.githubusercontent.com/u/1144508?v=4?s=100" width="100px;" alt=""/><br /><sub><b>stephenLee</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=stephenLee" title="Code">💻</a> <a href="#translation-stephenLee" title="Translation">🌍</a> <a href="#talk-stephenLee" title="Talks">📢</a></td>
   </tr>
 </table>
 
