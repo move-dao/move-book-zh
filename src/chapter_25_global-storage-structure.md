@@ -2,7 +2,7 @@
 
 The purpose of Move programs is to [read from and write to](./global-storage-operators.md) tree-shaped persistent global storage. Programs cannot access the filesystem, network, or any other data outside of this tree.
 
-Move 语言目标是[读写](./global-storage-operators.md)树状持久化全局存储。不能访问文件系统、网络或任何树外的数据。
+Move 语言目标是[读写](./global-storage-operators.md)树状持久化全局存储。程序不能访问文件系统、网络或任何树外的数据。
 
 In pseudocode, the global storage looks something like
 
