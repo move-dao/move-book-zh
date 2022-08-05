@@ -1,10 +1,8 @@
+# [Move book 中文版](https://movechina.github.io/move-book-zh/)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-# [Move book 中文版](https://movechina.github.io/move-book-zh/)
-
-![Build Status](https://github.com/movechina/move-book-zh/workflows/CI/badge.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/movechina/move-book-zh?color=gold)
 ![GitHub contributors](https://img.shields.io/github/contributors/movechina/move-book-zh?color=pink)
 
@@ -116,9 +114,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Container-00"><img src="https://avatars.githubusercontent.com/u/61052480?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Container</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=Container-00" title="Code">💻</a> <a href="#translation-Container-00" title="Translation">🌍</a> <a href="https://github.com/movechina/move-book-zh/commits?author=Container-00" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/nosalt99"><img src="https://avatars.githubusercontent.com/u/22558493?v=4?s=100" width="100px;" alt=""/><br /><sub><b>nosalt</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=nosalt99" title="Code">💻</a> <a href="#translation-nosalt99" title="Translation">🌍</a> <a href="https://github.com/movechina/move-book-zh/commits?author=nosalt99" title="Documentation">📖</a> <a href="#infra-nosalt99" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     <td align="center"><a href="https://github.com/stephenreborn"><img src="https://avatars.githubusercontent.com/u/6388610?v=4?s=100" width="100px;" alt=""/><br /><sub><b>stephenreborn</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=stephenreborn" title="Code">💻</a> <a href="#translation-stephenreborn" title="Translation">🌍</a> <a href="#talk-stephenreborn" title="Talks">📢</a></td>
-    <td align="center"><a href="https://github.com/666thi"><img src="https://avatars.githubusercontent.com/u/109965699?v=4?s=100" width="100px;" alt=""/><br /><sub><b>666thi</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=666thi" title="Code">💻</a> <a href="#translation-666thi" title="Translation">🌍</a> <a href="#talk-666thi" title="Talks">📢</a></td>
   </tr>
   <tr>
+    <td align="center"><a href="https://github.com/666thi"><img src="https://avatars.githubusercontent.com/u/109965699?v=4?s=100" width="100px;" alt=""/><br /><sub><b>666thi</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=666thi" title="Code">💻</a> <a href="#translation-666thi" title="Translation">🌍</a> <a href="#talk-666thi" title="Talks">📢</a></td>
     <td align="center"><a href="https://github.com/MagicGordon"><img src="https://avatars.githubusercontent.com/u/19465870?v=4?s=100" width="100px;" alt=""/><br /><sub><b>MagicGordon</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=MagicGordon" title="Code">💻</a> <a href="#translation-MagicGordon" title="Translation">🌍</a> <a href="#talk-MagicGordon" title="Talks">📢</a></td>
     <td align="center"><a href="https://github.com/xixifusi1984"><img src="https://avatars.githubusercontent.com/u/39210551?v=4?s=100" width="100px;" alt=""/><br /><sub><b>xixifusi1984</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=xixifusi1984" title="Code">💻</a> <a href="#translation-xixifusi1984" title="Translation">🌍</a> <a href="#talk-xixifusi1984" title="Talks">📢</a></td>
     <td align="center"><a href="https://github.com/yvvw"><img src="https://avatars.githubusercontent.com/u/15168529?v=4?s=100" width="100px;" alt=""/><br /><sub><b>yvvw</b></sub></a><br /><a href="https://github.com/movechina/move-book-zh/commits?author=yvvw" title="Code">💻</a> <a href="#translation-yvvw" title="Translation">🌍</a> <a href="#talk-yvvw" title="Talks">📢</a></td>
