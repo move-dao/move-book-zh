@@ -1,6 +1,5 @@
 [book]
-title = "move-book-zh"
-description = "Move Book中文版"
+title = "Move Book中文版"
 authors = ["The Move China Contributors"]
 language = "zh"
 multilingual = false

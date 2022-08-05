@@ -1,9 +1,44 @@
 
 # [Move book 中文版](https://movechina.github.io/move-book-zh/)
 
+![Build Status](https://github.com/movechina/move-book-zh/workflows/CI/badge.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/movechina/move-book-zh?color=gold)
+![GitHub contributors](https://img.shields.io/github/contributors/movechina/move-book-zh?color=pink)
+
+> Chinese translation of [The Move Language][github-en]
+
+[github-en]: https://github.com/move-language/move
+
+## 依赖
+
+构建本书需要 [mdBook],执行以下命令安装：
+
+[mdBook]: https://github.com/rust-lang-nursery/mdBook
+
+```bash
+$ cargo install --git https://github.com/rust-lang/mdBook.git mdbook
 ```
-mdbook serve
+
+## 构建
+
+构建此书，请输入：
+
 ```
+$ mdbook build
+```
+
+输出内容存放在 `book` 子目录中。可使用浏览器打开来查看内容。
+
+## 预览
+
+构建后，输入以下命令即可在本地预览此书，默认情况下在`localhost:3000`:
+
+```
+$ mdbook serve
+```
+
+`serve` command watches the book's `src` directory for changes, rebuilding the book and refreshing clients for each change; this includes re-creating deleted files still mentioned in `SUMMARY.md`! A websocket connection is used to trigger the client-side refresh.
+
 
 ## Move book 目录
 
