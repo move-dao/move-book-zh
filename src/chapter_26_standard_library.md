@@ -20,7 +20,7 @@ The `vector` module defines a number of operations over the primitive
 named address `Std` and consists of a number of native functions, as
 well as functions defined in Move. The API for this module is as follows.
 
-`向量`模块在原生类型[`向量`](./vector.md)上定义了许多操作。该模块以命名地址`Std`发布，并由许多原生函数以及在Move中定义的函数组成。此模块的API接口如下所示:
+`向量`模块在原生类型[`向量`](./vector.md)上定义了许多操作。该模块以命名地址`Std`发布，并由许多原生函数以及在Move中定义的函数组成。此模块的API如下所示:
 
 ### 函数（Functions）
 
