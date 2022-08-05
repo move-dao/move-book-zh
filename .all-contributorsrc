@@ -68,6 +68,21 @@
         "talk",
         "doc"
       ]
+    },
+    {
+      "login": "nosalt99",
+      "name": "nosalt",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22558493?v=4",
+      "profile": "https://github.com/nosalt99",
+      "contributions": [
+        "code",
+        "translation",
+        "review",
+        "maintenance",
+        "talk",
+        "doc",
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7
