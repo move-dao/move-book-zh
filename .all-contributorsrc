@@ -35,8 +35,24 @@
       "contributions": [
         "code",
         "translation",
+        "talk",
+        "doc",
         "review",
         "maintenance"
+      ]
+    },
+    {
+      "login": "lshoo",
+      "name": "lshoo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/670440?v=4",
+      "profile": "https://github.com/lshoo",
+      "contributions": [
+        "code",
+        "translation",
+        "review",
+        "maintenance",
+        "talk",
+        "doc"
       ]
     }
   ],
