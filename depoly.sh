@@ -6,12 +6,12 @@ mdbook build
 ## init git repo
 cd book
 git init
-git config user.name "movechina"
-git config user.email "movechina@gmail.com"
+git config user.name "move-dao"
+git config user.email "move-dao@gmail.com"
 git add .
 git commit -m 'deploy'
 git branch -M gh-pages
-git remote add origin https://github.com/movechina/move-book-zh.git
+git remote add origin https://github.com/move-dao/move-book-zh.git
 
 ## push to github pages
 git push -u -f origin gh-pages

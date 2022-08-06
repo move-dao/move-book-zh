@@ -55,7 +55,7 @@ The Four Abilities
 
 * `bool`, `u8`, `u64`, `u128`, `address` 都具有 `copy`, `drop`, 以及 `store`能力。
 * `signer` 具有 `drop`能力。 不能被复制以及不能被存放在全局存储中
-* `vector<T>` 可能具有`copy`，`drop`，以及`store` 能力 这依赖于`T`具有的能力。 查看 [条件能力与泛型类型](https://github.com/movechina/move-book-zh/edit/main/src/chapter_19_abilities.md#%E6%9D%A1%E4%BB%B6%E8%83%BD%E5%8A%9B%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%B1%BB%E5%9E%8B) 获取详情
+* `vector<T>` 可能具有`copy`，`drop`，以及`store` 能力 这依赖于`T`具有的能力。 查看 [条件能力与泛型类型](https://github.com/move-dao/move-book-zh/edit/main/src/chapter_19_abilities.md#%E6%9D%A1%E4%BB%B6%E8%83%BD%E5%8A%9B%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%B1%BB%E5%9E%8B) 获取详情
 * 不可变引用和可变引用以及 `&mut` 都具有`copy`和`drop`能力。
     这是指复制和删除引用本身，而不是它们所引用的内容。
     引用不能出现在全局存储中，因此它们没有存储。

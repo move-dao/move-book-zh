@@ -6,5 +6,5 @@ multilingual = false
 src = "src"
 
 [output.html]
-git-repository-url = "https://github.com/movechina/move-book-zh"
+git-repository-url = "https://github.com/move-dao/move-book-zh"
 git-repository-icon = "fa-github"
