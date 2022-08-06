@@ -1,5 +1,9 @@
 # [Move book 中文版](https://movechina.github.io/move-book-zh/)
 
+## [Move book 目录][moveBookDir]
+
+[moveBookDir]: https://github.com/movechina/move-book-zh/blob/main/src/SUMMARY.md
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -41,9 +45,6 @@ $ mdbook serve
 `serve` command watches the book's `src` directory for changes, rebuilding the book and refreshing clients for each change; this includes re-creating deleted files still mentioned in `SUMMARY.md`! A websocket connection is used to trigger the client-side refresh.
 
 
-## [Move book 目录][moveBookDir]
-
-[moveBookDir]: https://github.com/movechina/move-book-zh/blob/main/src/SUMMARY.md
 
 ## Contributors ✨
 
