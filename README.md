@@ -2,6 +2,8 @@
 
 ## [Move book 目录][moveBookDir]
 
+[各章节译者](Translators.md)
+
 [moveBookDir]: https://github.com/movechina/move-book-zh/blob/main/src/SUMMARY.md
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->

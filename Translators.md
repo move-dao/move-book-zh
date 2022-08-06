@@ -1,6 +1,6 @@
-### 0. Introduction
+### 0. Introduction 译者:（Tom）
 
-### 1. Modules and Scripts  译者:（Tom）
+### 1. Modules and Scripts  （Kusou1）
 
 ### 2. Move Tutorial
 
