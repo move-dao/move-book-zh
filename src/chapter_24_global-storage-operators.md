@@ -1,3 +1,4 @@
+
 # 全局存储 - 操作（Global Storage - Operators）
 
 Move programs can create, delete, and update [resources](./structs-and-resources.md) in global storage using the following five instructions:
@@ -141,24 +142,24 @@ module counter {
 }
 ```
 
-## `acquires` 函数注解（Annotating functions with `acquires`）
+## `acquires` 函数标注（Annotating functions with `acquires`）
 
 In the `counter` example, you might have noticed that the `get_count`, `increment`, `reset`, and `delete` functions are annotated with `acquires Counter`. A Move function `m::f` must be annotated with `acquires T` if and only if:
 
 - The body of `m::f` contains a `move_from<T>`, `borrow_global_mut<T>`, or `borrow_global<T>` instruction, or
 - The body of `m::f` invokes a function `m::g` declared in the same module that is annotated with `acquires`
 
-在 `counter` 例子中，可以注意到 `get_count`、`increment`、`reset` 和 `delete` 方法都使用 `acquires Counter` 进行注解。函数 `m::f` 在且仅在下述情况必须使用 `acquires T` 进行注解：
+在 `counter` 例子中，可以注意到 `get_count`、`increment`、`reset` 和 `delete` 方法都使用 `acquires Counter` 进行标注。函数 `m::f` 在且仅在下述情况必须使用 `acquires T` 进行标注：
 
 - `m::f` 的主体包含 `move_from<T>`、`borrow_global_mut<T>` 或 `borrow_global<T>` 指令调用
 - `m::f` 的主体调用了同模块内被 `acquires` 注解的 `m::g` 的函数
 
 For example, the following function inside `Counter` would need an `acquires` annotation:
 
-例如，下面 `Counter` 内的函数需要使用 `acquires` 注解：
+例如，下面 `Counter` 内的函数需要使用 `acquires` 标注：
 
 ```move
-// 由于 `increment` 使用了 `acquires` 注解，所以函数需要 `acquires` // Needs `acquires` because `increment` is annotated with `acquires`
+// 由于 `increment` 使用了 `acquires` 标注，所以函数需要 `acquires` // Needs `acquires` because `increment` is annotated with `acquires`
 fun call_increment(addr: address): u64 acquires Counter {
     counter::increment(addr)
 }
@@ -166,7 +167,7 @@ fun call_increment(addr: address): u64 acquires Counter {
 
 However, the same function *outside* `Counter` would not need an annotation:
 
-然而，在 `Counter` *外面*的函数则不需要进行注解：
+然而，在 `Counter` *外面*的函数则不需要进行标注：
 
 
 ```move
@@ -174,7 +175,7 @@ address 0x43 {
 module m {
    use 0x42::counter;
 
-   // 可以，仅在函数声明在同一模块内时需要注解 // Ok. Only need annotation when resource acquired by callee is declared in the same module
+   // 可以，仅在函数声明在同一模块内时需要标注 // Ok. Only need annotation when resource acquired by callee is declared in the same module
    fun call_increment(addr: address): u64 {
        counter::increment(addr)
    }
@@ -201,7 +202,7 @@ module two_resources {
 
 The `acquires` annotation does not take generic type parameters into account:
 
-`acquires` 注解不会将泛型类型参数纳入声明中：
+`acquires` 标注不会将泛型类型参数纳入声明中：
 
 
 ```move=
@@ -240,7 +241,7 @@ For more information on `acquires`, see [Move functions](./functions.md).
 
 Move prohibits returning global references and requires the `acquires` annotation to prevent dangling references. This allows Move to live up to its promise of static reference safety (i.e., no dangling references, no `null` or `nil` dereferences) for all [reference](./references.md) types.
 
-Move 禁止返回全局引用并且需要使用 `acquires` 注解来防止空引用。这使 Move 保证了所有[引用](./references.md)类型的静态引用安全性（例如，没有空引用、不会解引用 `null` 或 `nil` 对象）。
+Move 禁止返回全局引用并且需要使用 `acquires` 标注来防止空引用。这使 Move 保证了所有[引用](./references.md)类型的静态引用安全性（例如，没有空引用、不会解引用 `null` 或 `nil` 对象）。
 
 This example illustrates how the Move type system uses `acquires` to prevent a dangling reference:
 
@@ -273,7 +274,7 @@ In this code, line 6 acquires a reference to the `T` stored at address `a` in gl
 
 Fortunately, this cannot happen because the type system will reject this program. The `acquires` annotation on `remove_t` lets the type system know that line 7 is dangerous, without having to recheck or introspect the body of `remove_t` separately!
 
-幸运的是，由于类型系统拒绝编译程序导致这种情况不会发生。`remove_t` 方法的 `acquires` 注解让类型系统知道第七行是危险的，不需要再分析 `remove_t` 的函数体。
+幸运的是，由于类型系统拒绝编译程序导致这种情况不会发生。`remove_t` 方法的 `acquires` 标注让类型系统知道第七行是危险的，不需要再分析 `remove_t` 的函数体。
 
 The restriction on returning global references prevents a similar, but even more insidious problem:
 
@@ -304,10 +305,10 @@ module m2 {
 
 Line 16 acquires a reference to a global resource `m1::T`, then line 17 removes that same resource, which makes `t_ref` dangle. In this case, `acquires` annotations do not help us because the `borrow_then_remove_bad` function is outside of the `m1` module that declares `T` (recall that `acquires` annotations can only be used for resources declared in the current module). Instead, the type system avoids this problem by preventing the return of a global reference at line 6.
 
-第十六行获取了全局资源 `m1::T` 类型的引用，然后第十七行删除了同一资源，这使 `t_ref` 变成空引用。在这个例子中，`acquires` 注解没有帮助到我们，因为 `borrow_then_remove_bad` 函数在声明了 `T` 类型（回顾 `acquires` 注解只用在声明此类型的模块内）的 `m1` 模块外。然而禁止返回全局引用的规则使第六行避免了这个问题。
+第十六行获取了全局资源 `m1::T` 类型的引用，然后第十七行删除了同一资源，这使 `t_ref` 变成空引用。在这个例子中，`acquires` 标注没有帮助到我们，因为 `borrow_then_remove_bad` 函数在声明了 `T` 类型（回顾 `acquires` 标注只用在声明此类型的模块内）的 `m1` 模块外。然而禁止返回全局引用的规则使第六行避免了这个问题。
 
 
 Fancier type systems that would allow returning global references without sacrificing reference safety are possible, and we may consider them in future iterations of Move. We chose the current design because it strikes a good balance between expressivity, annotation burden, and type system complexity.
 
-允许返回全局引用而尽可能不牺牲引用安全的高级类型系统是可行的，我们将会在 Move 未来的迭代过程中考虑此事。我们选择目前的设计方式是因为它很好的平衡了语言表现力、复杂的注解和复杂的类型系统三者的关系。
+允许返回全局引用而尽可能不牺牲引用安全的高级类型系统是可行的，我们将会在 Move 未来的迭代过程中考虑此事。我们选择目前的设计方式是因为它很好的平衡了语言表现力、复杂的标注和复杂的类型系统三者的关系。
 
