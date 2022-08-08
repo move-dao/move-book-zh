@@ -8,7 +8,7 @@ Move中的函数语法在模块函数和脚本函数之间是一致的。模块�
 
 Functions are declared with the `fun` keyword followed by the function name, type parameters, parameters, a return type, acquires annotations, and finally the function body.
 
-函数使用 `fun` 关键字声明，后跟函数名称、类型参数、参数、返回类型、获取 ~~注解~~ 声明(annotation)，最后是函数体。
+函数使用 `fun` 关键字声明，后跟函数名称、类型参数、参数、返回类型、获取 ~~注解~~ 标注(annotation)，最后是函数体。
 
 ```text
 fun <identifier><[type_parameters: constraint],*>([identifier: type],*): <return_type> <acquires [identifier],*> <function_body>
@@ -299,7 +299,7 @@ address 0x42 {
 ```
 `acquires` annotations must also be added for transitive calls within the module. Calls to these functions from another module do not need to annotated with these acquires because one module cannot access resources declared in another module--so the annotation is not needed to ensure reference safety.
 
-`acquires` ~~注释~~ 声明也必须为模块内有传递性的调用添加。从另一个模块对这些函数的调用不需要使用 `acquires` 进行注释，因为一个模块无法访问在另一个模块中声明的资源——因此不需要 ~~注释~~ 用声明来确保引用安全。
+`acquires` ~~注释~~ 标注也必须为模块内有传递性的调用添加。从另一个模块对这些函数的调用不需要使用 `acquires` 进行注释，因为一个模块无法访问在另一个模块中声明的资源——因此不需要 ~~注释~~ 用标注来确保引用安全。
 
 ```move=
 address 0x42 {
