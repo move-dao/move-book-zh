@@ -417,20 +417,17 @@ fun withdraw(addr: address, amount: u64) : Coin acquires Balance {
 如果我们在余额中存入太多代币会发生什么？
 
 
-## Step 5: Adding and using unit tests with the `BasicCoin` module<span id="Step5"><span>
+## Step 5: 在模块`BasicCoin`中添加和使用单元测试<span id="Step5"><span>
 
-In this step we're going to take a look at all the different unit tests
-we've written to cover the code we wrote in step 4. We're also going to
-take a look at some tools we can use to help us write tests.
 
-To get started, run the `package test` command in the [`step_5/BasicCoin`](./step_5/BasicCoin) folder
+在这一步中，我们将看看我们为覆盖我们在步骤 4 中编写的代码而编写的所有不同的单元测试。我们还将看看我们可以用来帮助我们编写测试用例的一些工具。
 
+首先，请在文件夹[`step_5/BasicCoin`](./step_5/BasicCoin)中 运行`package test` 命令。
 ```bash
 move test
 ```
 
-You should see something like this:
-
+您应该看到如下内容：
 ```
 INCLUDING DEPENDENCY MoveStdlib
 BUILDING BasicCoin
@@ -445,19 +442,20 @@ Running Move unit tests
 Test result: OK. Total tests: 7; passed: 7; failed: 0
 ```
 
-Taking a look at the tests in the
-[`BasicCoin` module](./step_5/BasicCoin/sources/BasicCoin.move) we've tried
-to keep each unit test to testing one particular behavior.
+看看 [`BasicCoin` ](./step_5/BasicCoin/sources/BasicCoin.move)模块中的测试，我们试图让每个单元测试都测试一个特定的行为。
 
 <details>
-<summary>Exercise</summary>
+<summary>练习</summary>
 
 After taking a look at the tests, try and write a unit test called
 `balance_of_dne` in the `BasicCoin` module that tests the case where a
 `Balance` resource doesn't exist under the address that `balance_of` is being
 called on. It should only be a couple lines!
 
-The solution to this exercise can be found in [`step_5_sol`](./step_5_sol)
+在查看测试之后，尝试在 `BasicCoin`模块中编写一个单元测试`balance_of_dne`，以测试当该地址没有`Balance`资源时，调用`balance_of`
+的情况。它应该只有几行代码。
+
+练习的答案可以在[`step_5_sol`](./step_5_sol)中找到。
 
 </details>
 
