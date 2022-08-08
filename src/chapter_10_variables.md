@@ -1,3 +1,4 @@
+
 # 局部变量和作用域(Local Variables and Scopes)
 
 Local variables in Move are lexically (statically) scoped. New variables are introduced with the
@@ -102,20 +103,20 @@ let X = e; // ERROR!
 let Foo = e; // ERROR!
 ```
 
-### 类型声明 (Type annotations)
+### 类型标注 (Type annotations)
 
 The type of a local variable can almost always be inferred by Move's type system. However, Move
 allows explicit type annotations that can be useful for readability, clarity, or debuggability. The
 syntax for adding a type annotation is:
 
-局部变量的类型几乎总是可以通过 Move 的类型系统推断出来。 但是，Move 允许显式声明类型，这对可读性、清晰性或可调试性很有用。 添加类型声明的语法如下：
+局部变量的类型几乎总是可以通过 Move 的类型系统推断出来。 但是，Move 允许显式标注类型，这对可读性、清晰性或可调试性很有用。 添加类型标注的语法如下：
 
 ```move
 let x: T = e; // "变量 x 的类型 T 被定义为表达式 e"
 ```
 
 Some examples of explicit type annotations:
-一些显式声明类型的例子：
+一些显式标注类型的例子：
 
 ```move=
 address 0x42 {
@@ -136,18 +137,18 @@ address 0x42 {
 
 Note that the type annotations must always be to the right of the pattern:
 
-值得注意的是，类型声明必须总是位于变量右边的模式：
+值得注意的是，类型标注必须总是位于变量右边的模式：
 
 ```move
 let (x: &u64, y: &mut u64) = (&0, &mut 1); // 错误! 正确写法是 let (x, y): ... =
 ```
 
-### 需要(类型)声明时候 (When annotations are necessary)
+### 何时需要(类型)标注 (When annotations are necessary)
 
 In some cases, a local type annotation is required if the type system cannot infer the type. This
 commonly occurs when the type argument for a generic type cannot be inferred. For example:
 
-在某些情况下，如果类型系统无法推断类型，则需要局部类型声明。这常常发生于无法推断某个泛型(generic type)的类型参数时。比如：
+在某些情况下，如果类型系统无法推断类型，则需要局部类型标注。这常常发生于无法推断某个泛型(generic type)的类型参数时。比如：
 
 ```move
 let _v1 = vector::empty(); // 错误!
@@ -161,7 +162,7 @@ and can have any type. A [`loop`](./loops.md) has type `()` if it has a `break`,
 break out of the `loop`, it could have any type. If these types cannot be inferred, a type
 annotation is required. For example, this code:
 
-在极少数情况下，Move的类型系统并不能推断出一段发散式代码(divergent code)的类型(后面所有代码无法访问)。在Move语言中，`return` 和 [`abort`](./chapter_12_abort-and-assert.md)都属于表达式，它们可以返回任何类型。如果一段 [`loop`](./chapter_14_loops.md) 有 `break` 语句，那么它的返回类型是`()`, 然而如果它不包含`break`语句，它的返回类型可以是任何类型。如果这些类型无法推断，类型声明是必须的。比如：
+在极少数情况下，Move的类型系统并不能推断出一段发散式代码(divergent code)的类型(后面所有代码无法访问)。在Move语言中，`return` 和 [`abort`](./chapter_12_abort-and-assert.md)都属于表达式，它们可以返回任何类型。如果一段 [`loop`](./chapter_14_loops.md) 有 `break` 语句，那么它的返回类型是`()`, 然而如果它不包含`break`语句，它的返回类型可以是任何类型。如果这些类型无法推断，类型标注是必须的。比如：
 
 ```move
 let a: u8 = return ();
@@ -179,7 +180,7 @@ let z = loop (); // ERROR!
 Adding type annotations to this code will expose other errors about dead code or unused local
 variables, but the example is still helpful for understanding this problem.
 
-在这段代码中添加类型声明会暴露其他关于死代码或未使用的局部变量的错误，无论如何这示例仍然有助于理解这个问题。
+在这段代码中添加类型标注会暴露其他关于死代码或未使用的局部变量的错误，无论如何这示例仍然有助于理解这个问题。
 
 
 ### 元组式的多个(变量)声明 (Multiple declarations with tuples)
@@ -706,7 +707,7 @@ let my_vector: vector<vector<u8>> = {
 
 (The type annotation is not needed in this example and only added for clarity.)
 
-(此示例中不需要类型声明，只是为了清晰而添加。)
+(此示例中不需要类型标注，只是为了清晰而添加。)
 
 ### 遮蔽(shadowing)
 

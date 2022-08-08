@@ -13,7 +13,7 @@ Similarly, unit `()` is a type created by the Move source language in order to b
 The unit value `()` does not result in any runtime value. We can consider unit`()` to be an empty
 tuple, and any restrictions that apply to tuples also apply to unit.
 
-类似地，为了基于表达式，unit `()` 是由Move源语言创建的一种类型。unit的值 `()`不会产生任何运行值。我们可以将 unit `()` 视为空元组，适用于元组的任何限制也适用于 unit。
+类似地，为了基于表达式，unit `()` 是由Move源语言创建的一种类型。unit的值 `()` 不会产生任何运行值。我们可以将 unit `()` 视为空元组，适用于元组的任何限制也适用于 `unit` 。
 
 It might feel weird to have tuples in the language at all given these restrictions. But one of the
 most common use cases for tuples in other languages is for functions to allow functions to return
@@ -47,9 +47,9 @@ disambiguation and do not carry any other special meaning.
 Sometimes, tuples with two elements are called "pairs" and tuples with three elements are called
 "triples."
 
-请注意，`(e)`没有类型 `(e): (t)`，换句话说，没有一个元素的元组。如果括号内只有一个元素，则括号仅用于消歧，不带有任何其他特殊含义。
+请注意，`(e)`没有类型 `(e): (t)`，换句话说，没有一个元素的元组。如果括号内只有一个元素，则括号仅用于消除歧义，不带有任何其他特殊意义。
 
-有时，具有两个元素的元组称为“对”，而具有三个元素的元组称为“三元组”。
+有时，具有两个元素的元组称为 “对偶”，而具有三个元素的元组称为“三元组”。
 
 ### 例子
 
