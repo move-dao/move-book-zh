@@ -82,7 +82,7 @@ struct B_a_z_4_2 {}
 This naming restriction of starting with `A` to `Z` is in place to give room for future language
 features. It may or may not be removed later.
 
-这种从A到Z开头的命名限制已经生效，这是为未来的move语言特性留出空间。它之后可能会被删除，也可能不会被删除。
+这种从A到Z开头的命名限制已经生效，这是为未来的move语言特性留出空间。~~它之后可能会被删除，也可能不会被删除~~ 此限制未来可能会保留或删除。
 
 ## 使用结构体 (Using Structs)
 

@@ -41,5 +41,5 @@
 
 ## Reference
 
-- [标准库(Standard Library)](chapter_26_standard_library.md)
-- [Move编码规范(Coding Conventions)](chapter_27_coding_conventions.md)
+- [标准库(Standard Library)](chapter_26_standard-library.md)
+- [Move编码规范(Coding Conventions)](chapter_27_coding-conventions.md)
