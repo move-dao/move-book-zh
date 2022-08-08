@@ -328,62 +328,56 @@ public(script) fun transfer(from: signer, to: address, amount: u64) acquires Bal
 ![](diagrams/solidity_state.png)
 </details>
 
-## Step 4: Implementing my `BasicCoin` module<span id="Step4"><span>
+## Step 4: 实现我的`BasicCoin`模块
 
-We have created a Move package for you in folder `step_4` called `BasicCoin`. The `sources` folder contains source code for
-all your Move modules in the package, including `BasicCoin.move`. In this section, we will take a closer look at the
-implementation of the methods inside [`BasicCoin.move`](./step_4/sources/BasicCoin.move).
+我们已经为你在step_4文件夹创建了名叫`BasicCoin`的Move包。这个源文件包含所有的Move模块源代码，包括`BasicCoin.move`。 在本节中，我们将仔细研究[`BasicCoin.move`](./step_4/sources/BasicCoin.move)内部的实现。
+### 编译我们的代码
 
-### Compiling our code
 
 Let's first try building the code using Move package by running the following command
 in [`step_4/BasicCoin`](./step_4/BasicCoin) folder:
+
+让我们首先尝试通过在文件夹[`step_4/BasicCoin`](./step_4/BasicCoin) 中运行以下命令来使用 Move 包构建代码：
 ```bash
 move build
 ```
 
-### Implementation of methods
-Now let's take a closer look at the implementation of the methods inside [`BasicCoin.move`](./step_4/BasicCoin/sources/BasicCoin.move).
-
+### 方法的实现
+现在让我们仔细看看[`BasicCoin.move`](./step_4/BasicCoin/sources/BasicCoin.move)内部方法的实现。
 <details>
-<summary>Method <code>publish_balance</code></summary>
+<summary>方法 <code>publish_balance</code></summary>
 
-This method publishes a `Balance` resource to a given address. Since this resource is needed to receive coins through
-minting or transferring, `publish_balance` method must be called by a user before they can receive money, including the
-module owner.
-
-This method uses a `move_to` operation to publish the resource:
-
+此方法将`Balance`资源发布到指定地址。由于需要此资源通过铸造或转移来接收硬币，必须由用户先调用方法`publish_balance`才能接收钱，包括模块所有者。
+此方法使用一个`move_to`操作来发布资源：
 ```
 let empty_coin = Coin { value: 0 };
 move_to(account, Balance { coin:  empty_coin });
 ```
 </details>
 <details>
-<summary>Method <code>mint</code></summary>
 
-`mint` method mints coins to a given account. Here we require that `mint` must be approved
-by the module owner. We enforce this using the assert statement:
+<summary><code>mint</code>方法 </summary>
+
+`mint`方法将硬币铸币到指定的帐户。这里，我们要求`mint`必须得到模块所有者的批准。我们使用`assert`语句强制执行此操作：
+
 ```
 assert!(signer::address_of(&module_owner) == MODULE_OWNER, errors::requires_address(ENOT_MODULE_OWNER));
 ```
-Assert statements in Move can be used in this way: `assert!(<predicate>, <abort_code>);`. This means that if the `<predicate>`
-is false, then abort the transaction with `<abort_code>`. Here `MODULE_OWNER` and `ENOT_MODULE_OWNER` are both constants
-defined at the beginning of the module. And `errors` module defines common error categories we can use.
-It is important to note that Move is transactional in its execution -- so
-if an [abort](https://move-language.github.io/move/abort-and-assert.html) is raised no unwinding of state
-needs to be performed, as no changes from that transaction will be persisted to the blockchain.
 
-We then deposit a coin with value `amount` to the balance of `mint_addr`.
+Move 中的 Assert 语句可以这样使用：`assert!(<predicate>, <abort_code>);`。这意味着如果`<predicate>` 为假，则使用中止交易`<abort_code>`来终止交易。这里 `MODULE_OWNER`和`ENOT_MODULE_OWNER`都是在模块开头定义的常量。`errors`模块定义了我们可以使用的常见错误类别。需要注意的是，Move在其执行过程中是事务性的--因此，如果触发中止(https://move-language.github.io/move/abort-and-assert.html)，则不需要执行状态展开，因为该事务的任何更改都不会持久保存到区块链。
+
+然后，我们将赋值为 `amount`的硬币存入`mint_addr`这个地址。
+
 ```
 deposit(mint_addr, Coin { value: amount });
 ```
 </details>
 
 <details>
-<summary>Method <code>balance_of</code></summary>
+<summary><code>balance_of</code>方法</summary>
 
-We use `borrow_global`, one of the global storage operators, to read from the global storage.
+我们使用’borrow_global‘，它是全局存储运算符之一，从全局存储中读取。
+
 ```
 borrow_global<Balance>(owner).coin.value
                  |       |       \    /
@@ -392,10 +386,10 @@ borrow_global<Balance>(owner).coin.value
 </details>
 
 <details>
-<summary>Method <code>transfer</code></summary>
+<summary><code>transfer</code>方法</summary>
 
-This function withdraws tokens from `from`'s balance and deposits the tokens into `to`s balance. We take a closer look
-at `withdraw` helper function:
+该函数从`from`的余额中提取代币并将代币存入`to`的余额中。我们仔细看看withdraw辅助函数：
+
 ```
 fun withdraw(addr: address, amount: u64) : Coin acquires Balance {
     let balance = balance_of(addr);
@@ -405,20 +399,23 @@ fun withdraw(addr: address, amount: u64) : Coin acquires Balance {
     Coin { value: amount }
 }
 ```
-At the beginning of the method, we assert that the withdrawing account has enough balance. We then use `borrow_global_mut`
-to get a mutable reference to the global storage, and `&mut` is used to create a [mutable reference](https://move-language.github.io/move/references.html) to a field of a
-struct. We then modify the balance through this mutable reference and return a new coin with the withdrawn amount.
+
+在方法开始，我们断言提款账户有足够的余额。然后我们使用`borrow_global_mut`来获取对全局存储的可变引用，并 `&mut`用于创建对结构字段的可变引用(https://move-language.github.io/move/references.html)。然后我们通过这个可变引用修改余额并返回一个带有提取金额的新硬币。
+
 </details>
 
-### Exercises
-There are two `TODO`s in our module, left as exercises for the reader:
-- Finish implementing the `publish_balance` method.
-- Implement the `deposit` method.
+### 练习
 
-The solution to this exercise can be found in [`step_4_sol`](./step_4_sol) folder.
+我们的模块中有两个TODOs，留给读者练习：
+- 完成publish_balance方法的实现。
+- 实现deposit方法。
 
-**Bonus exercise**
-- What would happen if we deposit too many tokens to a balance?
+此练习的解决方案可以在[`step_4_sol`](./step_4_sol)文件夹中找到。
+
+**奖金练习**
+
+如果我们在余额中存入太多代币会发生什么？
+
 
 ## Step 5: Adding and using unit tests with the `BasicCoin` module<span id="Step5"><span>
 
