@@ -1,4 +1,4 @@
-# 第三章：整数(**[Integers](https://move-language.github.io/move/integers.html#integers)**)
+# 整数 (Integers)
 
 Move supports three unsigned integer types: `u8`, `u64`, and `u128`. Values of these types range from 0 to a maximum that depends on the size of the type.
 
@@ -26,7 +26,7 @@ If a literal is too large for its specified (or inferred) size range, an error i
 
 (在Move中)这些类型的字面值指定为数字序列(例如，112)或十六进制文字(例如，0xFF), 可以选择将字面值的类型定义为后缀, 例如 `112u8`。如果未指定类型，编译器将尝试从使用字面值的上下文推断类型。如果无法推断类型，则默认为 u64。 
 
-如果字面值太大，超出其指定的(或推断的)大小范围，则会报 ~~告~~ 错 ~~误~~ 。
+如果字面值太大，超出其指定的(或推断的)大小范围，则会报错。
 
 ### 例如：
 
@@ -61,13 +61,13 @@ let hex_u64: u64 = 0xCAFE;
 let hex_u128: u128 = 0xDEADBEEF;
 ```
 
-## 运算集(**[Operations](https://move-language.github.io/move/integers.html#operations)**)
+## 运算集 (Operations)
 
-### 算术(Arithmetic)
+### 算术运算 (Arithmetic)
 
 Each of these types supports the same set of checked arithmetic operations. For all of these operations, both arguments (the left and right side operands) must be of the same type. If you need to operate over values of different types, you will need to first perform a cast. Similarly, if you expect the result of the operation to be too large for the integer type, perform a cast to a larger size before performing the operation.
 
-每一种(无符号整数)类型都支持相同 ~~的经过检验的~~ 算术运算集。对于所有这些运算，两个参数(左侧和右侧操作数)必须是同一类型。如果您需要对不同类型的值进行运算，则需要首先执行强制转换。同样，如果您预计运算结果对于当下整数类型来说太大，请在执行运算之前将之转换为更大的整数类型。
+每一种(无符号整数)类型都支持相同算术运算集。对于所有这些运算，两个参数(左侧和右侧操作数)必须是同一类型。如果您需要对不同类型的值进行运算，则需要首先执行强制转换。同样，如果您预计运算结果对于当下整数类型来说太大，请在执行运算之前将之转换为更大的整数类型。
 
 All arithmetic operations abort instead of behaving in a way that mathematical integers would not (e.g., overflow, underflow, divide-by-zero).
 
@@ -91,7 +91,7 @@ All arithmetic operations abort instead of behaving in a way that mathematical i
 | `%`    | 取余运算     | 除数为 `0`                       |
 | `/`    | 截断除法     | 除数为 `0`                       |
 
-### [位运算(Bitwise)](https://move-language.github.io/move/integers.html#bitwise)
+### 位运算 (Bitwise) 
 
 The integer types support the following bitwise operations that treat each number as a series of individual bits, either 0 or 1, instead of as numerical integer values.
 
@@ -114,7 +114,7 @@ Bitwise operations do not abort.
 | `|`    | 按位或  | 对每个位成对执行布尔值或
 | `^`    | 按位 异与 | 对每个位成对执行布尔异或 |
 
-### [位移(Bit shift)](https://move-language.github.io/move/integers.html#bit-shifts)
+### 位移 (Bit shift)
 
 Similar to the bitwise operations, each integer type supports bit shifts. But unlike the other operations, the righthand side operand (how many bits to shift by) must *always* be a `u8` and need not match the left side operand (the number you are shifting).
 
@@ -134,7 +134,7 @@ Bit shifts can abort if the number of bits to shift by is greater than or equal 
 | `<<`   | 左移  | 要移位的位数大于整数类型的大小 |
 | `>>`   | 右移 | 要移位的位数大于整数类型的大小 |
 
-### [比较(Comparisons)](https://move-language.github.io/move/integers.html#comparisons)
+### 比较运算 (Comparisons)
 
 Integer types are the *only* types in Move that can use the comparison operators. Both arguments need to be of the same type. If you need to compare integers of different types, you will need to [cast](https://move-language.github.io/move/integers.html#casting) one of them first.
 
@@ -158,7 +158,7 @@ Comparison operations do not abort.
 | `<=`   | 小于等于    |
 | `>=`   | 大于等于 |
 
-### [相等(Equality)](https://move-language.github.io/move/integers.html#equality)
+###  相等 (Equality)
 
 Like all types with [`drop`](https://move-language.github.io/move/abilities.html) in Move, all integer types support the ["equal"](https://move-language.github.io/move/equality.html) and ["not equal"](https://move-language.github.io/move/equality.html) operations. Both arguments need to be of the same type. If you need to compare integers of different types, you will need to [cast](https://move-language.github.io/move/integers.html#casting) one of them first.
 
@@ -171,7 +171,7 @@ Equality operations do not abort.
 
 For more details see the section on [equality](https://move-language.github.io/move/equality.html)
 
-与 Move 中的所有类型一样，所有整数类型都支持“等于”和“不等于”运算。两个参数必须是同一类型。如果您需要比较不同类型的整数，则需要先转换其中一个。
+与 Move 中的所有具有[`drop`](./chapter_19_abilities.html)能力的类型一样，所有整数类型都支持 ["equal(等于)"](./chapter_11_equality.html) 和 ["not equal(不等于)](./chapter_11_equality.html)运算。两个参数必须是同一类型。如果您需要比较不同类型的整数，则需要先转换其中一个。
 
 相等(Equality)运算不会中止。
 
@@ -182,7 +182,7 @@ For more details see the section on [equality](https://move-language.github.io/m
 
 更多细节可以参考[相等]([equality](https://move-language.github.io/move/equality.html))章节。
 
-## [转换(Casting)](https://move-language.github.io/move/integers.html#casting)
+## 转换 (Casting)
 
 Integer types of one size can be cast to integer types of another size. Integers are the only types in Move that support casting.
 
@@ -208,7 +208,7 @@ For example:
 | ---------- | ---------------------------------------------------- | -------------------------------------- |
 | `(e as T)` | 将整数表达式 `e` 转换为整数类型 `T` | `e` 太大而不能表示为 `T` |
 
-## [所有权(Ownership)](https://move-language.github.io/move/integers.html#ownership)
+## 所有权 (Ownership)
 
 As with the other scalar values built-in to the language, integer values are implicitly copyable, meaning they can be copied without an explicit instruction such as `[copy](<https://move-language.github.io/move/variables.html#move-and-copy>).`
 
