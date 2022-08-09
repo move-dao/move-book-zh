@@ -2,7 +2,7 @@
 
 An `if` expression specifies that some code should only be evaluated if a certain condition is true. For example:
 
-`if` 语句可以用来指定一块代码块只在判断条件(condition)为true时才会被执行.例如:
+`if` 语句可以用来指定一块代码块，但只在判断条件(condition)为true时才会被执行。例如:
 
 ```move
 if (x > 5) x = x - 5
@@ -12,9 +12,9 @@ The condition must be an expression of type `bool`.
 
 An `if` expression can optionally include an `else` clause to specify another expression to evaluate when the condition is false.
 
-条件语句(condition)必须是 `bool` 类型的表达式.
+条件语句(condition)必须是 `bool` 类型的表达式。
 
-`if` 语句可选包含 `else` 子句，以指定当条件(condition)为 false 时要执行的另一个代码块.
+`if` 语句可选包含 `else` 子句，以指定当条件(condition)为 false 时要执行的另一个代码块。
 
 ```move
 if (y <= 10) y = y + 1 else y = 10
@@ -24,9 +24,7 @@ Either the "true" branch or the "false" branch will be evaluated, but not both. 
 
 The conditional expressions may produce values so that the `if` expression has a result.
 
-无论是"true"分支还是"false"分支都会被执行，但不会同时执行.其中任何一个分支都可以是单行代码或代码块
-
-条件表达式会产生值，所以 `if` 表达式会有一个结果。
+无论是"true"分支还是"false"分支都会被执行，但不会同时执行.其中任何一个分支都可以是单行代码或代码块。条件表达式会产生值，所以 `if` 表达式会有一个结果。
 
 ```move
 let z = if (x < 100) x else 100;
