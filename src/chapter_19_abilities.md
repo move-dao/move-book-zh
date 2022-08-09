@@ -2,7 +2,7 @@
 
 Abilities are a typing feature in Move that control what actions are permissible for values of a given type. This system grants fine grained control over the "linear" typing behavior of values, as well as if and how values are used in global storage. This is implemented by gating access to certain bytecode instructions so that for a value to be used with the bytecode instruction, it must have the ability required (if one is required at all—not every instruction is gated by an ability).
 
-能力是Move语言中的一种输入功能，用于控制对给定类型的值允许哪些操作。 该系统对值的“线性”类型行为以及值 ~~是否可以以及~~ 如何在全局存储中使用提供细粒度控制。这是通过对某些字节码指令的进行访问控制来实现的，因此对于要与字节码指令一起使用的值，它必须具有所需的能力(如果需要的话，并非每条指令都由能力控制)
+能力是Move语言中的一种输入功能，用于控制对给定类型的值允许哪些操作。 该系统对值的“线性”类型行为以及值如何在全局存储中使用提供细粒度控制。这是通过对某些字节码指令的进行访问控制来实现的，因此对于要与字节码指令一起使用的值，它必须具有所需的能力(如果需要的话，并非每条指令都由能力控制)
 
 ## 四种能力 (The Four Abilities)
 
