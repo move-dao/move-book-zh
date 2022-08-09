@@ -9,7 +9,7 @@ across projects. The Move package system allows programmers to easily:
 * Work with a common interface around compiled Move artifacts.
 
 包允许 `Move` 程序员更轻松地重用代码并在项目之间共享。`Move` 包系统允许程序员轻松地：
-* 定义一个包含移动代码的包；
+* 定义一个包含Move代码的包；
 * 通过命名地址参数化包；
 * 在其他 `Move` 代码中导入和使用包并实例化命名地址；
 * 构建包并从包中生成相关的编译工件；
