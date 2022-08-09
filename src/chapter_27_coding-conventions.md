@@ -2,7 +2,7 @@
 
 This section lays out some basic coding conventions for Move that the Move team has found helpful. These are only recommendations, and you should feel free to use other formatting guidelines and conventions if you have a preference for them.
 
-本部分列出了 Move 团队认为有用的一些基本编码规范。这些只是建议, 如果您有偏好, 可以随意使用其他格式的指南和规范。
+本部分列出了 Move 团队认为有用的一些基本编码规范。这些只是建议，如果您有偏好，可以随意使用其他格式的指南和规范。
 
 ## 命名（Naming）
 
