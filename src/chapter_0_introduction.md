@@ -7,13 +7,13 @@ Welcome to Move, a next generation language for secure, sandboxed, and formally 
 
 Move takes its cue from [Rust](https://www.rust-lang.org/) by using resource types with move (hence the name) semantics as an explicit representation of digital assets, such as currency.
 
-Move 的诞生从[Rust](https://www.rust-lang.org/)中吸取了灵感，Move也是因为使用具有 移动(move)语义的资源类型作为数字资产(例如货币)的显式表示而得名。
+Move 的诞生从[Rust](https://www.rust-lang.org/)中吸取了灵感，Move也是因为使用具有移动(move)语义的资源类型作为数字资产(例如货币)的显式表示而得名。
 
 ## Move是为谁准备的？(Who is Move for?)
 
 Move was designed and created as a secure, verified, yet flexible programming language. The first use of Move is for the implementation of the Diem blockchain. That said, the language is still evolving. Move has the potential to be a language for other blockchains, and even non-blockchain use cases as well.
 
-Move语言被设计和创建为安全、可验证， 同时兼顾灵活性的编程语言。Move的第一个应用场景是用于Diem区块链的开发。也就是说，Move语言仍在不断发展中。Move 有成为其他区块链，甚至非区块链用例开发语言的潜质。
+Move语言被设计和创建为安全、可验证， 同时兼顾灵活性的编程语言。Move的第一个应用场景是用于Diem区块链的开发。现在，Move语言仍在不断发展中。Move 还有成为其他区块链，甚至非区块链用例开发语言的潜质。
 
 Given custom Move modules will not be supported at the [launch](https://diem.com/white-paper/#whats-next) of the Diem Payment Network (DPN), we are targeting an early Move Developer persona.
 
@@ -33,7 +33,7 @@ Understanding that the capability to create custom modules on the Diem Payment N
 
 Beyond a hobbyist wanting to stay ahead of the curve for the core programming language is someone who may want to [contribute](https://diem.com/en-US/cla-sign/) directly to Move. Whether this includes submitting language improvements or even, in the future, adding core modules available on the Diem Payment Network, the core contributor will understand Move at a deep level.
 
-核心贡献者指那些超越爱好者并想在核心编程语言方面保持领先，还直接为 Move 做出[贡献](https://diem.com/en-US/cla-sign/)的人。无论是提交语言改进，甚至未来添加 Diem 支付网络上可用的核心模块等。核心贡献者都将深入了解Move。
+核心贡献者指那些超越爱好者并想在核心编程语言方面保持领先，还直接为 Move 做出[贡献](https://diem.com/en-US/cla-sign/)的人。无论是提交语言改进，甚至未来添加 Diem 支付网络上可用的核心模块等，核心贡献者都将深入了解Move。
 
 ### Move不适用于哪些人？(Who Move is currently not targeting)
 
