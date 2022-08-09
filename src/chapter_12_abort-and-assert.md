@@ -83,7 +83,7 @@ Since the operation is a macro, it must be invoked with the `!`. This is to conv
 arguments to `assert` are call-by-expression. In other words, `assert` is not a normal function and
 does not exist at the bytecode level. It is replaced inside the compiler with
 
-由于该操作是一个宏，因此必须使用 `!` 调用它。这是为了表达 `assert` 的参数属于表达式调用(call-by-expression)。换句话说，`assert` 不是一个正常的函数，并且在字节码(bytecode)级别不存在。它在编译器内部被替换为以下代码
+由于该操作是一个宏，因此必须使用 `!` 调用它。这是为了表达 `assert` 的参数属于表达式调用(call-by-expression)。换句话说，`assert` 不是一个正常的函数，并且在字节码(bytecode)级别不存在。它在编译器内部被替换为以下代码：
 
 ```move
 if (condition) () else abort code
