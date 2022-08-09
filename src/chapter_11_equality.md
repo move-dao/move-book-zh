@@ -55,7 +55,7 @@ address 0x42 {
 
 If the operands have different types, there is a type checking error.
 
-如果两边操作数的类型不同，则会出现类型检测错误
+如果两边操作数的类型不同，则会出现类型检测错误。
 
 ```move
 1u8 == 1u128; // 错误!
