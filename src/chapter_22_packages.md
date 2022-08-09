@@ -9,10 +9,10 @@ across projects. The Move package system allows programmers to easily:
 * Work with a common interface around compiled Move artifacts.
 
 包允许 `Move` 程序员更轻松地重用代码并在项目之间共享。`Move` 包系统允许程序员轻松地：
-* 定义一个包含Move代码的包；
+* 定义一个包含 `Move`代码的包；
 * 通过命名地址参数化包；
 * 在其他 `Move` 代码中导入和使用包并实例化命名地址；
-* 构建包并从包中生成相关的编译工件；
+* 构建包并从包中生成相关的编译源代码；
 * 使用围绕已编译 `Move` 工件的通用接口。
 
 ## 包布局和清单语法（Package Layout and Manifest Syntax）
@@ -20,17 +20,17 @@ across projects. The Move package system allows programmers to easily:
 A Move package source directory contains a `Move.toml` package manifest
 file along with a set of subdirectories:
 
-`Move` 包源目录包含一`个Move.toml`包清单文件以及一组子目录：
+`Move` 包源目录包含一个`Move.toml`包清单文件以及一组子目录：
 
-   
-
+```
      a_move_package
         ├── Move.toml      (required)（需要的）
         ├── sources        (required)（需要的）
-        ├── examples       (optional, test & dev mode)（选择性的，测试 & 开发者模式）
-        ├── scripts        (optional)（选择性的）
-        ├── doc_templates  (optional)（选择性的）
-        └── tests          (optional, test mode)（选择性的，测试模式）
+        ├── examples       (optional, test & dev mode)（可选的，测试 & 开发者模式）
+        ├── scripts        (optional)（可选的）
+        ├── doc_templates  (optional)（可选的）
+        └── tests          (optional, test mode)（可选的，测试模式）
+```
 
 The directories marked `required` _must_ be present in order for the directory
 to be considered a Move package and to be compiled. Optional directories can
@@ -58,7 +58,7 @@ the `doc_templates` directory.
 Move将使用存在于`doc_templates` 目录的任何模板构建文档。
 
 
-### Move.toml
+### 包清单 Move.toml
 The Move package manifest is defined within the `Move.toml` file and has the
 following syntax. Optional fields are marked with `*`, `+` denotes
 one or more elements:
@@ -90,7 +90,7 @@ Move 包清单在`Move.toml`文件中定义，并具有以下语法。可选字�
 ```
 An example of a minimal package manifest with one local dependency and one git dependency:
 
-具有一个本地依赖项和一个 git 依赖项的最小包清单示例：
+一个具有局部依赖项和一个 git 依赖项的最小包清单示例：
 ```
     [package]
     name = "AName"
@@ -101,7 +101,7 @@ An example of a more standard package manifest that also includes the Move
 standard library and instantiates the named address `Std` from it with the
 address value `0x1`:
 
-一个更标准的包清单示例，它还包括 Move 标准库，并`Std`使用地址值从其中实例化命名地址`0x1`：
+一个包括 Move 标准库并从中使用地址值`0x1`实例化命名地址`Std`的更标准的包清单示例：
 
 ```
     [package]
@@ -127,7 +127,7 @@ Most of the sections in the package manifest are self explanatory, but named
 addresses can be a bit difficult to understand so it's worth examining them in
 a bit more detail.
 
-包清单中的大部分部分都是不言自明的，但命名地址可能有点难以理解，因此值得更详细地检查它们。
+包清单中的大部分段落都是不言自明的，但命名地址可能有点难以理解，因此值得更详细地检查它们。
 
 ## 编译期间的命名地址（Named Addresses During Compilation）
 
@@ -140,9 +140,9 @@ addresses in scope, and rename named addresses from other packages within
 the Move package system manifest file. Let's go through each of these
 individually:
 
-回想一下，Move 具有命名地址，并且不能在 Move 中声明命名地址。正因为如此，到目前为止，命名地址及其值都需要在命令行上传递给编译器。使用 Move 包系统，这不再需要，您可以在包中声明命名地址，实例化范围内的其他命名地址，并从 Move 包系统清单文件中的其他包重命名命名地址,让我们分别来看看这些:
+回想一下，Move 具有命名地址，并且不能在 Move 中声明命名地址。正因为如此，到目前为止，命名地址及其值都需要在命令行上传递给编译器。但使用 Move 包系统时这将不再需要，您可以在包中声明命名地址，实例化范围内的其他命名地址，并从 Move 包系统清单文件中的其他包重命名命名地址，让我们分别来看看这些:
 
-### 声明
+### 声明（Declaration）
 Let's say we have a Move module in `example_pkg/sources/A.move` as follows:
 
 假设我们有一个Move模块，`example_pkg/sources/A.move`如下所示:
@@ -210,7 +210,7 @@ understand.
 
 通过这两种在整个包图中流动命名地址信息的方法，了解范围和重命名的规则变得很重要。
    
-## 命名地址的范围和重命名（Scoping and Renaming of Named Addresses）
+## 命名地址的作用域和重命名（Scoping and Renaming of Named Addresses）
 
 A named address `N` in a package `P` is in scope if:
 1. It declares a named address `N`; or
@@ -218,10 +218,10 @@ A named address `N` in a package `P` is in scope if:
   `N` and there is a dependency path in the package graph between between `P` and the
   declaring package of `N` with no renaming of `N`.
   
-N如果满足以下条件，则包中的命名地址P在范围内：
+在包`P`中的命名地址`N`如果满足以下条件，则在作用域内：
 
- 1.它声明了一个命名地址`N`；或者
- 2.`P`的传递依赖项之一中的包声明了命名地址，并且包图中在包图和声明包`N`之间有一个依赖路径，没有重命名`.PNN`
+ 1. 它声明了一个命名地址`N`；或者
+ 2. `P`的传递依赖项之一中的包声明了命名地址`N`，并且封装图在`P`和没有重命名的声明包`N`之间有一个依赖路径。
  
  Additionally, every named address in a package is exported. Because of this and
 the above scoping rules each package can be viewed as coming with a set of
@@ -235,7 +235,7 @@ address is coming from, we enforce that the sets of scopes introduced by all
 dependencies in a package are disjoint, and provide a way to _rename named
 addresses_ when the package that brings them into scope is imported.
 
- 此外，包中的每个命名地址都会被导出。由于这个和上面的范围规则，每个包都可以被视为带有一组命名地址，当包被导入时，这些地址将被带入范围，例如，如果包被导入，则该导入会将命名地址`ExamplePkg`带入范围`named_addr`. 因此，如果`P`导入两个包`P1`并且`P2`都声明了一个命名地址`N`，则会出现以下问题`P`：哪个“ `N`”是指什么时候`N`被引用`P`？来自`P1`或的那个`P2`? 为了防止命名地址来自哪个包的这种歧义，我们强制一个包中所有依赖项引入的范围集是不相交的，并提供一种在将命名地址带入范围的包被导入时重命名命名地址的方法。
+ 此外，包中的每个命名地址都会被导出。由于这个和上面的范围规则，每个包都可以被视为带有一组命名地址，当包被导入时，这些地址将被带入作用域，例如，如果包`ExamplePkg`被导入，则该导入会将命名地址`named_addr`带入作用域。 因此，如果`P`导入两个包`P1`并且`P2`都声明了一个命名地址`N`，在`P`中则会出现以下问题：当`N`被引用于`P`时我们指的是哪个`N`？来自`P1`或来自`P2`的`N`？ 为了防止命名地址来自哪个包的这种歧义，我们强制一个包中所有依赖项引入的范围集是不相交的，并提供一种在将命名地址带入范围的包被导入时重命名命名地址的方法。
 
 Renaming a named address when importing can be done as follows in our `P`,
 `P1`, and `P2` example above:
