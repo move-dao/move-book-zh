@@ -81,7 +81,7 @@ module.
 Currently, constants are limited to the primitive types `bool`, `u8`, `u64`, `u128`, `address`, and
 `vector<u8>`. Future support for other `vector` values (besides the "string"-style literals) will come later.
 
-目前，常量仅限于原始类型 `bool`、`u8`、`u64`、`u128`、`address` 和`vector<u8>`。其他 `vector` 值(除了“string”风格的字面量)将晚一点被支持。
+目前，常量仅限于原始类型 `bool`、`u8`、`u64`、`u128`、`address` 和`vector<u8>`。其他 `vector` 值(除了“string”风格的字面量)将在不远的将来获得支持。
 
 ### 值 (Values)
 
