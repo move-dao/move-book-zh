@@ -38,7 +38,7 @@ be present, and if so will be included in the compilation process. Depending on
 the mode that the package is built with (`test` or `dev`), the `tests` and
 `examples` directories will be included as well.
 
-标记为`required` 的目录必须存在才可以将该目录作为 `Move` 包并进行编译。可选目录被视为可存在的，如果存在，将包含在编译过程里。根据使用 （`test`或`dev`）构建包的模式，也将包含`tests`和`examples` 目录。
+标记为`required` 的目录必须存在才可以将该目录作为 `Move` 包并进行编译。可选目录被视为可存在的，如果存在，将包含在编译过程里。根据使用 （`test`或`dev`）构建包的模式，`tests`和`examples` 目录也将包含在内。
 
 The `sources` directory can contain both Move modules and Move scripts (both
 transaction scripts and modules containing script functions). The `examples`
