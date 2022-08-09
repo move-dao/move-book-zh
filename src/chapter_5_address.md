@@ -6,11 +6,11 @@ Although an `address` is a 128 bit integer under the hood, Move addresses are in
 
 You can use runtime address values (values of type `address`) to access resources at that address. You *cannot* access modules at runtime via address values.
 
-`地址(address)` 是Move中的内置类型，用于表示全局存储中的的位置(有时称为账户)。`地址(address)` 值是一个128位(16字节)标识符。给定一个地址，可以存储两样东西：[模块(Modules)](./chapter_1_modules-and-scripts.md)和[资源(Resources)](./chapter_16_structs-and-resources.md)。
+`地址(address)` 是Move中的内置类型，用于表示全局存储中的的位置(有时称为账户)。`地址(address)` 值是一个128位(16字节)标识符。在一个给定的地址，可以存储两样东西：[模块(Modules)](./chapter_1_modules-and-scripts.md)和[资源(Resources)](./chapter_16_structs-and-resources.md)。
 
 尽管 `地址(address)` 实际上是一个128位整数，但Move语言中的地址是故意不透明的---它们不能从整数创建，它们不支持算术运算，也不能修改。即使可能有一些有趣的程序会使用这种特性(例如，C中的指针算法实现了类似剑走偏锋的功能(niche))，但 Move语言不允许这种动态行为，因为它从头开始就被设计为支持静态验证。
 
-你可以使用运行时地址值(`address` 类型的值)来访问该地址处的资源。 但 *无法* 在运行时通过地址值访问模块。
+你可以通过运行时地址值(`address` 类型的值)来访问该地址处的资源。 但 *无法* 在运行时通过地址值访问模块。
 
 ## 地址及其语法 (Addresses and Their Syntax)
 
@@ -92,9 +92,9 @@ The only global storage operation that *does not* use `address` is `move_to`, wh
 
 `address` 值主要用来与全局存储操作进行交互。
 
-`address` 值被用来与 `exists`, `borrow_global`, `borrow_global_mut` 和 `move_from` 操作([operations](./chapter_24_global-storage-operators.md))一起使用
+`address` 值被用来与 `exists`, `borrow_global`, `borrow_global_mut` 和 `move_from` 操作([operations](./chapter_24_global-storage-operators.md))一起使用。
 
-只有 `move_to` 全局存储操作不使用 `address`, 使用[`signer`](./chapter_7_signer.md).
+只有 `move_to` 全局存储操作不使用 `address`, 而使用[`signer`](./chapter_7_signer.md).
 
 ## 所有权(Ownership)
 
