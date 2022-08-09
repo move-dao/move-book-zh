@@ -459,7 +459,7 @@ called on. It should only be a couple lines!
 
 </details>
 
-## Step 6: 使我的`BasicCoin`模块通用<span id="Step6"><span>
+## Step 6: 使用范型(generic)编写BasicCoin模块<span id="Step6"><span>
 
 在 Move 中，我们可以使用泛型来定义不同输入数据类型的函数和结构。泛型是库代码的重要组成部分。在本节中，我们将使我们的简单BasicCoin模块通用化，以便它可以用作其他用户模块可以使用的库模块。
 首先，我们将类型参数添加到我们的数据结构中：
