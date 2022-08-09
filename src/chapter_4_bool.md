@@ -8,7 +8,7 @@
 
 Literals for `bool` are either `true` or `false` .
 
-布尔类型字面值要不是 `true` 就是 `false` 。
+布尔类型字面值只能是 `true` 或者 `false`中的一个 。
 
 ## 操作 (Operations)
 
