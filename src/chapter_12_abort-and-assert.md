@@ -1,10 +1,10 @@
 
 # 中止和断言 (Abort and Assert)
 
-[`return`](./functions.md) and `abort` are two control flow constructs that end execution, one for
+[`return`](./chapter_15_functions.md) and `abort` are two control flow constructs that end execution, one for
 the current function and one for the entire transaction.
 
-More information on [`return` can be found in the linked section](./functions.md)
+More information on [`return` can be found in the linked section](./chapter_15_functions.md)
 
 [`return`](./chapter_15_functions.md) 和 `abort` 是两种结束程序执行的控制流结构。前者针对当前函数，后者针对整个事务。
 
@@ -34,7 +34,7 @@ flexibility, it is incredibly simple and predictable.
 由于这种对于所有更改的事务承诺，在 `abort` 之后我们不需要担心去回滚任何更改。尽管这种方法缺少灵活性，它还是非常简单和可预测的。
 
 
-Similar to [`return`](./functions.md), `abort` is useful for exiting control flow when some condition cannot be met.
+Similar to [`return`](./chapter_15_functions.md), `abort` is useful for exiting control flow when some condition cannot be met.
 
 In this example, the function will pop two items off of the vector, but will abort early if the vector does not have two items
 

@@ -220,7 +220,7 @@ This genericity applies even when the `Currency` type parameter does not appear 
 ### Phantom Type Parameters 
 
 In the example above, although `struct Coin` asks for the `store` ability, neither `Coin<Currency1>` nor `Coin<Currency2>` will have the `store` ability.
-This is because of the rules for [Conditional Abilities and Generic Types](./abilities.md#conditional-abilities-and-generic-types) and the fact that `Currency1` and `Currency2` don't have the `store` ability, despite the fact that they are not even used in the body of `struct Coin`. 
+This is because of the rules for [Conditional Abilities and Generic Types](./chapter_19_abilities.md#conditional-abilities-and-generic-types) and the fact that `Currency1` and `Currency2` don't have the `store` ability, despite the fact that they are not even used in the body of `struct Coin`. 
 This might cause some unpleasant consequences.
 For example, we are unable to put `Coin<Currency1>` into a wallet in the global storage.
 
@@ -325,7 +325,7 @@ The usual restrictions apply and `T` can only be instantiated with arguments hav
 
 ## 约束 (Constraints)
 
-In the examples above, we have demonstrated how one can use type parameters to define "unknown" types that can be plugged in by callers at a later time. This however means the type system has little information about the type and has to perform checks in a very conservative way. In some sense, the type system must assume the worst case scenario for an unconstrained generic. Simply put, by default generic type parameters have no [abilities](./abilities.md).
+In the examples above, we have demonstrated how one can use type parameters to define "unknown" types that can be plugged in by callers at a later time. This however means the type system has little information about the type and has to perform checks in a very conservative way. In some sense, the type system must assume the worst case scenario for an unconstrained generic. Simply put, by default generic type parameters have no [abilities](./chapter_19_abilities.md).
 
 This is where constraints come into play: they offer a way to specify what properties these unknown types have so the type system can allow operations that would otherwise be unsafe.
 
@@ -344,7 +344,7 @@ Constraints can be imposed on type parameters using the following syntax.
 T: <ability> (+ <ability>)*
 ```
 
-The `<ability>` can be any of the four [abilities](./abilities.md), and a type parameter can be constrained with multiple [abilities](./abilities.md) at once. So all of the following would be valid type parameter declarations
+The `<ability>` can be any of the four [abilities](./chapter_19_abilities.md), and a type parameter can be constrained with multiple [abilities](./chapter_19_abilities.md) at once. So all of the following would be valid type parameter declarations
 
 `<ability>` 可以是四种[能力](./chapter_19_abilities.md)中的任何一种，一个类型参数可以同时被多个能力约束。因此，以下所有内容都是有效的类型参数声明
 

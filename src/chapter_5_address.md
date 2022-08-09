@@ -24,8 +24,8 @@ literals.
 
 To distinguish when an address is being used in an expression context or not, the
 syntax when using an address differs depending on the context where it's used:
-* When an address is used as an expression the address must be prefixed by the `@` character, i.e., `@`[`<numerical_value>`](./integers.md)` or `@<named_address_identifier>`.
-* Outside of expression contexts, the address may be written without the leading `@` character, i.e., [`<numerical_value>`](./integers.md) or `<named_address_identifier>`.
+* When an address is used as an expression the address must be prefixed by the `@` character, i.e., `@`[`<numerical_value>`](./chapter_3_integers.md)` or `@<named_address_identifier>`.
+* Outside of expression contexts, the address may be written without the leading `@` character, i.e., [`<numerical_value>`](./chapter_3_integers.md) or `<named_address_identifier>`.
 
 
 为了区分何时在表达式上下文中使用地址，使用地址时的语法根据使用地址的上下文而有所不同:
@@ -55,7 +55,7 @@ and not through the numerical value assigned to the named address during
 compilation, e.g., `use my_addr::foo` is _not_ equivalent to `use 0x2::foo`
 even if the Move program is compiled with `my_addr` set to `0x2`. This
 distinction is discussed in more detail in the section on [Modules and
-Scripts](./modules-and-scripts.md).
+Scripts](./chapter_1_modules-and-scripts.md).
 
 命名地址仅存在于源语言级别，并将在字节码级别完全替代它们的值。因此，模块和模块成员必须通过模块的命名地址而不是编译期间分配给命名地址的数值来访问，例如：
 `use my_addr::foo` 不等于 `use 0x2::foo`, 即使Move程序编译时将 `my_addr` 设置成 `0x2`。 这个区别在[模块和脚本(Modules and Scripts)](./chapter_1_modules-and-scripts.md) 一节中有更详细的讨论。
@@ -86,9 +86,9 @@ module std::other_module {  // Can use a named address as a namespace item to de
 
 The primary purpose of `address` values are to interact with the global storage operations.
 
-`address` values are used with the `exists`, `borrow_global`, `borrow_global_mut`, and `move_from` [operations](./global-storage-operators.md).
+`address` values are used with the `exists`, `borrow_global`, `borrow_global_mut`, and `move_from` [operations](./chapter_25_global-storage-operators.md).
 
-The only global storage operation that *does not* use `address` is `move_to`, which uses [`signer`](./signer.md).
+The only global storage operation that *does not* use `address` is `move_to`, which uses [`signer`](./chapter_7_signer.md).
 
 `address` 值主要用来与全局存储操作进行交互。
 
@@ -98,7 +98,7 @@ The only global storage operation that *does not* use `address` is `move_to`, wh
 
 ## 所有权(Ownership)
 
-As with the other scalar values built-in to the language, `address` values are implicitly copyable, meaning they can be copied without an explicit instruction such as [`copy`](./variables.md#move-and-copy).
+As with the other scalar values built-in to the language, `address` values are implicitly copyable, meaning they can be copied without an explicit instruction such as [`copy`](./chapter_10_variables.md#move-and-copy).
 
 与Move语言内置的其他标量值一样，`address` 值是隐式可复制的，这意味着它们可以在没有明确指令如[`copy`](./chapter_10_variables.md#move-and-copy)的情况下复制。
 

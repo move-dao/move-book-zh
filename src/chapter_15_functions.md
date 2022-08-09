@@ -91,7 +91,7 @@ script {
 
 The `public(friend)` visibility modifier is a more restricted form of the `public` modifier to give more control about where a function can be used. A `public(friend)` function can be called by:
 - other functions defined in the same module, or
-- functions defined in modules which are explicitly specified in the **friend list** (see [Friends](./friends.md) on how to specify the friend list).
+- functions defined in modules which are explicitly specified in the **friend list** (see [Friends](./chapter_21_friends.md) on how to specify the friend list).
 
 Note that since we cannot declare a script to be a friend of a module, the functions defined in scripts can never call a `public(friend)` function.
 
@@ -230,7 +230,7 @@ fun id<T>(x: T): T { x }
 fun example<T1: copy, T2>(x: T1, y: T2): (T1, T1, T2) { (copy x, x, y) }
 ```
 
-For more details, see [Move generics](./generics.md).
+For more details, see [Move generics](./chapter_18_generics.md).
 
 有关更多详细信息，请参阅 [移动泛型](./chapter_18_generics.md)。
 
@@ -424,7 +424,7 @@ See [the section below for more information on returns](#returning-values)
 
 请参阅[有关返回值的更多信息](#returning-values)
 
-For more information on expression blocks, see [Move variables](./variables.md).
+For more information on expression blocks, see [Move variables](./chapter_10_variables.md).
 
 有关表达式块的更多信息，请参阅 [Move variables](./chapter_10_variables.md)。
 
@@ -518,7 +518,7 @@ script {
 }
 ```
 
-For more details, see [Move generics](./generics.md).
+For more details, see [Move generics](./chapter_18_generics.md).
 
 有关更多详细信息，请参阅 [Move generics](./chapter_18_generics.md)。
 
@@ -535,7 +535,7 @@ fun add(x: u64, y: u64): u64 {
 }
 ```
 
-[As mentioned above](#function-body), the function's body is an [expression block](./variables.md). The expression block can sequence various statements, and the final expression in the block will be be the value of that block
+[As mentioned above](#function-body), the function's body is an [expression block](./chapter_10_variables.md). The expression block can sequence various statements, and the final expression in the block will be be the value of that block
 
 [如上所述](#function-body)，函数体是一个[表达式块](./chapter_10_variables.md)。表达式块中可以有各种各种语句，块中最后一个表达式将是该表达式块的值。
 

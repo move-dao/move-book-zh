@@ -211,7 +211,7 @@ let y = copy x; // compiler error without the copy!
 Copies of large vectors can be expensive, so the compiler requires explicit `copy`'s to make it
 easier to see where they are happening.
 
-For more details see the sections on [type abilities](./abilities.md) and [generics](./generics.md).
+For more details see the sections on [type abilities](./chapter_19_abilities.md) and [generics](./chapter_18_generics.md).
 
 拷贝大的数组可能很昂贵，因此编译器需要显示的`copy`使它更容易看到他们发生在哪。
 

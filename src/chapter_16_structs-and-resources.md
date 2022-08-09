@@ -15,7 +15,7 @@ important values (such as a token).
 By default, structs are linear and ephemeral. By this we mean that they: cannot be copied, cannot be
 dropped, and cannot be stored in global storage. This means that all values have to have ownership
 transferred (linear) and the values must be dealt with by the end of the program's execution
-(ephemeral). We can relax this behavior by giving the struct [abilities](./abilities.md) which allow
+(ephemeral). We can relax this behavior by giving the struct [abilities](./chapter_19_abilities.md) which allow
 values to be copied or dropped and also to be stored in global storage or to define global storage
 schemas.
 
@@ -49,7 +49,7 @@ struct Foo { x: Foo }
 
 As mentioned above: by default, a struct declaration is linear and ephemeral. So to allow the value
 to be used with certain operations (that copy it, drop it, store it in global storage, or use it as
-a storage schema), structs can be granted [abilities](./abilities.md) by annotating them with
+a storage schema), structs can be granted [abilities](./chapter_19_abilities.md) by annotating them with
 `has <ability>`:
 
 如上所述：默认情况下，结构体声明是线性和短暂的。因此，为了允许值用于某些操作(复制、删除、存储在全局存储中或用作存储模式)，结构体可以通过 `has <ability>` 标注来授予它们[能力](./chapter_19_abilities.md)。
@@ -62,7 +62,7 @@ address 0x2 {
 }
 ```
 
-For more details, see the [annotating structs](./abilities.md#annotating-structs) section.
+For more details, see the [annotating structs](./chapter_19_abilities.md#annotating-structs) section.
 
 有关更多详细信息，请参阅 [注释结构体](./chapter_19_abilities.md#annotating-structs) 部分。
 
@@ -457,9 +457,9 @@ address 0x2 {
 ## 在全局存储中存储资源 (Storing Resources in Global Storage)
 
 Only structs with the `key` ability can be saved directly in
-[persistent global storage](./global-storage-operators.md). All values stored within those `key`
+[persistent global storage](./chapter_25_global-storage-operators.md). All values stored within those `key`
 structs must have the `store` abilities. See the [ability](./abilities] and
-[global storage](./global-storage-operators.md) chapters for more detail.
+[global storage](./chapter_25_global-storage-operators.md) chapters for more detail.
 
 只有具有 `key` 能力的结构体才可以直接保存在[持久化全局存储](./chapter_24_global-storage-operators.md)。存储在这些 `key` 中的所有结构体的值必须具有 `store` 能力。请参阅 [能力(abilities)](./chapter_19_abilities] 和[全局存储](./chapter_24_global-storage-operators.md) 章节了解更多详细信息
 

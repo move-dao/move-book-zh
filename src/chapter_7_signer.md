@@ -86,7 +86,7 @@ The `std::signer` standard library module provides two utility functions over `s
 | `signer::address_of(&signer): address`      | 返回此 `&signer` 包装中的地址值.               |
 | `signer::borrow_address(&signer): &address` | 返回此 `&signer` 包装中地址的引用|
 
-In addition, the `move_to<T>(&signer, T)` [global storage operator](./global-storage-operators.md)
+In addition, the `move_to<T>(&signer, T)` [global storage operator](./chapter_25_global-storage-operators.md)
 requires a `&signer` argument to publish a resource `T` under `signer.address`'s account. This
 ensures that only an authenticated user can elect to publish a resource under their `address`.
 

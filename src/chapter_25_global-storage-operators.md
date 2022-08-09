@@ -1,9 +1,8 @@
-
 # 全局存储 - 操作（Global Storage - Operators）
 
-Move programs can create, delete, and update [resources](./structs-and-resources.md) in global storage using the following five instructions:
+Move programs can create, delete, and update [resources](./chapter_16_structs-and-resources.md) in global storage using the following five instructions:
 
-Move程序可以使用下面五种指令创建、删除、更新全局存储中的[资源](./structs-and-resources.md)：
+Move程序可以使用下面五种指令创建、删除、更新全局存储中的[资源](./chapter_16_structs-and-resources.md)：
 
 | Operation                              | Description                                                     | Aborts?                                 |
 ---------------------------------------- |---------------------------------------------------------------- |---------------------------------------- |
@@ -11,7 +10,7 @@ Move程序可以使用下面五种指令创建、删除、更新全局存储中�
 |`move_from<T>(address): T`              | Remove `T` from `address` and return it                         | If `address` does not hold a `T`        |
 |`borrow_global_mut<T>(address): &mut T` | Return a mutable reference to the `T` stored under `address`    | If `address` does not hold a `T`        |
 |`borrow_global<T>(address): &T`         | Return an immutable reference to the `T` stored under `address` | If `address` does not hold a `T`        |
-|`exists<T>(address): bool`              | Return `true` if a `T` is stored under `address`                |  Never      
+|`exists<T>(address): bool`              | Return `true` if a `T` is stored under `address`                |  Never
 
 | 操作符                                 | 描述                                                   | 出错                           |
 ---------------------------------------- |------------------------------------------------------ |---------------------------------- |
@@ -21,17 +20,17 @@ Move程序可以使用下面五种指令创建、删除、更新全局存储中�
 |`borrow_global<T>(address): &T`         | 返回 `address` 下 `T` 的不可变引用 immutable reference  | 如果 `address` 下没有 `T`          |
 |`exists<T>(address): bool`              | 返回 `address` 下的 `T`                                | 永远不会                           |
                             |
-                            
-Each of these instructions is parameterized by a type `T` with the [`key` ability](./abilities.md). However, each type `T` *must be declared in the current module*. This ensures that a resource can only be manipulated via the API exposed by its defining module. The instructions also take either an [`address`](./address.md) or [`&signer`](./signer.md) representing the account address where the resource of type `T` is stored.
 
-每个指令的参数 `T` 都具有 [`key` 能力](./abilities.md)。然而，类型 `T` *必须在当前模块*中声明。这确保资源只能通过当前模块暴露的 API 来操作。指令在存储 `T` 类型资源的同时，使用 [`address`](./address.md) 或 [`&signer`](./signer.md) 表示账户地址。
+Each of these instructions is parameterized by a type `T` with the [`key` ability](./chapter_19_abilities.md). However, each type `T` *must be declared in the current module*. This ensures that a resource can only be manipulated via the API exposed by its defining module. The instructions also take either an [`address`](./chapter_5_address.md) or [`&signer`](./chapter_7_signer.md) representing the account address where the resource of type `T` is stored.
+
+每个指令的参数 `T` 都具有 [`key` 能力](./chapter_19_abilities.md)。然而，类型 `T` *必须在当前模块*中声明。这确保资源只能通过当前模块暴露的 API 来操作。指令在存储 `T` 类型资源的同时，使用 [`address`](./chapter_5_address.md) 或 [`&signer`](./chapter_7_signer.md) 表示账户地址。
 
 
 ## 资源参考（References to resources）
 
-References to global resources returned by `borrow_global` or `borrow_global_mut` mostly behave like references to local storage: they can be extended, read, and written using ordinary [reference operators](./references.md) and passed as arguments to other function. However, there is one important difference between local and global references: **a function cannot return a reference that points into global storage**. For example, these two functions will each fail to compile:
+References to global resources returned by `borrow_global` or `borrow_global_mut` mostly behave like references to local storage: they can be extended, read, and written using ordinary [reference operators](./chapter_8_references.md) and passed as arguments to other function. However, there is one important difference between local and global references: **a function cannot return a reference that points into global storage**. For example, these two functions will each fail to compile:
 
-`borrow_global` 或 `borrow_global_mut` 指令返回的全局资源引用在大多数情况下类似本地存储的引用：它们可以通过[引用操作](./references.md)进行拓展、读和写，也可以作为其它函数的参数。然而本地引用和全局引用有个重要差异：**函数不能返回指向全局存储的引用**。例如，下面两个函数编译会失败：
+`borrow_global` 或 `borrow_global_mut` 指令返回的全局资源引用在大多数情况下类似本地存储的引用：它们可以通过[引用操作](./chapter_8_references.md)进行拓展、读和写，也可以作为其它函数的参数。然而本地引用和全局引用有个重要差异：**函数不能返回指向全局存储的引用**。例如，下面两个函数编译会失败：
 
 
 ```move
@@ -72,9 +71,9 @@ fun publish_instantiated_generic_container(account: &signer, t: u64) {
 }
 ```
 
-The ability to index into global storage via a type parameter chosen at runtime is a powerful Move feature known as *storage polymorphism*. For more on the design patterns enabled by this feature, see [Move generics](./generics.md).
+The ability to index into global storage via a type parameter chosen at runtime is a powerful Move feature known as *storage polymorphism*. For more on the design patterns enabled by this feature, see [Move generics](./chapter_18_generics.md).
 
-能够通过参数类型在运行时中索引全局存储的能力是 Move 的强大特性，该特性称之为*存储多态性*。关于此特性更多的设计模式，请参考[Move泛型](./generics.md)这节。
+能够通过参数类型在运行时中索引全局存储的能力是 Move 的强大特性，该特性称之为*存储多态性*。关于此特性更多的设计模式，请参考[Move泛型](./chapter_18_generics.md)这节。
 
 ## 示例： `Counter` （Example: `Counter`）
 
@@ -233,15 +232,15 @@ Finally: redundant `acquires` are not allowed. Adding this function inside `Coun
 fun redundant_acquires_bad() acquires Counter {}
 ```
 
-For more information on `acquires`, see [Move functions](./functions.md).
+For more information on `acquires`, see [Move functions](./chapter_15_functions.md).
 
-关于 `acquires` 更多信息，参见 [Move 函数](./functions.md)。
+关于 `acquires` 更多信息，参见 [Move 函数](./chapter_15_functions.md)。
 
 ## 全局资源引用安全（Reference Safety For Global Resources）
 
-Move prohibits returning global references and requires the `acquires` annotation to prevent dangling references. This allows Move to live up to its promise of static reference safety (i.e., no dangling references, no `null` or `nil` dereferences) for all [reference](./references.md) types.
+Move prohibits returning global references and requires the `acquires` annotation to prevent dangling references. This allows Move to live up to its promise of static reference safety (i.e., no dangling references, no `null` or `nil` dereferences) for all [reference](./chapter_8_references.md) types.
 
-Move 禁止返回全局引用并且需要使用 `acquires` 标注来防止空引用。这使 Move 保证了所有[引用](./references.md)类型的静态引用安全性（例如，没有空引用、不会解引用 `null` 或 `nil` 对象）。
+Move 禁止返回全局引用并且需要使用 `acquires` 标注来防止空引用。这使 Move 保证了所有[引用](./chapter_8_references.md)类型的静态引用安全性（例如，没有空引用、不会解引用 `null` 或 `nil` 对象）。
 
 This example illustrates how the Move type system uses `acquires` to prevent a dangling reference:
 
@@ -311,4 +310,3 @@ Line 16 acquires a reference to a global resource `m1::T`, then line 17 removes 
 Fancier type systems that would allow returning global references without sacrificing reference safety are possible, and we may consider them in future iterations of Move. We chose the current design because it strikes a good balance between expressivity, annotation burden, and type system complexity.
 
 允许返回全局引用而尽可能不牺牲引用安全的高级类型系统是可行的，我们将会在 Move 未来的迭代过程中考虑此事。我们选择目前的设计方式是因为它很好的平衡了语言表现力、复杂的标注和复杂的类型系统三者的关系。
-
