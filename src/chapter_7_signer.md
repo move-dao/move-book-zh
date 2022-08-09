@@ -90,7 +90,7 @@ In addition, the `move_to<T>(&signer, T)` [global storage operator](./chapter_25
 requires a `&signer` argument to publish a resource `T` under `signer.address`'s account. This
 ensures that only an authenticated user can elect to publish a resource under their `address`.
 
-此外，`move_to<T>(&signer, T)` [全局存储](./chapter_24_global-storage-operators.md)操作符需要一个 `&signer` 参数在 `signer.address` 的帐户下发布资源 `T`。 这确保了只有经过身份验证的用户才能在其地址下发布资源。
+此外，`move_to<T>(&signer, T)` [全局存储](./chapter_25_global-storage-operators.md)操作符需要一个 `&signer` 参数在 `signer.address` 的帐户下发布资源 `T`。 这确保了只有经过身份验证的用户才能在其地址下发布资源。
 
 ## 所有权 (Ownership)
 

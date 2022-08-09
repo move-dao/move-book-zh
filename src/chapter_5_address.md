@@ -92,7 +92,7 @@ The only global storage operation that *does not* use `address` is `move_to`, wh
 
 `address` 值主要用来与全局存储操作进行交互。
 
-`address` 值被用来与 `exists`, `borrow_global`, `borrow_global_mut` 和 `move_from` 操作([operations](./chapter_24_global-storage-operators.md))一起使用。
+`address` 值被用来与 `exists`, `borrow_global`, `borrow_global_mut` 和 `move_from` 操作([operations](./chapter_25_global-storage-operators.md))一起使用。
 
 只有 `move_to` 全局存储操作不使用 `address`, 而使用[`signer`](./chapter_7_signer.md).
 
