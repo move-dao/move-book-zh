@@ -5,7 +5,7 @@ Local variables in Move are lexically (statically) scoped. New variables are int
 keyword `let`, which will shadow any previous local with the same name. Locals are mutable and can
 be updated both directly and via a mutable reference.
 
-在Move语言中，局部变量的解析依赖于词法作用域(lexically scoped)或静态作用域(statically scoped)。新变量通过关键字 `let` 引入的，它将遮蔽任何之前的局部同名变量。局部变量是可变的，可以直接更新，也可以通过可变引用更新。
+在Move语言中，局部变量的解析依赖于词法作用域(lexically scoped)或静态作用域(statically scoped)。新变量是通过关键字 `let` 引入的，它将遮蔽任何之前的局部同名变量。局部变量是可变的，可以直接更新，也可以通过可变引用更新。
 
 ## 声明局部变量 (Declaring Local Variables)
 
@@ -776,7 +776,7 @@ assert!(x == 0, 42);
 
 Remember, locals can change type when they are shadowed.
 
-请记住，局部变量在被遮蔽时可以更改类型。
+注意，局部变量在被遮蔽时可以更改类型。
 
 ```move
 let x = 0;
