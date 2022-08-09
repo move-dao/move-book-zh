@@ -4,7 +4,7 @@
 Welcome to the Move Tutorial! In this tutorial, we are going to go through some steps of developing Move code
 including design, implementation, unit testing and formal verification of Move modules.
 
-欢迎来到Move语言教程，在本教程中，我们将带您使用Move语言经历完整的开发编码过程，包括设计、实现、单元测试还有Move Modules的形式验证.
+欢迎来到Move语言教程，在本教程中，我们将带您使用Move语言经历完整的开发编码过程，包括设计、实现、单元测试还有Move Modules的形式验证。
 
 There are nine steps in total:
 
