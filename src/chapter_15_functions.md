@@ -8,7 +8,7 @@ Move中的函数语法在模块函数和脚本函数之间是一致的。模块�
 
 Functions are declared with the `fun` keyword followed by the function name, type parameters, parameters, a return type, acquires annotations, and finally the function body.
 
-函数使用 `fun` 关键字声明，后跟函数名称、类型参数、参数、返回类型、获取 ~~注解~~ 标注(annotation)，最后是函数体。
+函数使用 `fun` 关键字声明，后跟函数名称、类型参数、参数、返回类型、获取标注(annotation)，最后是函数体。
 
 ```text
 fun <identifier><[type_parameters: constraint],*>([identifier: type],*): <return_type> <acquires [identifier],*> <function_body>
@@ -95,10 +95,10 @@ The `public(friend)` visibility modifier is a more restricted form of the `publi
 
 Note that since we cannot declare a script to be a friend of a module, the functions defined in scripts can never call a `public(friend)` function.
 
-`public(friend)` 可见性修饰符是一种比 `public` 修饰符 ~~更受~~ 限制更严格的形式，可以更好地控制函数的使用位置。 `public(friend)` 函数可以通过以下方式调用：
+`public(friend)` 可见性修饰符是一种比 `public` 修饰符限制更严格的形式，可以更好地控制函数的使用位置。 `public(friend)` 函数可以通过以下方式调用：
 
 - 在同一模块中定义的其他函数，或者
-- 在 **friend list** 中明确指定的模块中定义的函数(请参阅 [Friends](./chapter_21_friends.md) 了解如何指定 ~~好~~ 友元列表)。
+- 在 **friend list** 中明确指定的模块中定义的函数(请参阅 [Friends](./chapter_21_friends.md) 了解如何指定友元(friends)列表)。
 
 请注意，由于我们不能将脚本声明为模块的友元关系，因此脚本中定义的函数永远不能调用 `public(friend)` 函数。
 
@@ -144,7 +144,7 @@ Note though, an `entry` function _can_ still be called by other Move functions. 
 
 本质上，`entry` 函数是模块的“main”函数，它们指定 Move 程序开始执行的位置。
 
-但请注意，`entry` 函数仍可被其他 Move 函数调用。因此，虽然它们 _可以_ 作为 Move 程序的 ~~开始~~ 入口，但它们并不局限于这种用法。
+但请注意，`entry` 函数仍可被其他 Move 函数调用。因此，虽然它们 _可以_ 作为 Move 程序的入口，但它们并不局限于这种用法。
 
 例如
 
@@ -239,7 +239,7 @@ For more details, see [Move generics](./generics.md).
 
 Functions parameters are declared with a local variable name followed by a type annotation
 
-函数参数使用局部变量名 ~~声明~~，后跟类型标注的方式进行声明。
+函数参数使用局部变量名，后跟类型标注的方式进行声明。
 
 ```move
 fun add(x: u64, y: u64): u64 { x + y }
@@ -249,9 +249,9 @@ We read this as `x` has type `u64`
 
 A function does not have to have any parameters at all.
 
-(上面代码中的函数参数) 我们 ~~将 `x` 的类型读为 `u64`~~ 读为：`x` 参数的类型是 `u64` 。
+(上面代码中的函数参数) 我们读为：`x` 参数的类型是 `u64` 。
 
-函数可以 ~~不需要~~ 没有任何参数。
+函数可以没有任何参数。
 
 ```move
 fun useless() { }
@@ -259,7 +259,7 @@ fun useless() { }
 
 This is very common for functions that create new or empty data structures
 
-~~这对于创建新数据结构或空数据结构的函数很常见~~ 在函数中创建新或空的数据结构是常见的用法。
+在函数中创建新或空的数据结构是常见的用法。
 
 ```move=
 address 0x42 {
@@ -278,7 +278,7 @@ address 0x42 {
 
 When a function accesses a resource using `move_from`, `borrow_global`, or `borrow_global_mut`, the function must indicate that it `acquires` that resource. This is then used by Move's type system to ensure the references into global storage are safe, specifically that there are no dangling references into global storage.
 
-当一个函数使用 `move_from`、`borrow_global` 或 `borrow_global_mut` 访问资源时，则该函数必须表明它 `获取(acquires)` 该资源。然后 Move 的类型系统使用它来确保对全局存储的引用是安全的，特别是没有对全局存储的悬 ~~空~~ 垂引用(dangling references)。
+当一个函数使用 `move_from`、`borrow_global` 或 `borrow_global_mut` 访问资源时，则该函数必须表明它 `获取(acquires)` 该资源。然后 Move 的类型系统使用它来确保对全局存储的引用是安全的，特别是没有对全局存储的悬垂引用(dangling references)。
 
 ```move=
 address 0x42 {
@@ -299,7 +299,7 @@ address 0x42 {
 ```
 `acquires` annotations must also be added for transitive calls within the module. Calls to these functions from another module do not need to annotated with these acquires because one module cannot access resources declared in another module--so the annotation is not needed to ensure reference safety.
 
-`acquires` ~~注释~~ 标注也必须为模块内有传递性的调用添加。从另一个模块对这些函数的调用不需要使用 `acquires` 进行注释，因为一个模块无法访问在另一个模块中声明的资源——因此不需要 ~~注释~~ 用标注来确保引用安全。
+`acquires` 标注也必须为模块内有传递性的调用添加。从另一个模块对这些函数的调用不需要使用 `acquires` 进行注释，因为一个模块无法访问在另一个模块中声明的资源——因此不需要用标注来确保引用安全。
 
 ```move=
 address 0x42 {
@@ -364,7 +364,7 @@ address 0x42 {
 
 After the parameters, a function specifies its return type.
 
-~~在参数之后，~~函数在参数之后指定 ~~了其~~ 返回类型。
+函数在参数之后指定返回类型。
 
 ```move
 fun zero(): u64 { 0 }
@@ -384,7 +384,7 @@ fun one_two_three(): (u64, u64, u64) { (0, 1, 2) }
 
 If no return type is specified, the function has an implicit return type of unit `()`. These functions are equivalent
 
-如果函数未指定返回类型，则该函数 ~~具有单位 `()` 的~~ 隐式返回unit `()` 类型  。以下这些函数是等价的
+如果函数未指定返回类型，则该函数隐式返回unit `()` 类型  。以下这些函数是等价的
 
 ```move
 fun just_unit(): () { () }
@@ -405,7 +405,7 @@ script {
 
 As mentioned in the [tuples section](./tuples.md), these tuple "values" are virtual and do not exist at runtime. So for a function that returns unit `()`, it will not be returning any value at all during execution.
 
-如 [元组部分](./chapter_9_tuples.md) 中所述，这些元组“值”是 ~~虚拟~~ 模拟(virtual)的，且在运行时不存在。所以对于返回 ~~单位~~ unit `()`的函数，它在执行期间根本不会返回任何值。
+如 [元组部分](./chapter_9_tuples.md) 中所述，这些元组“值”是模拟(virtual)的，且在运行时不存在。所以对于返回 unit `()`的函数，它在执行期间根本不会返回任何值。
 
 ### Function body (函数体)
 
@@ -423,7 +423,7 @@ fun example(): u64 {
 
 See [the section below for more information on returns](#returning-values)
 
-请参阅[~~以下部分了解有关return的更多信息~~ 有关返回值的更多信息](#returning-values)
+请参阅[有关返回值的更多信息](#returning-values)
 
 For more information on expression blocks, see [Move variables](./variables.md).
 
@@ -476,7 +476,7 @@ script {
 
 When calling a function, an argument must be given for every parameter.
 
-调用函数时，~~必须为~~ 每个参数必须指定一个值。
+调用函数时，每个参数必须指定一个值。
 
 ```move=
 address 0x42 {
@@ -538,7 +538,7 @@ fun add(x: u64, y: u64): u64 {
 
 [As mentioned above](#function-body), the function's body is an [expression block](./variables.md). The expression block can sequence various statements, and the final expression in the block will be be the value of that block
 
-[如上所述](#function-body)，函数 ~~的主~~ 体是一个[表达式块](./chapter_10_variables.md)。表达式块中可以有各种各种语句，块中最后一个表达式将是该表达式块的值。
+[如上所述](#function-body)，函数体是一个[表达式块](./chapter_10_variables.md)。表达式块中可以有各种各种语句，块中最后一个表达式将是该表达式块的值。
 
 ```move=
 fun double_and_add(x: u64, y: u64): u64 {
@@ -556,7 +556,7 @@ The return value here is `double_x + double_y`
 
 A function implicitly returns the value that its body evaluates to. However, functions can also use the explicit `return` expression:
 
-函数 ~~可以~~ 隐式返回其函数体计算的值。但是，函数也可以使用显式的 `return` 表达式：
+函数隐式返回其函数体计算的值。但是，函数也可以使用显式的 `return` 表达式：
 
 ```move
 fun f1(): u64 { return 0 }
@@ -566,7 +566,7 @@ fun f2(): u64 { 0 }
 
 These two functions are equivalent. In this slightly more involved example, the function subtracts two `u64` values, but returns early with `0` if the second value is too large:
 
-这两个功能是等价的。在下面这个稍微复杂的示例中，该函数返回两个 `u64` 值相减的结果，但如果第二个值大于第一个值，则 ~~以 `0`~~ 提前返回 `0` ：
+这两个功能是等价的。在下面这个稍微复杂的示例中，该函数返回两个 `u64` 值相减的结果，但如果第二个值大于第一个值，则提前返回 `0` ：
 
 ```move=
 fun safe_sub(x: u64, y: u64): u64 {
@@ -581,7 +581,7 @@ However `return` really shines is in exiting deep within other control flow cons
 
 请注意，这个函数的函数体也可以写成 `if (y > x) 0 else x - y`。
 
-然而，`return` 真正的亮点在于在其他控制流结构的深处退出。在此示例中，函数遍历 ~~向量~~ 数组以查找给定值的索引：
+然而，`return` 真正的亮点在于在其他控制流结构的深处退出。在此示例中，函数遍历数组以查找给定值的索引：
 
 ```move=
 use std::vector;

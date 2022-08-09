@@ -10,7 +10,7 @@ The `while` construct repeats the body (an expression of type unit) until the co
 
 Here is an example of simple `while` loop that computes the sum of the numbers from `1` to `n`:
 
-`while` 重复循环体(一个 `unit` 类型的表达式), 直到条件语句(`bool` 类型的表达式) ~~执行~~ 运算结果为 `false`
+`while` 重复循环体(一个 `unit` 类型的表达式), 直到条件语句(`bool` 类型的表达式)运算结果为 `false`
 
 下面是一个简单的 `while` 循环的例子，计算从 `1` 到 `n` 数字之和:
 
@@ -64,7 +64,7 @@ The `break` expression cannot be used outside of a loop.
 
 The `continue` expression skips the rest of the loop and continues to the next iteration. This loop uses `continue` to compute the sum of `1, 2, ..., n`, except when the number is divisible by 10:
 
-`continue` 表达式跳过当前循环的剩余部分,  ~~进行~~ 并继续下一轮 ~~的循环~~ 迭代.下面的例子, 使用 `continue` 去计算 `1, 2, ..., n` 的总和 ~~除了能被10整除的数之外的数字之和~~ ，过滤掉不能被10整除的数:
+`continue` 表达式跳过当前循环的剩余部分, 并继续下一轮迭代.下面的例子, 使用 `continue` 去计算 `1, 2, ..., n` 的总和，过滤掉不能被10整除的数:
 
 ```move
 fun sum_intermediate(n: u64): u64 {
@@ -138,7 +138,7 @@ Without a `break`, the loop will continue forever
 
 `loop` 表达式重复循环体(类型为unit()的表达式) ，直到遇到 `break` 为止
 
-(下面的代码中)没有 `break`, ~~ 将永远循环~~ 循环将一直执行。
+(下面的代码中)没有 `break`, 循环将一直执行。
 
 ```move
 fun foo() {
@@ -149,7 +149,7 @@ fun foo() {
 
 Here is an example that uses `loop` to write the `sum` function:
 
-~~下面的例子是一个用 `loop` 写的 `sum` 函数~~ 这是一个使用 `loop` 编写 `sum` 函数的示例(可与 `while` 循环比较):
+这是一个使用 `loop` 编写 `sum` 函数的示例(可与 `while` 循环比较):
 
 ```move
 fun sum(n: u64): u64 {
@@ -167,7 +167,7 @@ fun sum(n: u64): u64 {
 
 As you might expect, `continue` can also be used inside a `loop`. Here is `sum_intermediate` from above rewritten using `loop` instead of `while`
 
-正如你 ~~所期待的~~ 所料, `continue` 也可以在 `loop` 中使用. ~~下面的例子~~ 这是上面的 `sum_intermediate` 使用 `loop` 代替 `while` 重写的:
+正如你所料, `continue` 也可以在 `loop` 中使用. 这是上面的 `sum_intermediate` 使用 `loop` 代替 `while` 重写的:
 
 ```move
 fun sum_intermediate(n: u64): u64 {
