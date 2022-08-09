@@ -1,9 +1,24 @@
-# Move Tutorial
+
+# Move 教程（Move Tutorial）
+
+Welcome to the Move Tutorial! In this tutorial, we are going to go through some steps of developing Move code
+including design, implementation, unit testing and formal verification of Move modules.
 
 欢迎来到Move语言教程，在本教程中，我们将带您使用Move语言经历完整的开发编码过程，包括设计、实现、单元测试还有Move Modules的形式验证.
 
-整个过程共包含9个步骤：
+There are nine steps in total:
 
+- [Step 0: Installation](#Step0)
+- [Step 1: Writing my first Move module](#Step1)
+- [Step 2: Adding unit tests to my first Move module](#Step2)
+- [Step 3: Designing my `BasicCoin` module](#Step3)
+- [Step 4: Implementing my `BasicCoin` module](#Step4)
+- [Step 5: Adding and using unit tests with the `BasicCoin` module](#Step5)
+- [Step 6: Making my `BasicCoin` module generic](#Step6)
+- [Step 7: Use the Move prover](#Step7)
+- [Step 8: Writing formal specifications for the `BasicCoin` module](#Step8) 
+
+整个过程共包含9个步骤：
 - [Step 0: 安装Move开发环境](#Step0)
 - [Step 1: 编写第一个Move模块(Move Module)](#Step1)
 - [Step 2: 给模块(Module)添加单元测试](#Step2)
@@ -14,18 +29,29 @@
 - [Step 7: 使用`Move prover`](#Step7)
 - [Step 8: 为`BasicCoin`模块编写正式规范(formal specifications)](#Step8)
 
-其中每一步都被设计为自包含的文件夹, 相应名字为`step_x`。 例如，如果你愿意跳过step 1到step 4的内容，可直接跳到step 5,
+Each step is designed to be self-contained in the corresponding `step_x` folder. For example, if you would
+like to skip the contents in step 1 through 4, feel free to jump to step 5 since all the code we have written
+before step 5 will be in `step_5` folder. At the end of some steps, we also include
+additional material on more advanced topics.
+
+其中每一步都被设计为自包含的文件夹, 相应名字为`step_x`。 例如，如果您愿意跳过step 1到step 4的内容，可直接跳到step 5,
 因为所有在step 5之前的代码均在在`step_5`文件夹之下. 在个别步骤的结束部分，我们同时还额外引入一下高级主题和材料.
+
+Now let's get started!
 
 好了，我们现在开始!
 
-## Step 0: 安装Move开发环境<span id="Step0"><span>
+## Step 0: 安装Move开发环境<span id="Step0"><span>（Step 0: Installation）
 
-如果你还没有安装过Move，首先打开terminal并clone [the Move repository](https://github.com/move-language/move):
+If you haven't already, open your terminal and clone [the Move repository](https://github.com/move-language/move):
+
+如果您还没有安装过Move，首先打开terminal并clone [Move 库](https://github.com/move-language/move):
 
 ```bash
 git clone https://github.com/move-language/move.git
 ```
+
+Go to the `move` directory and run the `dev_setup.sh` script:
 
 进入到`move`文件夹下，执行`dev_setup.sh`脚本:
 
@@ -34,27 +60,37 @@ cd move
 ./scripts/dev_setup.sh -ypt
 ```
 
-根据脚本的提示，按顺序安装Move的所有依赖.
+Follow the script's prompts in order to install all of Move's dependencies.
 
+The script adds environment variable definitions to your `~/.profile` file.
+Include them by running this command:
+
+根据脚本的提示，按顺序安装Move的所有依赖项。
 脚本将会将环境变量写入到`~/.profile`文件中, 执行如下命令使环境变量生效:
 
 ```bash
 source ~/.profile
 ````
 
-然后执行如下命令来安装Move命令行工具
+Next, install Move's command-line tool by running this commands:
+
+然后执行如下命令来安装Move命令行工具：
 
 ```bash
 cargo install --path language/tools/move-cli
 ```
+
+You can check that it is working by running the following command:
 
 通过如下命令可以检查move是否已正常可用:
 
 ```bash
 move --help
 ```
+You should see something like this along with a list and description of a
+number of commands:
 
-你应该会看到像下面这样的一些命令 还有 对命令的描述内容 展示出来.
+您应该会看到像下面这样的一些命令 还有 对命令的描述内容 展示出来。
 
 ```
 move-package
@@ -67,8 +103,12 @@ OPTIONS:
         --abi                          Generate ABIs for packages
 ...
 ```
+If you want to find what commands are available and what they do, running
+a command or subcommand with the `--help` flag will print documentation.
 
-如果你想知道有哪些命令可用，以及命令的作用, 执行命令或自命令时添加`--help`参数, 此时会打印命令帮助文档.
+如果您想知道有哪些命令可用，以及命令的作用, 执行命令或自命令时添加`--help`参数，此时会打印命令帮助文档。
+
+Before running the next steps, `cd` to the tutorial directory:
 
 在执行下一步之前，请先`cd`进入到对应教程目录下:
 
@@ -76,24 +116,36 @@ OPTIONS:
 cd <path_to_move>/language/documentation/tutorial
 ```
 
-
 <details>
 <summary>Visual Studio Code Move support</summary>
-Move有VS Code的官方支持, 你需要安装一下`move analyzer`
+
+Move有VS Code的官方支持, 您需要安装一下`move analyzer`
 
 ```bash
 cargo install --path language/move-analyzer
 ```
 
-现在你可以打开VS Code并安装Move扩展插件了, 在扩展页面下搜索`move-analyzer`并安装即可. 关于扩展的详细信息可以查看扩展的[README](https://github.com/move-language/move/tree/main/language/move-analyzer/editors/code).
+现在您可以打开VS Code并安装Move扩展插件了，在扩展页面下搜索`move-analyzer`并安装即可。 关于扩展的详细信息可以查看扩展的[README](https://github.com/move-language/move/tree/main/language/move-analyzer/editors/code)。
 </details>
 
-## Step 1: 编写第一个Move模块(Move Module)<span id="Step1"><span>
+## Step 1: 编写第一个Move模块<span id="Step1"><span> （Writing my first Move module）
 
-切换目录到[`step_1/BasicCoin`](./step_1/BasicCoin)下, 你将看到`sources`目录 -- 所有的Move代码都在其中，同时你还会看到一个`Move.toml`文件
-该文件是当前package的依赖列表和其他信息. 如果你熟悉`Rust`和`Cargo`的可知`Move.toml`与`Cargo.toml`是类似的, 而`sources`目录则同样类似`src`文件夹.
+Change directory into the [`step_1/BasicCoin`](./step_1/BasicCoin) directory.
+You should see a directory called `sources` -- this is the place where all
+the Move code for this package lives. You should also see a
+`Move.toml` file as well. This file specifies dependencies and other information about
+the package; if you're familiar with Rust and Cargo, the `Move.toml` file
+is similar to the `Cargo.toml` file, and the `sources` directory similar to
+the `src` directory.
 
-我们看一下Move代码内容! 用你选择的编辑器打开[`sources/FirstModule.move`](./step_1/BasicCoin/sources/FirstModule.move) 你会看到如下内容:
+切换目录到[`step_1/BasicCoin`](./step_1/BasicCoin)下，您将看到`sources`目录 -- 所有的Move代码都在其中，同时您还会看到一个`Move.toml`文件
+该文件是当前package的依赖列表和其他信息。如果您熟悉`Rust`和`Cargo`的可知`Move.toml`与`Cargo.toml`是类似的，而`sources`目录则同样类似`src`文件夹。
+
+Let's take a look at some Move code! Open up
+[`sources/FirstModule.move`](./step_1/BasicCoin/sources/FirstModule.move) in
+your editor of choice. The first thing you'll see is this:
+
+我们看一下Move代码内容！ 用你选择的编辑器打开[`sources/FirstModule.move`](./step_1/BasicCoin/sources/FirstModule.move) 你会看到如下内容：
 
 ```
 // sources/FirstModule.move
@@ -102,9 +154,17 @@ module 0xCAFE::BasicCoin {
 }
 ```
 
-这是一个`Move` [module](https://move-language.github.io/move/modules-and-scripts.html)的定义.
+This is defining a Move
+[module](https://move-language.github.io/move/modules-and-scripts.html). Modules are the
+building block of Move code, and are defined with a specific address -- the
+address that the module can be published under. In this case, the `BasicCoin`
+module can only be published under `0xCAFE`.
+
+这是一个`Move` [module](https://move-language.github.io/move/modules-and-scripts.html)的定义。
 模块(Modules)是Move代码的组成部分, 并且它通过一个地址(address)来进行定义 -- 模块只能在该地址下发布. 
-当前`BasicCoin` module只能被发布在`0xCAFE`地址下.
+当前`BasicCoin` module只能被发布在`0xCAFE`地址下。
+
+Let's now take a look at the next part of this file where we define a [struct](https://move-language.github.io/move/structs-and-resources.html) to represent a `Coin` with a given `value`:
 
 我们再看下一部分，这里定义了一个具有名叫`value`元素的`Coin`[结构体](https://move-language.github.io/move/structs-and-resources.html);
 
@@ -117,7 +177,9 @@ module 0xCAFE::BasicCoin {
 }
 ```
 
-再看文件剩余部分，我们会看到一个函数，它会创建一个`Coin`结构体，并将其保存在一个账号account下:
+Looking at the rest of the file, we see a function definition that creates a `Coin` struct and stores it under an account:
+
+再看文件剩余部分，我们会看到一个函数，它会创建一个`Coin`结构体，并将其保存在一个账号account下：
 
 ```
 module 0xCAFE::BasicCoin {
@@ -131,11 +193,20 @@ module 0xCAFE::BasicCoin {
 }
 ```
 
-函数的具体实现:
-* 输入一个[`signer`](https://move-language.github.io/move/signer.html) -- 一个表示对具体`address`控制权的不可变造token, 还有一个将要铸造的`value`
-* 使用`move_to`操作 将包含了`value`的新创建`Coin`保存在给定的`account`账户下.
+Let's take a look at this function and what it's saying:
+* It takes a [`signer`](https://move-language.github.io/move/signer.html) -- an
+  unforgeable token that represents control over a particular address, and
+  a `value` to mint.
+* It creates a `Coin` with the given value and stores it under the
+  `account` using the `move_to` operator.
 
-我们需要确保它真的执行，这就需要通过package([`step_1/BasicCoin`](./step_1/BasicCoin/))下的`build`命令来完成.
+Let's make sure it builds! This can be done with the `build` command from within the package folder ([`step_1/BasicCoin`](./step_1/BasicCoin/)):
+
+让我们来看看这个函数和它的具体实现:
+* 输入一个[`signer`](https://move-language.github.io/move/signer.html) -- 一个表示对具体`address`控制权的不可变造token，还有一个将要铸造的`value`
+* 使用`move_to`操作 将包含了`value`的新创建`Coin`保存在给定的`account`账户下。
+
+我们需要确保它真的执行，这就需要通过package([`step_1/BasicCoin`](./step_1/BasicCoin/))下的`build`命令来完成。
 
 ```bash
 move build
@@ -177,7 +248,11 @@ move build
 
 </details>
 
-## Step 2: 给模块(Module)添加单元测试<span id="Step2"><span>
+## Step 2: 给模块(Module)添加单元测试<span id="Step2"><span>（Adding unit tests to my first Move module）
+
+Now that we've taken a look at our first Move module, we'll take a look at a test to make sure minting works the way we expect it to by changing directory to [`step_2/BasicCoin`](./step_2/BasicCoin).  Unit tests in Move are similar to unit tests in Rust if you're familiar with them -- tests are annotated with `#[test]` and written like normal Move functions.
+
+You can run the tests with the `package test` command:
 
 现在我们来看一下我们的第一个Move模块, 通过切换目录到[`step_2/BasicCoin`](./step_2/BasicCoin)下，
 我们可以看到一个为了确保铸币(minting works)如期工作所编写的单元测试代码, Move语言中的单元测试与
@@ -188,6 +263,9 @@ Rust语言中的单测非常类似 -- 通过在普通Move函数上增加`#[test]
 ```bash
 move test
 ```
+
+Let's now take a look at the contents of the [`FirstModule.move`file](./step_2/BasicCoin/sources/FirstModule.move). The first new thing you'll
+see is this test:
 
 现在我们再看一下[`FirstModule.move`文件](./step_2/BasicCoin/sources/FirstModule.move)的具体内容，
 里面是有一个新的单元测试:
@@ -209,9 +287,10 @@ module 0xCAFE::BasicCoin {
 }
 ```
 
-这里声明了一个命名为`test_mint_10`的单元测试，它在`account`账户地址下铸造了一个包含`value`为10的
-`Coin`，然后通过`assert!`调用来检查目标存储(addr)之下是否如预期保存了一个包含预期`value`的币,
-如果断言(assert)失败，则单元测试失败.
+This is declaring a unit test called `test_mint_10` that mints a `Coin` struct under the `account` with a `value` of `10`. It is then checking that the minted
+coin in storage has the value that is expected with the `assert!` call. If the assertion fails the unit test will fail.
+
+这里声明了一个命名为`test_mint_10`的单元测试，它在`account`账户地址下铸造了一个包含`value`为10的`Coin`，然后通过`assert!`调用来检查目标存储之下是否如预期保存了一个包含预期`value`的币，如果断言`assert`调用失败，则单元测试失败。
 
 <details>
 <summary>进阶概念及参考练习</summary>
@@ -229,10 +308,11 @@ module 0xCAFE::BasicCoin {
   注意, 修改地址将它指向`<path_to_move>/language`文件夹下的`move-stdlib`目录. 或者
   用git依赖方式设定亦可, 关于Move软件包依赖(package denpendices)知识请参阅[文档](https://move-language.github.io/move/packages.html#movetoml)
 
-#### Exercises
+#### 练习（Exercises）
 
-* 将断言修改为`11`看断言如何失败, 找到那个可以帮你打印断言失败时打印全局状态的`move test`命令参数,
-  错误提示大致如下:
+* Change the assertion to `11` so that the test fails. Find a flag that you can pass to the `move test` command that will show you the global state when the test fails. It should look something like this:
+  
+* 将断言修改为`11`看断言如何失败, 找到那个可以帮你打印断言失败时打印全局状态的`move test`命令参数，错误提示大致如下：
   ```
     ┌── test_mint_10 ──────
     │ error[E11001]: test failure
@@ -254,12 +334,19 @@ module 0xCAFE::BasicCoin {
     └──────────────────
   ```
 
-* 找到可以帮你收集测试覆盖率的参数值，然后尝试使用`move coverage`命令查看代码的覆盖统计和代码覆盖情况.
+* Find a flag that allows you to gather test coverage information, and then play around with using the `move coverage` command to look at coverage statistics and source coverage.
+  
+* 找到可以帮你收集测试覆盖率的参数值，然后尝试使用`move coverage`命令查看代码的覆盖统计和代码覆盖情况。
+
 </details>
 
-## Step 3: 设计自己的`BasicCoin`模块(Module)<span id="Step3"><span>
+## Step 3: 设计自己的`BasicCoin`模块(Module)<span id="Step3"><span>（Designing my `BasicCoin` module）
+
+In this section, we are going to design a module implementing a basic coin and balance interface, where coins can be minted and transferred between balances held under different addresses.
 
 当前章节我们将设计一个模块，实现一个基本的币和钱包接口，通过他们来实现币的挖矿铸造，不同地址之下钱包的转账.
+
+The signatures of the public Move function are the following:
 
 这些公共Move函数的签名如下:
 
@@ -277,13 +364,18 @@ public fun balance_of(owner: address): u64 acquires Balance { ... }
 /// Transfers `amount` of tokens from `from` to `to`.
 public fun transfer(from: &signer, to: address, amount: u64) acquires Balance { ... }
 ```
+The signatures of the public Move function are the following:
 
 接下来再看本模块所需要各数据结构.
 
-Move模块没有自己的数据存储, 而是需要按地址(addresses)检索Move全局存储空间 "global storage"(也是就是我们所说的blockchain state)
-每个地址之下包含有Move模块(代码)和Move数据(resources或values)
+A Move module doesn't have its own storage. Instead, Move "global storage" (what we call our
+blockchain state) is indexed by addresses. Under each address there are Move modules (code) and Move resources (values).
 
-全局存储(global storage)的Rust粗略表示如下:
+Move模块没有自己的数据存储，而是需要按地址（addresses）检索Move全局存储空间 "global storage"（也是就是我们所说的blockchain state）每个地址之下包含有Move模块（代码）和Move数据（resources或values）。
+
+The global storage looks roughly like this in Rust syntax:
+
+全局存储看起来有点像Rust的语法:
 
 ```rust
 struct GlobalStorage {
@@ -292,9 +384,12 @@ struct GlobalStorage {
 }
 ```
 
-地址下的存储资源(Move resource)是一个类型types到取值values的字典.(细心的读者也许已经注意到每个地址,每个类型type下只能对应一个具体值value).
-通过地址addresses索引的方式, 系统方便地提供了一个原生字典. 在我们的`BasicCoin`模块下中，我们定义了每个`Balance`(钱包，余额)表示每个地址下
-持有的币的数量.
+The Move resource storage under each address is a map from types to values. (An observant reader might observe that this means each address can only have one value of each type.) This conveniently provides us a native mapping indexed by addresses. In our `BasicCoin` module, we define the following `Balance` resource representing the number of coins
+each address holds:
+
+地址下的存储资源(Move resource)是一个类型types到取值values的字典。（细心的读者也许已经注意到每个地址,每个类型type下只能对应一个具体值value）。
+通过地址addresses索引的方式, 系统方便地提供了一个原生字典. 在我们的`BasicCoin`模块下中，我们定义了每个`Balance`（钱包，余额）表示每个地址下
+持有的币的数量：
 
 ```
 /// Struct representing the balance of each address.
@@ -303,11 +398,13 @@ struct Balance has key {
 }
 ```
 
-区块链状态(`Move blockchain state`)大致看起来是这样:
+Roughly the Move blockchain state should look like this:
+
+区块链状态（`Move blockchain state`）大致看起来是这样：
 
 ![](diagrams/move_state.png)
 
-#### 进阶主题:
+#### 进阶主题（Advanced topics）：
 <details>
 <summary><code>public(script)</code>函数</summary>
 
