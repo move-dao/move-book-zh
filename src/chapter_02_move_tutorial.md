@@ -34,12 +34,11 @@ like to skip the contents in step 1 through 4, feel free to jump to step 5 since
 before step 5 will be in `step_5` folder. At the end of some steps, we also include
 additional material on more advanced topics.
 
-其中每一步都被设计为自包含的文件夹, 相应名字为`step_x`。 例如，如果您愿意跳过step 1到step 4的内容，可直接跳到step 5,
-因为所有在step 5之前的代码均在在`step_5`文件夹之下. 在个别步骤的结束部分，我们同时还额外引入一下高级主题和材料.
+其中每一步都被设计为自包含的文件夹, 相应名字为`step_x`。 例如，如果您愿意跳过step 1到step 4的内容，可直接跳到step 5，因为所有在step 5之前的代码均在在`step_5`文件夹之下. 在个别步骤的结束部分，我们同时还额外引入一下高级主题和材料。
 
 Now let's get started!
 
-好了，我们现在开始!
+好了，我们现在开始！
 
 ## Step 0: 安装Move开发环境<span id="Step0"><span>（Step 0: Installation）
 
@@ -66,7 +65,7 @@ The script adds environment variable definitions to your `~/.profile` file.
 Include them by running this command:
 
 根据脚本的提示，按顺序安装Move的所有依赖项。
-脚本将会将环境变量写入到`~/.profile`文件中, 执行如下命令使环境变量生效:
+脚本将会将环境变量写入到`~/.profile`文件中, 执行如下命令使环境变量生效：
 
 ```bash
 source ~/.profile
@@ -82,15 +81,14 @@ cargo install --path language/tools/move-cli
 
 You can check that it is working by running the following command:
 
-通过如下命令可以检查move是否已正常可用:
+通过如下命令可以检查move是否已正常可用：
 
 ```bash
 move --help
 ```
-You should see something like this along with a list and description of a
-number of commands:
+You should see something like this along with a list and description of a number of commands:
 
-您应该会看到像下面这样的一些命令 还有 对命令的描述内容 展示出来。
+您应该会看到类似这样的内容以及许多命令的列表和描述：
 
 ```
 move-package
