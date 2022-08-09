@@ -19,7 +19,7 @@
 | 16 | Structs and Resource       | @nosalt99                                      | [@lshoo](https://github.com/lshoo)   |
 | 17 | Constants                  | @nosalt99                                      | [@lshoo](https://github.com/lshoo)   |
 | 18 | Generics                   | 小川                                            | [@lshoo](https://github.com/lshoo)   |
-| 19 | Type Abilities             | 小川                                            |                                      |
+| 19 | Type Abilities             | 小川                                            | [@lshoo](https://github.com/lshoo)   |
 | 20 | Uses and Aliases           | 小川                                            |                                      |
 | 21 | Friends                    | @xiaochuan891102                               |                                      |
 | 22 | Packages                   | @xiaochuan891102                               |                                      |
