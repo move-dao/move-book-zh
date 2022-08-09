@@ -54,7 +54,7 @@ resource type, and destruction of a non-empty vector would violate
 [resource conservation](./chapter_16_structs-and-resources.md).
 
 销毁(释放)向量`v`。如果`v`非空操作将终止。
-*注意*:空的限制是由于`Element`可以是资源类型，而销毁非空的向量会违反[资源保护机制](./chapter_16_structs-and-resources.md).
+*注意*:空的限制是由于`Element`可以是资源类型，而销毁非空的向量会违反[资源保护机制](./chapter_16_structs-and-resources.md)。
 
 ```move
     native public fun destroy_empty<Element>(v: vector<Element>);
@@ -578,7 +578,7 @@ Should be used if a resource did not exist where one was expected. Constructs an
 ---------------------------------------------------------------------------
 Should be used if a resource already existed where one was about to be published. Constructs an abort code with specified `reason` and category `ALREADY_PUBLISHED`. Will abort if `reason` does not fit in 56 bits.
 
-要发布资源的地方已经存在资源时应使用。构造一个具有指定的`reason`和类别`ALREADY_PUBLISHED`的终止代码。如果`reason`不适合56位，将会终止操作。
+要发布资源的地方已经存在资源时使用。构造一个具有指定的`reason`和类别`ALREADY_PUBLISHED`的终止代码。如果`reason`不适合56位，将会终止操作。
 
 ```move
     public fun already_published(reason: u64): u64;
@@ -587,7 +587,7 @@ Should be used if a resource already existed where one was about to be published
 ---------------------------------------------------------------------------
 Should be used if an invalid argument was passed to a function/operation. Constructs an abort code with specified `reason` and category `INVALID_ARGUMENT`. Will abort if `reason` does not fit in 56 bits.
 
-当向函数/操作传递无效参数时应使用。构造一个具有指定的`reason`和类别`INVALID_ARGUMENT`的终止代码。如果`reason`不适合56位，将会终止操作。
+当向函数/操作传递无效参数时使用。构造一个具有指定的`reason`和类别`INVALID_ARGUMENT`的终止代码。如果`reason`不适合56位，将会终止操作。
 
 ```move
     public fun invalid_argument(reason: u64): u64;
@@ -605,7 +605,7 @@ Should be used if a limit on a specific value is reached, e.g., subtracting 1 fr
 ---------------------------------------------------------------------------
 Should be used if an internal error or bug was encountered. Constructs an abort code with specified `reason` and category `INTERNAL`. Will abort if `reason` does not fit in 56 bits.
 
-在遇到内部错误或错误时应使用。构造一个具有指定的`reason`和类别`INTERNAL`的终止代码。如果`reason`不适合56位，将会终止操作。
+在遇到内部错误或错误时使用。构造一个具有指定的`reason`和类别`INTERNAL`的终止代码。如果`reason`不适合56位，将会终止操作。
 
 ```move
     public fun internal(reason: u64): u64;
