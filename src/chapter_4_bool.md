@@ -1,18 +1,18 @@
-# 布尔值(B**ool**)
+# 布尔类型 (Bool)
 
 `bool`is Move's primitive type for boolean `true` and `false`values.
 
-`bool` 是 Move 布尔 ~~原始~~ 基本类型，有`true` 和`false`两个值。
+`bool` 是 Move 布尔基本类型，有 `true` 和 `false` 两个值。
 
-## 字面量(**[Literals](https://move-language.github.io/move/bool.html#literals))**
+## 字面量 (Literals)
 
 Literals for `bool` are either `true` or `false` .
 
-~~字面量的布尔型~~ 布尔字面值 ~~也有~~ 要不是 `true`  ~~和~~ 就是 `false` ~~两个值~~。
+布尔类型字面值只能是 `true` 或者 `false`中的一个 。
 
-## 操作(**[Operations](https://move-language.github.io/move/bool.html#operations)**)
+## 操作 (Operations)
 
-### 逻辑判断(**[Logical](https://move-language.github.io/move/bool.html#logical)**)
+### 逻辑运算 (Logical)
 
 `bool`supports three logical operations:
 
@@ -32,17 +32,17 @@ Literals for `bool` are either `true` or `false` .
 | `!`    | 逻辑非(logical negation)            | `!p` 等价于 `if (p) false else true`  |
 
 
-### 控制流(Control Flow)
+### 控制流 (Control Flow)
 
 `bool`values are used in several of Move's control-flow constructs:
 
 布尔值用于 Move 的多个控制流结构中：
 
-- `[if (bool) { ... }](<https://move-language.github.io/move/conditionals.html>)`
-- `[while (bool) { .. }](<https://move-language.github.io/move/loops.html>)`
-- `[assert!(bool, u64)](<https://move-language.github.io/move/abort-and-assert.html>)`
+- `[if (bool) { ... }](<./chapter_13_conditionals.html>)`
+- `[while (bool) { .. }](<./chapter_14_loops.html>)`
+- `[assert!(bool, u64)](<./chapte_12_abort-and-assert.html>)`
 
-## 所有权(Ownership)
+## 所有权 (Ownership)
 
 As with the other scalar values built-in to the language, boolean values are implicitly copyable, meaning they can be copied without an explicit instruction such as `[copy](<https://move-language.github.io/move/variables.html#move-and-copy>).`
 

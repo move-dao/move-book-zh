@@ -15,7 +15,7 @@ important values (such as a token).
 By default, structs are linear and ephemeral. By this we mean that they: cannot be copied, cannot be
 dropped, and cannot be stored in global storage. This means that all values have to have ownership
 transferred (linear) and the values must be dealt with by the end of the program's execution
-(ephemeral). We can relax this behavior by giving the struct [abilities](./abilities.md) which allow
+(ephemeral). We can relax this behavior by giving the struct [abilities](./chapter_19_abilities.md) which allow
 values to be copied or dropped and also to be stored in global storage or to define global storage
 schemas.
 
@@ -49,10 +49,10 @@ struct Foo { x: Foo }
 
 As mentioned above: by default, a struct declaration is linear and ephemeral. So to allow the value
 to be used with certain operations (that copy it, drop it, store it in global storage, or use it as
-a storage schema), structs can be granted [abilities](./abilities.md) by annotating them with
+a storage schema), structs can be granted [abilities](./chapter_19_abilities.md) by annotating them with
 `has <ability>`:
 
-如上所述：默认情况下，结构体声明是线性和短暂的。因此，为了允许值用于某些操作(复制、删除、存储在全局存储中或用作存储模式)，结构体可以通过 `has <ability>` ~~:注释~~ 标注来授予它们[能力](./chapter_19_abilities.md)。
+如上所述：默认情况下，结构体声明是线性和短暂的。因此，为了允许值用于某些操作(复制、删除、存储在全局存储中或用作存储模式)，结构体可以通过 `has <ability>` 标注来授予它们[能力](./chapter_19_abilities.md)。
 
 ```move=
 address 0x2 {
@@ -62,7 +62,7 @@ address 0x2 {
 }
 ```
 
-For more details, see the [annotating structs](./abilities.md#annotating-structs) section.
+For more details, see the [annotating structs](./chapter_19_abilities.md#annotating-structs) section.
 
 有关更多详细信息，请参阅 [注释结构体](./chapter_19_abilities.md#annotating-structs) 部分。
 
@@ -71,7 +71,7 @@ For more details, see the [annotating structs](./abilities.md#annotating-structs
 Structs must start with a capital letter `A` to `Z`. After the first letter, constant names can
 contain underscores `_`, letters `a` to `z`, letters `A` to `Z`, or digits `0` to `9`.
 
-结构体必须以大写字母A到Z开头。在第一个字母之后，常量名称可以包含下划线_、字母a到z、字母A到Z或数字0到9。
+结构体必须以大写字母 `A` 到 `Z` 开头。在第一个字母之后，常量名称可以包含下划线 `_`、字母 `a` 到 `z`、字母 `A` 到 `Z` 或数字 `0`到 `9`。
 
 ```move
 struct Foo {}
@@ -82,7 +82,7 @@ struct B_a_z_4_2 {}
 This naming restriction of starting with `A` to `Z` is in place to give room for future language
 features. It may or may not be removed later.
 
-这种从A到Z开头的命名限制已经生效，这是为未来的move语言特性留出空间。~~它之后可能会被删除，也可能不会被删除~~ 此限制未来可能会保留或删除。
+这种从 `A` 到 `Z` 开头的命名限制已经生效，这是为未来的move语言特性留出空间。此限制未来可能会保留或删除。
 
 ## 使用结构体 (Using Structs)
 
@@ -198,7 +198,7 @@ address 0x2 {
 The `&` and `&mut` operator can be used to create references to structs or fields. These examples
 include some optional type annotations (e.g., `: &Foo`) to demonstrate the type of operations.
 
-`&` 和 `&mut` 运算符可用于创建对结构或字段的引用。这些例子包括一些可选的类型 ~~注释~~ 标注(例如：`: &Foo`)来演示操作的类型。
+`&` 和 `&mut` 运算符可用于创建对结构或字段的引用。这些例子包括一些可选的类型标注(例如：`: &Foo`)来演示操作的类型。
 
 ```move=
 let foo = Foo { x: 3, y: true };
@@ -249,7 +249,7 @@ let foo2: Foo = *&bar.foo;
 If the field is implicitly copyable, the dot operator can be used to read fields of a struct without
 any borrowing. (Only scalar values with the `copy` ability are implicitly copyable.)
 
-如果该字段可以隐式复制，则可以使用点运算符读取结构的字段，而无需任何借 ~~款~~ 用(只有具有 ~~复制~~ `copy` 能力的标量值才能隐式复制)。
+如果该字段可以隐式复制，则可以使用点运算符读取结构的字段，而无需任何借用(只有具有 `copy` 能力的标量值才能隐式复制)。
 
 ```move=
 let foo = Foo { x: 3, y: true };
@@ -259,7 +259,7 @@ let y = foo.y;  // y == true
 
 Dot operators can be chained to access nested fields.
 
-点运算符可以 ~~链接起来~~ 链式访问嵌套字段。
+点运算符可以链式访问嵌套字段。
 
 ```move=
 let baz = Baz { foo: Foo { x: 3, y: true } };
@@ -285,7 +285,7 @@ with the explicit syntax `*&`
 In addition reading from fields, the dot syntax can be used to modify fields, regardless of the
 field being a primitive type or some other struct
 
-这个设计决定背后的原因是复制一个向量或另一个结构可能是一个昂贵的操作。对于程序员来说使用显式语法 `*&` 注意到这个复制很重要，同时引起其他人 ~~也让注意到~~ 重视。
+这个设计决定背后的原因是复制一个向量或另一个结构可能是一个昂贵的操作。对于程序员来说使用显式语法 `*&` 注意到这个复制很重要，同时引起其他人重视。
 
 除了从字段中读取之外，点语法还可用于修改字段，不管字段是原始类型还是其他结构体
 
@@ -377,7 +377,7 @@ ephemeral. This means they cannot be copied or dropped. This property can be ver
 modeling real world resources like money, as you do not want money to be duplicated or get lost in
 circulation.
 
-正如上面 [Defining Structs](#defining-structs) 中提到的，结构体默认是线性的，并且短暂的。这意味着它们不能被复制或删除。此属性 ~~在模拟金钱等现实世界的资源下~~ 对于现实世界中的资源(例如货币(money))的建模非常有用，因为你不希望 ~~金钱~~ 货币被复制或流通时丢失。
+正如上面 [Defining Structs](#defining-structs) 中提到的，结构体默认是线性的，并且短暂的。这意味着它们不能被复制或删除。此属性对于现实世界中的资源(例如货币(money))的建模非常有用，因为你不希望货币被复制或流通时丢失。
 
 ```move=
 address 0x2 {
@@ -432,7 +432,7 @@ languages:
 
 回想一下，您只能在定义资源的模块中解构资源。这可以用来在系统中强制执行某些不变量，例如货币守恒。
 
-另一方面，如果您的结构不代表有价值的东西，您可以添加功能 `copy` 和 `drop` 来获得一个结构体，这 ~~在~~ 感觉可能会与其他编程语言 ~~中可能会~~ 更相似
+另一方面，如果您的结构不代表有价值的东西，您可以添加功能 `copy` 和 `drop` 来获得一个结构体，这感觉可能会与其他编程语言更相似.
 
 ```move=
 address 0x2 {
@@ -457,9 +457,9 @@ address 0x2 {
 ## 在全局存储中存储资源 (Storing Resources in Global Storage)
 
 Only structs with the `key` ability can be saved directly in
-[persistent global storage](./global-storage-operators.md). All values stored within those `key`
+[persistent global storage](./chapter_25_global-storage-operators.md). All values stored within those `key`
 structs must have the `store` abilities. See the [ability](./abilities] and
-[global storage](./global-storage-operators.md) chapters for more detail.
+[global storage](./chapter_25_global-storage-operators.md) chapters for more detail.
 
 只有具有 `key` 能力的结构体才可以直接保存在[持久化全局存储](./chapter_24_global-storage-operators.md)。存储在这些 `key` 中的所有结构体的值必须具有 `store` 能力。请参阅 [能力(abilities)](./chapter_19_abilities] 和[全局存储](./chapter_24_global-storage-operators.md) 章节了解更多详细信息
 
@@ -468,7 +468,7 @@ structs must have the `store` abilities. See the [ability](./abilities] and
 Here are two short examples of how you might use structs to represent valuable data (in the case of
 `Coin`) or more classical data (in the case of `Point` and `Circle`)
 
-以下是两个简短的示例，说明如何使用结构体来表示有价值的数据(例如 `Coin(代币)`)或更经典的数据(~~在点和圆的关系~~ 例如：`Point` 和 `Circle`)：
+以下是两个简短的示例，说明如何使用结构体来表示有价值的数据(例如 `Coin(代币)`)或更经典的数据(例如：`Point` 和 `Circle`)：
 
 ### Example 1: Coin
 
@@ -489,7 +489,7 @@ address 0x2 {
 
         // 我们不希望代币被复制，因为这会复制这笔“钱”，
         // 因此，我们不赋予结构体 `copy` 能力。
-        // 同样，我们不希望程序员销毁硬币，所以我们不给结构体 `drop` 能力
+        // 同样，我们不希望程序员销毁硬币，所以我们不给结构体 `drop` 能力，
         // 然而，我们*希望*模块的用户能够将此代币存储在持久的全局存储中，所以我们授予结构体 `store` 能力。
         // 此结构体仅位于全局存储内的其他资源中，因此我们不会赋予该结构体 `key` 能力。
         struct Coin has store {
@@ -498,7 +498,7 @@ address 0x2 {
 
         public fun mint(value: u64): Coin {
             // You would want to gate this function with some form of access control to prevent anyone using this module from minting an infinite amount of coins
-            // 你可能希望通过某种形式的访问控制来关闭此功能，以防止使用此模块的任何人铸造无限数量的 ~~硬~~ 货币
+            // 你可能希望通过某种形式的访问控制来关闭此功能，以防止使用此模块的任何人铸造无限数量的货币
             Coin { value }
         }
 

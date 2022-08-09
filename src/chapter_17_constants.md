@@ -5,7 +5,7 @@ Constants are a way of giving a name to shared, static values inside of a `modul
 The constant's must be known at compilation. The constant's value is stored in the compiled module
 or script. And each time the constant is used, a new copy of that value is made.
 
-常量是一种 ~~“为模块”或“脚本”~~  对`module` 或 `script` 内的共享静态值进行命名的方法(类似变量，但值不变，译者注)。
+常量是一种对 `module` 或 `script` 内的共享静态值进行命名的方法(类似变量，但值不变，译者注)。
 
 常量必须在编译时知道。常量的值存储在编译模块或脚本中。每次使用该常量时，都会生成该值的新副本。
 
@@ -60,14 +60,14 @@ const ADDRESS_42: address = @0x42;
 ```
 
 Even though you can use letters `a` to `z` in a constant. The
-[general style guidelines](./coding-conventions.md) are to use just uppercase letters `A` to `Z`,
+[general style guidelines](./chapter_27_coding-conventions.md) are to use just uppercase letters `A` to `Z`,
 with underscores `_` between each word.
 
 虽然你可以在常量中使用字母 `a` 到 `z`。但[通用风格指南](./chapter_27_coding-conventions.md) 只使用大写字母 `A` 到 `Z`，每个单词之间有下划线`_`。
 
 This naming restriction of starting with `A` to `Z` is in place to give room for future language features. It may or may not be removed later.
 
-这种以 `A` 到 `Z` 开头的命名限制是为了给未来的语言特性留出空间。~~以后可能会也可能不会删除这种限制~~ 此限制未来可能会保留或删除。
+这种以 `A` 到 `Z` 开头的命名限制是为了给未来的语言特性留出空间。此限制未来可能会保留或删除。
 
 ## 可见性 (Visibility)
 
@@ -81,7 +81,7 @@ module.
 Currently, constants are limited to the primitive types `bool`, `u8`, `u64`, `u128`, `address`, and
 `vector<u8>`. Future support for other `vector` values (besides the "string"-style literals) will come later.
 
-目前，常量仅限于原始类型 `bool`、`u8`、`u64`、`u128`、`address` 和`vector<u8>`。其他 `vector` 值(除了“string”风格的字面量)将晚一点被支持。
+目前，常量仅限于原始类型 `bool`、`u8`、`u64`、`u128`、`address` 和`vector<u8>`。其他 `vector` 值(除了“string”风格的字面量)将在不远的将来获得支持。
 
 ### 值 (Values)
 
@@ -105,7 +105,7 @@ able to reduce the expression to a value at compile time.
 Currently, equality operations, all boolean operations, all bitwise operations, and all arithmetic
 operations can be used.
 
-除了字面量，常量还可以包含更复杂的表达式，只要编译器 ~~是~~ 能够在编译时将表达式 ~~简化~~ 归纳(reduce)为一个值。
+除了字面量，常量还可以包含更复杂的表达式，只要编译器能够在编译时将表达式归纳(reduce)为一个值。
 
 目前，相等运算、所有布尔运算、所有按位运算和所有算术运算可以使用。
 

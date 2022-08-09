@@ -7,7 +7,7 @@ the bytecode), and as a result they are very limited: they can only appear in ex
 in the return position for a function); they cannot be bound to local variables; they cannot be
 stored in structs; and tuple types cannot be used to instantiate generics.
 
-Move并不完全支持元组，因为人们可能期望来自另一种语言的元组将它们作为一 ~~级~~ 等值。然而，为了支持多个返回值，Move具有类似元组的表达式。这些表达式在运行时不会产生具体的值(字节码中没有元组)，因此它们非常有限：它们只能出现在表达式中(通常在函数的返回位置)；它们不能绑定到局部变量；它们不能存储在结构中；元组类型不能用于实例化泛型。
+Move并不完全支持元组，因为人们可能期望来自另一种语言的元组将它们作为一等值。然而，为了支持多个返回值，Move具有类似元组的表达式。这些表达式在运行时不会产生具体的值(字节码中没有元组)，因此它们非常有限：它们只能出现在表达式中(通常在函数的返回位置)；它们不能绑定到局部变量；它们不能存储在结构中；元组类型不能用于实例化泛型。
 
 Similarly, unit `()` is a type created by the Move source language in order to be expression based.
 The unit value `()` does not result in any runtime value. We can consider unit`()` to be an empty
@@ -19,7 +19,7 @@ It might feel weird to have tuples in the language at all given these restrictio
 most common use cases for tuples in other languages is for functions to allow functions to return
 multiple values. Some languages work around this by forcing the users to write structs that contain
 the multiple return values. However in Move, you cannot put references inside of
-[structs](./structs-and-resources.md). This required Move to support multiple return values. These
+[structs](./chapter_16_structs-and-resources.md). This required Move to support multiple return values. These
 multiple return values are all pushed on the stack at the bytecode level. At the source level, these
 multiple return values are represented using tuples.
 
@@ -37,7 +37,7 @@ Tuples are created by a comma separated list of expressions inside of parenthese
 元组是由括号内以逗号分隔的表达式列表创建的
 | 语法 | 类型 | 描述 |
 | ------ | ------ | ------ |
-| `()` | `(): ()` | Unit、空元组 或 0元素元组 ~~0~~
+| `()` | `(): ()` | Unit、空元组 或 0元素元组
 | `(e1, ..., en)` | `(e1, ..., en): (T1, ..., Tn)` 其中 `e_i: Ti s.t. 0 < i <= n` and `n > 0` |带有n个元素的元组
 
 Note that `(e)` does not have type `(e): (t)`, in other words there is no tuple with one element. If
@@ -124,7 +124,7 @@ address 0x42 {
 }
 ```
 
-For more details, see [Move Variables](./variables.md).
+For more details, see [Move Variables](./chapter_10_variables.md).
 
 详情可参阅 [变量](./chapter_10_variables.md).
 
