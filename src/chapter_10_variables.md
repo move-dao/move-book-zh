@@ -188,7 +188,7 @@ variables, but the example is still helpful for understanding this problem.
 `let` can introduce more than one local at a time using tuples. The locals declared inside the
 parenthesis are initialized to the corresponding values from the tuple.
 
-`let` 可以使用元组一次引入多个局部变量。在括号里面声明的局部变量会被初始化为元组中的 ~~相~~ 对应值。
+`let` 可以使用元组一次引入多个局部变量。在括号里面声明的局部变量会被初始化为元组中的对应值。
 
 ```move
 let () = ();

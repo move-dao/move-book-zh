@@ -31,7 +31,7 @@ an abort there is no need to worry about backing out changes. While this approac
 flexibility, it is incredibly simple and predictable.
 
 幸运的是，在Move里事务的计算要么完全执行要么完全不执行。这意味着只有在事务成功时，任何对全局存储状态的改变才会被一并执行。
-由于这种对于所有更改的事务承诺，在 `abort` 之后我们不需要担心去回滚任何更改。尽管这种方法缺少灵活性，它还是 ~~难以置信的~~ 非常简单和可预测的。
+由于这种对于所有更改的事务承诺，在 `abort` 之后我们不需要担心去回滚任何更改。尽管这种方法缺少灵活性，它还是非常简单和可预测的。
 
 
 Similar to [`return`](./functions.md), `abort` is useful for exiting control flow when some condition cannot be met.
@@ -83,7 +83,7 @@ Since the operation is a macro, it must be invoked with the `!`. This is to conv
 arguments to `assert` are call-by-expression. In other words, `assert` is not a normal function and
 does not exist at the bytecode level. It is replaced inside the compiler with
 
-由于该操作是一个宏，因此必须使用 `!` 调用它。这是为了 ~~传~~ 表达`assert` 的参数属于表达式调用(call-by-expression)。换句话说，`assert` 不是一个正常的函数，并且在字节码(bytecode)级别不存在。它在编译器内部被替换为以下代码
+由于该操作是一个宏，因此必须使用 `!` 调用它。这是为了表达 `assert` 的参数属于表达式调用(call-by-expression)。换句话说，`assert` 不是一个正常的函数，并且在字节码(bytecode)级别不存在。它在编译器内部被替换为以下代码
 
 ```move
 if (condition) () else abort code
@@ -120,7 +120,7 @@ fun check_vec(v: &vector<u64>, bound: u64) {
 Note that because the operation is replaced with this `if-else`, the argument for the `code` is not
 always evaluated. For example:
 
-请注意，因为此操作被替换为 `if-else`，这段 `代码` 的参数不是总是被 ~~评估~~ 执行(evaluated)。例如：
+请注意，因为此操作被替换为 `if-else`，这段 `代码` 的参数不是总是被执行(evaluated)。例如：
 
 ```move
 assert!(true, 1 / 0)
@@ -136,7 +136,7 @@ if (true) () else (1 / 0)
 
 So the arithmetic expression is never evaluated!
 
-所以这个算术表达式永远不会被 ~~评估~~ 执行(evaluated)！
+所以这个算术表达式永远不会被执行(evaluated)！
 
 ### Abort codes in the Move VM (Move虚拟机中的中止代码)
 
@@ -157,7 +157,7 @@ pieces of information:
 
 For example
 
-如果 ~~成功~~ 执行到 `abort` 代码，虚拟机将指示错误。该错误中包含两块信息：
+如果执行到 `abort` 代码，虚拟机将指示错误。该错误中包含两块信息：
 
 - 发生中止的模块(地址和名称)
 - 错误状态码。
@@ -189,9 +189,9 @@ In this example, the module has two separate error codes used in multiple functi
 
 如果一个事务，例如上面的脚本 `always_aborts` 调用了 `0x2::example::aborts`，虚拟机将产生一个指示模块 `0x2::example` 和错误状态码 `42` 的错误。
 
-这在一个模块内将多个中止 ~~程序~~ 功能组合起来会很有用。
+这在一个模块内将多个中止功能组合起来会很有用。
 
-在以下示例中，~~目标~~ 模块有两个单独的错误状态码，用于 ~~不同的~~ 多个函数
+在以下示例中，模块有两个单独的错误状态码，用于多个函数
 
 ```move=
 address 0x42 {
@@ -234,7 +234,7 @@ control flow, so they never need to evaluate to the value of that type.
 
 The following are not useful, but they will type check
 
-`abort i` 表达式可以有任何类型！这是因为这两种构造都 ~~脱离~~ 打破了正常控制流，因此他们永远不需要 ~~评估~~ 计算该类型的值。
+`abort i` 表达式可以有任何类型！这是因为这两种构造都打破了正常控制流，因此他们永远不需要计算该类型的值。
 
 以下的示例不是特别有用，但它们会做类型检查
 
@@ -245,7 +245,7 @@ let y: address = abort 0;
 This behavior can be helpful in situations where you have a branching instruction that produces a
 value on some branches, but not all. For example:
 
-在您有一个分支指令，并且这个指令会产生某些分支(不是全部)的值的时候，这种 ~~特性~~ 行为会非常有用。例如：
+在您有一个分支指令，并且这个指令会产生某些分支(不是全部)的值的时候，这种行为会非常有用。例如：
 
 ```move
 let b =

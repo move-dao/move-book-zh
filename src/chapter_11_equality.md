@@ -14,8 +14,8 @@ Move 支持两种等式操作： `==` 和 `!=`
 
 | 语法 | 操作 | 描述                                                                 |
 | ------ | --------- | --------------------------------------------------------------------------- |
-| `==`   | 相等     | 如果两个操作数(operands)值相同，返回 `true` , ~~如果不同，~~ 否则返回 `false`  |
-| `!=`   | 不相等 | 如果两个操作数(operands)值不相同，返回 `true` , ~~如果相同，~~ 否则返回 `false`  |
+| `==`   | 相等     | 如果两个操作数(operands)值相同，返回 `true` , 否则返回 `false`  |
+| `!=`   | 不相等 | 如果两个操作数(operands)值不相同，返回 `true` , 否则返回 `false`  |
 
 ### 类型校验 (Typing)
 
@@ -70,7 +70,7 @@ When comparing [references](./references.md), the type of the reference (immutab
 not matter. This means that you can compare an immutable `&` reference with a mutable one `&mut` of
 the same underlying type.
 
-当比较[引用变量](./chapter_8_references.md)时，引用的类别(不可变更的或可变更的(immutable or mutable))无关紧要。这意味着我们可以拿一个不可变更的 `&` 引用变量和另一个有相同 ~~基础~~ 相关类型的可变更的 `&mut `引用变量进行比较。
+当比较[引用变量](./chapter_8_references.md)时，引用的类别(不可变更的或可变更的(immutable or mutable))无关紧要。这意味着我们可以拿一个不可变更的 `&` 引用变量和另一个有相同相关类型的可变更的 `&mut ` 引用变量进行比较。
 
 ```move
 let i = &0;
@@ -97,7 +97,7 @@ i == i; // `true`
 ```
 But again, the underlying type must be the same type
 
-但 ~~是~~ 同样的，我们需要两边操作数的类型一致
+但同样的，我们需要两边操作数的类型一致
 
 ```move
 let i = &0;
@@ -115,7 +115,7 @@ ownership must be transferred by the end of the function, and such values can on
 within their declaring module. If these were used directly with either equality `==` or non-equality `!=`, 
 the value would be destroyed which would break [`drop` ability](./abilities.md) safety guarantees!
 
-`==` 和 `!=` 会在比较不同变量的时候 ~~提取~~ 消耗 (consume)它们所包含的值，所以 Move 的类型系统会强制要求这些类型含有[`drop` 能力](./chapter_19_abilities.md)。~~尽可能地~~回想一下，变量在没有[`drop` 能力](./chapter_19_abilities.md)时，所有权必须在函数结束前进行转移，而且这些值只能在其声明模块中被明确销毁(explicitly destroyed)。如果它们被直接使用于等式 `==` 或不等式 `!=` ，其值会被销毁并且这会打破[`掉落` 能力](./chapter_19_abilities.md)的安全保证！
+`==` 和 `!=` 会在比较不同变量的时候消耗 (consume)它们所包含的值，所以 Move 的类型系统会强制要求这些类型含有[`drop` 能力](./chapter_19_abilities.md)。回想一下，变量在没有[`drop` 能力](./chapter_19_abilities.md)时，所有权必须在函数结束前进行转移，而且这些值只能在其声明模块中被明确销毁(explicitly destroyed)。如果它们被直接使用于等式 `==` 或不等式 `!=` ，其值会被销毁并且这会打破[`drop` 能力](./chapter_19_abilities.md)的安全保证！
 
 ```move=
 address 0x42 {
@@ -171,7 +171,7 @@ use_two_foos(s1, s2);
 This code is perfectly acceptable (assuming `Foo` has [`drop`](./abilities.md)), just not efficient.
 The highlighted copies can be removed and replaced with borrows
 
-以上代码是完全可以接受的(假设`Foo`具备[`drop`](./chapter_19_abilities.md)能力)，但它不是最有效的写法。~~被高亮的副本可以被借值所替换~~ 突出显示的副本可以删除并替换为借用。
+以上代码是完全可以接受的(假设`Foo`具备[`drop`](./chapter_19_abilities.md)能力)，但它不是最有效的写法。突出显示的副本可以删除并替换为借用。
 
 ```move=
 let v1: vector<u8> = function_that_returns_vector();
@@ -189,4 +189,4 @@ use_two_foos(s1, s2);
 
 The efficiency of the `==` itself remains the same, but the `copy`s are removed and thus the program is more efficient.
 
-`==`本身的效率还是和之前一样，但是 `copy` 操作被移除后整个程序会比之前更有效率。
+`==` 本身的效率还是和之前一样，但是 `copy` 操作被移除后整个程序会比之前更有效率。

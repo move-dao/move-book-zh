@@ -1,4 +1,4 @@
-# 地址(Address)
+# 地址 (Address)
 
 `address` is a built-in type in Move that is used to represent locations (sometimes called accounts) in global storage. An `address` value is a 128-bit (16 byte) identifier. At a given address, two things can be stored: [Modules](./chapter_1_modules-and-scripts.md) and [Resources](./chapter_16_structs-and-resources.md).
 
@@ -6,13 +6,13 @@ Although an `address` is a 128 bit integer under the hood, Move addresses are in
 
 You can use runtime address values (values of type `address`) to access resources at that address. You *cannot* access modules at runtime via address values.
 
-`地址(address)` 是Move中的内置类型，用于表示全局存储中的的位置(有时称为账户)。`地址(address)`值是一个128位(16字节)标识符。给定一个地址，可以存储两样东西：[模块(Modules)](./chapter_1_modules-and-scripts.md)和[资源(Resources)](./chapter_16_structs-and-resources.md)。
+`地址(address)` 是Move中的内置类型，用于表示全局存储中的的位置(有时称为账户)。`地址(address)` 值是一个128位(16字节)标识符。给定一个地址，可以存储两样东西：[模块(Modules)](./chapter_1_modules-and-scripts.md)和[资源(Resources)](./chapter_16_structs-and-resources.md)。
 
-尽管`地址(address)`实际上是一个128位整数，但Move中的地址是故意不透明的---它们不能从整数创建，它们不支持算术运算，也不能修改。即使可能有一些有趣的程序会使用这种特性(例如，C中的指针算法实现了类似剑走偏锋的功能(niche))，但 Move 不允许这种动态行为，因为它从头开始就被设计为支持静态验证。
+尽管 `地址(address)` 实际上是一个128位整数，但Move语言中的地址是故意不透明的---它们不能从整数创建，它们不支持算术运算，也不能修改。即使可能有一些有趣的程序会使用这种特性(例如，C中的指针算法实现了类似剑走偏锋的功能(niche))，但 Move语言不允许这种动态行为，因为它从头开始就被设计为支持静态验证。
 
-你可以使用运行时地址值(`address` 类型的值)来访问该地址处的资源。 但*无法*在运行时通过地址值访问模块。
+你可以使用运行时地址值(`address` 类型的值)来访问该地址处的资源。 但 *无法* 在运行时通过地址值访问模块。
 
-## 地址及其语法(Addresses and Their Syntax)
+## 地址及其语法 (Addresses and Their Syntax)
 
 Addresses come in two flavors, named or numerical. The syntax for a named address follows the
 same rules for any named identifier in Move. The syntax of a numerical address is not restricted
@@ -20,7 +20,7 @@ to hex-encoded values, and any valid [`u128` numerical value](./chapter_3_intege
 address value, e.g., `42`, `0xCAFE`, and `2021` are all valid numerical address
 literals.
 
-地址有两种 ~~类型~~ 形式，命名的或数值的。命名地址的语法遵循Move命名标识符的规则。数值地址的语法不受十六进制编码值的限制, 任何有效的[u128数值](./chapter_3_integers.md) 都可以用作地址值。例如, `42`, `0xCFAE`, 和 `2021`都是合法有效的数值地址字面值(literals)。
+地址有两种形式：命名的或数值的。命名地址的语法遵循Move命名标识符的规则。数值地址的语法不受十六进制编码值的限制, 任何有效的[u128数值](./chapter_3_integers.md) 都可以用作地址值。例如, `42`, `0xCFAE`, 和 `2021` 都是合法有效的数值地址字面值(literals)。
 
 To distinguish when an address is being used in an expression context or not, the
 syntax when using an address differs depending on the context where it's used:
@@ -30,15 +30,15 @@ syntax when using an address differs depending on the context where it's used:
 
 为了区分何时在表达式上下文中使用地址，使用地址时的语法根据使用地址的上下文而有所不同:
 
-* 当地址被用作表达式时，地址必须以`@`字符为前缀, 例如：`@`[`<numerical_value>`] 或 `@<named_address_identifier>`.
+* 当地址被用作表达式时，地址必须以 `@` 字符为前缀, 例如：`@`[`<numerical_value>`] 或 `@<named_address_identifier>`.
 
-* 在表达式上下文之外，地址可以不带前缀字符`@`。 例如， [`<numerical_value>`] 或 `<named_address_identifier>`
+* 在表达式上下文之外，地址可以不带前缀字符 `@`。 例如， [`<numerical_value>`] 或 `<named_address_identifier>`
 
 In general, you can think of `@` as an operator that takes an address from being a namespace item to being an expression item.
 
-通常，可以将`@`视为将地址从命名空间项变为表达式项的运算符.
+通常，可以将 `@` 视为将地址从命名空间项变为表达式项的运算符.
 
-## 命名地址(Named Addresses)
+## 命名地址 (Named Addresses)
 
 Named addresses are a feature that allow identifiers to be used in place of
 numerical values in any spot where addresses are used, and not just at the
@@ -58,9 +58,9 @@ distinction is discussed in more detail in the section on [Modules and
 Scripts](./modules-and-scripts.md).
 
 命名地址仅存在于源语言级别，并将在字节码级别完全替代它们的值。因此，模块和模块成员必须通过模块的命名地址而不是编译期间分配给命名地址的数值来访问，例如：
-`use my_addr::foo` 不等于 `use 0x2::foo`, 即使Move程序编译时将`my_addr`设置成`0x2`。 这个区别在[模块和脚本(Modules and Scripts)](./chapter_1_modules-and-scripts.md) 一节中有更详细的讨论。
+`use my_addr::foo` 不等于 `use 0x2::foo`, 即使Move程序编译时将 `my_addr` 设置成 `0x2`。 这个区别在[模块和脚本(Modules and Scripts)](./chapter_1_modules-and-scripts.md) 一节中有更详细的讨论。
 
-### 例子(Examples)
+### 例子 (Examples)
 
 ```move
 let a1: address = @0x1; // shorthand for 0x00000000000000000000000000000001
@@ -82,7 +82,7 @@ module std::other_module {  // Can use a named address as a namespace item to de
 }
 ```
 
-## 全局存储操作(Global Storage Operations)
+## 全局存储操作 (Global Storage Operations)
 
 The primary purpose of `address` values are to interact with the global storage operations.
 
@@ -90,17 +90,17 @@ The primary purpose of `address` values are to interact with the global storage 
 
 The only global storage operation that *does not* use `address` is `move_to`, which uses [`signer`](./signer.md).
 
-`地址`值主要用来与全局存储操作进行交互。
+`address` 值主要用来与全局存储操作进行交互。
 
-`地址`值被用来与`exists`, `borrow_global`, `borrow_global_mut`和`move_from`操作([operations](./chapter_24_global-storage-operators.md))一起使用
+`address` 值被用来与 `exists`, `borrow_global`, `borrow_global_mut` 和 `move_from` 操作([operations](./chapter_24_global-storage-operators.md))一起使用
 
-只有`move_to`全局存储操作不使用`地址`, 使用[`signer`](./chapter_7_signer.md).
+只有 `move_to` 全局存储操作不使用 `address`, 使用[`signer`](./chapter_7_signer.md).
 
 ## 所有权(Ownership)
 
 As with the other scalar values built-in to the language, `address` values are implicitly copyable, meaning they can be copied without an explicit instruction such as [`copy`](./variables.md#move-and-copy).
 
-与Move语言内置的其他标量值一样，`地址` 值是隐式可复制的，这意味着它们可以在没有明确指令如[`copy`](./chapter_10_variables.md#move-and-copy)的情况下复制。
+与Move语言内置的其他标量值一样，`address` 值是隐式可复制的，这意味着它们可以在没有明确指令如[`copy`](./chapter_10_variables.md#move-and-copy)的情况下复制。
 
 
 

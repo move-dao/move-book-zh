@@ -14,7 +14,7 @@ An `if` expression can optionally include an `else` clause to specify another ex
 
 条件语句(condition)必须是 `bool` 类型的表达式.
 
-`if` 语句可 ~~以有~~ 选 ~~择地~~ 包含 `else` 子句，以指定当条件(condition)为 false 时要执行的另一个代码块.
+`if` 语句可选包含 `else` 子句，以指定当条件(condition)为 false 时要执行的另一个代码块.
 
 ```move
 if (y <= 10) y = y + 1 else y = 10
@@ -26,7 +26,7 @@ The conditional expressions may produce values so that the `if` expression has a
 
 无论是"true"分支还是"false"分支都会被执行，但不会同时执行.其中任何一个分支都可以是单行代码或代码块
 
-条件 ~~语句~~ 表达式会产生值，~~以便得到~~ 所以 `if` ~~语句的执行~~ 表达式会有一个结果。
+条件表达式会产生值，所以 `if` 表达式会有一个结果。
 
 ```move
 let z = if (x < 100) x else 100;
@@ -52,7 +52,7 @@ if (maximum >= 10) maximum;
 
 If the `else` clause is not specified, the false branch defaults to the unit value. The following are equivalent:
 
-如果`else`子句未定义，false分支默认为 ~~单位值~~ unit 。下面的例子是相等价的:
+如果`else`子句未定义，false分支默认为 unit 。下面的例子是相等价的:
 
 ```move
 if (condition) true_branch // implied default: else ()
@@ -61,7 +61,7 @@ if (condition) true_branch else ()
 
 Commonly, [`if` expressions](./conditionals.md) are used in conjunction with expression blocks.
 
-一般来说, [`if` 表达式](./chapter_13_conditionals.html)与 ~~代码~~ 多个表达式块结合 ~~一起~~ 使用.
+一般来说, [`if` 表达式](./chapter_13_conditionals.html)与多个表达式块结合使用.
 
 ```move
 let maximum = if (x > y) x else y;
