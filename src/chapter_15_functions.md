@@ -97,8 +97,7 @@ Note that since we cannot declare a script to be a friend of a module, the funct
 
 `public(friend)` 可见性修饰符是一种比 `public` 修饰符限制更严格的形式，可以更好地控制函数的使用位置。 `public(friend)` 函数可以通过以下方式调用：
 
-- 在同一模块中定义的其他函数，或者
-- 在 **friend list** 中明确指定的模块中定义的函数(请参阅 [Friends](./chapter_21_friends.md) 了解如何指定友元(friends)列表)。
+- 在同一模块中定义的其他函数，或者在 **friend list** 中明确指定的模块中定义的函数(请参阅 [Friends](./chapter_21_friends.md) 了解如何指定友元(friends)列表)。
 
 请注意，由于我们不能将脚本声明为模块的友元关系，因此脚本中定义的函数永远不能调用 `public(friend)` 函数。
 
@@ -146,7 +145,7 @@ Note though, an `entry` function _can_ still be called by other Move functions. 
 
 但请注意，`entry` 函数仍可被其他 Move 函数调用。因此，虽然它们 _可以_ 作为 Move 程序的入口，但它们并不局限于这种用法。
 
-例如
+例如：
 
 ```move=
 address 0x42 {
@@ -528,7 +527,7 @@ For more details, see [Move generics](./generics.md).
 
 The result of a function, its "return value", is the final value of its function body. For example
 
-一个函数的结果，也就是它的“返回值”，是函数体的最后一个值。例如“
+一个函数的结果，也就是它的“返回值”，是函数体的最后一个值。例如：
 
 ```move=
 fun add(x: u64, y: u64): u64 {
