@@ -594,7 +594,7 @@ There are two `TODO`s in our module, left as exercises for the reader:
 - Finish implementing the `publish_balance` method.
 - Implement the `deposit` method.
 
-在模块中有两个TODOs，留给读者练习：
+在模块中有两个 TODOs，留给读者练习：
 - 完成 `publish_balance` 方法的实现。
 - 实现 `deposit` 方法。
 
@@ -608,21 +608,23 @@ The solution to this exercise can be found in [`step_4_sol`](./step_4_sol) folde
 - 如果我们在余额中存入太多代币会发生什么？
 
 
-## Step 5: 在模块`BasicCoin`中添加和使用单元测试<span id="Step5"><span>（Adding and using unit tests with the `BasicCoin` module<span id="Step5"><span>）
+## Step 5: 在模块 `BasicCoin` 中添加和使用单元测试<span id="Step5"><span> (Adding and using unit tests with the `BasicCoin` module<span id="Step5"><span>)
 
 In this step we're going to take a look at all the different unit tests we've written to cover the code we wrote in step 4. We're also going to take a look at some tools we can use to help us write tests.
 
-在这一步中，我们将看看我们为覆盖我们在步骤 4 中编写的代码而编写的所有不同的单元测试。我们还将看看我们可以用来帮助我们编写测试用例的一些工具。
+在这一步中，来看看我们为覆盖在 `step 4` 中编写的代码而编写的所有不同的单元测试。还将看看我们可以用来帮助我们编写测试用例的一些工具。
 
-To get started, run the `package test` command in the [`step_5/BasicCoin`](./step_5/BasicCoin) folder
+To get started, run the `move test` command in the [`step_5/BasicCoin`](./step_5/BasicCoin) folder
 
-首先，请在文件夹[`step_5/BasicCoin`](./step_5/BasicCoin)中 运行`package test` 命令。
+首先，请在文件夹 [`step_5/BasicCoin`](./step_5/BasicCoin)中 运行 `move test` 命令。
+
 ```bash
 move test
 ```
 You should see something like this:
 
 您应该看到如下内容：
+
 ```
 INCLUDING DEPENDENCY MoveStdlib
 BUILDING BasicCoin
@@ -639,14 +641,14 @@ Test result: OK. Total tests: 7; passed: 7; failed: 0
 
 Taking a look at the tests in the [`BasicCoin` module](./step_5/BasicCoin/sources/BasicCoin.move) we've tried to keep each unit test to testing one particular behavior.
 
-看看 [`BasicCoin` ](./step_5/BasicCoin/sources/BasicCoin.move)模块中的测试，我们试图让每个单元测试都测试一个特定的行为。
+看看 [`BasicCoin` ](./step_5/BasicCoin/sources/BasicCoin.move)模块中的测试，我们试图让每个单元测试都测试一个具体的行为。
 
 <details>
-<summary>练习</summary>（<summary>Exercise</summary>）
+<summary>Exercise</summary>
 
 After taking a look at the tests, try and write a unit test called `balance_of_dne` in the `BasicCoin` module that tests the case where a `Balance` resource doesn't exist under the address that `balance_of` is being called on. It should only be a couple lines!
 
-在查看测试之后，尝试在 `BasicCoin`模块中编写一个单元测试`balance_of_dne`，以测试当该地址没有`Balance`资源时，调用`balance_of`的情况。它应该只有几行代码。
+在查看测试之后，尝试在 `BasicCoin` 模块中编写一个单元测试 `balance_of_dne`，测试地址没有 `Balance` 资源的情况，调用 `balance_of` 方法的执行结果。它应该只有几行代码。
 
 The solution to this exercise can be found in [`step_5_sol`](./step_5_sol).
 
@@ -654,11 +656,11 @@ The solution to this exercise can be found in [`step_5_sol`](./step_5_sol).
 
 </details>
 
-## Step 6: 使用范型(generic)编写BasicCoin模块<span id="Step6"><span>（Making my `BasicCoin` module generic<span id="Step6"><span>）
+## Step 6: `BasicCoin` 模块泛型化<span id="Step6"><span>（Making my `BasicCoin` module generic<span id="Step6"><span>）
 
 In Move, we can use generics to define functions and structs over different input data types. Generics are a great building block for library code. In this section, we are going to make our simple `BasicCoin` module generic so that it can serve as a library module that can be used by other user modules.
 
-在 Move 中，我们可以使用泛型来定义不同输入数据类型的函数和结构。泛型是库代码的重要组成部分。在本节中，我们将使我们的简单BasicCoin模块通用化，以便它可以用作其他用户模块可以使用的库模块。
+在 Move 语言中，我们可以使用泛型来定义不同输入数据类型的函数和结构体。泛型是库代码的重要组成部分。在本节中，我们将使我们的简单 `BasicCoin` 模块泛型化，以便它可以用作其他用户模块可以使用的模块库。
 
 First, we add type parameters to our data structs:
 
@@ -673,9 +675,10 @@ struct Balance<phantom CoinType> has key {
     coin: Coin<CoinType>
 }
 ```
+
 We also add type parameters to our methods in the same manner. For example, `withdraw` becomes the following:
 
-我们还以相同的方式将类型参数添加到我们的方法中。例如，`withdraw`变成如下：
+我们还以相同的方式将类型参数添加到我们的方法中。例如，`withdraw` 变成如下：
 
 ```
 fun withdraw<CoinType>(addr: address, amount: u64) : Coin<CoinType> acquires Balance {
@@ -686,50 +689,51 @@ fun withdraw<CoinType>(addr: address, amount: u64) : Coin<CoinType> acquires Bal
     Coin<CoinType> { value: amount }
 }
 ```
+
 Take a look at [`step_6/BasicCoin/sources/BasicCoin.move`](./step_6/BasicCoin/sources/BasicCoin.move) to see the full implementation.
 
-看看[`step_6/BasicCoin/sources/BasicCoin.move`](./step_6/BasicCoin/sources/BasicCoin.move)完整的实现。
+查看[`step_6/BasicCoin/sources/BasicCoin.move`](./step_6/BasicCoin/sources/BasicCoin.move)完整的实现。
 
 At this point, readers who are familiar with Ethereum might notice that this module serves a similar purpose as the [ERC20 token standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/), which provides an interface for implementing fungible tokens in smart contracts. One key advantage of using generics is the ability to reuse code since the generic library module already provides a standard implementation and the instantiating module can provide customizations by wrapping the standard implementation.
 
-此时，熟悉以太坊的读者可能会注意到，该模块的用途与[ERC20 token standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) 代币标准类似，后者提供了在智能合约中实现可替代代币的接口。使用泛型的一个关键优势是能够重用代码，因为泛型库模块已经提供了标准实现，并且实例化模块可以通过包装标准实现来提供定制。
+此时，熟悉以太坊的读者可能会注意到，该模块的用途与[ERC20 token standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/)类似，后者提供了在智能合约中实现可替代代币的接口。使用泛型的一个关键优势是能够重用代码，因为泛型模块库已经提供了标准实现，并且实例化模块可以通过包装标准实现提供定制化功能。
 
 We provide a little module called [`MyOddCoin`](./step_6/BasicCoin/sources/MyOddCoin.move) that instantiates the `Coin` type and customizes its transfer policy: only odd number of coins can be transferred. We also include two [tests](./step_6/BasicCoin/sources/MyOddCoin.move) to test this behavior. You can use the commands you learned in step 2 and step 5 to run the tests.
 
-我们提供了一个称为[`MyOddCoin`](./step_6/BasicCoin/sources/MyOddCoin.move)实例化`Coin` 类型并自定义其转移策略的小模块：只能转移奇数个代币。我们还包括两个 [测试](./step_6/BasicCoin/sources/MyOddCoin.move)来测试这种行为。您可以使用在第 2 步和第 5 步中学到的命令来运行测试。
+我们提供了一个称为[`MyOddCoin`](./step_6/BasicCoin/sources/MyOddCoin.move)并实例化 `Coin` 类型并自定义其转移策略的小模块：只能转移奇数个代币。其还包括两个 [tests](./step_6/BasicCoin/sources/MyOddCoin.move)来测试这种行为。您可以使用在第 2 步和第 5 步中学到的命令来运行测试。
 
 
-#### 进阶主题:
+#### 进阶主题 (Advanced topics):
+
 <details>
-<summary><code>phantom</code> 类型参数</summary>（<summary><code>phantom</code> type parameters</summary>）
+<summary><code>phantom</code> type parameters</summary>
 
 In definitions of both `Coin` and `Balance`, we declare the type parameter `CoinType` to be phantom because `CoinType` is not used in the struct definition or is only used as a phantom type parameter.
 
-在`Coin`和`Balance`的定义中，我们将类型参数声明 `CoinType` 为phantom，因为CoinType它没有在结构定义中使用或仅用作phantom类型参数。
+在 `Coin` 和 `Balance `的定义中，我们将类型参数 `CoinType` 声明为phantom，因为 `CoinType` 没有在结构体定义中使用或仅用作 phantom 类型参数。
 
 Read more about phantom type parameters <a href="https://move-language.github.io/move/generics.html#phantom-type-parameters">here</a>.
+
+阅读更多有关 [phantom 类型参数](./chapter_18_generics.md#phantom-type-parameters) 信息.
+
 </details>
 
-在<a href="https://move-language.github.io/move/generics.html#phantom-type-parameters">此处</a>阅读有关幻像类型参数的更多信息。
-
-</details>
-
-## 进阶步骤（Advanced steps）
+## 进阶步骤 (Advanced steps)
 
 Before moving on to the next steps, let's make sure you have all the prover dependencies installed.
 
-在继续下一步之前，让我们确保您已安装所有验证器依赖项。
+在继续下一步之前，确保您已安装所有的验证器依赖项。
 
 Try running `boogie /version `. If an error message shows up saying "command not found: boogie", you will have to run the setup script and source your profile:
 
-尝试运行boogie /version 。如果出现错误消息“找不到命令：boogie”，您将必须运行安装脚本并获取您的配置文件：
-
+尝试运行 `boogie /version` 。如果出现错误消息“找不到命令：boogie”，您将必须运行安装脚本并更新环境配置(`source ~/.profile`)：
 
 ```bash
 # run the following in move repo root directory
 ./scripts/dev_setup.sh -yp
 source ~/.profile
 ```
+
 ## Step 7:  使用Move验证器<span id="Step7"><span>（Use the Move prover<span id="Step7"><span>）
 
 Smart contracts deployed on the blockchain may manipulate high-value assets. As a technique that uses strict mathematical methods to describe behavior and reason correctness of computer systems, formal verification has been used in blockchains to prevent bugs in smart contracts. [The Move prover](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/prover-guide.md) is an evolving formal verification tool for smart contracts written in the Move language. The user can specify functional properties of smart contracts using the [Move Specification Language (MSL)](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) and then use the prover to automatically check them statically. To illustrate how the prover is used, we have added the following code snippet to the [BasicCoin.move](./step_7/BasicCoin/sources/BasicCoin.move):
