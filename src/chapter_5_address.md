@@ -100,7 +100,7 @@ The only global storage operation that *does not* use `address` is `move_to`, wh
 
 As with the other scalar values built-in to the language, `address` values are implicitly copyable, meaning they can be copied without an explicit instruction such as [`copy`](./chapter_10_variables.md#move-and-copy).
 
-与Move语言内置的其他标量值一样，`address` 值是隐式可复制的，这意味着它们可以在没有明确指令如[`copy`](./chapter_10_variables.md#move-and-copy)的情况下复制。
+与Move语言内置的其他标量值一样，`address` 值是隐式可复制的，这意味着它们可以在没有明确指令如[`copy`](./chapter_10_variables.md#移动和复制move-and-copy)的情况下复制。
 
 
 
