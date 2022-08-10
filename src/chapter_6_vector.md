@@ -219,4 +219,4 @@ For more details see the sections on [type abilities](./chapter_19_abilities.md)
 
 ## 所有权(Ownership)
 
-如上所述，数组值只有在元素值可以复制的时候才能复制。 在这种情况下，拷贝必须通过显式[`copy`](./chapter_10_variables.md#move-and-copy)或者解引用[dereference `*`](./chapter_8_references.md#reference-operators)。
+如上所述，数组值只有在元素值可以复制的时候才能复制。 在这种情况下，拷贝必须通过显式[`copy`](./chapter_10_variables.md#move-and-copy)或者解引用[dereference `*`](./chapter_8_references.md#引用运算符-reference-operators)。
