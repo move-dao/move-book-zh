@@ -441,26 +441,39 @@ public(script) fun transfer(from: signer, to: address, amount: u64) acquires Bal
 ![](diagrams/solidity_state.png)
 </details>
 
-## Step 4: 实现我的`BasicCoin`模块
+## Step 4: 实现我的`BasicCoin`模块（Implementing my `BasicCoin` module<span id="Step4"><span>）
+
+We have created a Move package for you in folder `step_4` called `BasicCoin`. The `sources` folder contains source code for
+all your Move modules in the package, including `BasicCoin.move`. In this section, we will take a closer look at the
+implementation of the methods inside [`BasicCoin.move`](./step_4/sources/BasicCoin.move).
 
 我们已经为你在step_4文件夹创建了名叫`BasicCoin`的Move包。这个源文件包含所有的Move模块源代码，包括`BasicCoin.move`。 在本节中，我们将仔细研究[`BasicCoin.move`](./step_4/sources/BasicCoin.move)内部的实现。
-### 编译我们的代码
 
+### 编译我们的代码（Compiling our code）
 
 Let's first try building the code using Move package by running the following command
 in [`step_4/BasicCoin`](./step_4/BasicCoin) folder:
 
 让我们首先尝试通过在文件夹[`step_4/BasicCoin`](./step_4/BasicCoin) 中运行以下命令来使用 Move 包构建代码：
+
 ```bash
 move build
 ```
 
-### 方法的实现
+### 方法的实现（Implementation of methods）
+Now let's take a closer look at the implementation of the methods inside [`BasicCoin.move`](./step_4/BasicCoin/sources/BasicCoin.move).
+
 现在让我们仔细看看[`BasicCoin.move`](./step_4/BasicCoin/sources/BasicCoin.move)内部方法的实现。
 <details>
-<summary>方法 <code>publish_balance</code></summary>
+
+<summary>Method <code>publish_balance</code></summary>（<summary>方法 <code>publish_balance</code></summary>）
+
+This method publishes a `Balance` resource to a given address. Since this resource is needed to receive coins through minting or transferring, `publish_balance` method must be called by a user before they can receive money, including the module owner.
 
 此方法将`Balance`资源发布到指定地址。由于需要此资源通过铸造或转移来接收代币，必须由用户先调用方法`publish_balance`才能接收钱，包括模块所有者。
+
+This method uses a `move_to` operation to publish the resource:
+
 此方法使用一个`move_to`操作来发布资源：
 ```
 let empty_coin = Coin { value: 0 };
@@ -469,7 +482,9 @@ move_to(account, Balance { coin:  empty_coin });
 </details>
 <details>
 
-<summary><code>mint</code>方法 </summary>
+<summary><code>mint</code>方法 </summary>（<summary>Method <code>mint</code></summary>）
+
+`mint` method mints coins to a given account. Here we require that `mint` must be approved by the module owner. We enforce this using the assert statement:
 
 `mint`方法将代币铸币到指定的帐户。这里，我们要求`mint`必须得到模块所有者的批准。我们使用`assert`语句强制执行此操作：
 
@@ -477,7 +492,12 @@ move_to(account, Balance { coin:  empty_coin });
 assert!(signer::address_of(&module_owner) == MODULE_OWNER, errors::requires_address(ENOT_MODULE_OWNER));
 ```
 
+Assert statements in Move can be used in this way: `assert!(<predicate>, <abort_code>);`. This means that if the `<predicate>` is false, then abort the transaction with `<abort_code>`. Here `MODULE_OWNER` and `ENOT_MODULE_OWNER` are both constants defined at the beginning of the module. And `errors` module defines common error categories we can use.
+It is important to note that Move is transactional in its execution -- so if an [abort](https://move-language.github.io/move/abort-and-assert.html) is raised no unwinding of state needs to be performed, as no changes from that transaction will be persisted to the blockchain.
+
 Move 中的 Assert 语句可以这样使用：`assert!(<predicate>, <abort_code>);`。这意味着如果`<predicate>` 为假，则使用中止交易`<abort_code>`来终止交易。这里 `MODULE_OWNER`和`ENOT_MODULE_OWNER`都是在模块开头定义的常量。`errors`模块定义了我们可以使用的常见错误类别。需要注意的是，Move在其执行过程中是事务性的--因此，如果触发中止(https://move-language.github.io/move/abort-and-assert.html)，则不需要执行状态展开，因为该事务的任何更改都不会持久保存到区块链。
+
+We then deposit a coin with value `amount` to the balance of `mint_addr`.
 
 然后，我们将赋值为 `amount`的代币存入`mint_addr`这个地址。
 
@@ -488,6 +508,9 @@ deposit(mint_addr, Coin { value: amount });
 
 <details>
 <summary><code>balance_of</code>方法</summary>
+（<summary>Method <code>balance_of</code></summary>）
+
+We use `borrow_global`, one of the global storage operators, to read from the global storage.
 
 我们使用’borrow_global‘，它是全局存储运算符之一，从全局存储中读取。
 
@@ -499,7 +522,10 @@ borrow_global<Balance>(owner).coin.value
 </details>
 
 <details>
-<summary><code>transfer</code>方法</summary>
+<summary><code>transfer</code>方法</summary>（<summary>Method <code>transfer</code></summary>）
+
+This function withdraws tokens from `from`'s balance and deposits the tokens into `to`s balance. We take a closer look
+at `withdraw` helper function:
 
 该函数从`from`的余额中提取代币并将代币存入`to`的余额中。我们仔细看看withdraw辅助函数：
 
@@ -513,11 +539,17 @@ fun withdraw(addr: address, amount: u64) : Coin acquires Balance {
 }
 ```
 
-在方法开始，我们断言提款账户有足够的余额。然后我们使用`borrow_global_mut`来获取对全局存储的可变引用，并 `&mut`用于创建对结构字段的可变引用(https://move-language.github.io/move/references.html)。然后我们通过这个可变引用修改余额并返回一个带有提取金额的新代币。
+At the beginning of the method, we assert that the withdrawing account has enough balance. We then use `borrow_global_mut` to get a mutable reference to the global storage, and `&mut` is used to create a [mutable reference](https://move-language.github.io/move/references.html) to a field of a struct. We then modify the balance through this mutable reference and return a new coin with the withdrawn amount.
+
+在方法开始，我们断言提款账户有足够的余额。然后我们使用`borrow_global_mut`来获取对全局存储的可变引用，并 `&mut`用于创建对结构字段的[可变引用](https://move-language.github.io/move/references.html)。然后我们通过这个可变引用修改余额并返回一个带有提取金额的新代币。
 
 </details>
 
-### 练习
+### 练习（Exercises）
+
+There are two `TODO`s in our module, left as exercises for the reader:
+- Finish implementing the `publish_balance` method.
+- Implement the `deposit` method.
 
 我们的模块中有两个TODOs，留给读者练习：
 - 完成publish_balance方法的实现。
@@ -525,20 +557,27 @@ fun withdraw(addr: address, amount: u64) : Coin acquires Balance {
 
 此练习的解决方案可以在[`step_4_sol`](./step_4_sol)文件夹中找到。
 
-**奖金练习**
+**额外练习**（**Bonus exercise**）
 
-如果我们在余额中存入太多代币会发生什么？
+- What would happen if we deposit too many tokens to a balance?
+- 如果我们在余额中存入太多代币会发生什么？
 
 
-## Step 5: 在模块`BasicCoin`中添加和使用单元测试<span id="Step5"><span>
+## Step 5: 在模块`BasicCoin`中添加和使用单元测试<span id="Step5"><span>（Adding and using unit tests with the `BasicCoin` module<span id="Step5"><span>）
 
+In this step we're going to take a look at all the different unit tests
+we've written to cover the code we wrote in step 4. We're also going to
+take a look at some tools we can use to help us write tests.
 
 在这一步中，我们将看看我们为覆盖我们在步骤 4 中编写的代码而编写的所有不同的单元测试。我们还将看看我们可以用来帮助我们编写测试用例的一些工具。
+
+To get started, run the `package test` command in the [`step_5/BasicCoin`](./step_5/BasicCoin) folder
 
 首先，请在文件夹[`step_5/BasicCoin`](./step_5/BasicCoin)中 运行`package test` 命令。
 ```bash
 move test
 ```
+You should see something like this:
 
 您应该看到如下内容：
 ```
@@ -555,26 +594,32 @@ Running Move unit tests
 Test result: OK. Total tests: 7; passed: 7; failed: 0
 ```
 
+Taking a look at the tests in the [`BasicCoin` module](./step_5/BasicCoin/sources/BasicCoin.move) we've tried to keep each unit test to testing one particular behavior.
+
 看看 [`BasicCoin` ](./step_5/BasicCoin/sources/BasicCoin.move)模块中的测试，我们试图让每个单元测试都测试一个特定的行为。
 
 <details>
-<summary>练习</summary>
+<summary>练习</summary>（<summary>Exercise</summary>）
 
-After taking a look at the tests, try and write a unit test called
-`balance_of_dne` in the `BasicCoin` module that tests the case where a
-`Balance` resource doesn't exist under the address that `balance_of` is being
-called on. It should only be a couple lines!
+After taking a look at the tests, try and write a unit test called `balance_of_dne` in the `BasicCoin` module that tests the case where a `Balance` resource doesn't exist under the address that `balance_of` is being called on. It should only be a couple lines!
 
 在查看测试之后，尝试在 `BasicCoin`模块中编写一个单元测试`balance_of_dne`，以测试当该地址没有`Balance`资源时，调用`balance_of`
 的情况。它应该只有几行代码。
+
+The solution to this exercise can be found in [`step_5_sol`](./step_5_sol).
 
 练习的答案可以在[`step_5_sol`](./step_5_sol)中找到。
 
 </details>
 
-## Step 6: 使用范型(generic)编写BasicCoin模块<span id="Step6"><span>
+## Step 6: 使用范型(generic)编写BasicCoin模块<span id="Step6"><span>（Making my `BasicCoin` module generic<span id="Step6"><span>）
+
+In Move, we can use generics to define functions and structs over different input data types. Generics are a great building block for library code. In this section, we are going to make our simple `BasicCoin` module generic so that it can serve as a library module that can be used by other user modules.
 
 在 Move 中，我们可以使用泛型来定义不同输入数据类型的函数和结构。泛型是库代码的重要组成部分。在本节中，我们将使我们的简单BasicCoin模块通用化，以便它可以用作其他用户模块可以使用的库模块。
+
+First, we add type parameters to our data structs:
+
 首先，我们将类型参数添加到我们的数据结构中：
 
 ```
@@ -586,10 +631,9 @@ struct Balance<phantom CoinType> has key {
     coin: Coin<CoinType>
 }
 ```
-
+We also add type parameters to our methods in the same manner. For example, `withdraw` becomes the following:
 
 我们还以相同的方式将类型参数添加到我们的方法中。例如，`withdraw`变成如下：
-
 
 ```
 fun withdraw<CoinType>(addr: address, amount: u64) : Coin<CoinType> acquires Balance {
@@ -600,27 +644,41 @@ fun withdraw<CoinType>(addr: address, amount: u64) : Coin<CoinType> acquires Bal
     Coin<CoinType> { value: amount }
 }
 ```
+Take a look at [`step_6/BasicCoin/sources/BasicCoin.move`](./step_6/BasicCoin/sources/BasicCoin.move) to see the full implementation.
 
 看看[`step_6/BasicCoin/sources/BasicCoin.move`](./step_6/BasicCoin/sources/BasicCoin.move)完整的实现。
 
+At this point, readers who are familiar with Ethereum might notice that this module serves a similar purpose as the [ERC20 token standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/), which provides an interface for implementing fungible tokens in smart contracts. One key advantage of using generics is the ability to reuse code since the generic library module already provides a standard implementation and the instantiating module can provide customizations by wrapping the standard implementation.
+
 此时，熟悉以太坊的读者可能会注意到，该模块的用途与[ERC20 token standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) 代币标准类似，后者提供了在智能合约中实现可替代代币的接口。使用泛型的一个关键优势是能够重用代码，因为泛型库模块已经提供了标准实现，并且实例化模块可以通过包装标准实现来提供定制。
+
+We provide a little module called [`MyOddCoin`](./step_6/BasicCoin/sources/MyOddCoin.move) that instantiates the `Coin` type and customizes its transfer policy: only odd number of coins can be transferred. We also include two [tests](./step_6/BasicCoin/sources/MyOddCoin.move) to test this behavior. You can use the commands you learned in step 2 and step 5 to run the tests.
 
 我们提供了一个称为[`MyOddCoin`](./step_6/BasicCoin/sources/MyOddCoin.move)实例化`Coin` 类型并自定义其转移策略的小模块：只能转移奇数个代币。我们还包括两个 [测试](./step_6/BasicCoin/sources/MyOddCoin.move)来测试这种行为。您可以使用在第 2 步和第 5 步中学到的命令来运行测试。
 
 
 #### 进阶主题:
 <details>
-<summary><code>phantom</code> 类型参数</summary>
+<summary><code>phantom</code> 类型参数</summary>（<summary><code>phantom</code> type parameters</summary>）
+
+In definitions of both `Coin` and `Balance`, we declare the type parameter `CoinType` to be phantom because `CoinType` is not used in the struct definition or is only used as a phantom type parameter.
 
 在`Coin`和`Balance`的定义中，我们将类型参数声明 `CoinType` 为phantom，因为CoinType它没有在结构定义中使用或仅用作phantom类型参数。
+
+Read more about phantom type parameters <a href="https://move-language.github.io/move/generics.html#phantom-type-parameters">here</a>.
+</details>
 
 在<a href="https://move-language.github.io/move/generics.html#phantom-type-parameters">此处</a>阅读有关幻像类型参数的更多信息。
 
 </details>
 
-## 进阶步骤
+## 进阶步骤（Advanced steps）
+
+Before moving on to the next steps, let's make sure you have all the prover dependencies installed.
 
 在继续下一步之前，让我们确保您已安装所有验证器依赖项。
+
+Try running `boogie /version `. If an error message shows up saying "command not found: boogie", you will have to run the setup script and source your profile:
 
 尝试运行boogie /version 。如果出现错误消息“找不到命令：boogie”，您将必须运行安装脚本并获取您的配置文件：
 
@@ -630,11 +688,11 @@ fun withdraw<CoinType>(addr: address, amount: u64) : Coin<CoinType> acquires Bal
 ./scripts/dev_setup.sh -yp
 source ~/.profile
 ```
-## Step 7:  使用Move验证器<span id="Step7"><span>
+## Step 7:  使用Move验证器<span id="Step7"><span>（Use the Move prover<span id="Step7"><span>）
+
+Smart contracts deployed on the blockchain may manipulate high-value assets. As a technique that uses strict mathematical methods to describe behavior and reason correctness of computer systems, formal verification has been used in blockchains to prevent bugs in smart contracts. [The Move prover](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/prover-guide.md) is an evolving formal verification tool for smart contracts written in the Move language. The user can specify functional properties of smart contracts using the [Move Specification Language (MSL)](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) and then use the prover to automatically check them statically. To illustrate how the prover is used, we have added the following code snippet to the [BasicCoin.move](./step_7/BasicCoin/sources/BasicCoin.move):
 
 部署在区块链上的智能合约可能会操纵高价值资产。作为一种使用严格的数学方法来描述计算机系统的行为和推理正确性的技术，形式验证已被用于区块链中以防止智能合约中的错误。 Move验证器是一种不断发展的形式验证工具，用于以 Move 语言编写的智能合约。用户可以使用移动规范语言 [Move Specification Language (MSL)](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md)指定智能合约的功能属性， 然后使用验证器自动静态检查它们。为了说明如何使用验证器，我们在[BasicCoin.move](./step_7/BasicCoin/sources/BasicCoin.move)中添加了以下代码片段：
-
-
 
 ```
     spec balance_of {
@@ -642,10 +700,13 @@ source ~/.profile
     }
 ```
 
+Informally speaking, the block `spec balance_of {...}` contains the property specification of the method `balance_of`.
+
 通俗地说，块`spec balance_of {...}`包含`balance_of`方法的属性规范说明。
 
-让我们首先在[`BasicCoin` directory](./step_7/BasicCoin/)目录中使用以下命令运行验证器。
+Let's first run the prover using the following command inside [`BasicCoin` directory](./step_7/BasicCoin/):
 
+让我们首先在[`BasicCoin` directory](./step_7/BasicCoin/)目录中使用以下命令运行验证器。
 
 ```bash
 move prove
@@ -671,7 +732,7 @@ error: abort not covered by any of the `aborts_if` clauses
 
 Error: exiting with verification errors
 ```
-
+The prover basically tells us that we need to explicitly specify the condition under which the function `balance_of` will abort, which is caused by calling the function `borrow_global` when `owner` does not own the resource `Balance<CoinType>`. To remove this error information, we add an `aborts_if` condition as follows:
 
 验证器基本上告诉我们，我们需要明确指定函数`balance_of`中止的条件，这是由于在不拥有资源`borrow_global`时调用函数引起的。要去掉此错误信息，我们添加如下`aborts_if`条件：
 
@@ -683,27 +744,35 @@ Error: exiting with verification errors
     }
 ```
 
+After adding this condition, try running the `prove` command again to confirm that there are no verification errors:
+
 添加此条件后，再次尝试运行prove命令，确认没有验证错误：
 
 ```bash
 move prove
 ```
 
+Apart from the abort condition, we also want to define the functional properties. In Step 8, we will give more detailed introduction to the prover by specifying properties for the methods defined the `BasicCoin` module.
+
 除了中止条件，我们还想定义功能属性。在第 8 步中，我们将通过为定义`BasicCoin`模块的方法指定属性来更详细地介绍证明者。
 
 
-## 第 8 步：为`BasicCoin`模块编写正式规范<span id="Step8"><span>
+## 第 8 步：为`BasicCoin`模块编写正式规范<span id="Step8"><span>（Write formal specifications for the `BasicCoin` module<span id="Step8"><span>）
 
 <details>
 
-<summary> withdraw 方法 </summary>
+<summary> withdraw 方法 </summary>（<summary> Method withdraw </summary>）
 
 The signature of the method `withdraw` is given below:
+
  `withdraw`方法的签名如下：
 
 ```
 fun withdraw<CoinType>(addr: address, amount: u64) : Coin<CoinType> acquires Balance
 ```
+
+The method withdraws tokens with value `amount` from the address `addr` and returns a created Coin of value `amount`.  The method `withdraw` aborts when 1) `addr` does not have the resource `Balance<CoinType>` or 2) the number of tokens in `addr` is smaller than `amount`. We can define conditions like this:
+
 该方法从 `addr`地址中提取价值为`amount`的代币，并返回一个创建的价值为`amount`的代币。当 1)地址`addr`没有资源或 2)地址`addr` 中的代币数小于`amount`时，withdraw方法中止。我们可以这样定义条件：
 
 
@@ -715,9 +784,13 @@ fun withdraw<CoinType>(addr: address, amount: u64) : Coin<CoinType> acquires Bal
     }
 ```
 
-正如我们在这里看到的，一个规范块可以包含 let 绑定，它为表达式引入名称。`global<T>(address): T`是一个返回`addr`资源值的内置函数。`balance`是 `addr`拥有的代币数量。`exists<T>(address): bool`是一个内置函数，如果资源 T 存在于 address 则返回 true。两个`aborts_if`子句对应上述两个条件。一般来说，如果一个函数有多个`aborts_if`条件，这些条件会相互进行或运算。默认情况下，如果用户想要指定中止条件，则需要列出所有可能的条件。否则，验证器将产生验证错误。但是，如果在 spec 块中定义 `pragma aborts_if_is_partial`，则组合中止条件(或单独条件)仅暗示函数中止。读者可以参考 [MSL](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) 文档了解更多信息。
+As we can see here, a spec block can contain let bindings which introduce names for expressions. `global<T>(address): T` is a built-in function that returns the resource value at `addr`. `balance` is the number of tokens owned by `addr`. `exists<T>(address): bool` is a built-in function that returns true if the resource T exists at address. Two `aborts_if` clauses correspond to the two conditions mentioned above. In general, if a function has more than one `aborts_if` condition, those conditions are or-ed with each other. By default, if a user wants to specify aborts conditions, all possible conditions need to be listed. Otherwise, the prover will generate a verification error. However, if `pragma aborts_if_is_partial` is defined in the spec block, the combined aborts condition (the or-ed individual conditions) only *imply* that the function aborts. The reader can refer to the [MSL](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) document for more information.
 
-下一步是定义功能属性，这些属性在下面的两个`ensures`子句中进行了描述。首先，通过使用`let post`绑定，`balance_post`表示地址`addr`执行后的余额，应该等于`balance - amount`。那么，返回值(表示为`result`)应该是一个价值为`amount`的代币。
+正如我们在这里看到的，一个规范块可以包含 let 绑定，它为表达式引入名称。`global<T>(address): T`是一个返回`addr`资源值的内置函数。`balance`是 `addr`拥有的代币数量。`exists<T>(address): bool`是一个内置函数，如果资源 T 存在于 address 则返回 true。两个`aborts_if`子句对应上述两个条件。一般来说，如果一个函数有多个`aborts_if`条件，这些条件会相互进行或运算。默认情况下，如果用户想要指定中止条件，则需要列出所有可能的条件。否则，验证器将产生验证错误。但是，如果在 spec 块中定义 `pragma aborts_if_is_partial`，则组合中止条件（或单独条件）仅暗示函数中止。读者可以参考 [MSL](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) 文档了解更多信息。
+
+The next step is to define functional properties, which are described in the two `ensures` clauses below. First, by using the `let post` binding, `balance_post` represents the balance of `addr` after the execution, which should be equal to `balance - amount`. Then, the return value (denoted as `result`) should be a coin with value `amount`.
+
+下一步是定义功能属性，这些属性在下面的两个`ensures`子句中进行了描述。首先，通过使用`let post`绑定，`balance_post`表示地址`addr`执行后的余额，应该等于`balance - amount`。那么，返回值（表示为`result`）应该是一个价值为`amount`的代币。
 
 ```
     spec withdraw {
@@ -733,15 +806,19 @@ fun withdraw<CoinType>(addr: address, amount: u64) : Coin<CoinType> acquires Bal
 </details>
 
 <details>
-<summary>  deposit方法 </summary>
+<summary>  deposit方法 </summary>（<summary> Method deposit </summary>）
+
+The signature of the method `deposit` is given below:
 
 `deposit`方法的签名如下：
 
 ```
 fun deposit<CoinType>(addr: address, check: Coin<CoinType>) acquires Balance
 ```
-该方法将值check存入addr. 规范定义如下：
 
+The method deposits the `check` into `addr`. The specification is defined below:
+
+该方法将值check存入addr. 规范定义如下：
 
 ```
     spec deposit {
@@ -756,6 +833,8 @@ fun deposit<CoinType>(addr: address, check: Coin<CoinType>) acquires Balance
     }
 ```
 
+`balance` represents the number of tokens in `addr` before execution and `check_value` represents the number of tokens to be deposited. The method would abort if 1) `addr` does not have the resource `Balance<CoinType>` or 2) the sum of `balance` and `check_value` is greater than the maxium value of the type `u64`. The functional property checks that the balance is correctly updated after the execution.
+
 `balance`表示`addr`执行前的代币数量，`check_value`表示要存入的代币数量。如果 1)没有地址`addr`没有`Balance<CoinType>`资源或 2) `balance`与`check_value`之和大于`u64`的最大值，该功能属性检查执行后余额是否正确更新。
 
 
@@ -763,7 +842,9 @@ fun deposit<CoinType>(addr: address, check: Coin<CoinType>) acquires Balance
 
 <details>
 
-<summary>  transfer方法 </summary>
+<summary>  transfer方法 </summary>（<summary> Method transfer </summary>）
+
+The signature of the method `transfer` is given below:
 
 `transfer`方法的签名如下：
 ```
@@ -771,6 +852,7 @@ public fun transfer<CoinType: drop>(from: &signer, to: address, amount: u64, _wi
 ```
 
 The method transfers the `amount` of coin from the account of `from` to the address `to`. The specification is given below:
+
 该方法将包含`amount`的代币从帐户转移`from`到地址`to`。规范如下：
 
 
@@ -788,6 +870,8 @@ The method transfers the `amount` of coin from the account of `from` to the addr
     }
 ```
 
+`addr_from` is the address of `from`. Then the balances of `addr_from` and `to` before and after the execution are obtained.
+The `ensures` clauses specify that the `amount` number of tokens is deducted from `addr_from` and added to `to`. However, the prover will generate the error information as below:
 
 `addr_from`是 `from`的地址，然后获取执行前`addr_from`和 `to`的余额。
  `ensures`子句指定从`addr_from`减去`amount`数量的代币，添加到`to`。然而，验证器会生成以下错误：
@@ -802,6 +886,8 @@ error: post-condition does not hold
    ...
 ```
 
+The property is not held when `addr_from` is equal to `to`. As a result, we could add an assertion `assert!(from_addr != to)` in the method to make sure that `addr_from` is not equal to `to`.
+
 当`addr_from`的代币数量等于`to`时，这个属性不存在。因此，我们可以在方法中添加一个断言，`assert!(from_addr != to)`来确保addr_from不等于to。
 
 </details>
@@ -809,9 +895,11 @@ error: post-condition does not hold
 
 <details>
 
-<summary> 练习 </summary>
+<summary> 练习 </summary>（<summary> Exercises </summary>）
 
-- 为`transfer` 方法实现`aborts_if`条件。
-- 为`mint` 和 `publish_balance`方法实现规范定义。
+- Implement the `aborts_if` conditions for the `transfer` method.（为`transfer` 方法实现`aborts_if`条件。）
+- Implement the specification for the `mint` and `publish_balance` method.（为`mint` 和 `publish_balance`方法实现规范定义。）
+
+The solution to this exercise can be found in [`step_8_sol`](./step_8_sol).
 
 练习的答案可以在 [`step_8_sol`](./step_8_sol)中找到。
