@@ -1,8 +1,8 @@
 
+
 # Move 教程(Move Tutorial)
 
-Welcome to the Move Tutorial! In this tutorial, we are going to go through some steps of developing Move code
-including design, implementation, unit testing and formal verification of Move modules.
+Welcome to the Move Tutorial! In this tutorial, we are going to go through some steps of developing Move code including design, implementation, unit testing and formal verification of Move modules.
 
 欢迎来到 Move 语言教程，在本教程中，我们通过一些具体的步骤进行Move语言代码的开发，包括 Move 模块的设计、实现、单元测试和形式化验证。
 
@@ -270,8 +270,7 @@ Now that we've taken a look at our first Move module, we'll take a look at a tes
 
 You can run the tests with the `package test` command:
 
-现在我们来看一下我们的第一个Move模块, 通过切换目录到[`step_2/BasicCoin`](./step_2/BasicCoin)下，
-我们可以看到一个为了确保铸币(minting works)如期工作所编写的单元测试代码, Move语言中的单元测试与
+现在我们来看一下我们的第一个Move模块, 通过切换目录到[`step_2/BasicCoin`](./step_2/BasicCoin)下，我们可以看到一个为了确保铸币(minting works)如期工作所编写的单元测试代码, Move语言中的单元测试与
 Rust语言中的单测非常类似 -- 通过在普通Move函数上增加`#[test]`注解来标记.
 
 你可以通过`package test`命令来执行测试:
@@ -283,8 +282,7 @@ move test
 Let's now take a look at the contents of the [`FirstModule.move`file](./step_2/BasicCoin/sources/FirstModule.move). The first new thing you'll
 see is this test:
 
-现在我们再看一下[`FirstModule.move`文件](./step_2/BasicCoin/sources/FirstModule.move)的具体内容，
-里面是有一个新的单元测试:
+现在我们再看一下[`FirstModule.move`文件](./step_2/BasicCoin/sources/FirstModule.move)的具体内容，里面是有一个新的单元测试:
 
 ```
 module 0xCAFE::BasicCoin {
@@ -303,8 +301,7 @@ module 0xCAFE::BasicCoin {
 }
 ```
 
-This is declaring a unit test called `test_mint_10` that mints a `Coin` struct under the `account` with a `value` of `10`. It is then checking that the minted
-coin in storage has the value that is expected with the `assert!` call. If the assertion fails the unit test will fail.
+This is declaring a unit test called `test_mint_10` that mints a `Coin` struct under the `account` with a `value` of `10`. It is then checking that the minted coin in storage has the value that is expected with the `assert!` call. If the assertion fails the unit test will fail.
 
 这里声明了一个命名为`test_mint_10`的单元测试，它在`account`账户地址下铸造了一个包含`value`为10的`Coin`，然后通过`assert!`调用来检查目标存储之下是否如预期保存了一个包含预期`value`的币，如果断言`assert`调用失败，则单元测试失败。
 
@@ -403,9 +400,7 @@ struct GlobalStorage {
 The Move resource storage under each address is a map from types to values. (An observant reader might observe that this means each address can only have one value of each type.) This conveniently provides us a native mapping indexed by addresses. In our `BasicCoin` module, we define the following `Balance` resource representing the number of coins
 each address holds:
 
-地址下的存储资源(Move resource)是一个类型types到取值values的字典。(细心的读者也许已经注意到每个地址,每个类型type下只能对应一个具体值value)。
-通过地址addresses索引的方式, 系统方便地提供了一个原生字典. 在我们的`BasicCoin`模块下中，我们定义了每个`Balance`(钱包，余额)表示每个地址下
-持有的币的数量：
+地址下的存储资源(Move resource)是一个类型types到取值values的字典。(细心的读者也许已经注意到每个地址,每个类型type下只能对应一个具体值value)。通过地址addresses索引的方式, 系统方便地提供了一个原生字典. 在我们的`BasicCoin`模块下中，我们定义了每个`Balance`(钱包，余额)表示每个地址下持有的币的数量：
 
 ```
 /// Struct representing the balance of each address.
@@ -450,7 +445,7 @@ In most Ethereum [ERC-20]((https://ethereum.org/en/developers/docs/standards/tok
 
 The Ethereum blockchain state might look like this:
 
-以太坊区块量状态看起来是这样的:
+以太坊区块链的状态看起来是这样的:
 
 ![](diagrams/solidity_state.png)
 </details>
@@ -458,16 +453,13 @@ The Ethereum blockchain state might look like this:
 
 ## Step 4: 实现我的`BasicCoin`模块（Implementing my `BasicCoin` module<span id="Step4"><span>）
 
-We have created a Move package for you in folder `step_4` called `BasicCoin`. The `sources` folder contains source code for
-all your Move modules in the package, including `BasicCoin.move`. In this section, we will take a closer look at the
-implementation of the methods inside [`BasicCoin.move`](./step_4/sources/BasicCoin.move).
+We have created a Move package for you in folder `step_4` called `BasicCoin`. The `sources` folder contains source code for all your Move modules in the package, including `BasicCoin.move`. In this section, we will take a closer look at the implementation of the methods inside [`BasicCoin.move`](./step_4/sources/BasicCoin.move).
 
 我们已经为你在step_4文件夹创建了名叫`BasicCoin`的Move包。这个源文件包含所有的Move模块源代码，包括`BasicCoin.move`。 在本节中，我们将仔细研究[`BasicCoin.move`](./step_4/sources/BasicCoin.move)内部的实现。
 
 ### 编译我们的代码（Compiling our code）
 
-Let's first try building the code using Move package by running the following command
-in [`step_4/BasicCoin`](./step_4/BasicCoin) folder:
+Let's first try building the code using Move package by running the following command in [`step_4/BasicCoin`](./step_4/BasicCoin) folder:
 
 让我们首先尝试通过在文件夹[`step_4/BasicCoin`](./step_4/BasicCoin) 中运行以下命令来使用 Move 包构建代码：
 
@@ -479,6 +471,7 @@ move build
 Now let's take a closer look at the implementation of the methods inside [`BasicCoin.move`](./step_4/BasicCoin/sources/BasicCoin.move).
 
 现在让我们仔细看看[`BasicCoin.move`](./step_4/BasicCoin/sources/BasicCoin.move)内部方法的实现。
+
 <details>
 
 <summary>Method <code>publish_balance</code></summary>（<summary>方法 <code>publish_balance</code></summary>）
@@ -510,7 +503,7 @@ assert!(signer::address_of(&module_owner) == MODULE_OWNER, errors::requires_addr
 Assert statements in Move can be used in this way: `assert!(<predicate>, <abort_code>);`. This means that if the `<predicate>` is false, then abort the transaction with `<abort_code>`. Here `MODULE_OWNER` and `ENOT_MODULE_OWNER` are both constants defined at the beginning of the module. And `errors` module defines common error categories we can use.
 It is important to note that Move is transactional in its execution -- so if an [abort](https://move-language.github.io/move/abort-and-assert.html) is raised no unwinding of state needs to be performed, as no changes from that transaction will be persisted to the blockchain.
 
-Move 中的 Assert 语句可以这样使用：`assert!(<predicate>, <abort_code>);`。这意味着如果`<predicate>` 为假，则使用中止交易`<abort_code>`来终止交易。这里 `MODULE_OWNER`和`ENOT_MODULE_OWNER`都是在模块开头定义的常量。`errors`模块定义了我们可以使用的常见错误类别。需要注意的是，Move在其执行过程中是事务性的--因此，如果触发中止(https://move-language.github.io/move/abort-and-assert.html)，则不需要执行状态展开，因为该事务的任何更改都不会持久保存到区块链。
+Move 中的 Assert 语句可以这样使用：`assert!(<predicate>, <abort_code>);`。这意味着如果`<predicate>` 为假，则使用中止交易`<abort_code>`来终止交易。这里 `MODULE_OWNER`和`ENOT_MODULE_OWNER`都是在模块开头定义的常量。`errors`模块定义了我们可以使用的常见错误类别。重要的是我们需要注意Move在其执行过程中是事务性的--因此，如果触发中止(https://move-language.github.io/move/abort-and-assert.html)，则不需要执行状态展开，因为该事务的任何更改都不会持久保存到区块链。
 
 We then deposit a coin with value `amount` to the balance of `mint_addr`.
 
@@ -527,7 +520,7 @@ deposit(mint_addr, Coin { value: amount });
 
 We use `borrow_global`, one of the global storage operators, to read from the global storage.
 
-我们使用’borrow_global‘，它是全局存储运算符之一，从全局存储中读取。
+我们使用`borrow_global`，它是全局存储运算符之一，从全局存储中读取。
 
 ```
 borrow_global<Balance>(owner).coin.value
@@ -570,6 +563,8 @@ There are two `TODO`s in our module, left as exercises for the reader:
 - 完成publish_balance方法的实现。
 - 实现deposit方法。
 
+The solution to this exercise can be found in [`step_4_sol`](./step_4_sol) folder.
+
 此练习的解决方案可以在[`step_4_sol`](./step_4_sol)文件夹中找到。
 
 **额外练习**（**Bonus exercise**）
@@ -580,9 +575,7 @@ There are two `TODO`s in our module, left as exercises for the reader:
 
 ## Step 5: 在模块`BasicCoin`中添加和使用单元测试<span id="Step5"><span>（Adding and using unit tests with the `BasicCoin` module<span id="Step5"><span>）
 
-In this step we're going to take a look at all the different unit tests
-we've written to cover the code we wrote in step 4. We're also going to
-take a look at some tools we can use to help us write tests.
+In this step we're going to take a look at all the different unit tests we've written to cover the code we wrote in step 4. We're also going to take a look at some tools we can use to help us write tests.
 
 在这一步中，我们将看看我们为覆盖我们在步骤 4 中编写的代码而编写的所有不同的单元测试。我们还将看看我们可以用来帮助我们编写测试用例的一些工具。
 
@@ -618,8 +611,7 @@ Taking a look at the tests in the [`BasicCoin` module](./step_5/BasicCoin/source
 
 After taking a look at the tests, try and write a unit test called `balance_of_dne` in the `BasicCoin` module that tests the case where a `Balance` resource doesn't exist under the address that `balance_of` is being called on. It should only be a couple lines!
 
-在查看测试之后，尝试在 `BasicCoin`模块中编写一个单元测试`balance_of_dne`，以测试当该地址没有`Balance`资源时，调用`balance_of`
-的情况。它应该只有几行代码。
+在查看测试之后，尝试在 `BasicCoin`模块中编写一个单元测试`balance_of_dne`，以测试当该地址没有`Balance`资源时，调用`balance_of`的情况。它应该只有几行代码。
 
 The solution to this exercise can be found in [`step_5_sol`](./step_5_sol).
 
@@ -801,7 +793,7 @@ The method withdraws tokens with value `amount` from the address `addr` and retu
 
 As we can see here, a spec block can contain let bindings which introduce names for expressions. `global<T>(address): T` is a built-in function that returns the resource value at `addr`. `balance` is the number of tokens owned by `addr`. `exists<T>(address): bool` is a built-in function that returns true if the resource T exists at address. Two `aborts_if` clauses correspond to the two conditions mentioned above. In general, if a function has more than one `aborts_if` condition, those conditions are or-ed with each other. By default, if a user wants to specify aborts conditions, all possible conditions need to be listed. Otherwise, the prover will generate a verification error. However, if `pragma aborts_if_is_partial` is defined in the spec block, the combined aborts condition (the or-ed individual conditions) only *imply* that the function aborts. The reader can refer to the [MSL](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) document for more information.
 
-正如我们在这里看到的，一个规范块可以包含 let 绑定，它为表达式引入名称。`global<T>(address): T`是一个返回`addr`资源值的内置函数。`balance`是 `addr`拥有的代币数量。`exists<T>(address): bool`是一个内置函数，如果资源 T 存在于 address 则返回 true。两个`aborts_if`子句对应上述两个条件。一般来说，如果一个函数有多个`aborts_if`条件，这些条件会相互进行或运算。默认情况下，如果用户想要指定中止条件，则需要列出所有可能的条件。否则，验证器将产生验证错误。但是，如果在 spec 块中定义 `pragma aborts_if_is_partial`，则组合中止条件（或单独条件）仅暗示函数中止。读者可以参考 [MSL](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) 文档了解更多信息。
+正如我们在这里看到的，一个 spec 块可以包含 let 绑定，它为表达式引入名称。`global<T>(address): T`是一个返回`addr`资源值的内置函数。`balance`是 `addr`拥有的代币数量。`exists<T>(address): bool`是一个内置函数，如果资源 T 存在于 address 则返回 true。两个`aborts_if`子句对应上述两个条件。一般来说，如果一个函数有多个`aborts_if`条件，这些条件会相互进行或运算。默认情况下，如果用户想要指定中止条件，则需要列出所有可能的条件。否则，验证器将产生验证错误。但是，如果在 spec 块中定义 `pragma aborts_if_is_partial`，则组合中止条件（或单独条件）仅暗示函数中止。读者可以参考 [MSL](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) 文档了解更多信息。
 
 The next step is to define functional properties, which are described in the two `ensures` clauses below. First, by using the `let post` binding, `balance_post` represents the balance of `addr` after the execution, which should be equal to `balance - amount`. Then, the return value (denoted as `result`) should be a coin with value `amount`.
 
@@ -903,7 +895,7 @@ error: post-condition does not hold
 
 The property is not held when `addr_from` is equal to `to`. As a result, we could add an assertion `assert!(from_addr != to)` in the method to make sure that `addr_from` is not equal to `to`.
 
-当`addr_from`的代币数量等于`to`时，这个属性不存在。因此，我们可以在方法中添加一个断言，`assert!(from_addr != to)`来确保addr_from不等于to。
+当`addr_from`的代币数量等于`to`时，这个属性不存在。因此，我们可以在方法中添加一个断言，`assert!(from_addr != to)`来确保addr_from不等于`to`。
 
 </details>
 
@@ -912,8 +904,10 @@ The property is not held when `addr_from` is equal to `to`. As a result, we coul
 
 <summary> 练习 </summary>（<summary> Exercises </summary>）
 
-- Implement the `aborts_if` conditions for the `transfer` method.（为`transfer` 方法实现`aborts_if`条件。）
-- Implement the specification for the `mint` and `publish_balance` method.（为`mint` 和 `publish_balance`方法实现规范定义。）
+- Implement the `aborts_if` conditions for the `transfer` method.
+- 为`transfer` 方法实现`aborts_if`条件。
+- Implement the specification for the `mint` and `publish_balance` method.
+- 为`mint` 和 `publish_balance`方法实现规范定义。
 
 The solution to this exercise can be found in [`step_8_sol`](./step_8_sol).
 
