@@ -420,26 +420,41 @@ Roughly the Move blockchain state should look like this:
 
 ![](diagrams/move_state.png)
 
-#### 进阶主题(Advanced topics)：
-<details>
-<summary><code>public(script)</code>函数</summary>
+#### 进阶主题（Advanced topics）：
 
+<details>
+<summary><code>公开（脚本）</code>函数</summary>（<summary><code>public(script)</code>functions</summary>
+）
+
+Only functions with `public(script)` visibility can be invoked directly in transactions. So if you would like to call the `transfer` method directly from a transaction, you'll want to change its signature to:
+    
 只有`public(script)`可见行的函数才能直接被交易调用，所以如果你要直接在交易内调用`transfer`方法，那么需要将函数签改成如下格式:
 
 ```
 public(script) fun transfer(from: signer, to: address, amount: u64) acquires Balance { ... }
 ```
-关于函数可见性的更多知识，请参阅[Move function visibilities](https://move-language.github.io/move/functions.html#visibility)
+
+Read more on Move function visibilities [here](https://move-language.github.io/move/functions.html#visibility).
+
+关于函数可见性的更多知识，请参阅[Move function visibilities](https://move-language.github.io/move/functions.html#visibility)。
 </details>
 <details>
-<summary>与Ethereum/Solidity比较</summary>
+
+<summary>与Ethereum/Solidity比较</summary>（<summary>Comparison with Ethereum/Solidity</summary>
+）
+
+In most Ethereum [ERC-20]((https://ethereum.org/en/developers/docs/standards/tokens/erc-20/)) contracts, the balance of each address is stored in a _state variable_ of type
+<code>mapping(address => uint256)</code>. This state variable is stored in the storage of a particular smart contract.
 
 在大多数以太坊合约中，账户地址下钱包都是保存在类型为<code>mapping(address => uint256)</code>的__状态变量__中. 这个状态变量又是保存在一个单独的特殊智能合约中.
+
+The Ethereum blockchain state might look like this:
 
 以太坊区块量状态看起来是这样的:
 
 ![](diagrams/solidity_state.png)
 </details>
+
 
 ## Step 4: 实现我的`BasicCoin`模块（Implementing my `BasicCoin` module<span id="Step4"><span>）
 
