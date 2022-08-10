@@ -1,10 +1,10 @@
 
-# Move 教程（Move Tutorial）
+# Move 教程(Move Tutorial)
 
 Welcome to the Move Tutorial! In this tutorial, we are going to go through some steps of developing Move code
 including design, implementation, unit testing and formal verification of Move modules.
 
-欢迎来到Move语言教程，在本教程中，我们将带您使用Move语言经历完整的开发编码过程，包括设计、实现、单元测试还有Move Modules的形式验证。
+欢迎来到 Move 语言教程，在本教程中，我们通过一些具体的步骤进行Move语言代码的开发，包括 Move 模块的设计、实现、单元测试和形式化验证。
 
 There are nine steps in total:
 
@@ -19,32 +19,33 @@ There are nine steps in total:
 - [Step 8: Writing formal specifications for the `BasicCoin` module](#Step8) 
 
 整个过程共包含9个步骤：
-- [Step 0: 安装Move开发环境](#Step0)
-- [Step 1: 编写第一个Move模块(Move Module)](#Step1)
+
+- [Step 0: 安装 Move 开发环境](#Step0)
+- [Step 1: 编写第一个 Move 模块(Move Module)](#Step1)
 - [Step 2: 给模块(Module)添加单元测试](#Step2)
-- [Step 3: 设计自己的`BasicCoin`模块(Module)](#Step3)
-- [Step 4: `BasicCoin`模块(Module)的实现](#Step4)
-- [Step 5: 给 `BasicCoin`模块添加单元测试](#Step5)
-- [Step 6: 使用范型(generic)编写`BasicCoin`模块](#Step6)
-- [Step 7: 使用`Move prover`](#Step7)
-- [Step 8: 为`BasicCoin`模块编写正式规范(formal specifications)](#Step8)
+- [Step 3: 设计自己的 `BasicCoin` 模块(Module)](#Step3)
+- [Step 4: `BasicCoin` 模块(Module)的实现](#Step4)
+- [Step 5: 给 `BasicCoin` 模块添加单元测试](#Step5)
+- [Step 6: 使用泛型(generic)编写 `BasicCoin` 模块](#Step6)
+- [Step 7: 使用 `Move prover`](#Step7)
+- [Step 8: 为 `BasicCoin` 模块编写形式化规范(formal specifications)](#Step8)
 
 Each step is designed to be self-contained in the corresponding `step_x` folder. For example, if you would
 like to skip the contents in step 1 through 4, feel free to jump to step 5 since all the code we have written
 before step 5 will be in `step_5` folder. At the end of some steps, we also include
 additional material on more advanced topics.
 
-其中每一步都被设计为自包含的文件夹, 相应名字为`step_x`。 例如，如果您愿意跳过step 1到step 4的内容，可直接跳到step 5，因为所有在step 5之前的代码均在在`step_5`文件夹之下. 在个别步骤的结束部分，我们同时还额外引入一下高级主题和材料。
+其中每一步都被设计为自包含的文件夹, 相应名字为 `step_x`。 例如，如果您愿意跳过 `step 1` 到 `step 4` 的内容，可直接跳到 `step 5`，因为所有在 `step 5` 之前的代码均在在`step_5` 文件夹之下. 在部分步骤结束时，我们还引入有关更高级主题的附加资料。。
 
 Now let's get started!
 
 好了，我们现在开始！
 
-## Step 0: 安装Move开发环境<span id="Step0"><span>（Step 0: Installation）
+## Step 0: 安装 Move 开发环境<span id="Step0"><span> (Step 0: Installation)
 
 If you haven't already, open your terminal and clone [the Move repository](https://github.com/move-language/move):
 
-如果您还没有安装过Move，首先打开terminal并clone [Move 库](https://github.com/move-language/move):
+如果您还没有安装过 Move，首先打开 terminal 并clone [Move 库](https://github.com/move-language/move):
 
 ```bash
 git clone https://github.com/move-language/move.git
@@ -52,7 +53,7 @@ git clone https://github.com/move-language/move.git
 
 Go to the `move` directory and run the `dev_setup.sh` script:
 
-进入到`move`文件夹下，执行`dev_setup.sh`脚本:
+进入到 `move` 文件夹下，执行 `dev_setup.sh` 脚本:
 
 ```bash
 cd move
@@ -64,8 +65,10 @@ Follow the script's prompts in order to install all of Move's dependencies.
 The script adds environment variable definitions to your `~/.profile` file.
 Include them by running this command:
 
-根据脚本的提示，按顺序安装Move的所有依赖项。
-脚本将会将环境变量写入到`~/.profile`文件中, 执行如下命令使环境变量生效：
+根据脚本的提示，按顺序安装 Move 的所有依赖项。
+脚本将会将(move命令)环境变量写入到 `~/.profile` 文件中。
+
+执行如下命令使环境变量生效：
 
 ```bash
 source ~/.profile
@@ -73,7 +76,7 @@ source ~/.profile
 
 Next, install Move's command-line tool by running this commands:
 
-然后执行如下命令来安装Move命令行工具：
+然后执行如下命令来安装 Move 命令行工具：
 
 ```bash
 cargo install --path language/tools/move-cli
@@ -81,7 +84,7 @@ cargo install --path language/tools/move-cli
 
 You can check that it is working by running the following command:
 
-通过如下命令可以检查move是否已正常可用：
+通过如下命令可以检查 move 命令是否可正常可用：
 
 ```bash
 move --help
@@ -101,14 +104,15 @@ OPTIONS:
         --abi                          Generate ABIs for packages
 ...
 ```
+
 If you want to find what commands are available and what they do, running
 a command or subcommand with the `--help` flag will print documentation.
 
-如果您想知道有哪些命令可用，以及命令的作用, 执行命令或自命令时添加`--help`参数，此时会打印命令帮助文档。
+如果您想知道有哪些命令可用，以及命令的作用, 执行命令或子命令时添加 `--help` 参数，此时会打印命令帮助文档。
 
 Before running the next steps, `cd` to the tutorial directory:
 
-在执行下一步之前，请先`cd`进入到对应教程目录下:
+在执行下一步骤之前，请先执行 `cd` 命令进入到教程对应目录下:
 
 ```bash
 cd <path_to_move>/language/documentation/tutorial
@@ -116,17 +120,31 @@ cd <path_to_move>/language/documentation/tutorial
 
 <details>
 <summary>Visual Studio Code Move support</summary>
-
-Move有VS Code的官方支持, 您需要安装一下`move analyzer`
+There is official Move support for Visual Studio Code. You need to install
+the move analyzer first:
 
 ```bash
 cargo install --path language/move-analyzer
 ```
 
-现在您可以打开VS Code并安装Move扩展插件了，在扩展页面下搜索`move-analyzer`并安装即可。 关于扩展的详细信息可以查看扩展的[README](https://github.com/move-language/move/tree/main/language/move-analyzer/editors/code)。
+Now you can install the VS extension by opening VS Code, searching for the "move-analyzer" in
+the Extension Pane, and installing it. More detailed instructions can be found
+in the extension's [README](https://github.com/move-language/move/tree/main/language/move-analyzer/editors/code).
 </details>
 
-## Step 1: 编写第一个Move模块<span id="Step1"><span> （Writing my first Move module）
+<details>
+<summary>Visual Studio Code Move support</summary>
+
+Visual Studio Code 有正式的 Move 语言支持, 您需要先安装 `move analyzer` :
+
+```bash
+cargo install --path language/move-analyzer
+```
+
+现在您可以打开 VS Code 并安装 Move 扩展插件了，在扩展页面下搜索 `move-analyzer` 并安装即可。 关于扩展的详细信息可以查看扩展的[README](https://github.com/move-language/move/tree/main/language/move-analyzer/editors/code)。
+</details>
+
+## Step 1: 编写第一个Move模块<span id="Step1"><span> (Writing my first Move module)
 
 Change directory into the [`step_1/BasicCoin`](./step_1/BasicCoin) directory.
 You should see a directory called `sources` -- this is the place where all
@@ -246,7 +264,7 @@ move build
 
 </details>
 
-## Step 2: 给模块(Module)添加单元测试<span id="Step2"><span>（Adding unit tests to my first Move module）
+## Step 2: 给模块(Module)添加单元测试<span id="Step2"><span>(Adding unit tests to my first Move module)
 
 Now that we've taken a look at our first Move module, we'll take a look at a test to make sure minting works the way we expect it to by changing directory to [`step_2/BasicCoin`](./step_2/BasicCoin).  Unit tests in Move are similar to unit tests in Rust if you're familiar with them -- tests are annotated with `#[test]` and written like normal Move functions.
 
@@ -306,7 +324,7 @@ coin in storage has the value that is expected with the `assert!` call. If the a
   注意, 修改地址将它指向`<path_to_move>/language`文件夹下的`move-stdlib`目录. 或者
   用git依赖方式设定亦可, 关于Move软件包依赖(package denpendices)知识请参阅[文档](https://move-language.github.io/move/packages.html#movetoml)
 
-#### 练习（Exercises）
+#### 练习(Exercises)
 
 * Change the assertion to `11` so that the test fails. Find a flag that you can pass to the `move test` command that will show you the global state when the test fails. It should look something like this:
   
@@ -338,7 +356,7 @@ coin in storage has the value that is expected with the `assert!` call. If the a
 
 </details>
 
-## Step 3: 设计自己的`BasicCoin`模块(Module)<span id="Step3"><span>（Designing my `BasicCoin` module）
+## Step 3: 设计自己的`BasicCoin`模块(Module)<span id="Step3"><span>(Designing my `BasicCoin` module)
 
 In this section, we are going to design a module implementing a basic coin and balance interface, where coins can be minted and transferred between balances held under different addresses.
 
@@ -369,7 +387,7 @@ The signatures of the public Move function are the following:
 A Move module doesn't have its own storage. Instead, Move "global storage" (what we call our
 blockchain state) is indexed by addresses. Under each address there are Move modules (code) and Move resources (values).
 
-Move模块没有自己的数据存储，而是需要按地址（addresses）检索Move全局存储空间 "global storage"（也是就是我们所说的blockchain state）每个地址之下包含有Move模块（代码）和Move数据（resources或values）。
+Move模块没有自己的数据存储，而是需要按地址(addresses)检索Move全局存储空间 "global storage"(也是就是我们所说的blockchain state)每个地址之下包含有Move模块(代码)和Move数据(resources或values)。
 
 The global storage looks roughly like this in Rust syntax:
 
@@ -385,8 +403,8 @@ struct GlobalStorage {
 The Move resource storage under each address is a map from types to values. (An observant reader might observe that this means each address can only have one value of each type.) This conveniently provides us a native mapping indexed by addresses. In our `BasicCoin` module, we define the following `Balance` resource representing the number of coins
 each address holds:
 
-地址下的存储资源(Move resource)是一个类型types到取值values的字典。（细心的读者也许已经注意到每个地址,每个类型type下只能对应一个具体值value）。
-通过地址addresses索引的方式, 系统方便地提供了一个原生字典. 在我们的`BasicCoin`模块下中，我们定义了每个`Balance`（钱包，余额）表示每个地址下
+地址下的存储资源(Move resource)是一个类型types到取值values的字典。(细心的读者也许已经注意到每个地址,每个类型type下只能对应一个具体值value)。
+通过地址addresses索引的方式, 系统方便地提供了一个原生字典. 在我们的`BasicCoin`模块下中，我们定义了每个`Balance`(钱包，余额)表示每个地址下
 持有的币的数量：
 
 ```
@@ -398,11 +416,11 @@ struct Balance has key {
 
 Roughly the Move blockchain state should look like this:
 
-区块链状态（`Move blockchain state`）大致看起来是这样：
+区块链状态(`Move blockchain state`)大致看起来是这样：
 
 ![](diagrams/move_state.png)
 
-#### 进阶主题（Advanced topics）：
+#### 进阶主题(Advanced topics)：
 <details>
 <summary><code>public(script)</code>函数</summary>
 
@@ -697,9 +715,9 @@ fun withdraw<CoinType>(addr: address, amount: u64) : Coin<CoinType> acquires Bal
     }
 ```
 
-正如我们在这里看到的，一个规范块可以包含 let 绑定，它为表达式引入名称。`global<T>(address): T`是一个返回`addr`资源值的内置函数。`balance`是 `addr`拥有的代币数量。`exists<T>(address): bool`是一个内置函数，如果资源 T 存在于 address 则返回 true。两个`aborts_if`子句对应上述两个条件。一般来说，如果一个函数有多个`aborts_if`条件，这些条件会相互进行或运算。默认情况下，如果用户想要指定中止条件，则需要列出所有可能的条件。否则，验证器将产生验证错误。但是，如果在 spec 块中定义 `pragma aborts_if_is_partial`，则组合中止条件（或单独条件）仅暗示函数中止。读者可以参考 [MSL](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) 文档了解更多信息。
+正如我们在这里看到的，一个规范块可以包含 let 绑定，它为表达式引入名称。`global<T>(address): T`是一个返回`addr`资源值的内置函数。`balance`是 `addr`拥有的代币数量。`exists<T>(address): bool`是一个内置函数，如果资源 T 存在于 address 则返回 true。两个`aborts_if`子句对应上述两个条件。一般来说，如果一个函数有多个`aborts_if`条件，这些条件会相互进行或运算。默认情况下，如果用户想要指定中止条件，则需要列出所有可能的条件。否则，验证器将产生验证错误。但是，如果在 spec 块中定义 `pragma aborts_if_is_partial`，则组合中止条件(或单独条件)仅暗示函数中止。读者可以参考 [MSL](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) 文档了解更多信息。
 
-下一步是定义功能属性，这些属性在下面的两个`ensures`子句中进行了描述。首先，通过使用`let post`绑定，`balance_post`表示地址`addr`执行后的余额，应该等于`balance - amount`。那么，返回值（表示为`result`）应该是一个价值为`amount`的代币。
+下一步是定义功能属性，这些属性在下面的两个`ensures`子句中进行了描述。首先，通过使用`let post`绑定，`balance_post`表示地址`addr`执行后的余额，应该等于`balance - amount`。那么，返回值(表示为`result`)应该是一个价值为`amount`的代币。
 
 ```
     spec withdraw {

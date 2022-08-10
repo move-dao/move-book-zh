@@ -5,7 +5,7 @@
 ## Getting Started
 
 - [模块和脚本(Modules and Scripts)](chapter_1_modules-and-scripts.md)
-- [Move指南(Move Tutorial)](chapter_2_move_tutorial.md)
+- [Move 教程(Move Tutorial)](chapter_2_move-tutorial.md)
 
 ## Primitive Types
 

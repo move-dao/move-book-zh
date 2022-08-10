@@ -20,9 +20,9 @@
 | 17 | Constants                  | @nosalt99                                      | [@lshoo](https://github.com/lshoo)   |
 | 18 | Generics                   | 小川                                            | [@lshoo](https://github.com/lshoo)   |
 | 19 | Type Abilities             | 小川                                            | [@lshoo](https://github.com/lshoo)   |
-| 20 | Uses and Aliases           | 小川                                            |                                      |
-| 21 | Friends                    | @xiaochuan891102                               |                                      |
-| 22 | Packages                   | @xiaochuan891102                               |                                      |
+| 20 | Uses and Aliases           | 小川                                            | [@ruyisu](https://github.com/ruy1su) |
+| 21 | Friends                    | @xiaochuan891102                               | [@ruyisu](https://github.com/ruy1su) |
+| 22 | Packages                   | @xiaochuan891102                               | [@ruyisu](https://github.com/ruy1su) |
 | 23 | Unit Test                  | [@yvvw](https://github.com/yvvw)               | [@ruyisu](https://github.com/ruy1su) |
 | 24 | Global Storage Structure   | [@yvvw](https://github.com/yvvw)               | [@ruyisu](https://github.com/ruy1su) |
 | 25 | Global Storage Operators   | [@yvvw](https://github.com/yvvw)               | [@ruyisu](https://github.com/ruy1su) |
