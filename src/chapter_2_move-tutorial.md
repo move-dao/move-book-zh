@@ -45,7 +45,7 @@ Now let's get started!
 
 If you haven't already, open your terminal and clone [the Move repository](https://github.com/move-language/move):
 
-如果您还没有安装过 Move，首先打开 terminal 并clone [Move 库](https://github.com/move-language/move):
+如果您还没有安装过 Move，首先打开命令终端(terminal) 并clone [Move代码库](https://github.com/move-language/move):
 
 ```bash
 git clone https://github.com/move-language/move.git
@@ -65,8 +65,8 @@ Follow the script's prompts in order to install all of Move's dependencies.
 The script adds environment variable definitions to your `~/.profile` file.
 Include them by running this command:
 
-根据脚本的提示，按顺序安装 Move 的所有依赖项。
-脚本将会将(move命令)环境变量写入到 `~/.profile` 文件中。
+根据脚本命令的提示，按顺序安装 Move 的所有依赖项。
+脚本将会将(move命令所在路径)环境变量写入到 `~/.profile` 文件中。
 
 执行如下命令使环境变量生效：
 
@@ -84,7 +84,7 @@ cargo install --path language/tools/move-cli
 
 You can check that it is working by running the following command:
 
-通过如下命令可以检查 move 命令是否可正常可用：
+通过如下运行命令可以检查 move 命令是否可正常：
 
 ```bash
 move --help
@@ -108,7 +108,7 @@ OPTIONS:
 If you want to find what commands are available and what they do, running
 a command or subcommand with the `--help` flag will print documentation.
 
-如果您想知道有哪些命令可用，以及命令的作用, 执行命令或子命令时添加 `--help` 参数，此时会打印命令帮助文档。
+如果想了解有支持哪引命令及其作用, 执行命令或子命令时添加 `--help` 标记，此时会打印帮助文档。
 
 Before running the next steps, `cd` to the tutorial directory:
 
@@ -141,7 +141,7 @@ Visual Studio Code 有正式的 Move 语言支持, 您需要先安装 `move anal
 cargo install --path language/move-analyzer
 ```
 
-现在您可以打开 VS Code 并安装 Move 扩展插件了，在扩展页面下搜索 `move-analyzer` 并安装即可。 关于扩展的详细信息可以查看扩展的[README](https://github.com/move-language/move/tree/main/language/move-analyzer/editors/code)。
+现在您可以打开 VS Code 并安装 Move 扩展插件了，在扩展页面下找到 `move-analyzer` 并安装即可。关于扩展的详细信息可以查看扩展的[README](https://github.com/move-language/move/tree/main/language/move-analyzer/editors/code)。
 </details>
 
 ## Step 1: 编写第一个Move模块<span id="Step1"><span> (Writing my first Move module)
@@ -154,14 +154,14 @@ the package; if you're familiar with Rust and Cargo, the `Move.toml` file
 is similar to the `Cargo.toml` file, and the `sources` directory similar to
 the `src` directory.
 
-切换目录到[`step_1/BasicCoin`](./step_1/BasicCoin)下，您将看到`sources`目录 -- 所有的Move代码都在其中，同时您还会看到一个`Move.toml`文件
-该文件是当前package的依赖列表和其他信息。如果您熟悉`Rust`和`Cargo`的可知`Move.toml`与`Cargo.toml`是类似的，而`sources`目录则同样类似`src`文件夹。
+切换当前目录到[`step_1/BasicCoin`](./step_1/BasicCoin)下，您将看到 `sources` 子目录 -- 这个包(package)下所有的 Move 代码都在此目录中，同时您还会看到一个 `Move.toml` 文件。该文件指定当前包的依赖列表和其他信息。
+如果您熟悉 `Rust` 和 `Cargo`，那 `Move.toml` 文件类似 `Cargo.toml` 文件， `sources` 目录类似 `src` 目录(它们的作用是一样的)
 
 Let's take a look at some Move code! Open up
 [`sources/FirstModule.move`](./step_1/BasicCoin/sources/FirstModule.move) in
 your editor of choice. The first thing you'll see is this:
 
-我们看一下Move代码内容！ 用你选择的编辑器打开[`sources/FirstModule.move`](./step_1/BasicCoin/sources/FirstModule.move) 你会看到如下内容：
+来一起看看 Move 语言代码内容！ 用你的编辑器打开[`sources/FirstModule.move`](./step_1/BasicCoin/sources/FirstModule.move)文件，会看到如下内容：
 
 ```
 // sources/FirstModule.move
@@ -172,17 +172,16 @@ module 0xCAFE::BasicCoin {
 
 This is defining a Move
 [module](https://move-language.github.io/move/modules-and-scripts.html). Modules are the
-building block of Move code, and are defined with a specific address -- the
-address that the module can be published under. In this case, the `BasicCoin`
-module can only be published under `0xCAFE`.
+building block of Move code, and are defined with a specific address -- the address that the module can be published under. 
+In this case, the `BasicCoin` module can only be published under `0xCAFE`.
 
-这是一个`Move` [module](https://move-language.github.io/move/modules-and-scripts.html)的定义。
-模块(Modules)是Move代码的组成部分, 并且它通过一个地址(address)来进行定义 -- 模块只能在该地址下发布. 
-当前`BasicCoin` module只能被发布在`0xCAFE`地址下。
+这是一个 `Move` [module(模块)](./chpater_1_modules-and-scripts.html)的定义。
+模块是 Move 语言的代码块, 并且它使用指定的地址(address)进行定义 -- 模块只能在该地址下发布. 
+当前 `BasicCoin` 模块只能被发布在 `0xCAFE` 地址下。
 
 Let's now take a look at the next part of this file where we define a [struct](https://move-language.github.io/move/structs-and-resources.html) to represent a `Coin` with a given `value`:
 
-我们再看下一部分，这里定义了一个具有名叫`value`元素的`Coin`[结构体](https://move-language.github.io/move/structs-and-resources.html);
+再看这个文件的下一部分，这里定义了一个具有字段 `value` 的[结构体](./chapter_16_structs-and-resources.html) `Coin` ;
 
 ```
 module 0xCAFE::BasicCoin {
@@ -195,7 +194,7 @@ module 0xCAFE::BasicCoin {
 
 Looking at the rest of the file, we see a function definition that creates a `Coin` struct and stores it under an account:
 
-再看文件剩余部分，我们会看到一个函数，它会创建一个`Coin`结构体，并将其保存在一个账号account下：
+再看文件剩余部分，我们会看到一个函数，它会创建一个 `Coin` 结构体，并将其保存在某个账号(account)下：
 
 ```
 module 0xCAFE::BasicCoin {
@@ -218,62 +217,86 @@ Let's take a look at this function and what it's saying:
 
 Let's make sure it builds! This can be done with the `build` command from within the package folder ([`step_1/BasicCoin`](./step_1/BasicCoin/)):
 
-让我们来看看这个函数和它的具体实现:
-* 输入一个[`signer`](https://move-language.github.io/move/signer.html) -- 一个表示对具体`address`控制权的不可变造token，还有一个将要铸造的`value`
-* 使用`move_to`操作 将包含了`value`的新创建`Coin`保存在给定的`account`账户下。
+让我们来看看这个函数和它的含义:
+* 此函数需要一个[`signer`](./chapter_7_signer.html)参数 -- 表示不可伪造的 token 受此特定地址的控制; 和一个需要铸造的数量参数 `value`。
+* 此函数使用给定的参数值铸造一个 `Coin`，然后通过 `move_to` 操作将其保存在(全局存储中)给定的 `account` 账户下。
 
-我们需要确保它真的执行，这就需要通过package([`step_1/BasicCoin`](./step_1/BasicCoin/))下的`build`命令来完成。
+我们需要确保它真的执行，这可以通过在包文件夹([`step_1/BasicCoin`](./step_1/BasicCoin/))下的运行 `build` 命令来完成：。
 
 ```bash
 move build
 ```
 
 <details>
-<summary>进阶概念及参考引用</summary>
+<summary>进阶概念及参考引用 (Advanced concepts and references)</</summary>
 
-* 你可以通过以下命令创建一个空的Move包(move package):
+* You can create an empty Move package by calling:
     ```bash
     move new <pkg_name>
     ```
-* move代码也可以放在其他很多地方, 关于move包体系的知识请参阅[Move
-  book](https://move-language.github.io/move/packages.html)
-* 关于`Move.toml`文件的更多知识可以参阅[package section of the Move book](https://move-language.github.io/move/packages.html#movetoml).
-* Move语言同时支持命名地址变量([named
-  addresses](https://move-language.github.io/move/address.html#named-addresses)), 命名地址
-  是一种参数化Move代码的方法，通过给`NamedAddr`的不同取值来使得由你自己控制部署地址, 编译后
-  会得到相应地址可部署的字节码结果. 这种用法非常常见，一般都将地址变量其定义在`Move.toml`文件
-  的`[addresses]`段之内. 例如:
+* Move code can also live a number of other places.  More information on the
+  Move package system can be found in the [Move book](https://move-language.github.io/move/packages.html)
+* More information on the `Move.toml` file can be found in the [package section of the Move book](https://move-language.github.io/move/packages.html#movetoml).
+* Move also supports the idea of [named addresses](https://move-language.github.io/move/address.html#named-addresses), Named addresses are a way to parametrize Move source code so that you can compile the module using different values for `NamedAddr` to get different bytecode that you can deploy, depending on what address(es) you control. They are used quite frequently, and can be defined in the `Move.toml` file in the `[addresses]` section, e.g.,
     ```
     [addresses]
     SomeNamedAddress = "0xC0FFEE"
     ```
-* Move[结构体](https://move-language.github.io/move/structs-and-resources.html)可以通过给类型设定不同的
- 能力[abilities](https://move-language.github.io/move/abilities.html)让类型下支持新的不同操作. 有四种能力支持:
-    - `copy`: 该类型的值允许拷贝
-    - `drop`: 该类型的值允许丢弃(dropped)和破坏性读出(popped)
-    - `store`: 该类型的值可以保存在全局存储(glogbal storage)中的结构体之中.
-    - `key`: 允许该类型作为全局存储(global storage)的key.
+* 你可以通过以下命令创建一个空的 Move 包(move package):
+    ```bash
+    move new <pkg_name>
+    ```
+* Move 代码也可以放在其他很多地方, 更多关于 Move 包系统的信息请参阅[Move book](./chapter_22_packages.html)
+* 更多关于 `Move.toml` 文件的信息可以参阅[package section of the Move book](./chapter_22_packages.html#movetoml).
+* Move语言也支持命名地址的概念([named addresses](./address.html#named-addresses)), 命名地址是一种参数化 Move 源代码的方法，
+  就是如果对 `NamedAddr` 使用的不同赋值编译，编译后会获得部署到你控制地址的不同字节码. 这种用法很常见，一般都将地址变量其定义在 `Move.toml` 文件
+  的 `[addresses]` 部分. 例如:
+    ```
+    [addresses]
+    SomeNamedAddress = "0xC0FFEE"
 
-    所以`BasicCoin`模块下的`Coin`结构体可以用作全局存储(global storage)的key， 因为它又不具备其他能力，它不能
-    被拷贝，不能被丢弃(dropped), 也不能在存储时作为的非key来保存. 你无法复制已有的coin，但也不会遇到coin莫名
-    丢失的情况.
-* 函数[Functions](https://move-language.github.io/move/functions.html)默认是私有的(private), 也可以设定为`public`
-  [`public(friend)`](https://move-language.github.io/move/friends.html), `public(script)`状态. 最后一个(`public(script)`)
-  状态的函数可以在同一个交易脚本内被其他`pulic(script)`的函数调用.
-* `move_to`是[五种全局存储(global storage)的操作算子](https://move-language.github.io/move/global-storage-operators.html)之一
+* [Structures](https://move-language.github.io/move/structs-and-resources.html) in Move can be given different
+  [abilities](https://move-language.github.io/move/abilities.html) that describe what can be done with that type. There are four different abilities:
+    - `copy`: Allows values of types with this ability to be copied.
+    - `drop`: Allows values of types with this ability to be popped/dropped.
+    - `store`: Allows values of types with this ability to exist inside a struct in global storage.
+    - `key`: Allows the type to serve as a key for global storage operations.
+
+    So in the `BasicCoin` module we are saying that the `Coin` struct can be used as a key
+    in global storage and, because it has no other abilities, it cannot be
+    copied, dropped, or stored as a non-key value in storage. So you can't copy
+    coins, and you also can't lose coins by accident!
+* [Functions](https://move-language.github.io/move/functions.html) are default
+    private, and can also be `public`,
+    [`public(friend)`](https://move-language.github.io/move/friends.html), or
+    `public(script)`. The last of these states that this function can be
+    called from a transaction script. `public(script)` functions can also be
+    called by other `public(script)` functions.
+* `move_to` is one of the [five different global storage operators](https://move-language.github.io/move/global-storage-operators.html).
+
+* Move [结构体](./chpater_16_structs-and-resources.html)可以通过给类型设定不同的能力[abilities](./chapter_19_abilities.html)让类型下支持对应的行为. 有四种能力:
+    - `copy`: 允许此类型的值被复制
+    - `drop`: 允许此类型的值被弹出/丢弃
+    - `store`: 允许此类型的值存在于全局存储的某个结构体中.
+    - `key`: 允许此类型作为全局存储中的键.
+
+    所以 `BasicCoin` 模块下的 `Coin` 结构体可以用作全局存储(global storage)的键(key)， 因为它又不具备其他能力，它不能
+    被拷贝，不能被丢弃, 也不能作为非key来保存在(全局)存储里. 你无法复制 `Coin`，也不会意外弄丢它.
+* 函数[Functions](./functions.html)默认是私有的(private), 也可以声明为 `public` [`public(friend)`](https://move-language.github.io/move/friends.html), `public(script)`. 最后一个声明(指 `public(script)`)的函数可以被事务脚本调用。`public(script)` 函数也可以被其他 `public(script)` 函数调用。(注意：在最新版本的 Move中，`public(script)` 已经被废弃，被`public entry` 取代，下同，译者注)
+* `move_to` 是[五种不同的全局存储操作](./chapter_25_global-storage-operators.html)之一
 
 </details>
 
-## Step 2: 给模块(Module)添加单元测试<span id="Step2"><span>(Adding unit tests to my first Move module)
+## Step 2: 给模块(Module)添加单元测试<span id="Step2"><span> (Adding unit tests to my first Move module)
 
 Now that we've taken a look at our first Move module, we'll take a look at a test to make sure minting works the way we expect it to by changing directory to [`step_2/BasicCoin`](./step_2/BasicCoin).  Unit tests in Move are similar to unit tests in Rust if you're familiar with them -- tests are annotated with `#[test]` and written like normal Move functions.
 
-You can run the tests with the `package test` command:
+You can run the tests with the `move test` command: (原文是 `package test`，应该有误)
 
-现在我们来看一下我们的第一个Move模块, 通过切换目录到[`step_2/BasicCoin`](./step_2/BasicCoin)下，我们可以看到一个为了确保铸币(minting works)如期工作所编写的单元测试代码, Move语言中的单元测试与
-Rust语言中的单测非常类似 -- 通过在普通Move函数上增加`#[test]`注解来标记.
+现在我们已经完成了我们的第一个 Move 模块，我们将切换到目录[`step_2/BasicCoin`](./step_2/BasicCoin)下并完成一个测试，确保铸币按我们预期的方式工作
+如果你熟悉它们(Move 和 Rust)的话，Move 中的单元测试类似于 Rust 中的单元测试 —— 测试代码使用 `#[test]` 注解，并像编写普通的 Move 函数一样。
 
-你可以通过`package test`命令来执行测试:
+可以通过 `move test` 命令来执行测试:
 
 ```bash
 move test
@@ -282,7 +305,7 @@ move test
 Let's now take a look at the contents of the [`FirstModule.move`file](./step_2/BasicCoin/sources/FirstModule.move). The first new thing you'll
 see is this test:
 
-现在我们再看一下[`FirstModule.move`文件](./step_2/BasicCoin/sources/FirstModule.move)的具体内容，里面是有一个新的单元测试:
+现在我们来完成文件[`FirstModule.move`](./step_2/BasicCoin/sources/FirstModule.move)的具体内容，你将看到的第一个新事项是这个测试:
 
 ```
 module 0xCAFE::BasicCoin {
@@ -301,31 +324,45 @@ module 0xCAFE::BasicCoin {
 }
 ```
 
-This is declaring a unit test called `test_mint_10` that mints a `Coin` struct under the `account` with a `value` of `10`. It is then checking that the minted coin in storage has the value that is expected with the `assert!` call. If the assertion fails the unit test will fail.
+This is declaring a unit test called `test_mint_10` that mints a `Coin` struct under the `account` with a `value` of `10`. It is then checking that the minted
+coin in storage has the value that is expected with the `assert!` call. If the assertion fails the unit test will fail.
 
-这里声明了一个命名为`test_mint_10`的单元测试，它在`account`账户地址下铸造了一个包含`value`为10的`Coin`，然后通过`assert!`调用来检查目标存储之下是否如预期保存了一个包含预期`value`的币，如果断言`assert`调用失败，则单元测试失败。
+这里声明了一个命名为 `test_mint_10` 的单元测试，它在 `account` 账户地址下铸造了一个包含 `value` 为 `10`的 `Coin`，然后通过 `assert!` 断言检查已经铸造成功并保存在(全局)存储中的 `Coin` 的值是否与期望值一致。如果断言 `assert` 执行失败，则单元测试失败。
 
 <details>
-<summary>进阶概念及参考练习</summary>
+<summary>进阶概念及参考练习 (Advanced concepts and exercises)</summary>
 
-* 测试相关的注解(annotations)都值得仔细探索, 参阅[用法](https://github.com/move-language/move/blob/main/language/changes/4-unit-testing.md#testing-annotations-their-meaning-and-usage)
-  未来在`Step 5`我们还会看到更多用法.
-
-* 执行测试之前，你需要设定Move标准库依赖关系，找到`Move.toml`并在`[dependencies]`段内进行设定, 例如
+* There are a number of test-related annotations that are worth exploring, they can be found
+  [here](https://github.com/move-language/move/blob/main/language/changes/4-unit-testing.md#testing-annotations-their-meaning-and-usage).
+  You'll see some of these used in Step 5.
+* Before running unit tests, you'll always need to add a dependency on the Move
+  standard library. This can be done by adding an entry to the `[dependencies]`
+  section of the `Move.toml`, e.g.,
 
   ```toml
   [dependencies]
   MoveStdlib = { local = "../../../../move-stdlib/", addr_subst = { "Std" = "0x1" } }
   ```
-  
-  注意, 修改地址将它指向`<path_to_move>/language`文件夹下的`move-stdlib`目录. 或者
-  用git依赖方式设定亦可, 关于Move软件包依赖(package denpendices)知识请参阅[文档](https://move-language.github.io/move/packages.html#movetoml)
 
-#### 练习(Exercises)
+  Note that you may need to alter the path to point to the `move-stdlib` directory under
+  `<path_to_move>/language`. You can also specify git dependencies. You can read more on Move
+  package dependencies [here](https://move-language.github.io/move/packages.html#movetoml).
+
+* 很多测试相关的注解(annotations)都值得仔细探索, 参阅[用法](https://github.com/move-language/move/blob/main/language/changes/4-unit-testing.md#testing-annotations-their-meaning-and-usage)。 在 `Step 5` 中会看到更多用法.
+
+* 执行测试之前，需要设定Move标准库依赖关系，找到 `Move.toml` 并在 `[dependencies]` 段内进行设定, 例如
+
+  ```toml
+  [dependencies]
+  MoveStdlib = { local = "../../../../move-stdlib/", addr_subst = { "Std" = "0x1" } }
+  ```
+注意, 需要修改 `<path_to_move>/language` 中的内容来匹配实际 `move-stdlib` 所在的目录路径. 也可以用 `git` 方式指定依赖, 关于 Move 包依赖(package denpendices)信息可参阅[package文档](./chapter_22_packages.html#movetoml)
+
+#### 练习 (Exercises)
 
 * Change the assertion to `11` so that the test fails. Find a flag that you can pass to the `move test` command that will show you the global state when the test fails. It should look something like this:
   
-* 将断言修改为`11`看断言如何失败, 找到那个可以帮你打印断言失败时打印全局状态的`move test`命令参数，错误提示大致如下：
+* 将断言值改为 `11` 将导致断言执行失败, 找一个可以传递给 `move test` 命令的标志，当测试失败时它会显示全局状态。看起来像这样：
   ```
     ┌── test_mint_10 ──────
     │ error[E11001]: test failure
@@ -349,19 +386,19 @@ This is declaring a unit test called `test_mint_10` that mints a `Coin` struct u
 
 * Find a flag that allows you to gather test coverage information, and then play around with using the `move coverage` command to look at coverage statistics and source coverage.
   
-* 找到可以帮你收集测试覆盖率的参数值，然后尝试使用`move coverage`命令查看代码的覆盖统计和代码覆盖情况。
+* 找一个允许您收集测试覆盖率信息的标志，然后使用 `move coverage` 命令查看覆盖率统计信息和源码覆盖率。
 
 </details>
 
-## Step 3: 设计自己的`BasicCoin`模块(Module)<span id="Step3"><span>(Designing my `BasicCoin` module)
+## Step 3: 设计自己的 `BasicCoin` 模块(Module)<span id="Step3"><span> (Designing my `BasicCoin` module)
 
 In this section, we are going to design a module implementing a basic coin and balance interface, where coins can be minted and transferred between balances held under different addresses.
 
-当前章节我们将设计一个模块，实现一个基本的币和钱包接口，通过他们来实现币的挖矿铸造，不同地址之下钱包的转账.
+在本节中，我们将设计一个具有基本货币和余额(balance)接口功能的模块，通过他们来实现币的挖矿铸造，不同地址之下钱包的转账。
 
 The signatures of the public Move function are the following:
 
-这些公共Move函数的签名如下:
+Move 语言的 `public function` 签名如下:
 
 ```
 /// Publish an empty balance resource under `account`'s address. This function must be called before
@@ -377,18 +414,20 @@ public fun balance_of(owner: address): u64 acquires Balance { ... }
 /// Transfers `amount` of tokens from `from` to `to`.
 public fun transfer(from: &signer, to: address, amount: u64) acquires Balance { ... }
 ```
-The signatures of the public Move function are the following:
+
+Next we look at the data structs we need for this module.
 
 接下来再看本模块所需要各数据结构.
 
 A Move module doesn't have its own storage. Instead, Move "global storage" (what we call our
 blockchain state) is indexed by addresses. Under each address there are Move modules (code) and Move resources (values).
 
-Move模块没有自己的数据存储，而是需要按地址(addresses)检索Move全局存储空间 "global storage"(也是就是我们所说的blockchain state)每个地址之下包含有Move模块(代码)和Move数据(resources或values)。
+Move 语言的模块没有自己的数据存储，相反的是 Move 语言提供按地址(addresses) 索引的 **全局存储** (也是就是我们所说的区块链状态(blockchain state)).
+每个地址之下包含有 Move 模块(代码)和 Move 资源 (数据)。
 
 The global storage looks roughly like this in Rust syntax:
 
-全局存储看起来有点像Rust的语法:
+全局存储看起来有点像 Rust 的语法:
 
 ```rust
 struct GlobalStorage {
@@ -397,10 +436,11 @@ struct GlobalStorage {
 }
 ```
 
-The Move resource storage under each address is a map from types to values. (An observant reader might observe that this means each address can only have one value of each type.) This conveniently provides us a native mapping indexed by addresses. In our `BasicCoin` module, we define the following `Balance` resource representing the number of coins
-each address holds:
+The Move resource storage under each address is a map from types to values. (An observant reader might observe that this means each address can only have one value of each type.) This conveniently provides us a native mapping indexed by addresses. 
+In our `BasicCoin` module, we define the following `Balance` resource representing the number of coins each address holds:
 
-地址下的存储资源(Move resource)是一个类型types到取值values的字典。(细心的读者也许已经注意到每个地址,每个类型type下只能对应一个具体值value)。通过地址addresses索引的方式, 系统方便地提供了一个原生字典. 在我们的`BasicCoin`模块下中，我们定义了每个`Balance`(钱包，余额)表示每个地址下持有的币的数量：
+每个地址下的 Move 资源存储是一个类型到数值的映射。(细心的读者也许已经注意到每个地址, 每个类型下只能对应一个具体值)。这方便地为我们提供了一个按地址索引的本地映射。
+在 `BasicCoin` 模块中，定义了每个 `Balance` (钱包，余额)资源表示每个地址下持有的币的数量：
 
 ```
 /// Struct representing the balance of each address.
@@ -411,45 +451,39 @@ struct Balance has key {
 
 Roughly the Move blockchain state should look like this:
 
-区块链状态(`Move blockchain state`)大致看起来是这样：
+区块链状态(`Move blockchain state`)看起来大致如下：
 
 ![](diagrams/move_state.png)
 
-#### 进阶主题（Advanced topics）：
+#### 进阶主题 (Advanced topics) ：
 
-<details>
-<summary><code>公开（脚本）</code>函数</summary>（<summary><code>public(script)</code>functions</summary>
-）
+<summary><code>public(script)</code> functions</summary>
 
 Only functions with `public(script)` visibility can be invoked directly in transactions. So if you would like to call the `transfer` method directly from a transaction, you'll want to change its signature to:
-    
+
 只有`public(script)`可见行的函数才能直接被交易调用，所以如果你要直接在交易内调用`transfer`方法，那么需要将函数签改成如下格式:
 
 ```
 public(script) fun transfer(from: signer, to: address, amount: u64) acquires Balance { ... }
 ```
-
 Read more on Move function visibilities [here](https://move-language.github.io/move/functions.html#visibility).
 
-关于函数可见性的更多知识，请参阅[Move function visibilities](https://move-language.github.io/move/functions.html#visibility)。
+关于函数可见性的更多信息，请参阅[Move function visibilities](./chapter_15_functions.html#visibility)。
+
 </details>
 <details>
+<summary>与 Ethereum/Solidity 的比较 (Comparison with Ethereum/Solidity)</summary>
 
-<summary>与Ethereum/Solidity比较</summary>（<summary>Comparison with Ethereum/Solidity</summary>
-）
+In most Ethereum [ERC-20]((https://ethereum.org/en/developers/docs/standards/tokens/erc-20/)) contracts, the balance of each address is stored in a _state variable_ of type <code>mapping(address => uint256)</code>. This state variable is stored in the storage of a particular smart contract.
 
-In most Ethereum [ERC-20]((https://ethereum.org/en/developers/docs/standards/tokens/erc-20/)) contracts, the balance of each address is stored in a _state variable_ of type
-<code>mapping(address => uint256)</code>. This state variable is stored in the storage of a particular smart contract.
-
-在大多数以太坊合约中，账户地址下钱包都是保存在类型为<code>mapping(address => uint256)</code>的__状态变量__中. 这个状态变量又是保存在一个单独的特殊智能合约中.
+在大多数以太坊[ERC-20]((https://ethereum.org/en/developers/docs/standards/tokens/erc-20/))智能合约中，各个账户地址下的余额保存在类型为 <code>mapping(address => uint256)</code>的 __状态变量__ 中，此状态变量存储在具体的智能合约内部存储中。
 
 The Ethereum blockchain state might look like this:
 
-以太坊区块链的状态看起来是这样的:
+以太坊区块链的状态看起来大致如下:
 
 ![](diagrams/solidity_state.png)
 </details>
-
 
 ## Step 4: 实现我的`BasicCoin`模块（Implementing my `BasicCoin` module<span id="Step4"><span>）
 
