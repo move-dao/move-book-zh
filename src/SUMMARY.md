@@ -36,8 +36,8 @@
 
 ## Global Storage
 
-- [全局存储结构(Global Storage - Structure)](chapter_24_global-storage-operators.md)
-- [全局存储操作(Global Storage - Operators)](chapter_25_global-storage-structure.md)
+- [全局存储结构(Global Storage - Structure)](chapter_24_global-storage-structure.md)
+- [全局存储操作(Global Storage - Operators)](chapter_25_global-storage-operators.md)
 
 ## Reference
 
