@@ -119,28 +119,20 @@ cd <path_to_move>/language/documentation/tutorial
 ```
 
 <details>
-<summary>Visual Studio Code Move support</summary>
+<summary>Visual Studio Code Move 支持 (Visual Studio Code Move Support)</summary>
+
 There is official Move support for Visual Studio Code. You need to install
 the move analyzer first:
-
-```bash
-cargo install --path language/move-analyzer
-```
-
-Now you can install the VS extension by opening VS Code, searching for the "move-analyzer" in
-the Extension Pane, and installing it. More detailed instructions can be found
-in the extension's [README](https://github.com/move-language/move/tree/main/language/move-analyzer/editors/code).
-</details>
-
-<details>
-<summary>Visual Studio Code Move support</summary>
-
+    
 Visual Studio Code 有正式的 Move 语言支持, 您需要先安装 `move analyzer` :
 
 ```bash
 cargo install --path language/move-analyzer
 ```
 
+Now you can install the VS extension by opening VS Code, searching for the "move-analyzer" in the Extension Pane, and installing it. More detailed instructions can be found
+in the extension's [README](https://github.com/move-language/move/tree/main/language/move-analyzer/editors/code).
+    
 现在您可以打开 VS Code 并安装 Move 扩展插件了，在扩展页面下找到 `move-analyzer` 并安装即可。关于扩展的详细信息可以查看扩展的[README](https://github.com/move-language/move/tree/main/language/move-analyzer/editors/code)。
 </details>
 
@@ -228,7 +220,7 @@ move build
 ```
 
 <details>
-<summary>进阶概念及参考引用 (Advanced concepts and references)</</summary>
+<summary>进阶概念及参考引用 (Advanced concepts and references)</summary>
 
 * You can create an empty Move package by calling:
     ```bash
@@ -509,7 +501,7 @@ Now let's take a closer look at the implementation of the methods inside [`Basic
 
 <details>
 
-<summary>Method <code>publish_balance</code></summary>
+<summary>方法 <code>publish_balance</code> (Method <code>publish_balance</code>)</summary>
 
 This method publishes a `Balance` resource to a given address. Since this resource is needed to receive coins through minting or transferring, `publish_balance` method must be called by a user before they can receive money, including the module owner.
 
@@ -527,7 +519,7 @@ move_to(account, Balance { coin:  empty_coin });
 </details>
 <details>
 
-<summary>Method <code>mint</code></summary>）
+<summary>方法 <code>mint</code> (Method <code>mint</code>)</summary>）
 Here we require that `mint` must be approved by the module owner. We enforce this using the assert statement:
 `mint` method mints coins to a given account. 
 
@@ -552,7 +544,7 @@ deposit(mint_addr, Coin { value: amount });
 </details>
 
 <details>
-<summary>Method <code>balance_of</code></summary>
+<summary>方法 <code>balance_of</code> (Method <code>balance_of</code>)</summary>
 
 We use `borrow_global`, one of the global storage operators, to read from the global storage.
 
@@ -566,7 +558,7 @@ borrow_global<Balance>(owner).coin.value
 </details>
 
 <details>
-<summary>Method <code>transfer</code></summary>
+<summary>方法 <code>transfer</code> (Method <code>transfer</code>)</summary>
 
 This function withdraws tokens from `from`'s balance and deposits the tokens into `to`s balance. We take a closer look at `withdraw` helper function:
 
@@ -644,7 +636,7 @@ Taking a look at the tests in the [`BasicCoin` module](./step_5/BasicCoin/source
 看看 [`BasicCoin` ](./step_5/BasicCoin/sources/BasicCoin.move)模块中的测试，我们试图让每个单元测试都测试一个具体的行为。
 
 <details>
-<summary>Exercise</summary>
+<summary>Exercise (练习)</summary>
 
 After taking a look at the tests, try and write a unit test called `balance_of_dne` in the `BasicCoin` module that tests the case where a `Balance` resource doesn't exist under the address that `balance_of` is being called on. It should only be a couple lines!
 
@@ -706,7 +698,7 @@ We provide a little module called [`MyOddCoin`](./step_6/BasicCoin/sources/MyOdd
 #### 进阶主题 (Advanced topics):
 
 <details>
-<summary><code>phantom</code> type parameters</summary>
+<summary><code>phantom</code> 类型参数 (<code>phantom</code> type parameters)</summary>
 
 In definitions of both `Coin` and `Balance`, we declare the type parameter `CoinType` to be phantom because `CoinType` is not used in the struct definition or is only used as a phantom type parameter.
 
@@ -764,7 +756,7 @@ error: abort not covered by any of the `aborts_if` clauses
    ┌─ ./sources/BasicCoin.move:38:5
    │
 35 │           borrow_global<Balance<CoinType>>(owner).coin.value
-   │           ------------- abort happened here with execution failure
+   │           ------------- 由于执行失败这里发生中止
    ·
 38 │ ╭     spec balance_of {
 39 │ │         pragma aborts_if_is_strict;
@@ -774,7 +766,7 @@ error: abort not covered by any of the `aborts_if` clauses
    =     at ./sources/BasicCoin.move:34: balance_of
    =         owner = 0x29
    =     at ./sources/BasicCoin.move:35: balance_of
-   =         ABORTED
+   =         中止
 
 Error: exiting with verification errors
 ```
@@ -807,7 +799,7 @@ Apart from the abort condition, we also want to define the functional properties
 
 <details>
 
-<summary> withdraw 方法 </summary>（<summary> Method withdraw </summary>）
+<summary> 方法 提取 (Method withdraw) </summary>
 
 The signature of the method `withdraw` is given below:
 
@@ -819,7 +811,7 @@ fun withdraw<CoinType>(addr: address, amount: u64) : Coin<CoinType> acquires Bal
 
 The method withdraws tokens with value `amount` from the address `addr` and returns a created Coin of value `amount`.  The method `withdraw` aborts when 1) `addr` does not have the resource `Balance<CoinType>` or 2) the number of tokens in `addr` is smaller than `amount`. We can define conditions like this:
 
-该方法从 `addr`地址中提取价值为`amount`的代币，并返回一个创建的价值为`amount`的代币。当 1)地址`addr`没有资源或 2)地址`addr` 中的代币数小于`amount`时，withdraw方法中止。我们可以这样定义条件：
+该方法从 `addr`地址中提取价值为`amount`的代币，并返回一个创建的价值为`amount`的代币。当 1)地址`addr`没有资源或 2)地址`addr` 中的代币数小于`amount`时，`withdraw`方法中止。我们可以这样定义条件：
 
 
 ```
@@ -852,7 +844,7 @@ The next step is to define functional properties, which are described in the two
 </details>
 
 <details>
-<summary>  deposit方法 </summary>（<summary> Method deposit </summary>）
+<summary>  方法 储存 (Method deposit) </summary>
 
 The signature of the method `deposit` is given below:
 
@@ -888,7 +880,7 @@ The method deposits the `check` into `addr`. The specification is defined below:
 
 <details>
 
-<summary>  transfer方法 </summary>（<summary> Method transfer </summary>）
+<summary> 方法 转移 (Method transfer) </summary>
 
 The signature of the method `transfer` is given below:
 
@@ -941,7 +933,7 @@ The property is not held when `addr_from` is equal to `to`. As a result, we coul
 
 <details>
 
-<summary> 练习 </summary>（<summary> Exercises </summary>）
+<summary> 练习 (Exercises) </summary>
 
 - Implement the `aborts_if` conditions for the `transfer` method.
 - 为`transfer` 方法实现`aborts_if`条件。
@@ -950,4 +942,4 @@ The property is not held when `addr_from` is equal to `to`. As a result, we coul
 
 The solution to this exercise can be found in [`step_8_sol`](./step_8_sol).
 
-练习的答案可以在 [`step_8_sol`](./step_8_sol)中找到。
+练习的解答可以在 [`step_8_sol`](./step_8_sol)中找到。
