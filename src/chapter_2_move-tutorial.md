@@ -35,7 +35,7 @@ like to skip the contents in step 1 through 4, feel free to jump to step 5 since
 before step 5 will be in `step_5` folder. At the end of some steps, we also include
 additional material on more advanced topics.
 
-其中每一步都被设计为自包含的文件夹, 相应名字为 `step_x`。 例如，如果您愿意跳过 `step 1` 到 `step 4` 的内容，可直接跳到 `step 5`，因为所有在 `step 5` 之前的代码均在在`step_5` 文件夹之下. 在部分步骤结束时，我们还引入有关更高级主题的附加资料。。
+其中每一步都被设计为自包含的文件夹, 相应名字为 `step_x`。 例如，如果您愿意跳过 `step 1` 到 `step 4` 的内容，可直接跳到 `step 5`，因为所有在 `step 5` 之前的代码均在在`step_5` 文件夹之下。在部分步骤结束时，我们还引入有关更高级主题的附加资料。
 
 Now let's get started!
 
@@ -741,7 +741,7 @@ Smart contracts deployed on the blockchain may manipulate high-value assets. As 
 
 Informally speaking, the block `spec balance_of {...}` contains the property specification of the method `balance_of`.
 
-通俗地说，代码块 `spec balance_of {...}` 包含 `balance_of` 方法的属性规范说明。。
+通俗地说，代码块 `spec balance_of {...}` 包含 `balance_of` 方法的属性规范说明。
 
 Let's first run the prover using the following command inside [`BasicCoin` directory](./step_7/BasicCoin/):
 
