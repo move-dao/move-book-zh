@@ -730,7 +730,7 @@ source ~/.profile
 
 Smart contracts deployed on the blockchain may manipulate high-value assets. As a technique that uses strict mathematical methods to describe behavior and reason correctness of computer systems, formal verification has been used in blockchains to prevent bugs in smart contracts. [The Move prover](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/prover-guide.md) is an evolving formal verification tool for smart contracts written in the Move language. The user can specify functional properties of smart contracts using the [Move Specification Language (MSL)](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) and then use the prover to automatically check them statically. To illustrate how the prover is used, we have added the following code snippet to the [BasicCoin.move](./step_7/BasicCoin/sources/BasicCoin.move):
 
-部署在区块链上的智能合约可能会操纵高价值资产。作为一种使用严格的数学方法来描述计算机系统的行为和推理正确性的技术，形式验证已被用于区块链中以防止智能合约中的错误。 Move[验证器](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/prover-guide.md)是一种不断发展的形式验证工具，用于以 Move 语言编写的智能合约。用户可以使用移动规范语言 [Move Specification Language (MSL)](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md)指定智能合约的功能属性， 然后使用验证器自动静态检查它们。为了说明如何使用验证器，我们在[BasicCoin.move](./step_7/BasicCoin/sources/BasicCoin.move)中添加了以下代码片段：
+部署在区块链上的智能合约可能会操纵高价值资产。作为一种使用严格的数学方法来描述计算机系统的行为和推理正确性的技术，形式验证已被用于区块链中以防止智能合约中的错误。 Move[验证器](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/prover-guide.md)是一种不断发展的形式验证工具，用于以 Move 语言编写的智能合约。用户可以使用移动规范语言 [Move Specification Language (MSL)](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md)指定智能合约的功能属性， 然后使用验证器自动地对它们静态检查。为了说明如何使用验证器，我们在[BasicCoin.move](./step_7/BasicCoin/sources/BasicCoin.move)中添加了以下代码片段：
 
 ```
     spec balance_of {
@@ -792,7 +792,7 @@ move prove
 
 Apart from the abort condition, we also want to define the functional properties. In Step 8, we will give more detailed introduction to the prover by specifying properties for the methods defined the `BasicCoin` module.
 
-除了中止条件，我们还想定义功能属性。在第 8 步中，我们将通过为定义`BasicCoin`模块的方法指定属性来更详细地介绍证明者。
+除了中止条件，我们还想定义功能属性。在第 8 步中，我们将通过为定义`BasicCoin`模块方法的属性来更详细地介绍验证器。
 
 
 ## 第 8 步：为`BasicCoin`模块编写正式规范<span id="Step8"><span>（Write formal specifications for the `BasicCoin` module<span id="Step8"><span>）
