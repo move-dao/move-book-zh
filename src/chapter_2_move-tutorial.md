@@ -269,8 +269,8 @@ move build
 * Move [结构体](./chpater_16_structs-and-resources.html)可以通过给类型设定不同的能力[abilities](./chapter_19_abilities.html)让类型下支持对应的行为. 有四种能力:
     - `copy`: 允许此类型的值被复制
     - `drop`: 允许此类型的值被弹出/丢弃
-    - `store`: 允许此类型的值存在于全局存储的某个结构体中.
-    - `key`: 允许此类型作为全局存储中的键.
+    - `store`: 允许此类型的值存在于全局存储的某个结构体中
+    - `key`: 允许此类型作为全局存储中的键(具有 `key` 能力的类型才能保存到全局存储中)
 
     所以 `BasicCoin` 模块下的 `Coin` 结构体可以用作全局存储(global storage)的键(key)， 因为它又不具备其他能力，它不能
     被拷贝，不能被丢弃, 也不能作为非key来保存在(全局)存储里. 你无法复制 `Coin`，也不会意外弄丢它.
@@ -730,7 +730,8 @@ source ~/.profile
 
 Smart contracts deployed on the blockchain may manipulate high-value assets. As a technique that uses strict mathematical methods to describe behavior and reason correctness of computer systems, formal verification has been used in blockchains to prevent bugs in smart contracts. [The Move prover](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/prover-guide.md) is an evolving formal verification tool for smart contracts written in the Move language. The user can specify functional properties of smart contracts using the [Move Specification Language (MSL)](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) and then use the prover to automatically check them statically. To illustrate how the prover is used, we have added the following code snippet to the [BasicCoin.move](./step_7/BasicCoin/sources/BasicCoin.move):
 
-部署在区块链上的智能合约可能会操纵高价值资产。作为一种使用严格的数学方法来描述计算机系统的行为和推理正确性的技术，形式验证已被用于区块链中以防止智能合约中的错误。 Move[验证器](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/prover-guide.md)是一种不断发展的形式验证工具，用于以 Move 语言编写的智能合约。用户可以使用移动规范语言 [Move Specification Language (MSL)](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md)指定智能合约的功能属性， 然后使用验证器自动地对它们静态检查。为了说明如何使用验证器，我们在[BasicCoin.move](./step_7/BasicCoin/sources/BasicCoin.move)中添加了以下代码片段：
+部署在区块链上的智能合约可能会操纵高价值资产。作为一种使用严格的数学方式来描述计算机系统的行为和推理正确性的技术，形式化验证已被用于区块链，以防止智能合约中错误的产生。 [Move验证器](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/prover-guide.md)是一种在进化中、用Move 语言编写的智能合约形式化验证工具。用户可以使用[Move语言规范(Move Specification Language (MSL))](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md)指定智能合约的功能属性，然后使用验证器自动静态检查它们。
+为了说明如何使用验证器，我们在[BasicCoin.move](./step_7/BasicCoin/sources/BasicCoin.move)中添加了以下代码片段：
 
 ```
     spec balance_of {
@@ -740,17 +741,20 @@ Smart contracts deployed on the blockchain may manipulate high-value assets. As 
 
 Informally speaking, the block `spec balance_of {...}` contains the property specification of the method `balance_of`.
 
-通俗地说，块`spec balance_of {...}`包含`balance_of`方法的属性规范说明。
+通俗地说，代码块 `spec balance_of {...}` 包含 `balance_of` 方法的属性规范说明。。
 
 Let's first run the prover using the following command inside [`BasicCoin` directory](./step_7/BasicCoin/):
 
-让我们首先在[`BasicCoin` directory](./step_7/BasicCoin/)目录中使用以下命令运行验证器。
+首先在[`BasicCoin` directory](./step_7/BasicCoin/)目录中使用以下命令运行验证器。
 
 ```bash
 move prove
 ```
 
+which outputs the following error information:
+
 它输出以下错误信息：
+
 ```
 error: abort not covered by any of the `aborts_if` clauses
    ┌─ ./sources/BasicCoin.move:38:5
@@ -770,9 +774,10 @@ error: abort not covered by any of the `aborts_if` clauses
 
 Error: exiting with verification errors
 ```
+
 The prover basically tells us that we need to explicitly specify the condition under which the function `balance_of` will abort, which is caused by calling the function `borrow_global` when `owner` does not own the resource `Balance<CoinType>`. To remove this error information, we add an `aborts_if` condition as follows:
 
-验证器基本上告诉我们，我们需要明确指定函数`balance_of`中止的条件，这是由于在不拥有资源`borrow_global`时调用函数引起的。要去掉此错误信息，我们添加如下`aborts_if`条件：
+验证器大体上告诉我们，我们需要明确指定函数 `balance_of` 中止的条件，中止原因是 `owner`(函数调用者)在没有资源 `Balance<CoinType>` 的情况下调用 `borrow_global` 函数导致的。要去掉此错误信息，我们添加如下 `aborts_if` 条件：
 
 
 ```
@@ -792,18 +797,18 @@ move prove
 
 Apart from the abort condition, we also want to define the functional properties. In Step 8, we will give more detailed introduction to the prover by specifying properties for the methods defined the `BasicCoin` module.
 
-除了中止条件，我们还想定义功能属性。在第 8 步中，我们将通过为定义`BasicCoin`模块方法的属性来更详细地介绍验证器。
+除了中止条件，我们还想定义功能属性。在第 8 步中，我们将通过为定义 `BasicCoin` 模块的方法指定属性来更详细地介绍验证器。
 
 
-## 第 8 步：为`BasicCoin`模块编写正式规范<span id="Step8"><span>（Write formal specifications for the `BasicCoin` module<span id="Step8"><span>）
+## 第 8 步：为 `BasicCoin` 模块编写正式规范<span id="Step8"><span>（Write formal specifications for the `BasicCoin` module）<span id="Step8"><span>
 
 <details>
 
-<summary> 方法 提取 (Method withdraw) </summary>
+<summary> 取款方法 (Method withdraw) </summary>
 
 The signature of the method `withdraw` is given below:
 
- `withdraw`方法的签名如下：
+ 取款(`withdraw`) 方法的签名如下：
 
 ```
 fun withdraw<CoinType>(addr: address, amount: u64) : Coin<CoinType> acquires Balance
@@ -811,8 +816,11 @@ fun withdraw<CoinType>(addr: address, amount: u64) : Coin<CoinType> acquires Bal
 
 The method withdraws tokens with value `amount` from the address `addr` and returns a created Coin of value `amount`.  The method `withdraw` aborts when 1) `addr` does not have the resource `Balance<CoinType>` or 2) the number of tokens in `addr` is smaller than `amount`. We can define conditions like this:
 
-该方法从 `addr`地址中提取价值为`amount`的代币，并返回一个创建的价值为`amount`的代币。当 1)地址`addr`没有资源或 2)地址`addr` 中的代币数小于`amount`时，`withdraw`方法中止。我们可以这样定义条件：
-
+该方法从地址 `addr` 中提取数量为 `amount` 的代币，然后创建数量为 `amount` 的代币并将其返回。当出现如下情况会中止：
+  1) 地址 `addr` 没有资源 `Balance<CoinType>`，或 
+  2) 地址 `addr` 中的代币数量小于 `amount` 时，`withdraw` 。
+   
+我们可以这样定义条件：
 
 ```
     spec withdraw {
@@ -824,11 +832,16 @@ The method withdraws tokens with value `amount` from the address `addr` and retu
 
 As we can see here, a spec block can contain let bindings which introduce names for expressions. `global<T>(address): T` is a built-in function that returns the resource value at `addr`. `balance` is the number of tokens owned by `addr`. `exists<T>(address): bool` is a built-in function that returns true if the resource T exists at address. Two `aborts_if` clauses correspond to the two conditions mentioned above. In general, if a function has more than one `aborts_if` condition, those conditions are or-ed with each other. By default, if a user wants to specify aborts conditions, all possible conditions need to be listed. Otherwise, the prover will generate a verification error. However, if `pragma aborts_if_is_partial` is defined in the spec block, the combined aborts condition (the or-ed individual conditions) only *imply* that the function aborts. The reader can refer to the [MSL](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) document for more information.
 
-正如我们在这里看到的，一个 spec 块可以包含 let 绑定，它为表达式引入名称。`global<T>(address): T`是一个返回`addr`资源值的内置函数。`balance`是 `addr`拥有的代币数量。`exists<T>(address): bool`是一个内置函数，如果资源 T 存在于 address 则返回 true。两个`aborts_if`子句对应上述两个条件。一般来说，如果一个函数有多个`aborts_if`条件，这些条件会相互进行或运算。默认情况下，如果用户想要指定中止条件，则需要列出所有可能的条件。否则，验证器将产生验证错误。但是，如果在 spec 块中定义 `pragma aborts_if_is_partial`，则组合中止条件（或单独条件）仅暗示函数中止。读者可以参考 [MSL](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) 文档了解更多信息。
+正如我们在这里看到的，一个 spec 块可以包含 `let` 绑定，它为表达式引入名称。
+`global<T>(address): T` 是一个返回 `addr` 资源值的内置函数。`balance` 是 `addr` 拥有的代币数量。
+`exists<T>(address): bool` 是一个内置函数，如果指定的地址(address)在(全局存储中)有资源 `T` 则返回 `true` 。
+两个 `aborts_if` 子句对应上述两个条件。通常，如果一个函数有多个 `aborts_if` 条件，这些条件之间是相互对等的。默认情况下，如果用户想要指定中止条件，则需要列出所有可能的条件。否则验证器将产生验证错误。
+但是，如果在 `spec` 代码块中定义了 `pragma aborts_if_is_partial`，则组合中止条件（或对等的单个条件）仅 *暗示* 函数中止。
+读者可以参考 [MSL](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) 文档了解更多信息。
 
 The next step is to define functional properties, which are described in the two `ensures` clauses below. First, by using the `let post` binding, `balance_post` represents the balance of `addr` after the execution, which should be equal to `balance - amount`. Then, the return value (denoted as `result`) should be a coin with value `amount`.
 
-下一步是定义功能属性，这些属性在下面的两个`ensures`子句中进行了描述。首先，通过使用`let post`绑定，`balance_post`表示地址`addr`执行后的余额，应该等于`balance - amount`。那么，返回值（表示为`result`）应该是一个价值为`amount`的代币。
+下一步是定义功能属性，这些属性在下面的两个 `ensures` 子句中进行了描述。首先，通过使用 `let post` 绑定，`balance_post` 表示地址 `addr` 执行后的余额，应该等于 `balance - amount`。那么，返回值（表示为 `result` ）应该是一个价值为 `amount` 的代币。
 
 ```
     spec withdraw {
@@ -844,11 +857,11 @@ The next step is to define functional properties, which are described in the two
 </details>
 
 <details>
-<summary>  方法 储存 (Method deposit) </summary>
+<summary> 存款方法 (Method deposit) </summary>
 
 The signature of the method `deposit` is given below:
 
-`deposit`方法的签名如下：
+存款(`deposit`)方法的签名如下：
 
 ```
 fun deposit<CoinType>(addr: address, check: Coin<CoinType>) acquires Balance
@@ -856,7 +869,7 @@ fun deposit<CoinType>(addr: address, check: Coin<CoinType>) acquires Balance
 
 The method deposits the `check` into `addr`. The specification is defined below:
 
-该方法将值check存入addr. 规范定义如下：
+该方法将代币 `check` 存入地址 `addr`. 规范定义如下：
 
 ```
     spec deposit {
@@ -873,26 +886,30 @@ The method deposits the `check` into `addr`. The specification is defined below:
 
 `balance` represents the number of tokens in `addr` before execution and `check_value` represents the number of tokens to be deposited. The method would abort if 1) `addr` does not have the resource `Balance<CoinType>` or 2) the sum of `balance` and `check_value` is greater than the maxium value of the type `u64`. The functional property checks that the balance is correctly updated after the execution.
 
-`balance`表示`addr`执行前的代币数量，`check_value`表示要存入的代币数量。如果 1)没有地址`addr`没有`Balance<CoinType>`资源或 2) `balance`与`check_value`之和大于`u64`的最大值，该功能属性检查执行后余额是否正确更新。
+`balance` 表示 `addr` 执行前的代币数量，`check_value` 表示要存入的代币数量。方法出现如下情况将会中止：
+    1) 地址 `addr` 没有 `Balance<CoinType>` 资源， 或 
+    2) `balance` 与 `check_value` 之和大于 `u64` 的最大值。
+   
+该功能属性检查执行后余额是否正确更新。
 
 
 </details>
 
 <details>
 
-<summary> 方法 转移 (Method transfer) </summary>
+<summary> 转账方法 (Method transfer) </summary>
 
 The signature of the method `transfer` is given below:
 
-`transfer`方法的签名如下：
+转账(`transfer`)方法的签名如下：
+
 ```
 public fun transfer<CoinType: drop>(from: &signer, to: address, amount: u64, _witness: CoinType) acquires Balance
 ```
 
 The method transfers the `amount` of coin from the account of `from` to the address `to`. The specification is given below:
 
-该方法将包含`amount`的代币从帐户转移`from`到地址`to`。规范如下：
-
+该方法将数量为 `amount` 的代币从帐户 `from` 转账给地址 `to`。规范如下：
 
 ```
     spec transfer {
@@ -911,8 +928,8 @@ The method transfers the `amount` of coin from the account of `from` to the addr
 `addr_from` is the address of `from`. Then the balances of `addr_from` and `to` before and after the execution are obtained.
 The `ensures` clauses specify that the `amount` number of tokens is deducted from `addr_from` and added to `to`. However, the prover will generate the error information as below:
 
-`addr_from`是 `from`的地址，然后获取执行前`addr_from`和 `to`的余额。
- `ensures`子句指定从`addr_from`减去`amount`数量的代币，添加到`to`。然而，验证器会生成以下错误：
+`addr_from` 是账户 `from` 的地址，然后获取执行前两个地址 `addr_from` 和 `to` 的余额。
+ `ensures` 子句指定从 `addr_from` 减去 `amount` 数量的代币，添加到 `to`。然而，验证器会生成以下错误：
 
 ```
 error: post-condition does not hold
@@ -926,7 +943,7 @@ error: post-condition does not hold
 
 The property is not held when `addr_from` is equal to `to`. As a result, we could add an assertion `assert!(from_addr != to)` in the method to make sure that `addr_from` is not equal to `to`.
 
-当`addr_from`的代币数量等于`to`时，这个属性不存在。因此，我们可以在方法中添加一个断言，`assert!(from_addr != to)`来确保addr_from不等于`to`。
+当 `addr_from` 等于 `to` 时，这个属性无效。因此，我们可以在方法中添加一个断言，`assert!(from_addr != to)` 来确保 `addr_from` 不等于 `to`。
 
 </details>
 
@@ -936,9 +953,9 @@ The property is not held when `addr_from` is equal to `to`. As a result, we coul
 <summary> 练习 (Exercises) </summary>
 
 - Implement the `aborts_if` conditions for the `transfer` method.
-- 为`transfer` 方法实现`aborts_if`条件。
+- 为` transfer` 方法实现 `aborts_if` 条件。
 - Implement the specification for the `mint` and `publish_balance` method.
-- 为`mint` 和 `publish_balance`方法实现规范定义。
+- 为 `mint` 和 `publish_balance` 方法实现规范。
 
 The solution to this exercise can be found in [`step_8_sol`](./step_8_sol).
 
