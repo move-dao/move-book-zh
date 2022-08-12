@@ -14,16 +14,14 @@ async function main() {
     for (const dir of dirs) {
         const filePath = `${basePath}/${dir}`
         if (fs.lstatSync(filePath).isDirectory()) continue
-        const fileOld = fs.readFileSync(filePath).toString()
-        let fileNew = fileOld
+
         for (const ref of refs) {
-            fileNew = fileNew.replaceAll(`./${ref[0]}`, `./${ref[1]}`)
-        }
-        if (fileNew !== fileOld) {
-            fs.writeFileSync(filePath, fileNew)
+            fs.rename(`${basePath}/${ref[0]}`, `${basePath}/${ref[1]}`, err => {
+                throw err
+            })
         }
     }
-    console.log('fix reference done.')
+    console.log('fix name done.')
 }
 
 main().catch(err => {

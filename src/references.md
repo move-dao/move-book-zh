@@ -7,7 +7,7 @@ discipline that prevents reference errors.
 
 Move 支持两种类型的引用：不可变引用 `&` 和可变引用 `&mut`。不可变引用是只读的，不能修改相关值(或其任何字段)。可变引用通过写入该引用进行修改。Move的类型系统强制执行所有权规则，以避免引用错误。
 
-For more details on the rules of references, see [Structs and Resources](./chapter_16_structs-and-resources.md)
+For more details on the rules of references, see [Structs and Resources](./structs-and-resources.md)
 
 更多有关引用规则的详细信息，请参阅：[结构和资源](./chapter_16_structs-and-resources.html).
 
@@ -95,7 +95,7 @@ write is a mutation that must occur on the left hand side of an equals.
 | `*e1 = e2` | () 其中 `e1: &mut T` 和 `e2: T` | 用 `e2` 更新 `e1` 中的值
 
 In order for a reference to be read, the underlying type must have the
-[`copy` ability](./chapter_19_abilities.md) as reading the reference creates a new copy of the value. This rule
+[`copy` ability](./abilities.md) as reading the reference creates a new copy of the value. This rule
 prevents the copying of resource values:
 
 为了读取引用，相关类型必须具备[`copy` 能力](./chapter_19_abilities.html)，因为读取引用会创建值的新副本。此规则防止复制资源值：
@@ -110,7 +110,7 @@ fun copy_resource_via_ref_bad(c: Coin) {
 ```
 
 Dually: in order for a reference to be written to, the underlying type must have the
-[`drop` ability](./chapter_19_abilities.md) as writing to the reference will discard (or "drop") the old value.
+[`drop` ability](./abilities.md) as writing to the reference will discard (or "drop") the old value.
 This rule prevents the destruction of resource values:
 
 双重性：为了写入引用，相关类型必须具备[`drop` 能力](./chapter_19_abilities.html)，因为写入引用将丢弃(或“删除”)旧值。此规则可防止破坏资源值：
@@ -248,7 +248,7 @@ fun reference_copies(s: &mut S) {
 
 This might be surprising for programmers familiar with Rust's ownership system, which would reject
 the code above. Move's type system is more permissive in its treatment of
-[copies](./chapter_10_variables.md#move-and-copy), but equally strict in ensuring unique ownership of mutable
+[copies](./variables.md#move-and-copy), but equally strict in ensuring unique ownership of mutable
 references before writes.
 
 对于熟悉 Rust 所有权系统的程序员来说，这可能会令人惊讶，因为他们会拒绝上面的代码。Move 的类型系统在处理[副本](./chapter_10_variables.html#move-and-copy)方面更加宽松 ，但在写入前确保可变引用的唯一所有权方面同样严格。
@@ -258,7 +258,7 @@ references before writes.
 References and tuples are the _only_ types that cannot be stored as a field value of structs, which
 also means that they cannot exist in global storage. All references created during program execution
 will be destroyed when a Move program terminates; they are entirely ephemeral. This invariant is
-also true for values of types without the `store` [ability](./chapter_19_abilities.md), but note that
+also true for values of types without the `store` [ability](./abilities.md), but note that
 references and tuples go a step further by never being allowed in structs in the first place.
 
 This is another difference between Move and Rust, which allows references to be stored inside of
@@ -271,19 +271,19 @@ structs.
 Currently, Move cannot support this because references cannot be
 [serialized](https://en.wikipedia.org/wiki/Serialization), but _every Move value must be
 serializable_. This requirement comes from Move's
-[persistent global storage](./chapter_24_global-storage-structure.md), which needs to serialize values to
+[persistent global storage](./global-storage-structure.md), which needs to serialize values to
 persist them across program executions. Structs can be written to global storage, and thus they must
 be serializable.
 
 One could imagine a fancier, more expressive, type system that would allow references to be stored
 in structs _and_ ban those structs from existing in global storage. We could perhaps allow
-references inside of structs that do not have the `store` [ability](./chapter_19_abilities.md), but that would
+references inside of structs that do not have the `store` [ability](./abilities.md), but that would
 not completely solve the problem: Move has a fairly complex system for tracking static reference
 safety, and this aspect of the type system would also have to be extended to support storing
 references inside of structs. In short, Move's type system (particularly the aspects around
 reference safety) would have to expand to support stored references. But it is something we are
 keeping an eye on as the language evolves.
 
-目前，Move 无法支持这一点，因为引用无法被[序列化](https://en.wikipedia.org/wiki/Serialization)，但 _每个 Move 值都必须是可序列化的_。这个要求来自于 Move 的 [持久化全局存储](./chapter_25_global-storage-structure.html)，它需要在程序执行期间序列化值以持久化它们。结构体可以写入全局存储，因此它们必须是可序列化的。
+目前，Move 无法支持这一点，因为引用无法被[序列化](https://en.wikipedia.org/wiki/Serialization)，但 _每个 Move 值都必须是可序列化的_。这个要求来自于 Move 的 [持久化全局存储](./global-storage-structure.html)，它需要在程序执行期间序列化值以持久化它们。结构体可以写入全局存储，因此它们必须是可序列化的。
 
 可以想象一种更奇特、更有表现力的类型系统，它允许将引用存储在结构中，并禁止这些结构存在于全局存储中。我们也许可以允许在没有[`store` 能力](./chapter_19_abilities.html)的结构内部使用引用，但这并不能完全解决问题：Move 有一个相当复杂的系统来跟踪静态引用安全性，并且类型系统的这一方面也必须扩展以支持在结构内部存储引用。简而言之，Move 的类型系统(尤其是与引用安全相关的方面)需要扩展以支持存储的引用。随着语言的发展，我们正在关注这一点。

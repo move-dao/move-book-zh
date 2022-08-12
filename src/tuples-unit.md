@@ -19,7 +19,7 @@ It might feel weird to have tuples in the language at all given these restrictio
 most common use cases for tuples in other languages is for functions to allow functions to return
 multiple values. Some languages work around this by forcing the users to write structs that contain
 the multiple return values. However in Move, you cannot put references inside of
-[structs](./chapter_16_structs-and-resources.md). This required Move to support multiple return values. These
+[structs](./structs-and-resources.md). This required Move to support multiple return values. These
 multiple return values are all pushed on the stack at the bytecode level. At the source level, these
 multiple return values are represented using tuples.
 
@@ -124,9 +124,9 @@ address 0x42 {
 }
 ```
 
-For more details, see [Move Variables](./chapter_10_variables.md).
+For more details, see [Move Variables](./variables.md).
 
-详情可参阅 [变量](./chapter_10_variables.md).
+详情可参阅 [变量](./variables.md).
 
 ## 子类型化 (Subtyping)
 

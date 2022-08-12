@@ -238,8 +238,8 @@ move build
     ```bash
     move new <pkg_name>
     ```
-* Move 代码也可以放在其他很多地方, 更多关于 Move 包系统的信息请参阅[Move book](./chapter_22_packages.html)
-* 更多关于 `Move.toml` 文件的信息可以参阅[package section of the Move book](./chapter_22_packages.html#movetoml).
+* Move 代码也可以放在其他很多地方, 更多关于 Move 包系统的信息请参阅[Move book](./packages.html)
+* 更多关于 `Move.toml` 文件的信息可以参阅[package section of the Move book](./packages.html#movetoml).
 * Move语言也支持命名地址的概念([named addresses](./address.html#named-addresses)), 命名地址是一种参数化 Move 源代码的方法，
   就是如果对 `NamedAddr` 使用的不同赋值编译，编译后会获得部署到你控制地址的不同字节码. 这种用法很常见，一般都将地址变量其定义在 `Move.toml` 文件
   的 `[addresses]` 部分. 例如:
@@ -275,7 +275,7 @@ move build
     所以 `BasicCoin` 模块下的 `Coin` 结构体可以用作全局存储(global storage)的键(key)， 因为它又不具备其他能力，它不能
     被拷贝，不能被丢弃, 也不能作为非key来保存在(全局)存储里. 你无法复制 `Coin`，也不会意外弄丢它.
 * 函数[Functions](./functions.html)默认是私有的(private), 也可以声明为 `public` [`public(friend)`](https://move-language.github.io/move/friends.html), `public(script)`. 最后一个声明(指 `public(script)`)的函数可以被事务脚本调用。`public(script)` 函数也可以被其他 `public(script)` 函数调用。(注意：在最新版本的 Move中，`public(script)` 已经被废弃，被`public entry` 取代，下同，译者注)
-* `move_to` 是[五种不同的全局存储操作](./chapter_25_global-storage-operators.html)之一
+* `move_to` 是[五种不同的全局存储操作](./global-storage-operators.html)之一
 
 </details>
 
@@ -348,7 +348,7 @@ coin in storage has the value that is expected with the `assert!` call. If the a
   [dependencies]
   MoveStdlib = { local = "../../../../move-stdlib/", addr_subst = { "Std" = "0x1" } }
   ```
-注意, 需要修改 `<path_to_move>/language` 中的内容来匹配实际 `move-stdlib` 所在的目录路径. 也可以用 `git` 方式指定依赖, 关于 Move 包依赖(package denpendices)信息可参阅[package文档](./chapter_22_packages.html#movetoml)
+注意, 需要修改 `<path_to_move>/language` 中的内容来匹配实际 `move-stdlib` 所在的目录路径. 也可以用 `git` 方式指定依赖, 关于 Move 包依赖(package denpendices)信息可参阅[package文档](./packages.html#movetoml)
 
 #### 练习 (Exercises)
 
@@ -706,7 +706,7 @@ In definitions of both `Coin` and `Balance`, we declare the type parameter `Coin
 
 Read more about phantom type parameters <a href="https://move-language.github.io/move/generics.html#phantom-type-parameters">here</a>.
 
-阅读更多有关 [phantom 类型参数](./chapter_18_generics.md#phantom-type-parameters) 信息.
+阅读更多有关 [phantom 类型参数](./generics.md#phantom-type-parameters) 信息.
 
 </details>
 

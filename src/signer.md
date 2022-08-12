@@ -86,12 +86,12 @@ The `std::signer` standard library module provides two utility functions over `s
 | `signer::address_of(&signer): address`      | 返回此 `&signer` 包装中的地址值.               |
 | `signer::borrow_address(&signer): &address` | 返回此 `&signer` 包装中地址的引用|
 
-In addition, the `move_to<T>(&signer, T)` [global storage operator](./chapter_25_global-storage-operators.md)
+In addition, the `move_to<T>(&signer, T)` [global storage operator](./global-storage-operators.md)
 requires a `&signer` argument to publish a resource `T` under `signer.address`'s account. This
 ensures that only an authenticated user can elect to publish a resource under their `address`.
 
-此外，`move_to<T>(&signer, T)` [全局存储](./chapter_25_global-storage-operators.md)操作符需要一个 `&signer` 参数在 `signer.address` 的帐户下发布资源 `T`。 这确保了只有经过身份验证的用户才能在其地址下发布资源。
+此外，`move_to<T>(&signer, T)` [全局存储](./global-storage-operators.md)操作符需要一个 `&signer` 参数在 `signer.address` 的帐户下发布资源 `T`。 这确保了只有经过身份验证的用户才能在其地址下发布资源。
 
 ## 所有权 (Ownership)
 
-与简单的标量值不同，`signer` 值没有复制能力，这意味着他们不能被复制(通过任何操作，无论是通过显式[`copy`](./chapter_10_variables.md#move-and-copy)指令或者通过解引用([dereference `*`](./chapter_8_references.md#reference-operators))
+与简单的标量值不同，`signer` 值没有复制能力，这意味着他们不能被复制(通过任何操作，无论是通过显式[`copy`](./variables.md#move-and-copy)指令或者通过解引用([dereference `*`](./references.md#reference-operators))
