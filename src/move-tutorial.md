@@ -477,7 +477,7 @@ The Ethereum blockchain state might look like this:
 ![](diagrams/solidity_state.png)
 </details>
 
-## Step 4: 实现 `BasicCoin` 模块span id="Step4"><span>) (Implementing my `BasicCoin` module<
+## Step 4: 实现 `BasicCoin` 模块 <span id="Step4"><span>) (Implementing my `BasicCoin` module) <span id="Step4"><span>
 
 We have created a Move package for you in folder `step_4` called `BasicCoin`. The `sources` folder contains source code for all your Move modules in the package, including `BasicCoin.move`. In this section, we will take a closer look at the implementation of the methods inside [`BasicCoin.move`](./step_4/sources/BasicCoin.move).
 
@@ -600,7 +600,7 @@ The solution to this exercise can be found in [`step_4_sol`](./step_4_sol) folde
 - 如果我们在余额中存入太多代币会发生什么？
 
 
-## Step 5: 在模块 `BasicCoin` 中添加和使用单元测试<span id="Step5"><span> (Adding and using unit tests with the `BasicCoin` module<span id="Step5"><span>)
+## Step 5: 在模块 `BasicCoin` 中添加和使用单元测试<span id="Step5"><span> (Adding and using unit tests with the `BasicCoin` module)<span id="Step5"><span>
 
 In this step we're going to take a look at all the different unit tests we've written to cover the code we wrote in step 4. We're also going to take a look at some tools we can use to help us write tests.
 
