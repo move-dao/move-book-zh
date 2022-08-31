@@ -2,7 +2,7 @@
 | -- | -------------------------- | ---------------------------------------------- | ------------------------------------ |
 | 0  | Intoduction                | Tom                                            | [@lshoo](https://github.com/lshoo)   |
 | 1  | Modules and Scripts        | [@Kusou1](https://github.com/kusou1)           | [@lshoo](https://github.com/lshoo)   |
-| 2  | Move Tutorial              |                                                |                                      |
+| 2  | Move Tutorial              |                                                | [@lshoo](https://github.com/lshoo)   |
 | 3  | Integers                   | Tom                                            | [@lshoo](https://github.com/lshoo)   |
 | 4  | Bool                       | Tom                                            | [@lshoo](https://github.com/lshoo)   |
 | 5  | Address                    | ([@stephenLee](https://github.com/stephenLee)) | [@lshoo](https://github.com/lshoo)   |
