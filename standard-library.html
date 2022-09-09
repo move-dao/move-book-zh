@@ -1,0 +1,578 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>标准库 (Standard Library) - Move Book 中文版</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">引言 (Introduction)</a></li><li class="chapter-item expanded "><a href="modules-and-scripts.html"><strong aria-hidden="true">1.</strong> 模块和脚本 (Modules and Scripts)</a></li><li class="chapter-item expanded "><a href="move-tutorial.html"><strong aria-hidden="true">2.</strong> Move 教程 (Move Tutorial)</a></li><li class="chapter-item expanded "><a href="integers.html"><strong aria-hidden="true">3.</strong> 整数 (Integers)</a></li><li class="chapter-item expanded "><a href="bool.html"><strong aria-hidden="true">4.</strong> 布尔类型 (Bool) </a></li><li class="chapter-item expanded "><a href="address.html"><strong aria-hidden="true">5.</strong> 地址 (Address)</a></li><li class="chapter-item expanded "><a href="vector.html"><strong aria-hidden="true">6.</strong> 向量 (Vector)</a></li><li class="chapter-item expanded "><a href="signer.html"><strong aria-hidden="true">7.</strong> 签名 (Signer)</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">8.</strong> 引用 (References)</a></li><li class="chapter-item expanded "><a href="tuples.html"><strong aria-hidden="true">9.</strong> 元组和 Unit (Tuples and Unit)</a></li><li class="chapter-item expanded "><a href="variables.html"><strong aria-hidden="true">10.</strong> 局部变量和作用域 (Local Variables and Scopes)</a></li><li class="chapter-item expanded "><a href="equality.html"><strong aria-hidden="true">11.</strong> 等式 (Equality)</a></li><li class="chapter-item expanded "><a href="abort-and-assert.html"><strong aria-hidden="true">12.</strong> 中止和断言 (Abort and Assert)</a></li><li class="chapter-item expanded "><a href="conditionals.html"><strong aria-hidden="true">13.</strong> 条件语句 (Conditionals)</a></li><li class="chapter-item expanded "><a href="loops.html"><strong aria-hidden="true">14.</strong> 循环 (While and Loop)</a></li><li class="chapter-item expanded "><a href="functions.html"><strong aria-hidden="true">15.</strong> 函数 (Functions)</a></li><li class="chapter-item expanded "><a href="structs-and-resources.html"><strong aria-hidden="true">16.</strong> 结构体和资源 (Structs and Resources)</a></li><li class="chapter-item expanded "><a href="constants.html"><strong aria-hidden="true">17.</strong> 常量 (Constants)</a></li><li class="chapter-item expanded "><a href="generics.html"><strong aria-hidden="true">18.</strong> 泛型 (Generics)</a></li><li class="chapter-item expanded "><a href="abilities.html"><strong aria-hidden="true">19.</strong> 类型能力 (Type Abilities)</a></li><li class="chapter-item expanded "><a href="uses.html"><strong aria-hidden="true">20.</strong> 导入和别名 (Uses and Aliases)</a></li><li class="chapter-item expanded "><a href="friends.html"><strong aria-hidden="true">21.</strong> 友元函数 (Friends)</a></li><li class="chapter-item expanded "><a href="packages.html"><strong aria-hidden="true">22.</strong> 程序包 (Packages)</a></li><li class="chapter-item expanded "><a href="unit-testing.html"><strong aria-hidden="true">23.</strong> 单元测试 (Unit Tests)</a></li><li class="chapter-item expanded "><a href="global-storage-structure.html"><strong aria-hidden="true">24.</strong> 全局存储结构 (Global Storage Structure)</a></li><li class="chapter-item expanded "><a href="global-storage-operators.html"><strong aria-hidden="true">25.</strong> 全局存储操作 (Global Storage Operators)</a></li><li class="chapter-item expanded "><a href="standard-library.html" class="active"><strong aria-hidden="true">26.</strong> 标准库 (Standard Library)</a></li><li class="chapter-item expanded "><a href="coding-conventions.html"><strong aria-hidden="true">27.</strong> Move 编码规范 (Coding Conventions)</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Move Book 中文版</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/move-dao/move-book-zh" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="标准库standard-library"><a class="header" href="#标准库standard-library">标准库（Standard Library）</a></h1>
+<p>The Move standard library exposes interfaces that implement the following functionality:</p>
+<ul>
+<li><a href="#vector">Basic operations on vectors</a>.</li>
+<li><a href="#option">Option types and operations on<code>Option</code> types</a>.</li>
+<li><a href="#errors">A common error encoding code interface for abort codes</a>.</li>
+<li><a href="#fixed_point32">32-bit precision fixed-point numbers</a>.</li>
+</ul>
+<p>Move标准库公开了实现以下功能的接口:</p>
+<ul>
+<li><a href="#%E5%90%91%E9%87%8F">向量的基本操作</a>.</li>
+<li><a href="#option">Option类型与基本操作</a>.</li>
+<li><a href="#errors">终止码的常见错误编码接口</a>.</li>
+<li><a href="#fixed_point32">32位精确定点数字</a>.</li>
+</ul>
+<h2 id="向量vector"><a class="header" href="#向量vector">向量（vector）</a></h2>
+<p>The <code>vector</code> module defines a number of operations over the primitive
+<a href="./vector.html"><code>vector</code></a> type. The module is published under the
+named address <code>Std</code> and consists of a number of native functions, as
+well as functions defined in Move. The API for this module is as follows.</p>
+<p><code>向量</code>模块在原生类型<a href="./vector.html"><code>向量</code></a>上定义了许多操作。该模块以命名地址<code>Std</code>发布，并由许多原生函数以及在Move中定义的函数组成。此模块的API如下所示:</p>
+<h3 id="函数functions"><a class="header" href="#函数functions">函数（Functions）</a></h3>
+<hr />
+<p>Create an empty <a href="./vector.html"><code>vector</code></a>.
+The <code>Element</code> type can be both a <code>resource</code> or <code>copyable</code> type.</p>
+<p>创建一个空的<a href="./vector.html"><code>向量</code></a>。
+<code>Element</code>类型可以是<code>资源</code>或<code>可复制</code>类型。</p>
+<pre><code class="language-move">    native public fun empty&lt;Element&gt;(): vector&lt;Element&gt;;
+</code></pre>
+<hr />
+<p>Create a vector of length <code>1</code> containing the passed in <code>element</code>.</p>
+<p>创建一个长度为<code>1</code>的vector，并且包含传入的<code>element</code>。</p>
+<pre><code class="language-move">    public fun singleton&lt;Element&gt;(e: Element): vector&lt;Element&gt;;
+</code></pre>
+<hr />
+<p>Destroy (deallocate) the vector <code>v</code>. Will abort if <code>v</code> is non-empty.
+<em>Note</em>: The emptiness restriction is due to the fact that <code>Element</code> can be a
+resource type, and destruction of a non-empty vector would violate
+<a href="./structs-and-resources.html">resource conservation</a>.</p>
+<p>销毁(释放)向量<code>v</code>。如果<code>v</code>非空操作将终止。
+<em>注意</em>:空的限制是由于<code>Element</code>可以是资源类型，而销毁非空的向量会违反<a href="./structs-and-resources.html">资源保护机制</a>。</p>
+<pre><code class="language-move">    native public fun destroy_empty&lt;Element&gt;(v: vector&lt;Element&gt;);
+</code></pre>
+<hr />
+<p>Acquire an <a href="./references.html">immutable reference</a> to the <code>i</code>th element of the vector <code>v</code>.  Will abort if
+the index <code>i</code> is out of bounds for the vector <code>v</code>.</p>
+<p>获取向量<code>v</code>的第<code>i</code>个元素的<a href="./references.html">不可变引用</a>。如果索引<code>i</code>超出了向量<code>v</code>的范围，操作将会终止。</p>
+<pre><code class="language-move">    native public fun borrow&lt;Element&gt;(v: &amp;vector&lt;Element&gt;, i: u64): &amp;Element;
+</code></pre>
+<hr />
+<p>Acquire a <a href="./references.html">mutable reference</a>
+to the <code>i</code>th element of the vector <code>v</code>.  Will abort if
+the index <code>i</code> is out of bounds for the vector <code>v</code>.</p>
+<p>获取向量<code>v</code>的第<code>i</code>个元素的<a href="./references.html">可变引用</a>。如果索引<code>i</code>超出了向量<code>v</code>的范围，操作将会终止。</p>
+<pre><code class="language-move">    native public fun borrow_mut&lt;Element&gt;(v: &amp;mut vector&lt;Element&gt;, i: u64): &amp;mut Element;
+</code></pre>
+<hr />
+<p>Empty and destroy the <code>other</code> vector, and push each of the elements in
+the <code>other</code> vector onto the <code>lhs</code> vector in the same order as they occurred in <code>other</code>.</p>
+<p>清空并销毁<code>other</code>动态数组，并将<code>other</code>向量中的每个元素按顺序添加到<code>lhs</code>动态数组。</p>
+<pre><code class="language-move">    public fun append&lt;Element&gt;(lhs: &amp;mut vector&lt;Element&gt;, other: vector&lt;Element&gt;);
+</code></pre>
+<hr />
+<p>Push an element <code>e</code> of type <code>Element</code> onto the end of the vector <code>v</code>. May
+trigger a resizing of the underlying vector's memory.</p>
+<p>将类型为<code>Element</code>的元素<code>e</code>添加到向量<code>v</code>的末尾。可能触发底层向量内存的大小调整。</p>
+<pre><code class="language-move">    native public fun push_back&lt;Element&gt;(v: &amp;mut vector&lt;Element&gt;, e: Element);
+</code></pre>
+<hr />
+<p>Pop an element from the end of the vector <code>v</code> in-place and return the owned
+value. Will abort if <code>v</code> is empty.</p>
+<p>从向量<code>v</code>的末尾取出一个元素并返回。如果<code>v</code>为空将终止操作。</p>
+<pre><code class="language-move">    native public fun pop_back&lt;Element&gt;(v: &amp;mut vector&lt;Element&gt;): Element;
+</code></pre>
+<hr />
+<p>Remove the element at index <code>i</code> in the vector <code>v</code> and return the owned value
+that was previously stored at <code>i</code> in <code>v</code>. All elements occurring at indices
+greater than <code>i</code> will be shifted down by 1. Will abort if <code>i</code> is out of bounds
+for <code>v</code>.</p>
+<p>移除向量<code>v</code>中索引<code>i</code>处的元素，并返回之前存储在<code>v</code>中的<code>i</code>处的值。所有下标大于<code>i</code>的元素将向前移动1个位置。如果<code>i</code>超出了<code>v</code>的范围，操作将会终止。</p>
+<pre><code class="language-move">    public fun remove&lt;Element&gt;(v: &amp;mut vector&lt;Element&gt;, i: u64): Element;
+</code></pre>
+<hr />
+<p>Swap the <code>i</code>th element of the vector <code>v</code> with the last element and then pop
+this element off of the back of the vector and return the owned value that
+was previously stored at index <code>i</code>.
+This operation is O(1), but does not preserve ordering of elements in the vector.
+Aborts if the index <code>i</code> is out of bounds for the vector <code>v</code>.</p>
+<p>将向量<code>v</code>的第<code>i</code>个元素与最后一个元素交换，然后将这个元素从向量的后面取出，并返回之前存储在索引<code>i</code>处的所有元素的值。
+这个操作时间复杂度是O(1)，但是不保持向量容器中元素的顺序。
+如果索引<code>i</code>超出了向量<code>v</code>的边界，则操作终止。</p>
+<pre><code class="language-move">    public fun swap_remove&lt;Element&gt;(v: &amp;mut vector&lt;Element&gt;, i: u64): Element;
+</code></pre>
+<hr />
+<p>Swap the elements at the <code>i</code>'th and <code>j</code>'th indices in the vector <code>v</code>. Will
+abort if either of <code>i</code> or <code>j</code> are out of bounds for <code>v</code>.</p>
+<p>交换向量<code>v</code>中下标为第<code>i</code>和第<code>j</code>的元素。如果<code>i</code>或<code>j</code>中的任何一个超出了<code>v</code>的范围，则操作将终止。</p>
+<pre><code class="language-move">    native public fun swap&lt;Element&gt;(v: &amp;mut vector&lt;Element&gt;, i: u64, j: u64);
+</code></pre>
+<hr />
+<p>Reverse the order of the elements in the vector <code>v</code> in-place.</p>
+<p>将向量v中的元素顺序颠倒。</p>
+<pre><code class="language-move">    public fun reverse&lt;Element&gt;(v: &amp;mut vector&lt;Element&gt;);
+</code></pre>
+<hr />
+<p>Return the index of the first occurrence of an element in <code>v</code> that is
+equal to <code>e</code>. Returns <code>(true, index)</code> if such an element was found, and
+<code>(false, 0)</code> otherwise.</p>
+<p>返回<code>v</code>中第一个与<code>e</code>相等的元素的索引。如果找到这样的元素，则返回<code>(true, index)</code>，否则返回<code>(false, 0)</code>。</p>
+<pre><code class="language-move">    public fun index_of&lt;Element&gt;(v: &amp;vector&lt;Element&gt;, e: &amp;Element): (bool, u64);
+</code></pre>
+<hr />
+<p>Return if an element equal to <code>e</code> exists in the vector <code>v</code>.</p>
+<p>如果向量<code>v</code>中存在等于<code>e</code>的元素，则返回true, 否则返回false。</p>
+<pre><code class="language-move">    public fun contains&lt;Element&gt;(v: &amp;vector&lt;Element&gt;, e: &amp;Element): bool;
+</code></pre>
+<hr />
+<p>Return the length of a <code>vector</code>.</p>
+<p>返回<code>向量</code>的长度。</p>
+<pre><code class="language-move">    native public fun length&lt;Element&gt;(v: &amp;vector&lt;Element&gt;): u64;
+</code></pre>
+<hr />
+<p>Return whether the vector <code>v</code> is empty.</p>
+<p>如果向量<code>v</code>中没有元素，则返回true, 否则返回false。</p>
+<pre><code class="language-move">    public fun is_empty&lt;Element&gt;(v: &amp;vector&lt;Element&gt;): bool;
+</code></pre>
+<hr />
+<h2 id="选项option"><a class="header" href="#选项option">选项（option）</a></h2>
+<p>The <code>option</code> module defines a generic option type <code>Option&lt;T&gt;</code> that represents a
+value of type <code>T</code> that may, or may not, be present. It is published under the named address <code>Std</code>.</p>
+<p><code>option</code>模块定义了一个泛型option类型<code>Option&lt;T&gt;</code>，它表示类型为<code>T</code>的值可能存在，也可能不存在。它发布在命名地址<code>Std</code>下。</p>
+<p>The Move option type is internally represented as a singleton vector, and may
+contain a value of <code>resource</code> or <code>copyable</code> kind.  If you are familiar with option
+types in other languages, the Move <code>Option</code> behaves similarly to those with a
+couple notable exceptions since the option can contain a value of kind <code>resource</code>.
+Particularly, certain operations such as <code>get_with_default</code> and
+<code>destroy_with_default</code> require that the element type <code>T</code> be of <code>copyable</code> kind.</p>
+<p>Move option类型在内部表示为一个单例向量，可能包含<code>资源</code>或<code>可复制</code>类型的值。如果你熟悉其他语言中的option类型，Move <code>Option</code>的行为与那些类似，但有几个显著的例外，因为option可以包含一个类型为<code>资源</code>的值。
+特别地，某些操作如<code>get_with_default</code>和<code>destroy_with_default</code>要求元素类型<code>T</code>为<code>可复制</code>类型。</p>
+<p>The API for the <code>option</code> module is as as follows</p>
+<p><code>option</code>模块的API如下所示:</p>
+<h3 id="类型types"><a class="header" href="#类型types">类型（Types）</a></h3>
+<p>Generic type abstraction of a value that may, or may not, be present. Can contain
+a value of either <code>resource</code> or <code>copyable</code> kind.</p>
+<p>一个值的泛型类型的抽象，可能存在，也可能不存在。它可以包含<code>资源</code>或<code>可复制</code>类型的值。</p>
+<pre><code class="language-move">    struct Option&lt;T&gt;;
+</code></pre>
+<h3 id="函数functions-1"><a class="header" href="#函数functions-1">函数（Functions）</a></h3>
+<p>Create an empty <code>Option</code> of that can contain a value of <code>Element</code> type.</p>
+<p>创建一个可以包含<code>Element</code>类型值的空<code>Option</code>。</p>
+<pre><code class="language-move">    public fun none&lt;Element&gt;(): Option&lt;Element&gt;;
+</code></pre>
+<hr />
+<p>Create a non-empty <code>Option</code> type containing a value <code>e</code> of type <code>Element</code>.</p>
+<p>创建一个非空的<code>Option</code>类型，包含类型为<code>Element</code>的值<code>e</code>。</p>
+<pre><code class="language-move">    public fun some&lt;Element&gt;(e: T): Option&lt;Element&gt;;
+</code></pre>
+<hr />
+<p>Return an immutable reference to the value inside the option <code>opt_elem</code>
+Will abort if <code>opt_elem</code> does not contain a value.</p>
+<p>返回<code>opt_elem</code>内部值的不可变引用,如果<code>opt_elem</code>不包含值，则将终止操作。</p>
+<pre><code class="language-move">    public fun borrow&lt;Element&gt;(opt_elem: &amp;Option&lt;Element&gt;): &amp;Element;
+</code></pre>
+<hr />
+<p>Return a reference to the value inside <code>opt_elem</code> if it contains one. If
+<code>opt_elem</code> does not contain a value the passed in <code>default_ref</code> reference will be returned.
+Does not abort.</p>
+<p>如果<code>opt_elem</code>中包含值，则返回该值的引用。如果<code>opt_elem</code>不包含值，将返回传入的<code>default_ref</code>引用。不会终止操作。</p>
+<pre><code class="language-move">    public fun borrow_with_default&lt;Element&gt;(opt_elem: &amp;Option&lt;Element&gt;, default_ref: &amp;Element): &amp;Element;
+</code></pre>
+<hr />
+<p>Return a mutable reference to the value inside <code>opt_elem</code>. Will abort if
+<code>opt_elem</code> does not contain a value.</p>
+<p>返回<code>opt_elem</code>内部值的可变引用。如果<code>opt_elem</code>不包含值，则操作将终止。</p>
+<pre><code class="language-move">    public fun borrow_mut&lt;Element&gt;(opt_elem: &amp;mut Option&lt;Element&gt;): &amp;mut Element;
+</code></pre>
+<hr />
+<p>Convert an option value that contains a value to one that is empty in-place by
+removing and returning the value stored inside <code>opt_elem</code>.
+Will abort if <code>opt_elem</code> does not contain a value.</p>
+<p>通过删除并返回存储在<code>opt_elem</code>中的值，将包含值的<code>opt_elem</code>转换为空option类型。
+如果<code>opt_elem</code>不包含值，则将终止。</p>
+<pre><code class="language-move">    public fun extract&lt;Element&gt;(opt_elem: &amp;mut Option&lt;Element&gt;): Element;
+</code></pre>
+<hr />
+<p>Return the value contained inside the option <code>opt_elem</code> if it contains one.
+Will return the passed in <code>default</code> value if <code>opt_elem</code> does not contain a
+value. The <code>Element</code> type that the <code>Option</code> type is instantiated with must be
+of <code>copyable</code> kind in order for this function to be callable.</p>
+<p>如果<code>opt_elem</code>中包含值，则返回该值。
+如果<code>opt_elem</code>不包含值，将返回传入的<code>default</code>值。<code>default</code>类型必须是<code>可复制</code>类型，这样该函数才能被调用。</p>
+<pre><code class="language-move">    public fun get_with_default&lt;Element: copyable&gt;(opt_elem: &amp;Option&lt;Element&gt;, default: Element): Element;
+</code></pre>
+<hr />
+<p>Convert an empty option <code>opt_elem</code> to an option value that contains the value <code>e</code>.
+Will abort if <code>opt_elem</code> already contains a value.</p>
+<p>将空option类型<code>opt_elem</code>转换为包含值<code>e</code>的option类。
+如果<code>opt_elem</code>已经包含值，则操作将终止。</p>
+<pre><code class="language-move">    public fun fill&lt;Element&gt;(opt_elem: &amp;mut Option&lt;Element&gt;, e: Element);
+</code></pre>
+<hr />
+<p>Swap the value currently contained in <code>opt_elem</code> with <code>new_elem</code> and return the
+previously contained value. Will abort if <code>opt_elem</code> does not contain a value.</p>
+<p>将<code>opt_elem</code>当前包含的值与<code>new_elem</code>交换，并返回先前包含的值。如果<code>opt_elem</code>不包含值，则操作将终止。</p>
+<pre><code class="language-move">    public fun swap&lt;Element&gt;(opt_elem: &amp;mut Option&lt;Element&gt;, e: Element): Element;
+</code></pre>
+<hr />
+<p>Return true if <code>opt_elem</code> contains a value equal to the value of <code>e_ref</code>.
+Otherwise, <code>false</code> will be returned.</p>
+<p>如果<code>opt_elem</code>包含一个等于<code>e_ref</code>的值，则返回<code>true</code>。否则，将返回<code>false</code>。</p>
+<pre><code class="language-move">    public fun contains&lt;Element&gt;(opt_elem: &amp;Option&lt;Element&gt;, e_ref: &amp;Element): bool;
+</code></pre>
+<hr />
+<p>Return <code>true</code> if <code>opt_elem</code> does not contain a value.</p>
+<p>如果<code>opt_elem</code>不包含值，则返回<code>true</code>。</p>
+<pre><code class="language-move">    public fun is_none&lt;Element&gt;(opt_elem: &amp;Option&lt;Element&gt;): bool;
+</code></pre>
+<hr />
+<p>Return <code>true</code> if <code>opt_elem</code> contains a value.</p>
+<p>如果<code>opt_elem</code>包含值，则返回<code>true</code>。</p>
+<pre><code class="language-move">    public fun is_some&lt;Element&gt;(opt_elem: &amp;Option&lt;Element&gt;): bool;
+</code></pre>
+<hr />
+<p>Unpack <code>opt_elem</code> and return the value that it contained.
+Will abort if <code>opt_elem</code> does not contain a value.</p>
+<p>解包<code>opt_elem</code>并返回它所包含的值。
+如果<code>opt_elem</code>不包含值，则操作将终止。</p>
+<pre><code class="language-move">    public fun destroy_some&lt;Element&gt;(opt_elem: Option&lt;Element&gt;): Element;
+</code></pre>
+<hr />
+<p>Destroys the <code>opt_elem</code> value passed in. If <code>opt_elem</code> contained a value it
+will be returned otherwise, the passed in <code>default</code> value will be returned.</p>
+<p>销毁传入的<code>opt_elem</code>。如果<code>opt_elem</code>包含值，它将被返回，否则将返回传入的<code>default</code>值。</p>
+<pre><code class="language-move">    public fun destroy_with_default&lt;Element: copyable&gt;(opt_elem: Option&lt;Element&gt;, default: Element): Element;
+</code></pre>
+<hr />
+<p>Destroys the <code>opt_elem</code> value passed in, <code>opt_elem</code> must be empty and not
+contain a value. Will abort if <code>opt_elem</code> contains a value.</p>
+<p>销毁传入的<code>opt_elem</code>，<code>opt_elem</code>必须为空且不包含值。如果<code>opt_elem</code>包含一个值，则会终止操作。</p>
+<pre><code class="language-move">    public fun destroy_none&lt;Element&gt;(opt_elem: Option&lt;Element&gt;);
+</code></pre>
+<h2 id="错误errors"><a class="header" href="#错误errors">错误（errors）</a></h2>
+<p>Recall that each abort code in Move is represented as an unsigned 64-bit integer. The <code>errors</code> module defines a common interface that can be used to &quot;tag&quot; each of these abort codes so that they can represent both the error <strong>category</strong> along with an error <strong>reason</strong>.</p>
+<p>回想一下，Move中的每个终止代码都表示为无符号64位整数。<code>errors</code>模块定义了一个通用接口，可用于&quot;标记&quot;每个终止代码，以便它们既可以表示错误<strong>类别</strong>，也可以表示错误<strong>原因</strong>。</p>
+<p>Error categories are declared as constants in the <code>errors</code> module and are globally unique with respect to this module. Error reasons on the other hand are module-specific error codes, and can provide greater detail (perhaps, even a particular <em>reason</em>) about the specific error condition. This representation of a category and reason for each error code is done by dividing the abort code into two sections.</p>
+<p>错误类别在<code>errors</code>模块中声明为常量，并且对该模块来说是全局唯一的。另一方面，错误原因是特定于模块的错误代码，可以提供关于特定错误条件的更详细的信息(甚至可能是一个特定的_reason_)。每个错误代码的类别和原因的这种表示是通过将终止代码分成两部分来完成的。</p>
+<p>The lower 8 bits of the abort code hold the <em>error category</em>. The remaining 56 bits of the abort code hold the <em>error reason</em>.
+The reason should be a unique number relative to the module which raised the error and can be used to obtain more information about the error at hand. It should mostly be used for diagnostic purposes as error reasons may change over time if the module is updated.</p>
+<table><thead><tr><th>Category</th><th>Reason</th></tr></thead><tbody>
+<tr><td>8 bits</td><td>56 bits</td></tr>
+</tbody></table>
+<p>Since error categories are globally stable, these present the most stable API and should in general be what is used by clients to determine the messages they may present to users (whereas the reason is useful for diagnostic purposes). There are public functions in the <code>errors</code> module for creating an abort code of each error category with a specific <code>reason</code> number (represented as a <code>u64</code>).</p>
+<p>终止代码的较低8位保存<em>错误类别</em>。终止代码的其余56位包含<em>错误原因</em>。
+原因应该是相对于引发错误的模块的唯一数字，并且可以用来获取关于当前错误的更多信息。它应该主要用于诊断目的，因为如果模块更新，错误原因可能会随着时间的推移而变化。</p>
+<table><thead><tr><th>类型</th><th>原因</th></tr></thead><tbody>
+<tr><td>8 bits</td><td>56 bits</td></tr>
+</tbody></table>
+<p>由于错误类别是全局稳定的，所以它们提供了稳定的API，通常应该由客户端用来确定它们可能向用户提供的消息(而原因则用于诊断目的)。在<code>errors</code>模块中有一些公共函数，用于创建每个错误类别的带有特定<code>原因</code>号的终止代码(表示为<code>u64</code>)。</p>
+<h3 id="常量constants"><a class="header" href="#常量constants">常量（Constants）</a></h3>
+<p>The system is in a state where the performed operation is not allowed.</p>
+<p>系统处于不允许操作的状态。</p>
+<pre><code class="language-move">    const INVALID_STATE: u8 = 1;
+</code></pre>
+<hr />
+<p>A specific account address was required to perform an operation, but a different address from what was expected was encounterd.</p>
+<p>执行操作需要一个特定的帐户地址，但遇到的地址与预期的不同。</p>
+<pre><code class="language-move">    const REQUIRES_ADDRESS: u8 = 2;
+</code></pre>
+<hr />
+<p>An account did not have the expected  role for this operation. Useful for Role Based Access Control (RBAC) error conditions.</p>
+<p>帐户没有此操作的预期角色。用于基于角色访问控制(RBAC)错误。</p>
+<pre><code class="language-move">    const REQUIRES_ROLE: u8 = 3;
+</code></pre>
+<hr />
+<p>An account did not not have a required capability. Useful for RBAC error conditions.</p>
+<p>帐户没有所需的能力。用于RBAC错误。</p>
+<pre><code class="language-move">    const REQUIRES_CAPABILITY: u8 = 4;
+</code></pre>
+<hr />
+<p>A resource was expected, but did not exist under an address.</p>
+<p>地址下不存在期望的资源。</p>
+<pre><code class="language-move">    const NOT_PUBLISHED: u8 = 5;
+</code></pre>
+<hr />
+<p>Attempted to publish a resource under an address where one was already published.</p>
+<p>试图在已发布资源的地址发布资源。</p>
+<pre><code class="language-move">    const ALREADY_PUBLISHED: u8 = 6;
+</code></pre>
+<hr />
+<p>An argument provided for an operation was invalid.</p>
+<p>为操作提供的参数无效。</p>
+<pre><code class="language-move">    const INVALID_ARGUMENT: u8 = 7;
+</code></pre>
+<hr />
+<p>A limit on a value was exceeded.</p>
+<p>超过了一个值的限制。</p>
+<pre><code class="language-move">    const LIMIT_EXCEEDED: u8 = 8;
+</code></pre>
+<hr />
+<p>An internal error (bug) has occurred.</p>
+<p>发生了内部错误(bug)。</p>
+<pre><code class="language-move">    const INTERNAL: u8 = 10;
+</code></pre>
+<hr />
+<p>A custom error category for extension points.</p>
+<p>扩展自定义错误类别。</p>
+<pre><code class="language-move">    const CUSTOM: u8 = 255;
+</code></pre>
+<hr />
+<h3 id="函数functions-2"><a class="header" href="#函数functions-2">函数（Functions）</a></h3>
+<p>Should be used in the case where invalid (global) state is encountered. Constructs an abort code with specified <code>reason</code> and category <code>INVALID_STATE</code>. Will abort if <code>reason</code> does not fit in 56 bits.</p>
+<p>在遇到无效(全局)状态的情况下应使用。构造一个具有指定的<code>reason</code>和类别<code>INVALID_STATE</code>的终止代码。如果<code>reason</code>不适合56位，将会终止操作。</p>
+<pre><code class="language-move">    public fun invalid_state(reason: u64): u64;
+</code></pre>
+<hr />
+<p>Should be used if an account's address does not match a specific address. Constructs an abort code with specified <code>reason</code> and category <code>REQUIRES_ADDRESS</code>. Will abort if <code>reason</code> does not fit in 56 bits.</p>
+<p>当账户地址与特定地址不匹配时应使用。构造一个具有指定的<code>reason</code>和类别<code>REQUIRES_ADDRESS</code>的终止代码。如果<code>reason</code>不适合56位，将会终止操作。</p>
+<pre><code class="language-move">    public fun requires_address(reason: u64): u64;
+</code></pre>
+<hr />
+<p>Should be used if a role did not match a required role when using RBAC. Constructs an abort code with specified <code>reason</code> and category <code>REQUIRES_ROLE</code>. Will abort if <code>reason</code> does not fit in 56 bits.</p>
+<p>在使用RBAC时，角色与所需角色不匹配时应使用。构造一个具有指定的<code>reason</code>和类别<code>REQUIRES_ROLE</code>的终止代码。如果<code>reason</code>不适合56位，将会终止操作。</p>
+<pre><code class="language-move">    public fun requires_role(reason: u64): u64;
+</code></pre>
+<hr />
+<p>Should be used if an account did not have a required capability when using RBAC. Constructs an abort code with specified <code>reason</code> and category <code>REQUIRES_CAPABILITY</code>. Should be Will abort if <code>reason</code> does not fit in 56 bits.</p>
+<p>在使用RBAC时，帐户没有必要的能力时应使用。构造一个具有指定的<code>reason</code>和类别<code>REQUIRES_CAPABILITY</code>的终止代码。如果<code>reason</code>不适合56位，将会终止操作。</p>
+<pre><code class="language-move">    public fun requires_capability(reason: u64): u64;
+</code></pre>
+<hr />
+<p>Should be used if a resource did not exist where one was expected. Constructs an abort code with specified <code>reason</code> and category <code>NOT_PUBLISHED</code>. Will abort if <code>reason</code> does not fit in 56 bits.</p>
+<p>在需要资源的地方不存在资源时应使用。构造一个具有指定的<code>reason</code>和类别<code>NOT_PUBLISHED</code>的终止代码。如果<code>reason</code>不适合56位，将会终止操作。</p>
+<pre><code class="language-move">    public fun not_published(reason: u64): u64;
+</code></pre>
+<hr />
+<p>Should be used if a resource already existed where one was about to be published. Constructs an abort code with specified <code>reason</code> and category <code>ALREADY_PUBLISHED</code>. Will abort if <code>reason</code> does not fit in 56 bits.</p>
+<p>要发布资源的地方已经存在资源时使用。构造一个具有指定的<code>reason</code>和类别<code>ALREADY_PUBLISHED</code>的终止代码。如果<code>reason</code>不适合56位，将会终止操作。</p>
+<pre><code class="language-move">    public fun already_published(reason: u64): u64;
+</code></pre>
+<hr />
+<p>Should be used if an invalid argument was passed to a function/operation. Constructs an abort code with specified <code>reason</code> and category <code>INVALID_ARGUMENT</code>. Will abort if <code>reason</code> does not fit in 56 bits.</p>
+<p>当向函数/操作传递无效参数时使用。构造一个具有指定的<code>reason</code>和类别<code>INVALID_ARGUMENT</code>的终止代码。如果<code>reason</code>不适合56位，将会终止操作。</p>
+<pre><code class="language-move">    public fun invalid_argument(reason: u64): u64;
+</code></pre>
+<hr />
+<p>Should be used if a limit on a specific value is reached, e.g., subtracting 1 from a value of 0. Constructs an abort code with specified <code>reason</code> and category <code>LIMIT_EXCEEDED</code>. Will abort if <code>reason</code> does not fit in 56 bits.</p>
+<p>当达到特定值的限制时应使用，例如，0减去1。构造一个具有指定的<code>reason</code>和类别<code>LIMIT_EXCEEDED</code>的终止代码。如果<code>reason</code>不适合56位，将会终止操作。</p>
+<pre><code class="language-move">    public fun limit_exceeded(reason: u64): u64;
+</code></pre>
+<hr />
+<p>Should be used if an internal error or bug was encountered. Constructs an abort code with specified <code>reason</code> and category <code>INTERNAL</code>. Will abort if <code>reason</code> does not fit in 56 bits.</p>
+<p>在遇到内部错误或错误时使用。构造一个具有指定的<code>reason</code>和类别<code>INTERNAL</code>的终止代码。如果<code>reason</code>不适合56位，将会终止操作。</p>
+<pre><code class="language-move">    public fun internal(reason: u64): u64;
+</code></pre>
+<hr />
+<p>Used for extension points, should be not used under most circumstances. Constructs an abort code with specified <code>reason</code> and category <code>CUSTOM</code>. Will abort if <code>reason</code> does not fit in 56 bits.</p>
+<p>用于扩展，大多数情况下不应使用。构造一个具有指定的<code>reason</code>和类别<code>CUSTOM</code>的终止代码。如果<code>reason</code>不适合56位，将会终止操作。</p>
+<pre><code class="language-move">    public fun custom(reason: u64): u64;
+</code></pre>
+<hr />
+<h2 id="32位精确定点数字fixed_point32"><a class="header" href="#32位精确定点数字fixed_point32">32位精确定点数字（fixed_point32）</a></h2>
+<p>The <code>fixed_point32</code> module defines a fixed-point numeric type with 32 integer bits and 32 fractional bits. Internally, this is represented as a <code>u64</code> integer wrapped in a struct to make a unique <code>fixed_point32</code> type. Since the numeric representation is a binary one, some decimal values may not be exactly representable, but it provides more than 9 decimal digits of precision both before and after the decimal point (18 digits total). For comparison, double precision floating-point has less than 16 decimal digits of precision, so you should be careful about using floating-point to convert these values to decimal.</p>
+<p><code>fixed_point32</code>模块定义了一个具有32个整数位和32个小数位的定点数值类型。在内部，它被表示为一个<code>u64</code>整数，包装在一个结构中，形成一个唯一的<code>fixed_point32</code>类型。由于数字表示是二进制的，一些十进制值可能不能完全表示，但它在小数点之前和之后都提供了9位以上的十进制精度(总共18位)。为了进行比较，双精度浮点数的精度小于16位十进制数字，因此在使用浮点数将这些值转换为十进制时应该小心。</p>
+<h3 id="类型types-1"><a class="header" href="#类型types-1">类型（Types）</a></h3>
+<p>Represents a fixed-point numeric number with 32 fractional bits.</p>
+<p>表示具有32个小数位的定点数字。</p>
+<pre><code class="language-move">    struct FixedPoint32;
+</code></pre>
+<h3 id="函数functions-3"><a class="header" href="#函数functions-3">函数（Functions）</a></h3>
+<p>Multiply a u64 integer by a fixed-point number, truncating any fractional part of the product. This will abort if the product overflows.</p>
+<p>当u64整数乘以定点数，截断乘积的任何小数部分。如果乘积溢出，该操作将终止。</p>
+<pre><code class="language-move">    public fun multiply_u64(val: u64, multiplier: FixedPoint32): u64;
+</code></pre>
+<hr />
+<p>Divide a u64 integer by a fixed-point number, truncating any fractional part of the quotient. This will abort if the divisor is zero or if the quotient overflows.</p>
+<p>当u64整数除以定点数，截断商的任何小数部分。如果除数为零或商溢出，该操作将终止。</p>
+<pre><code class="language-move">    public fun divide_u64(val: u64, divisor: FixedPoint32): u64;
+</code></pre>
+<hr />
+<p>Create a fixed-point value from a rational number specified by its numerator and denominator. Calling this function should be preferred for using <code>fixed_point32::create_from_raw_value</code> which is also available. This will abort if the denominator is zero. It will also abort if the numerator is nonzero and the ratio is not in the range $2^{-32}\ldots2^{32}-1$. When specifying decimal fractions, be careful about rounding errors: if you round to display $N$ digits after the decimal point, you can use a denominator of $10^N$ to avoid numbers where the very small imprecision in the binary representation could change the rounding, e.g., 0.0125 will round down to 0.012 instead of up to 0.013.</p>
+<p>根据分子和分母指定的有理数创建定点值。如果<code>fixed_point32::create_from_raw_value</code>函数可用，应优先使用。如果分母为零，该操作将终止。如果分子非零且比值不在$2^{-32}\ldots2^{32}-1$范围内，该操作将终止。指定小数时，请注意四舍五入错误：如果要对小数点后$N$位进行四舍五入，则可以用$10^N$做分母，这样就能避免精确度丢失问题，例如，0.0125将四舍五入到0.012而不是0.013。</p>
+<pre><code class="language-move">    public fun create_from_rational(numerator: u64, denominator: u64): FixedPoint32;
+</code></pre>
+<hr />
+<p>Create a fixedpoint value from a raw <code>u64</code> value.</p>
+<p>通过<code>u64</code>原始值创建一个定点值。</p>
+<pre><code class="language-move">    public fun create_from_raw_value(value: u64): FixedPoint32;
+</code></pre>
+<hr />
+<p>Returns <code>true</code> if the decimal value of <code>num</code> is equal to zero.</p>
+<p>如果<code>num</code>的十进制值等于0，则返回<code>true</code>。</p>
+<pre><code class="language-move">    public fun is_zero(num: FixedPoint32): bool;
+</code></pre>
+<hr />
+<p>Accessor for the raw <code>u64</code> value. Other less common operations, such as adding or subtracting <code>FixedPoint32</code> values, can be done using the raw values directly.</p>
+<p>获取<code>u64</code>原始值的方法。其他不太常见的操作，例如添加或减去<code>FixedPoint32</code>值，可以直接使用原始值来完成。</p>
+<pre><code class="language-move">    public fun get_raw_value(num: FixedPoint32): u64;
+</code></pre>
+<hr />
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="global-storage-operators.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="coding-conventions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="global-storage-operators.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="coding-conventions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

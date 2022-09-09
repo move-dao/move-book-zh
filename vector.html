@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>向量 (Vector) - Move Book 中文版</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">引言 (Introduction)</a></li><li class="chapter-item expanded "><a href="modules-and-scripts.html"><strong aria-hidden="true">1.</strong> 模块和脚本 (Modules and Scripts)</a></li><li class="chapter-item expanded "><a href="move-tutorial.html"><strong aria-hidden="true">2.</strong> Move 教程 (Move Tutorial)</a></li><li class="chapter-item expanded "><a href="integers.html"><strong aria-hidden="true">3.</strong> 整数 (Integers)</a></li><li class="chapter-item expanded "><a href="bool.html"><strong aria-hidden="true">4.</strong> 布尔类型 (Bool) </a></li><li class="chapter-item expanded "><a href="address.html"><strong aria-hidden="true">5.</strong> 地址 (Address)</a></li><li class="chapter-item expanded "><a href="vector.html" class="active"><strong aria-hidden="true">6.</strong> 向量 (Vector)</a></li><li class="chapter-item expanded "><a href="signer.html"><strong aria-hidden="true">7.</strong> 签名 (Signer)</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">8.</strong> 引用 (References)</a></li><li class="chapter-item expanded "><a href="tuples.html"><strong aria-hidden="true">9.</strong> 元组和 Unit (Tuples and Unit)</a></li><li class="chapter-item expanded "><a href="variables.html"><strong aria-hidden="true">10.</strong> 局部变量和作用域 (Local Variables and Scopes)</a></li><li class="chapter-item expanded "><a href="equality.html"><strong aria-hidden="true">11.</strong> 等式 (Equality)</a></li><li class="chapter-item expanded "><a href="abort-and-assert.html"><strong aria-hidden="true">12.</strong> 中止和断言 (Abort and Assert)</a></li><li class="chapter-item expanded "><a href="conditionals.html"><strong aria-hidden="true">13.</strong> 条件语句 (Conditionals)</a></li><li class="chapter-item expanded "><a href="loops.html"><strong aria-hidden="true">14.</strong> 循环 (While and Loop)</a></li><li class="chapter-item expanded "><a href="functions.html"><strong aria-hidden="true">15.</strong> 函数 (Functions)</a></li><li class="chapter-item expanded "><a href="structs-and-resources.html"><strong aria-hidden="true">16.</strong> 结构体和资源 (Structs and Resources)</a></li><li class="chapter-item expanded "><a href="constants.html"><strong aria-hidden="true">17.</strong> 常量 (Constants)</a></li><li class="chapter-item expanded "><a href="generics.html"><strong aria-hidden="true">18.</strong> 泛型 (Generics)</a></li><li class="chapter-item expanded "><a href="abilities.html"><strong aria-hidden="true">19.</strong> 类型能力 (Type Abilities)</a></li><li class="chapter-item expanded "><a href="uses.html"><strong aria-hidden="true">20.</strong> 导入和别名 (Uses and Aliases)</a></li><li class="chapter-item expanded "><a href="friends.html"><strong aria-hidden="true">21.</strong> 友元函数 (Friends)</a></li><li class="chapter-item expanded "><a href="packages.html"><strong aria-hidden="true">22.</strong> 程序包 (Packages)</a></li><li class="chapter-item expanded "><a href="unit-testing.html"><strong aria-hidden="true">23.</strong> 单元测试 (Unit Tests)</a></li><li class="chapter-item expanded "><a href="global-storage-structure.html"><strong aria-hidden="true">24.</strong> 全局存储结构 (Global Storage Structure)</a></li><li class="chapter-item expanded "><a href="global-storage-operators.html"><strong aria-hidden="true">25.</strong> 全局存储操作 (Global Storage Operators)</a></li><li class="chapter-item expanded "><a href="standard-library.html"><strong aria-hidden="true">26.</strong> 标准库 (Standard Library)</a></li><li class="chapter-item expanded "><a href="coding-conventions.html"><strong aria-hidden="true">27.</strong> Move 编码规范 (Coding Conventions)</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Move Book 中文版</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/move-dao/move-book-zh" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="向量vector"><a class="header" href="#向量vector">向量（Vector）</a></h1>
+<p><code>vector&lt;T&gt;</code> is the only primitive collection type provided by Move. A <code>vector&lt;T&gt;</code> is a homogenous
+collection of <code>T</code>'s that can grow or shrink by pushing/popping values off the &quot;end&quot;.</p>
+<p>A <code>vector&lt;T&gt;</code> can be instantiated with any type <code>T</code>. For example, <code>vector&lt;u64&gt;</code>, <code>vector&lt;address&gt;</code>,
+<code>vector&lt;0x42::MyModule::MyResource&gt;</code>, and <code>vector&lt;vector&lt;u8&gt;&gt;</code> are all valid vector types.</p>
+<p><code>vector&lt;T&gt;</code> 是 Move 提供的唯一原始集合类型。<code>vector&lt;T&gt;</code> 是类型为 <code>T</code> 的同构集合，可以通过从&quot;末端&quot;推入/弹出（出栈/入栈，译者注）值来增长或缩小。
+<em>（与 Rust 一样，向量（vector）是一种可以存放任何类型的可变大小的容器，也可称为<a href="https://en.wikipedia.org/wiki/Dynamic_array">动态数组</a>，与 Python 中的<a href="https://computersciencewiki.org/index.php/Lists">列表（list）</a>不同，译者注）</em></p>
+<p><code>vector&lt;T&gt;</code> 可以用任何类型 <code>T</code> 实例化。例如，<code>vector&lt;u64&gt;</code>、<code>vector&lt;address&gt;</code>、<code>vector&lt;0x42::MyModuel::MyResource&gt;</code> 和 <code>vector&lt;vector&lt;u8&gt;&gt;</code> 都是有效的向量类型。</p>
+<h2 id="字面量literals"><a class="header" href="#字面量literals">字面量（Literals）</a></h2>
+<h3 id="通用-vector-字面量general-vector-literals"><a class="header" href="#通用-vector-字面量general-vector-literals">通用 <code>vector</code> 字面量（General <code>vector</code> Literals）</a></h3>
+<p>Vectors of any type can be created with <code>vector</code> literals.</p>
+<p>任何类型的向量都可以通过 <code>vector</code> 字面量创建。</p>
+<table><thead><tr><th>语法</th><th>类型</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>vector[]</code></td><td><code>vector[]: vector&lt;T&gt;</code> 其中 <code>T</code> 是任何单一的非引用类型</td><td>一个空向量</td></tr>
+<tr><td><code>vector[e1, ..., en]</code></td><td><code>vector[e1, ..., en]: vector&lt;T&gt;</code> where <code>e_i: T</code> 满足 <code>0 &lt; i &lt;= n</code> and <code>n &gt; 0</code></td><td>带有 <code>n</code> 个元素（长度为 n）的向量</td></tr>
+</tbody></table>
+<p>In these cases, the type of the <code>vector</code> is inferred, either from the element type or from the
+vector's usage. If the type cannot be inferred, or simply for added clarity, the type can be
+specified explicitly:</p>
+<p>在这些情况下，<code>vector</code> 的类型是从元素类型或从向量的使用上推断出来的。如果无法推断类型或者只是为了更清楚地表示，则可以显式指定类型：</p>
+<pre><code class="language-move">vector&lt;T&gt;[]: vector&lt;T&gt;
+vector&lt;T&gt;[e1, ..., en]: vector&lt;T&gt;
+</code></pre>
+<h4 id="向量字面量示例example-vector-literals"><a class="header" href="#向量字面量示例example-vector-literals">向量字面量示例（Example Vector Literals）</a></h4>
+<pre><code class="language-move">(vector[]: vector&lt;bool&gt;);
+(vector[0u8, 1u8, 2u8]: vector&lt;u8&gt;);
+(vector&lt;u128&gt;[]: vector&lt;u128&gt;);
+(vector&lt;address&gt;[@0x42, @0x100]: vector&lt;address&gt;);
+</code></pre>
+<h3 id="vectoru8-字面量vectoru8-literals"><a class="header" href="#vectoru8-字面量vectoru8-literals"><code>vector&lt;u8&gt;</code> 字面量（<code>vector&lt;u8&gt;</code> literals）</a></h3>
+<p>A common use-case for vectors in Move is to represent &quot;byte arrays&quot;, which are represented with
+<code>vector&lt;u8&gt;</code>. These values are often used for cryptographic purposes, such as a public key or a hash
+result. These values are so common that specific syntax is provided to make the values more
+readable, as opposed to having to use <code>vector[]</code> where each individual <code>u8</code> value is specified in
+numeric form.</p>
+<p>There are currently two supported types of <code>vector&lt;u8&gt;</code> literals, <em>byte strings</em> and <em>hex strings</em>.</p>
+<p>Move 中向量的一个常见用例是表示“字节数组”，用 <code>vector&lt;u8&gt;</code> 表示。这些值通常用于加密目的，例如公钥或哈希结果。这些值非常常见，以至于提供了特定的语法以使值更具可读性，而不是必须使用 <code>vector[]</code>，其中每个单独的 <code>u8</code> 值都以数字形式指定。</p>
+<p>目前支持两种类型的 <code>vector&lt;u8&gt;</code> 字面量，<em>字节字符串</em>和<em>十六进制字符串</em>。</p>
+<h4 id="字节字符串byte-strings"><a class="header" href="#字节字符串byte-strings">字节字符串（Byte Strings）</a></h4>
+<p>Byte strings are quoted string literals prefixed by a <code>b</code>, e.g. <code>b&quot;Hello!\n&quot;</code>.</p>
+<p>These are ASCII encoded strings that allow for escape sequences. Currently, the supported escape
+sequences are</p>
+<p>字节字符串是带引号的字符串字面量，以 <code>b</code> 为前缀，例如，<code>b&quot;Hello!\n&quot;</code>。</p>
+<p>这些是允许转义序列的 ASCII 编码字符串。目前，支持的转义序列如下：</p>
+<table><thead><tr><th>转义序列</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>\n</code></td><td>换行</td></tr>
+<tr><td><code>\r</code></td><td>回车</td></tr>
+<tr><td><code>\t</code></td><td>制表符</td></tr>
+<tr><td><code>\\</code></td><td>反斜杠</td></tr>
+<tr><td><code>\0</code></td><td>Null</td></tr>
+<tr><td><code>\&quot;</code></td><td>引号</td></tr>
+<tr><td><code>\xHH</code></td><td>十六进制进制转义，插入十六进制字节序列 <code>HH</code></td></tr>
+</tbody></table>
+<h4 id="十六进制字符串hex-strings"><a class="header" href="#十六进制字符串hex-strings">十六进制字符串（Hex Strings）</a></h4>
+<p>Hex strings are quoted string literals prefixed by a <code>x</code>, e.g. <code>x&quot;48656C6C6F210A&quot;</code></p>
+<p>Each byte pair, ranging from <code>00</code> to <code>FF</code>, is interpreted as hex encoded <code>u8</code> value. So each byte
+pair corresponds to a single entry in the resulting <code>vector&lt;u8&gt;</code></p>
+<p>十六进制字符串是以 <code>x</code> 为前缀的带引号的字符串字面量，例如，<code>x&quot;48656C6C6F210A&quot;</code>。</p>
+<p>每个字节对，范围从 <code>00</code> 到 <code>FF</code> 都被解析为十六进制编码的 <code>u8</code> 值。所以每个字节对对应于结果 <code>vector&lt;u8&gt;</code> 的单个条目。</p>
+<h4 id="字符串字面量示例example-string-literals"><a class="header" href="#字符串字面量示例example-string-literals">字符串字面量示例（Example String Literals）</a></h4>
+<pre><code class="language-move">script {
+    fun byte_and_hex_strings() {
+        assert!(b&quot;&quot; == x&quot;&quot;, 0);
+        assert!(b&quot;Hello!\n&quot; == x&quot;48656C6C6F210A&quot;, 1);
+        assert!(b&quot;\x48\x65\x6C\x6C\x6F\x21\x0A&quot; == x&quot;48656C6C6F210A&quot;, 2);
+        assert!(
+            b&quot;\&quot;Hello\tworld!\&quot;\n \r \\Null=\0&quot; ==
+                x&quot;2248656C6C6F09776F726C6421220A200D205C4E756C6C3D00&quot;,
+            3
+        );
+    }
+}
+</code></pre>
+<h2 id="操作-operations"><a class="header" href="#操作-operations">操作 (Operations)</a></h2>
+<p><code>vector</code> supports the following operations via the <code>std::vector</code> module in the Move standard
+library:</p>
+<p><code>vector</code> 通过 Move 标准库里的 <code>std::vector</code> 模块支持以下操作：</p>
+<table><thead><tr><th>函数</th><th>描述</th><th>中止条件</th></tr></thead><tbody>
+<tr><td><code>vector::empty&lt;T&gt;(): vector&lt;T&gt;</code></td><td>创建一个可以存储 <code>T</code> 类型值的空向量</td><td>永不中止</td></tr>
+<tr><td><code>vector::singleton&lt;T&gt;(t: T): vector&lt;T&gt;</code></td><td>创建一个包含 <code>t</code> 的大小为 1 的向量</td><td>永不中止</td></tr>
+<tr><td><code>vector::push_back&lt;T&gt;(v: &amp;mut vector&lt;T&gt;, t: T)</code></td><td>将 <code>t</code> 添加到 <code>v</code> 的尾部</td><td>永不中止</td></tr>
+<tr><td><code>vector::pop_back&lt;T&gt;(v: &amp;mut vector&lt;T&gt;): T</code></td><td>移除并返回 <code>v</code> 中的最后一个元素</td><td>如果 <code>v</code> 是空向量</td></tr>
+<tr><td><code>vector::borrow&lt;T&gt;(v: &amp;vector&lt;T&gt;, i: u64): &amp;T</code></td><td>返回在索引 <code>i</code> 处对 <code>T</code> 的不可变引用</td><td>如果 <code>i</code> 越界</td></tr>
+<tr><td><code>vector::borrow_mut&lt;T&gt;(v: &amp;mut vector&lt;T&gt;, i: u64): &amp;mut T</code></td><td>返回在索引 <code>i</code> 处对 <code>T</code> 的可变引用</td><td>如果 <code>i</code> 越界</td></tr>
+<tr><td><code>vector::destroy_empty&lt;T&gt;(v: vector&lt;T&gt;)</code></td><td>销毁 <code>v</code> 向量</td><td>如果 <code>v</code> 不是空向量</td></tr>
+<tr><td><code>vector::append&lt;T&gt;(v1: &amp;mut vector&lt;T&gt;, v2: vector&lt;T&gt;)</code></td><td>将 <code>v2</code> 中的元素添加到 <code>v1</code> 的末尾</td><td>永不中止</td></tr>
+<tr><td><code>vector::contains&lt;T&gt;(v: &amp;vector&lt;T&gt;, e: &amp;T): bool</code></td><td>如果 <code>e</code> 在向量 <code>v</code> 里返回 true，否则返回 false</td><td>永不中止</td></tr>
+<tr><td><code>vector::swap&lt;T&gt;(v: &amp;mut vector&lt;T&gt;, i: u64, j: u64)</code></td><td>交换向量 <code>v</code> 中第 <code>i</code> 个和第 <code>j</code> 个索引处的元素</td><td>如果 <code>i</code> 或 <code>j</code> 越界</td></tr>
+<tr><td><code>vector::reverse&lt;T&gt;(v: &amp;mut vector&lt;T&gt;)</code></td><td>反转向量 <code>v</code> 中元素的顺序</td><td>永不中止</td></tr>
+<tr><td><code>vector::index_of&lt;T&gt;(v: &amp;vector&lt;T&gt;, e: &amp;T): (bool, u64)</code></td><td>如果 <code>e</code> 在索引 <code>i</code> 处的向量中，则返回 <code>(true, i)</code>。否则返回<code>(false, 0)</code></td><td>永不中止</td></tr>
+<tr><td><code>vector::remove&lt;T&gt;(v: &amp;mut vector&lt;T&gt;, i: u64): T</code></td><td>移除向量 <code>v</code> 中的第 <code>i</code> 个元素，移动所有后续元素。这里的时间复杂度是 O(n)，并且保留了向量中元素的顺序</td><td>如果 <code>i</code> 越界</td></tr>
+<tr><td><code>vector::swap_remove&lt;T&gt;(v: &amp;mut vector&lt;T&gt;, i: u64): T</code></td><td>将向量中的第 <code>i</code> 个元素与最后一个元素交换，然后弹出该元素。这里的时间复杂度是 O(1)，但是不保留向量中的元素顺序</td><td>如果 <code>i</code> 越界</td></tr>
+</tbody></table>
+<p>More operations may be added over time.</p>
+<p>随着时间的推移可能会增加更多操作。</p>
+<h2 id="示例"><a class="header" href="#示例">示例</a></h2>
+<pre><code class="language-move">use std::vector;
+
+let v = vector::empty&lt;u64&gt;();
+vector::push_back(&amp;mut v, 5);
+vector::push_back(&amp;mut v, 6);
+
+assert!(*vector::borrow(&amp;v, 0) == 5, 42);
+assert!(*vector::borrow(&amp;v, 1) == 6, 42);
+assert!(vector::pop_back(&amp;mut v) == 6, 42);
+assert!(vector::pop_back(&amp;mut v) == 5, 42);
+</code></pre>
+<h2 id="销毁和复制-vectordestroying-and-copying-vector"><a class="header" href="#销毁和复制-vectordestroying-and-copying-vector">销毁和复制 <code>vector</code>（Destroying and copying <code>vector</code>）</a></h2>
+<p>Some behaviors of <code>vector&lt;T&gt;</code> depend on the abilities of the element type, <code>T</code>. For example, vectors
+containing elements that do not have <code>drop</code> cannot be implicitly discarded like <code>v</code> in the example
+above--they must be explicitly destroyed with <code>vector::destroy_empty</code>.</p>
+<p>Note that <code>vector::destroy_empty</code> will abort at runtime unless <code>vec</code> contains zero elements:</p>
+<p><code>vector&lt;T&gt;</code> 的某些行为取决于元素类型 <code>T</code> 的能力（ability），例如：如果向量中包含不具有 <code>drop</code> 能力的元素，那么不能像上面例子中的 <code>v</code> 一样隐式丢弃 —— 它们必须用 <code>vector::destroy_empty</code> 显式销毁。</p>
+<p>请注意，除非向量 <code>vec</code> 包含零个元素，否则 <code>vector::destroy_empty</code> 将在运行时中止：</p>
+<pre><code class="language-move">fun destroy_any_vector&lt;T&gt;(vec: vector&lt;T&gt;) {
+    vector::destroy_empty(vec) // 删除此行将导致编译器错误
+}
+</code></pre>
+<p>但是删除包含带有 <code>drop</code> 能力的元素的向量不会发生错误：</p>
+<pre><code class="language-move">fun destroy_droppable_vector&lt;T: drop&gt;(vec: vector&lt;T&gt;) {
+    // 有效！
+    // 不需要明确地做任何事情来销毁向量
+}
+</code></pre>
+<p>Similarly, vectors cannot be copied unless the element type has <code>copy</code>. In other words, a
+<code>vector&lt;T&gt;</code> has <code>copy</code> if and only if <code>T</code> has <code>copy</code>. However, even copyable vectors are never
+implicitly copied:</p>
+<p>同样，除非元素类型具有 <code>copy</code> 能力，否则无法复制向量。换句话说，当且仅当 <code>T</code> 具有 <code>copy</code> 能力时，<code>vector&lt;T&gt;</code> 才具有 <code>copy</code> 能力。然而，即使是可复制的向量也永远不会被隐式复制：</p>
+<p>换句话说，<code>vector&lt;T&gt;</code> 有 <code>copy</code> 能力当且仅当 <code>T</code> 有 <code>copy</code> 能力。然而，即使是可复制的向量也永远不会被隐式复制：</p>
+<pre><code class="language-move">let x = vector::singleton&lt;u64&gt;(10);
+let y = copy x; // 没有 copy 将导致编译器错误！
+</code></pre>
+<p>Copies of large vectors can be expensive, so the compiler requires explicit <code>copy</code>'s to make it
+easier to see where they are happening.</p>
+<p>For more details see the sections on <a href="./abilities.html">type abilities</a> and <a href="./generics.html">generics</a>.</p>
+<p>大向量的复制可能很昂贵，因此编译器需要显式 <code>copy</code> 以便更容易查看它们发生的位置。</p>
+<p>有关更多详细信息，请参阅<a href="./abilities.html">类型能力</a>和<a href="./generics.html">泛型</a>部分。</p>
+<h2 id="所有权ownership"><a class="header" href="#所有权ownership">所有权（Ownership）</a></h2>
+<p><a href="#%E9%94%80%E6%AF%81%E5%92%8C%E5%A4%8D%E5%88%B6-vectordestroying-and-copying-vector">如上所述</a>，<code>vector</code> 值只有在元素值可以复制的时候才能复制。在这种情况下，复制必须通过显式 <a href="./variables.html#%E7%A7%BB%E5%8A%A8%E5%92%8C%E5%A4%8D%E5%88%B6move-and-copy"><code>copy</code></a> 或者<a href="./references.html#%E5%BC%95%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6reference-operators">解引用 <code>*</code></a>。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="address.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="signer.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="address.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="signer.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

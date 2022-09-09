@@ -1,0 +1,463 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>程序包 (Packages) - Move Book 中文版</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">引言 (Introduction)</a></li><li class="chapter-item expanded "><a href="modules-and-scripts.html"><strong aria-hidden="true">1.</strong> 模块和脚本 (Modules and Scripts)</a></li><li class="chapter-item expanded "><a href="move-tutorial.html"><strong aria-hidden="true">2.</strong> Move 教程 (Move Tutorial)</a></li><li class="chapter-item expanded "><a href="integers.html"><strong aria-hidden="true">3.</strong> 整数 (Integers)</a></li><li class="chapter-item expanded "><a href="bool.html"><strong aria-hidden="true">4.</strong> 布尔类型 (Bool) </a></li><li class="chapter-item expanded "><a href="address.html"><strong aria-hidden="true">5.</strong> 地址 (Address)</a></li><li class="chapter-item expanded "><a href="vector.html"><strong aria-hidden="true">6.</strong> 向量 (Vector)</a></li><li class="chapter-item expanded "><a href="signer.html"><strong aria-hidden="true">7.</strong> 签名 (Signer)</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">8.</strong> 引用 (References)</a></li><li class="chapter-item expanded "><a href="tuples.html"><strong aria-hidden="true">9.</strong> 元组和 Unit (Tuples and Unit)</a></li><li class="chapter-item expanded "><a href="variables.html"><strong aria-hidden="true">10.</strong> 局部变量和作用域 (Local Variables and Scopes)</a></li><li class="chapter-item expanded "><a href="equality.html"><strong aria-hidden="true">11.</strong> 等式 (Equality)</a></li><li class="chapter-item expanded "><a href="abort-and-assert.html"><strong aria-hidden="true">12.</strong> 中止和断言 (Abort and Assert)</a></li><li class="chapter-item expanded "><a href="conditionals.html"><strong aria-hidden="true">13.</strong> 条件语句 (Conditionals)</a></li><li class="chapter-item expanded "><a href="loops.html"><strong aria-hidden="true">14.</strong> 循环 (While and Loop)</a></li><li class="chapter-item expanded "><a href="functions.html"><strong aria-hidden="true">15.</strong> 函数 (Functions)</a></li><li class="chapter-item expanded "><a href="structs-and-resources.html"><strong aria-hidden="true">16.</strong> 结构体和资源 (Structs and Resources)</a></li><li class="chapter-item expanded "><a href="constants.html"><strong aria-hidden="true">17.</strong> 常量 (Constants)</a></li><li class="chapter-item expanded "><a href="generics.html"><strong aria-hidden="true">18.</strong> 泛型 (Generics)</a></li><li class="chapter-item expanded "><a href="abilities.html"><strong aria-hidden="true">19.</strong> 类型能力 (Type Abilities)</a></li><li class="chapter-item expanded "><a href="uses.html"><strong aria-hidden="true">20.</strong> 导入和别名 (Uses and Aliases)</a></li><li class="chapter-item expanded "><a href="friends.html"><strong aria-hidden="true">21.</strong> 友元函数 (Friends)</a></li><li class="chapter-item expanded "><a href="packages.html" class="active"><strong aria-hidden="true">22.</strong> 程序包 (Packages)</a></li><li class="chapter-item expanded "><a href="unit-testing.html"><strong aria-hidden="true">23.</strong> 单元测试 (Unit Tests)</a></li><li class="chapter-item expanded "><a href="global-storage-structure.html"><strong aria-hidden="true">24.</strong> 全局存储结构 (Global Storage Structure)</a></li><li class="chapter-item expanded "><a href="global-storage-operators.html"><strong aria-hidden="true">25.</strong> 全局存储操作 (Global Storage Operators)</a></li><li class="chapter-item expanded "><a href="standard-library.html"><strong aria-hidden="true">26.</strong> 标准库 (Standard Library)</a></li><li class="chapter-item expanded "><a href="coding-conventions.html"><strong aria-hidden="true">27.</strong> Move 编码规范 (Coding Conventions)</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Move Book 中文版</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/move-dao/move-book-zh" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="程序包packages"><a class="header" href="#程序包packages">程序包(packages)</a></h1>
+<p>Packages allow Move programmers to more easily re-use code and share it
+across projects. The Move package system allows programmers to easily:</p>
+<ul>
+<li>Define a package containing Move code;</li>
+<li>Parameterize a package by <a href="./address.html">named addresses</a>;</li>
+<li>Import and use packages in other Move code and instantiate named addresses;</li>
+<li>Build packages and generate associated compilation artifacts from packages; and</li>
+<li>Work with a common interface around compiled Move artifacts.</li>
+</ul>
+<p>包允许 <code>Move</code> 程序员更轻松地重用代码并在项目之间共享。<code>Move</code> 包系统允许程序员轻松地：</p>
+<ul>
+<li>定义一个包含 <code>Move</code>代码的包；</li>
+<li>通过命名地址参数化包；</li>
+<li>在其他 <code>Move</code> 代码中导入和使用包并实例化命名地址；</li>
+<li>构建包并从包中生成相关的编译源代码；</li>
+<li>使用围绕已编译 <code>Move</code> 工件的通用接口。</li>
+</ul>
+<h2 id="包布局和清单语法package-layout-and-manifest-syntax"><a class="header" href="#包布局和清单语法package-layout-and-manifest-syntax">包布局和清单语法（Package Layout and Manifest Syntax）</a></h2>
+<p>A Move package source directory contains a <code>Move.toml</code> package manifest
+file along with a set of subdirectories:</p>
+<p><code>Move</code> 包源目录包含一个<code>Move.toml</code>包清单文件以及一组子目录：</p>
+<pre><code>     a_move_package
+        ├── Move.toml      (required)（需要的）
+        ├── sources        (required)（需要的）
+        ├── examples       (optional, test &amp; dev mode)（可选的，测试 &amp; 开发者模式）
+        ├── scripts        (optional)（可选的）
+        ├── doc_templates  (optional)（可选的）
+        └── tests          (optional, test mode)（可选的，测试模式）
+</code></pre>
+<p>The directories marked <code>required</code> <em>must</em> be present in order for the directory
+to be considered a Move package and to be compiled. Optional directories can
+be present, and if so will be included in the compilation process. Depending on
+the mode that the package is built with (<code>test</code> or <code>dev</code>), the <code>tests</code> and
+<code>examples</code> directories will be included as well.</p>
+<p>标记为<code>required</code> 的目录必须存在才可以将该目录作为 <code>Move</code> 包并进行编译。可选目录被视为可存在的，如果存在，将包含在编译过程里。根据使用 （<code>test</code>或<code>dev</code>）构建包的模式，<code>tests</code>和<code>examples</code> 目录也将包含在内。</p>
+<p>The <code>sources</code> directory can contain both Move modules and Move scripts (both
+transaction scripts and modules containing script functions). The <code>examples</code>
+directory can hold additional code to be used only for development and/or
+tutorial purposes that will not be included when compiled outside <code>test</code> or
+<code>dev</code> mode.</p>
+<p><code>sources</code>目录可以包含 <code>Move</code> 模块和 <code>Move</code> 脚本（事务脚本和包含脚本函数的模块）。<code>Example</code>目录可以保留仅用于开发和/或用作教程目的附加代码，当在 <code>test</code> 或者<code>dev</code>模式之外时，这些附加代码编译时不会被包括进来。</p>
+<p>A <code>scripts</code> directory is supported so transaction scripts can be separated
+from modules if that is desired by the package author. The <code>scripts</code>
+directory will always be included for compilation if it is present.
+Documentation will be built using any documentation templates present in
+the <code>doc_templates</code> directory.</p>
+<p><code>scripts</code>目录是被支持的，如果包作者需要，事物脚本可以从模块中分离。如果该<code>scripts</code>目录存在，则编译时将始终包含该目录。
+Move将使用存在于<code>doc_templates</code> 目录的任何模板构建文档。</p>
+<h3 id="包清单-movetoml"><a class="header" href="#包清单-movetoml">包清单 Move.toml</a></h3>
+<p>The Move package manifest is defined within the <code>Move.toml</code> file and has the
+following syntax. Optional fields are marked with <code>*</code>, <code>+</code> denotes
+one or more elements:</p>
+<p>Move 包清单在<code>Move.toml</code>文件中定义，并具有以下语法。可选字段标有<code>*</code>，<code>+</code>表示一个或多个元素：</p>
+<pre><code>    [package]
+    name = &lt;string&gt;                  # e.g., &quot;MoveStdlib&quot;
+    version = &quot;&lt;uint&gt;.&lt;uint&gt;.&lt;uint&gt;&quot; # e.g., &quot;0.1.1&quot;
+    license* = &lt;string&gt;              # e.g., &quot;MIT&quot;, &quot;GPL&quot;, &quot;Apache 2.0&quot;
+    authors* = [&lt;string&gt;]            # e.g., [&quot;Joe Smith (joesmith@noemail.com)&quot;, &quot;Jane Smith (janesmith@noemail.com)&quot;]
+
+    [addresses]  # (Optional section) Declares named addresses in this package and instantiates named addresses in the package graph
+    # One or more lines declaring named addresses in the following format
+    &lt;addr_name&gt; = &quot;_&quot; | &quot;&lt;hex_address&gt;&quot; # e.g., std = &quot;_&quot; or my_addr = &quot;0xC0FFEECAFE&quot;
+
+    [dependencies] # (Optional section) Paths to dependencies and instantiations or renamings of named addresses from each dependency
+    # One or more lines declaring dependencies in the following format
+    &lt;string&gt; = { local = &lt;string&gt;, addr_subst* = { (&lt;string&gt; = (&lt;string&gt; | &quot;&lt;hex_address&gt;&quot;))+ } } # local dependencies
+    &lt;string&gt; = { git = &lt;URL ending in .git&gt;, subdir=&lt;path to dir containing Move.toml inside git repo&gt;, rev=&lt;git commit hash&gt;, addr_subst* = { (&lt;string&gt; = (&lt;string&gt; | &quot;&lt;hex_address&gt;&quot;))+ } } # git dependencies
+
+    [dev-addresses] # (Optional section) Same as [addresses] section, but only included in &quot;dev&quot; and &quot;test&quot; modes
+    # One or more lines declaring dev named addresses in the following format
+    &lt;addr_name&gt; = &quot;_&quot; | &quot;&lt;hex_address&gt;&quot; # e.g., std = &quot;_&quot; or my_addr = &quot;0xC0FFEECAFE&quot;
+
+    [dev-dependencies] # (Optional section) Same as [dependencies] section, but only included in &quot;dev&quot; and &quot;test&quot; modes
+    # One or more lines declaring dev dependencies in the following format
+    &lt;string&gt; = { local = &lt;string&gt;, addr_subst* = { (&lt;string&gt; = (&lt;string&gt; | &lt;address&gt;))+ } }
+</code></pre>
+<p>An example of a minimal package manifest with one local dependency and one git dependency:</p>
+<p>一个具有局部依赖项和一个 git 依赖项的最小包清单示例：</p>
+<pre><code>    [package]
+    name = &quot;AName&quot;
+    version = &quot;0.0.0&quot;
+</code></pre>
+<p>An example of a more standard package manifest that also includes the Move
+standard library and instantiates the named address <code>Std</code> from it with the
+address value <code>0x1</code>:</p>
+<p>一个包括 Move 标准库并从中使用地址值<code>0x1</code>实例化命名地址<code>Std</code>的更标准的包清单示例：</p>
+<pre><code>    [package]
+    name = &quot;AName&quot;
+    version = &quot;0.0.0&quot;
+    license = &quot;Apache 2.0&quot;
+
+    [addresses]
+    address_to_be_filled_in = &quot;_&quot;
+    specified_address = &quot;0xB0B&quot;
+
+    [dependencies]
+    # Local dependency
+    LocalDep = { local = &quot;projects/move-awesomeness&quot;, addr_subst = { &quot;std&quot; = &quot;0x1&quot; } }
+    # Git dependency
+    MoveStdlib = { git = &quot;https://github.com/diem/diem.git&quot;, subdir=&quot;language/move-stdlib&quot;, rev = &quot;56ab033cc403b489e891424a629e76f643d4fb6b&quot; }
+
+    [dev-addresses] # For use when developing this module
+    address_to_be_filled_in = &quot;0x101010101&quot;
+</code></pre>
+<p>Most of the sections in the package manifest are self explanatory, but named
+addresses can be a bit difficult to understand so it's worth examining them in
+a bit more detail.</p>
+<p>包清单中的大部分段落都是不言自明的，但命名地址可能有点难以理解，因此值得更详细地检查它们。</p>
+<h2 id="编译期间的命名地址named-addresses-during-compilation"><a class="header" href="#编译期间的命名地址named-addresses-during-compilation">编译期间的命名地址（Named Addresses During Compilation）</a></h2>
+<p>Recall that Move has <a href="./address.html">named addresses</a> and that
+named addresses cannot be declared in Move. Because of this, until now
+named addresses and their values needed to be passed to the compiler on the
+command line. With the Move package system this is no longer needed, and
+you can declare named addresses in the package, instantiate other named
+addresses in scope, and rename named addresses from other packages within
+the Move package system manifest file. Let's go through each of these
+individually:</p>
+<p>回想一下，Move 具有命名地址，并且不能在 Move 中声明命名地址。正因为如此，到目前为止，命名地址及其值都需要在命令行上传递给编译器。但使用 Move 包系统时这将不再需要，您可以在包中声明命名地址，实例化范围内的其他命名地址，并从 Move 包系统清单文件中的其他包重命名命名地址，让我们分别来看看这些:</p>
+<h3 id="声明declaration"><a class="header" href="#声明declaration">声明（Declaration）</a></h3>
+<p>Let's say we have a Move module in <code>example_pkg/sources/A.move</code> as follows:</p>
+<p>假设我们有一个Move模块，<code>example_pkg/sources/A.move</code>如下所示:</p>
+<pre><code class="language-move">    module named_addr::A {
+        public fun x(): address { @named_addr }
+    }
+</code></pre>
+<p>We could in <code>example_pkg/Move.toml</code> declare the named address <code>named_addr</code> in
+two different ways. The first:</p>
+<p>我们可以用两种不同<code>example_pkg/Move.toml</code>的方式声明命名地址<code>named_addr</code>。首先：</p>
+<pre><code>    [package]
+    name = &quot;ExamplePkg&quot;
+    ...
+    [addresses]
+    named_addr = &quot;_&quot;
+</code></pre>
+<p>Declares <code>named_addr</code> as a named address in the package <code>ExamplePkg</code> and
+that <em>this address can be any valid address value</em>. Therefore an importing
+package can pick the value of the named address <code>named_addr</code> to be any address
+it wishes. Intuitively you can think of this as parameterizing the package
+<code>ExamplePkg</code> by the named address <code>named_addr</code>, and the package can then be
+instantiated later on by an importing package.</p>
+<p>声明<code>named_addr</code>为包<code>ExamplePkg</code>中的命名地址，并且 <em>该地址可以是任何有效的地址值</em>。因此，导入包可以选择命名地址的值作为<code>named_addr</code>它希望的任何地址。直观地，您可以将其视为通过命名地址<code>named_addr</code>参数化包 <code>ExamplePkg</code>，然后稍后通过导入包使包被实例化。</p>
+<p><code>named_addr</code> can also be declared as:</p>
+<p><code>named_addr</code>也可以声明为：</p>
+<pre><code>    [package]
+    name = &quot;ExamplePkg&quot;
+    ...
+    [addresses]
+    named_addr = &quot;0xCAFE&quot;
+</code></pre>
+<p>which states that the named address <code>named_addr</code> is exactly <code>0xCAFE</code> and cannot be
+changed. This is useful so other importing packages can use this named
+address without needing to worry about the exact value assigned to it.</p>
+<p>这表明命名的地址<code>named_addr</code>是准确的<code>0xCAFE</code>并且不能更改。这很有用，因此其他导入包可以使用这个命名地址，而无需担心分配给它的确切值。</p>
+<p>With these two different declaration methods, there are two ways that
+information about named addresses can flow in the package graph:</p>
+<ul>
+<li>The former (&quot;unassigned named addresses&quot;) allows named address values to flow
+from the importation site to the declaration site.</li>
+<li>The latter (&quot;assigned named addresses&quot;) allows named address values to flow
+from the declaration site upwards in the package graph to usage sites.</li>
+</ul>
+<p>使用这两种不同的声明方法，有关命名地址的信息可以通过两种方式在包图中流动：</p>
+<ul>
+<li>前者（“未分配的命名地址”）允许命名地址值从进口站点流向申报站点。</li>
+<li>后者（“分配的命名地址”）允许命名地址值从包图中的声明站点向上流动到使用站点。</li>
+</ul>
+<p>With these two methods for flowing named address information throughout the
+package graph the rules around scoping and renaming become important to
+understand.</p>
+<p>通过这两种在整个包图中流动命名地址信息的方法，了解范围和重命名的规则变得很重要。</p>
+<h2 id="命名地址的作用域和重命名scoping-and-renaming-of-named-addresses"><a class="header" href="#命名地址的作用域和重命名scoping-and-renaming-of-named-addresses">命名地址的作用域和重命名（Scoping and Renaming of Named Addresses）</a></h2>
+<p>A named address <code>N</code> in a package <code>P</code> is in scope if:</p>
+<ol>
+<li>It declares a named address <code>N</code>; or</li>
+<li>A package in one of <code>P</code>'s transitive dependencies declares the named address
+<code>N</code> and there is a dependency path in the package graph between between <code>P</code> and the
+declaring package of <code>N</code> with no renaming of <code>N</code>.</li>
+</ol>
+<p>在包<code>P</code>中的命名地址<code>N</code>如果满足以下条件，则在作用域内：</p>
+<ol>
+<li>它声明了一个命名地址<code>N</code>；或者</li>
+<li><code>P</code>的传递依赖项之一中的包声明了命名地址<code>N</code>，并且封装图在<code>P</code>和没有重命名的声明包<code>N</code>之间有一个依赖路径。</li>
+</ol>
+<p>Additionally, every named address in a package is exported. Because of this and
+the above scoping rules each package can be viewed as coming with a set of
+named addresses that will be brought into scope when the package is imported,
+e.g., if the <code>ExamplePkg</code> package was imported, that importation would bring
+into scope the <code>named_addr</code> named address. Because of this, if <code>P</code> imports two
+packages <code>P1</code> and <code>P2</code> both of which declare a named address <code>N</code> an issue
+arises in <code>P</code>: which &quot;<code>N</code>&quot; is meant when <code>N</code> is referred to in <code>P</code>? The one
+from <code>P1</code> or <code>P2</code>? To prevent this ambiguity around which package a named
+address is coming from, we enforce that the sets of scopes introduced by all
+dependencies in a package are disjoint, and provide a way to <em>rename named
+addresses</em> when the package that brings them into scope is imported.</p>
+<p>此外，包中的每个命名地址都会被导出。由于这个和上面的范围规则，每个包都可以被视为带有一组命名地址，当包被导入时，这些地址将被带入作用域，例如，如果包<code>ExamplePkg</code>被导入，则该导入会将命名地址<code>named_addr</code>带入作用域。 因此，如果<code>P</code>导入两个包<code>P1</code>并且<code>P2</code>都声明了一个命名地址<code>N</code>，在<code>P</code>中则会出现以下问题：当<code>N</code>被引用于<code>P</code>时我们指的是哪个<code>N</code>？来自<code>P1</code>或来自<code>P2</code>的<code>N</code>？ 为了防止命名地址来自哪个包的这种歧义，我们强制一个包中所有依赖项引入的范围集是不相交的，并提供一种在将命名地址带入范围的包被导入时重命名命名地址的方法。</p>
+<p>Renaming a named address when importing can be done as follows in our <code>P</code>,
+<code>P1</code>, and <code>P2</code> example above:</p>
+<p>导入时重命名一个命名地址可以在我们的<code>P</code>,<code>P1</code>和<code>P2</code>上面的示例中完成：</p>
+<pre><code>    [package]
+    name = &quot;P&quot;
+    ...
+    [dependencies]
+    P1 = { local = &quot;some_path_to_P1&quot;, addr_subst = { &quot;P1N&quot; = &quot;N&quot; } }
+    P2 = { local = &quot;some_path_to_P2&quot;  }
+</code></pre>
+<p>With this renaming <code>N</code> refers to the <code>N</code> from <code>P2</code> and <code>P1N</code> will refer to <code>N</code>
+coming from <code>P1</code>:</p>
+<p>这种重命名<code>N</code>指的是<code>P2</code>中的<code>N</code>并且<code>P1N</code>将指 <code>P1</code>中的<code>N</code>：</p>
+<pre><code>    module N::A {
+        public fun x(): address { @P1N }
+    }
+</code></pre>
+<p>It is important to note that <em>renaming is not local</em>: once a named address <code>N</code>
+has been renamed to <code>N2</code> in a package <code>P</code> all packages that import <code>P</code> will not
+see <code>N</code> but only <code>N2</code> unless <code>N</code> is reintroduced from outside of <code>P</code>. This is
+why rule (2) in the scoping rules at the start of this section specifies a
+&quot;dependency path in the package graph between between <code>P</code> and the declaring
+package of <code>N</code> with no renaming of <code>N</code>.&quot;</p>
+<p>重要的是要注意 <em>重命名不是局部的</em>：一旦一个命名地址<code>N</code>在一个包<code>P</code>中被重命名为<code>N2</code>，所有导入<code>P</code>的包都不会看到<code>N</code>但只会看到<code>N2</code>，除非<code>N</code>是从<code>P</code>外引入的。这就是为什么本节开头的范围规则中的规则 (2) 特别说明了“在<code>P</code>和没有重命名的声明包<code>N</code> 的封装图中的依赖路径” 。</p>
+<h3 id="实例化instantiation"><a class="header" href="#实例化instantiation">实例化（Instantiation）</a></h3>
+<p>Named addresses can be instantiated multiple times across the package graph as
+long as it is always with the same value. It is an error if the same named
+address (regardless of renaming) is instantiated with differing values across
+the package graph.</p>
+<p>只要命名地址始终具有相同的值，就可以在封装图中多次实例化命名地址。如果在整个封装图中使用不同的值实例化相同的命名地址（无论是否重命名），则会出现错误。</p>
+<p>A Move package can only be compiled if all named addresses resolve to a value.
+This presents issues if the package wishes to expose an uninstantiated named
+address. This is what the <code>[dev-addresses]</code> section solves. This section can
+set values for named addresses, but cannot introduce any named addresses.
+Additionally, only the <code>[dev-addresses]</code> in the root package are included in
+<code>dev</code> mode. For example a root package with the following manifest would not compile
+outside of <code>dev</code> mode since <code>named_addr</code> would be uninstantiated:</p>
+<p>只有当所有命名地址都解析为一个值时，才能编译 Move 包。如果包希望公开未实例化的命名地址，则会出现问题。这就是<code>[dev-addresses]</code>段要解决的问题。此段可以设置命名地址的值，但不能引入任何命名地址。此外， <code>dev</code>模式下仅根包中的<code>[dev-addresses]</code>会被包括进来。例如，具有以下清单的根包将不会在<code>dev</code>模式之外编译，因为<code>named_addr</code>不会被实例化：</p>
+<pre><code>[package]
+name = &quot;ExamplePkg&quot;
+...
+[addresses]
+named_addr = &quot;_&quot;
+
+[dev-addresses]
+named_addr = &quot;0xC0FFEE&quot;
+</code></pre>
+<h2 id="用法源代码和数据结构-usage-artifacts-and-data-structures"><a class="header" href="#用法源代码和数据结构-usage-artifacts-and-data-structures">用法、源代码和数据结构（ Usage, Artifacts, and Data Structures）</a></h2>
+<p>The Move package system comes with a command line option as part of the Move
+CLI <code>move &lt;flags&gt; &lt;command&gt; &lt;command_flags&gt;</code>. Unless a
+particular path is provided, all package commands will run in the current working
+directory. The full list of commands and flags for the Move CLI can be found by
+running <code>move --help</code>.</p>
+<p>Move 软件包系统带有一个命令行选项，作为 Move CLI 的一部分move <code>&lt;flags&gt; &lt;command&gt;</code> <code>&lt;command_flags&gt;</code>。除非提供特定路径，否则所有包命令都将在当前工作目录中运行。可以通过运行<code>move --help</code>找到 Move CLI 的命令和标志的完整列表。</p>
+<h3 id="用法usage"><a class="header" href="#用法usage">用法（Usage）</a></h3>
+<p>A package can be compiled either through the Move CLI commands, or as a library
+command in Rust with the function <code>compile_package</code>. This will create a
+<code>CompiledPackage</code> that holds the compiled bytecode along with other compilation
+artifacts (source maps, documentation, ABIs) in memory. This <code>CompiledPackage</code>
+can be converted to an <code>OnDiskPackage</code> and vice versa -- the latter being the data of
+the <code>CompiledPackage</code> laid out in the file system in the following format:</p>
+<p>一个包可以通过 Move CLI 命令，或是当作Rust函数<code>compile_package</code>的库命令来编译。 这种编译方法将创建一个编译包<code>CompiledPackage</code> 保存已编译的字节码以及其他编译内存中的源代码（源映射、文档、ABIs）。这个<code>CompiledPackage</code>可以转换为<code>OnDiskPackage</code>，反之亦然——后者是文件系统中的编译包 <code>CompiledPackage</code>数据，它的格式如下：</p>
+<pre><code>a_move_package
+├── Move.toml
+...
+└── build
+    ├── &lt;dep_pkg_name&gt;
+    │   ├── BuildInfo.yaml
+    │   ├── bytecode_modules
+    │   │   └── *.mv
+    │   ├── source_maps
+    │   │   └── *.mvsm
+    │   ├── bytecode_scripts
+    │   │   └── *.mv
+    │   ├── abis
+    │   │   ├── *.abi
+    │   │   └── &lt;module_name&gt;/*.abi
+    │   └── sources
+    │       └── *.move
+    ...
+    └── &lt;dep_pkg_name&gt;
+        ├── BuildInfo.yaml
+        ...
+        └── sources
+</code></pre>
+<p>See the <code>move-package</code> crate for more information on these data structures and
+how to use the Move package system as a Rust library.</p>
+<p>有关这些数据结构和如何将 Move 包系统用作 Rust 库的更多信息，请参阅 <code>move-package</code> 箱（crate） 。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="friends.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="unit-testing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="friends.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="unit-testing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

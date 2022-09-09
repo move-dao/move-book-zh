@@ -1,0 +1,490 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>导入和别名 (Uses and Aliases) - Move Book 中文版</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">引言 (Introduction)</a></li><li class="chapter-item expanded "><a href="modules-and-scripts.html"><strong aria-hidden="true">1.</strong> 模块和脚本 (Modules and Scripts)</a></li><li class="chapter-item expanded "><a href="move-tutorial.html"><strong aria-hidden="true">2.</strong> Move 教程 (Move Tutorial)</a></li><li class="chapter-item expanded "><a href="integers.html"><strong aria-hidden="true">3.</strong> 整数 (Integers)</a></li><li class="chapter-item expanded "><a href="bool.html"><strong aria-hidden="true">4.</strong> 布尔类型 (Bool) </a></li><li class="chapter-item expanded "><a href="address.html"><strong aria-hidden="true">5.</strong> 地址 (Address)</a></li><li class="chapter-item expanded "><a href="vector.html"><strong aria-hidden="true">6.</strong> 向量 (Vector)</a></li><li class="chapter-item expanded "><a href="signer.html"><strong aria-hidden="true">7.</strong> 签名 (Signer)</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">8.</strong> 引用 (References)</a></li><li class="chapter-item expanded "><a href="tuples.html"><strong aria-hidden="true">9.</strong> 元组和 Unit (Tuples and Unit)</a></li><li class="chapter-item expanded "><a href="variables.html"><strong aria-hidden="true">10.</strong> 局部变量和作用域 (Local Variables and Scopes)</a></li><li class="chapter-item expanded "><a href="equality.html"><strong aria-hidden="true">11.</strong> 等式 (Equality)</a></li><li class="chapter-item expanded "><a href="abort-and-assert.html"><strong aria-hidden="true">12.</strong> 中止和断言 (Abort and Assert)</a></li><li class="chapter-item expanded "><a href="conditionals.html"><strong aria-hidden="true">13.</strong> 条件语句 (Conditionals)</a></li><li class="chapter-item expanded "><a href="loops.html"><strong aria-hidden="true">14.</strong> 循环 (While and Loop)</a></li><li class="chapter-item expanded "><a href="functions.html"><strong aria-hidden="true">15.</strong> 函数 (Functions)</a></li><li class="chapter-item expanded "><a href="structs-and-resources.html"><strong aria-hidden="true">16.</strong> 结构体和资源 (Structs and Resources)</a></li><li class="chapter-item expanded "><a href="constants.html"><strong aria-hidden="true">17.</strong> 常量 (Constants)</a></li><li class="chapter-item expanded "><a href="generics.html"><strong aria-hidden="true">18.</strong> 泛型 (Generics)</a></li><li class="chapter-item expanded "><a href="abilities.html"><strong aria-hidden="true">19.</strong> 类型能力 (Type Abilities)</a></li><li class="chapter-item expanded "><a href="uses.html" class="active"><strong aria-hidden="true">20.</strong> 导入和别名 (Uses and Aliases)</a></li><li class="chapter-item expanded "><a href="friends.html"><strong aria-hidden="true">21.</strong> 友元函数 (Friends)</a></li><li class="chapter-item expanded "><a href="packages.html"><strong aria-hidden="true">22.</strong> 程序包 (Packages)</a></li><li class="chapter-item expanded "><a href="unit-testing.html"><strong aria-hidden="true">23.</strong> 单元测试 (Unit Tests)</a></li><li class="chapter-item expanded "><a href="global-storage-structure.html"><strong aria-hidden="true">24.</strong> 全局存储结构 (Global Storage Structure)</a></li><li class="chapter-item expanded "><a href="global-storage-operators.html"><strong aria-hidden="true">25.</strong> 全局存储操作 (Global Storage Operators)</a></li><li class="chapter-item expanded "><a href="standard-library.html"><strong aria-hidden="true">26.</strong> 标准库 (Standard Library)</a></li><li class="chapter-item expanded "><a href="coding-conventions.html"><strong aria-hidden="true">27.</strong> Move 编码规范 (Coding Conventions)</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Move Book 中文版</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/move-dao/move-book-zh" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="使用与别名uses-and-aliases"><a class="header" href="#使用与别名uses-and-aliases">使用与别名（Uses and Aliases）</a></h1>
+<p>The <code>use</code> syntax can be used to create aliases to members in other modules. <code>use</code> can be used to
+create aliases that last either for the entire module, or for a given expression block scope.</p>
+<p><code>use</code> 语法可用于为其他模块中的成员创建别名。 <code>use</code> 可用于创建持续整个模块或给定表达式块范围的别名。</p>
+<h2 id="语法syntax"><a class="header" href="#语法syntax">语法（Syntax）</a></h2>
+<p>There are several different syntax cases for <code>use</code>. Starting with the most simple, we have the
+following for creating aliases to other modules</p>
+<p>这里有几种不同的语法案例可供使用。从最简单的开始，我们有以下例子用于为其他模块创建别名</p>
+<pre><code class="language-move">use &lt;address&gt;::&lt;module name&gt;;
+use &lt;address&gt;::&lt;module name&gt; as &lt;module alias name&gt;;
+</code></pre>
+<p>For example
+举例</p>
+<pre><code class="language-move">use std::vector;
+use std::vector as V;
+</code></pre>
+<p><code>use std::vector;</code> introduces an alias <code>vector</code> for <code>std::vector</code>. This means that anywhere you
+would want to use the module name <code>std::vector</code> (assuming this <code>use</code> is in scope), you could use
+<code>vector</code> instead. <code>use std::vector;</code> is equivalent to <code>use std::vector as vector;</code></p>
+<p><code>use std::vector；</code>为 <code>std::vector</code> 引入别名向量。这意味着在任何您想使用模块名称 <code>std::vector</code> 的地方（假设此<code>use</code>在作用域内），您都可以使用 <code>vector</code> 代替使用<code>std::vector</code>;</p>
+<p>Similarly <code>use std::vector as V;</code> would let you use <code>V</code> instead of <code>std::vector</code></p>
+<p>同样使用 <code>std::vector as V</code>;会让你使用 <code>V</code> 代替 <code>std::vector</code></p>
+<pre><code class="language-move">use std::vector;
+use std::vector as V;
+
+fun new_vecs(): (vector&lt;u8&gt;, vector&lt;u8&gt;, vector&lt;u8&gt;) {
+    let v1 = std::vector::empty();
+    let v2 = vector::empty();
+    let v3 = V::empty();
+    (v1, v2, v3)
+}
+</code></pre>
+<p>If you want to import a specific module member (such as a function, struct, or constant). You can
+use the following syntax.</p>
+<p>如果要导入特定的模块成员（例如函数、结构或常量）。您可以使用以下语法。</p>
+<pre><code class="language-move">use &lt;address&gt;::&lt;module name&gt;::&lt;module member&gt;;
+use &lt;address&gt;::&lt;module name&gt;::&lt;module member&gt; as &lt;member alias&gt;;
+</code></pre>
+<p>For example
+举例</p>
+<pre><code class="language-move">use std::vector::empty;
+use std::vector::empty as empty_vec;
+</code></pre>
+<p>This would let you use the function <code>std::vector::empty</code> without full qualification. Instead you
+could use <code>empty</code> and <code>empty_vec</code> respectively. Again, <code>use std::vector::empty;</code> is equivalent to
+<code>use std::vector::empty as empty;</code></p>
+<p>这将允许您在没有前缀限定的情况下使用函数 <code>std::vector::empty</code>。相反，您可以分别使用 <code>empty</code> 和 <code>empty_vec</code>，使用 <code>std::vector::empty;</code>使用<code>empty</code> 相当于使用<code>std::vector::empty</code>;</p>
+<pre><code class="language-move">use std::vector::empty;
+use std::vector::empty as empty_vec;
+
+fun new_vecs(): (vector&lt;u8&gt;, vector&lt;u8&gt;, vector&lt;u8&gt;) {
+    let v1 = std::vector::empty();
+    let v2 = empty();
+    let v3 = empty_vec();
+    (v1, v2, v3)
+}
+</code></pre>
+<p>If you want to add aliases for multiple module members at once, you can do so with the following
+syntax</p>
+<p>如果要一次为多个模块成员添加别名，可以使用以下语法</p>
+<pre><code class="language-move">use &lt;address&gt;::&lt;module name&gt;::{&lt;module member&gt;, &lt;module member&gt; as &lt;member alias&gt; ... };
+</code></pre>
+<p>For example
+举例</p>
+<pre><code class="language-move">use std::vector::{push_back, length as len, pop_back};
+
+fun swap_last_two&lt;T&gt;(v: &amp;mut vector&lt;T&gt;) {
+    assert!(len(v) &gt;= 2, 42);
+    let last = pop_back(v);
+    let second_to_last = pop_back(v);
+    push_back(v, last);
+    push_back(v, second_to_last)
+}
+</code></pre>
+<p>If you need to add an alias to the Module itself in addition to module members, you can do that in a
+single <code>use</code> using <code>Self</code>. <code>Self</code> is a member of sorts that refers to the module.</p>
+<p>如果除了模块成员之外，您还需要为模块本身添加别名，您可以使用 <code>Self</code> 在一次<code>use</code>中完成。 <code>Self</code> 是指模块的各种成员。</p>
+<pre><code class="language-move">use std::vector::{Self, empty};
+For clarity, all of the following are equivalent:
+</code></pre>
+<p>For clarity, all of the following are equivalent:</p>
+<p>为清晰起见，以下所有内容都是等效的：</p>
+<pre><code class="language-move">use std::vector;
+use std::vector as vector;
+use std::vector::Self;
+use std::vector::Self as vector;
+use std::vector::{Self};
+use std::vector::{Self as vector};
+</code></pre>
+<p>If needed, you can have as many aliases for any item as you like</p>
+<p>如果需要，您可以为任何项目设置任意数量的别名</p>
+<pre><code class="language-move">use std::vector::{
+    Self,
+    Self as V,
+    length,
+    length as len,
+};
+
+fun pop_twice&lt;T&gt;(v: &amp;mut vector&lt;T&gt;): (T, T) {
+    // all options available given the `use` above
+    assert!(vector::length(v) &gt; 1, 42);
+    assert!(V::length(v) &gt; 1, 42);
+    assert!(length(v) &gt; 1, 42);
+    assert!(len(v) &gt; 1, 42);
+
+    (vector::pop_back(v), vector::pop_back(v))
+}
+</code></pre>
+<h2 id="模块内部inside-a-module"><a class="header" href="#模块内部inside-a-module">模块内部（Inside a <code>module</code>）</a></h2>
+<p>Inside of a <code>module</code> all <code>use</code> declarations are usable regardless of the order of declaration.</p>
+<p>在模块内部，无论声明顺序如何，所有 <code>use</code> 声明都是可用的。</p>
+<pre><code class="language-move">address 0x42 {
+module example {
+    use std::vector;
+
+    fun example(): vector&lt;u8&gt; {
+        let v = empty();
+        vector::push_back(&amp;mut v, 0);
+        vector::push_back(&amp;mut v, 10);
+        v
+    }
+
+    use std::vector::empty;
+}
+}
+</code></pre>
+<p>The aliases declared by <code>use</code> in the module usable within that module.</p>
+<p>在该模块中可用的模块中使用声明的别名。</p>
+<p>Additionally, the aliases introduced cannot conflict with other module members. See
+<a href="#uniqueness">Uniqueness</a> for more details</p>
+<p>此外，引入的别名不能与其他模块成员冲突。有关详细信息，请参阅<a href="#uniqueness">唯一性</a>。</p>
+<h2 id="表达式内部inside-an-expression"><a class="header" href="#表达式内部inside-an-expression">表达式内部（Inside an expression）</a></h2>
+<p>You can add <code>use</code> declarations to the beginning of any expression block</p>
+<p>您可以将 <code>use</code> 声明添加到任何表达式块的开头</p>
+<pre><code class="language-move">address 0x42 {
+module example {
+
+    fun example(): vector&lt;u8&gt; {
+        use std::vector::{empty, push_back};
+
+        let v = empty();
+        push_back(&amp;mut v, 0);
+        push_back(&amp;mut v, 10);
+        v
+    }
+}
+}
+</code></pre>
+<p>As with <code>let</code>, the aliases introduced by <code>use</code> in an expression block are removed at the end of that
+block.</p>
+<p>与 <code>let</code> 一样，在表达式块中使用 <code>use</code> 引入的别名在该块的末尾被删除。</p>
+<pre><code class="language-move">address 0x42 {
+module example {
+
+    fun example(): vector&lt;u8&gt; {
+        let result = {
+            use std::vector::{empty, push_back};
+            let v = empty();
+            push_back(&amp;mut v, 0);
+            push_back(&amp;mut v, 10);
+            v
+        };
+        result
+    }
+
+}
+}
+</code></pre>
+<p>Attempting to use the alias after the block ends will result in an error</p>
+<p>在块结束后尝试使用别名将导致错误</p>
+<pre><code class="language-move">fun example(): vector&lt;u8&gt; {
+    let result = {
+        use std::vector::{empty, push_back};
+        let v = empty();
+        push_back(&amp;mut v, 0);
+        push_back(&amp;mut v, 10);
+        v
+    };
+    let v2 = empty(); // 错误!
+//           ^^^^^ 未绑定的函数 'empty'
+    结果
+}
+</code></pre>
+<p>Any <code>use</code> must be the first item in the block. If the <code>use</code> comes after any expression or <code>let</code>, it
+will result in a parsing error</p>
+<p>任何使用都必须是块中的第一项。如果 use 出现在任何表达式或 let 之后，则会导致解析错误</p>
+<pre><code class="language-move">{
+    let x = 0;
+    use std::vector; // 错误!
+    let v = vector::empty();
+}
+</code></pre>
+<h2 id="命名规则naming-rules"><a class="header" href="#命名规则naming-rules">命名规则（Naming rules）</a></h2>
+<p>Aliases must follow the same rules as other module members. This means that aliases to structs or
+constants must start with <code>A</code> to <code>Z</code></p>
+<p>别名必须遵循与其他模块成员相同的规则。这意味着结构或常量的别名必须以 <code>A</code> 到 <code>Z</code> 开头</p>
+<pre><code class="language-move">address 0x42 {
+module data {
+    struct S {}
+    const FLAG: bool = false;
+    fun foo() {}
+}
+module example {
+    use 0x42::data::{
+        S as s, // 错误!
+        FLAG as fLAG, // 错误!
+        foo as FOO,  // 有效
+        foo as bar, // 有效
+    };
+}
+}
+</code></pre>
+<h2 id="唯一性uniqueness"><a class="header" href="#唯一性uniqueness">唯一性（Uniqueness）</a></h2>
+<p>Inside a given scope, all aliases introduced by <code>use</code> declarations must be unique.</p>
+<p>在给定范围内，所有由 use 声明引入的别名必须是唯一的。</p>
+<p>For a module, this means aliases introduced by <code>use</code> cannot overlap</p>
+<p>对于一个模块，这意味着使用引入的别名不能重复</p>
+<pre><code class="language-move">address 0x42 {
+module example {
+
+    use std::vector::{empty as foo, length as foo}; // ERROR!
+    //                                        ^^^ duplicate 'foo'
+
+    use std::vector::empty as bar;
+
+    use std::vector::length as bar; // 错误!
+    //                         ^^^ 重复的 'bar'
+
+}
+}
+</code></pre>
+<p>And, they cannot overlap with any of the module's other members</p>
+<p>而且，它们不能与模块的任何其他成员重复</p>
+<pre><code class="language-move">address 0x42 {
+module data {
+    struct S {}
+}
+module example {
+    use 0x42::data::S;
+
+    struct S { value: u64 } // ERROR!
+    //     ^ conflicts with alias 'S' above
+}
+}
+</code></pre>
+<p>Inside of an expression block, they cannot overlap with each other, but they can
+<a href="#shadowing">shadow</a> other aliases or names from an outer scope</p>
+<p>在表达式块内部，它们不能相互重复，但它们可以遮蔽外部作用域中的其他别名或名称</p>
+<h2 id="遮蔽shadowing"><a class="header" href="#遮蔽shadowing">遮蔽（Shadowing）</a></h2>
+<p><code>use</code> aliases inside of an expression block can shadow names (module members or aliases) from the
+outer scope. As with shadowing of locals, the shadowing ends at the end of the expression block;</p>
+<p>在表达式块内使用别名可以覆盖外部作用域的名称（模块成员或别名）。当遮蔽局部变量时，遮蔽会在表达式块的末尾结束；</p>
+<pre><code class="language-move">address 0x42 {
+module example {
+
+    struct WrappedVector { vec: vector&lt;u64&gt; }
+
+    fun empty(): WrappedVector {
+        WrappedVector { vec: std::vector::empty() }
+    }
+
+    fun example1(): (WrappedVector, WrappedVector) {
+        let vec = {
+            use std::vector::{empty, push_back};
+            // 'empty' 现在指向 std::vector::empty
+
+            let v = empty();
+            push_back(&amp;mut v, 0);
+            push_back(&amp;mut v, 1);
+            push_back(&amp;mut v, 10);
+            v
+        };
+        // 'empty' 现在指向 Self::empty
+
+        (empty(), WrappedVector { vec })
+    }
+
+    fun example2(): (WrappedVector, WrappedVector) {
+        use std::vector::{empty, push_back};
+        let w: WrappedVector = {
+            use 0x42::example::empty;
+            empty()
+        };
+        push_back(&amp;mut w.vec, 0);
+        push_back(&amp;mut w.vec, 1);
+        push_back(&amp;mut w.vec, 10);
+
+        let vec = empty();
+        push_back(&amp;mut vec, 0);
+        push_back(&amp;mut vec, 1);
+        push_back(&amp;mut vec, 10);
+
+        (w, WrappedVector { vec })
+    }
+}
+}
+</code></pre>
+<h2 id="未使用的use或别名unused-use-or-alias"><a class="header" href="#未使用的use或别名unused-use-or-alias">未使用的Use或别名（Unused Use or Alias）</a></h2>
+<p>An unused <code>use</code> will result in an error</p>
+<p>未使用的 <code>use</code> 会导致错误</p>
+<pre><code class="language-move">address 0x42 {
+module example {
+    use std::vector::{empty, push_back}; // ERROR!
+    //                       ^^^^^^^^^ 未使用的别名 'push_back'
+
+    fun example(): vector&lt;u8&gt; {
+        empty()
+    }
+}
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="abilities.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="friends.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="abilities.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="friends.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

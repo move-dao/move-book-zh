@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>地址 (Address) - Move Book 中文版</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">引言 (Introduction)</a></li><li class="chapter-item expanded "><a href="modules-and-scripts.html"><strong aria-hidden="true">1.</strong> 模块和脚本 (Modules and Scripts)</a></li><li class="chapter-item expanded "><a href="move-tutorial.html"><strong aria-hidden="true">2.</strong> Move 教程 (Move Tutorial)</a></li><li class="chapter-item expanded "><a href="integers.html"><strong aria-hidden="true">3.</strong> 整数 (Integers)</a></li><li class="chapter-item expanded "><a href="bool.html"><strong aria-hidden="true">4.</strong> 布尔类型 (Bool) </a></li><li class="chapter-item expanded "><a href="address.html" class="active"><strong aria-hidden="true">5.</strong> 地址 (Address)</a></li><li class="chapter-item expanded "><a href="vector.html"><strong aria-hidden="true">6.</strong> 向量 (Vector)</a></li><li class="chapter-item expanded "><a href="signer.html"><strong aria-hidden="true">7.</strong> 签名 (Signer)</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">8.</strong> 引用 (References)</a></li><li class="chapter-item expanded "><a href="tuples.html"><strong aria-hidden="true">9.</strong> 元组和 Unit (Tuples and Unit)</a></li><li class="chapter-item expanded "><a href="variables.html"><strong aria-hidden="true">10.</strong> 局部变量和作用域 (Local Variables and Scopes)</a></li><li class="chapter-item expanded "><a href="equality.html"><strong aria-hidden="true">11.</strong> 等式 (Equality)</a></li><li class="chapter-item expanded "><a href="abort-and-assert.html"><strong aria-hidden="true">12.</strong> 中止和断言 (Abort and Assert)</a></li><li class="chapter-item expanded "><a href="conditionals.html"><strong aria-hidden="true">13.</strong> 条件语句 (Conditionals)</a></li><li class="chapter-item expanded "><a href="loops.html"><strong aria-hidden="true">14.</strong> 循环 (While and Loop)</a></li><li class="chapter-item expanded "><a href="functions.html"><strong aria-hidden="true">15.</strong> 函数 (Functions)</a></li><li class="chapter-item expanded "><a href="structs-and-resources.html"><strong aria-hidden="true">16.</strong> 结构体和资源 (Structs and Resources)</a></li><li class="chapter-item expanded "><a href="constants.html"><strong aria-hidden="true">17.</strong> 常量 (Constants)</a></li><li class="chapter-item expanded "><a href="generics.html"><strong aria-hidden="true">18.</strong> 泛型 (Generics)</a></li><li class="chapter-item expanded "><a href="abilities.html"><strong aria-hidden="true">19.</strong> 类型能力 (Type Abilities)</a></li><li class="chapter-item expanded "><a href="uses.html"><strong aria-hidden="true">20.</strong> 导入和别名 (Uses and Aliases)</a></li><li class="chapter-item expanded "><a href="friends.html"><strong aria-hidden="true">21.</strong> 友元函数 (Friends)</a></li><li class="chapter-item expanded "><a href="packages.html"><strong aria-hidden="true">22.</strong> 程序包 (Packages)</a></li><li class="chapter-item expanded "><a href="unit-testing.html"><strong aria-hidden="true">23.</strong> 单元测试 (Unit Tests)</a></li><li class="chapter-item expanded "><a href="global-storage-structure.html"><strong aria-hidden="true">24.</strong> 全局存储结构 (Global Storage Structure)</a></li><li class="chapter-item expanded "><a href="global-storage-operators.html"><strong aria-hidden="true">25.</strong> 全局存储操作 (Global Storage Operators)</a></li><li class="chapter-item expanded "><a href="standard-library.html"><strong aria-hidden="true">26.</strong> 标准库 (Standard Library)</a></li><li class="chapter-item expanded "><a href="coding-conventions.html"><strong aria-hidden="true">27.</strong> Move 编码规范 (Coding Conventions)</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Move Book 中文版</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/move-dao/move-book-zh" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="地址address"><a class="header" href="#地址address">地址（Address）</a></h1>
+<p><code>address</code> is a built-in type in Move that is used to represent locations (sometimes called accounts) in global storage. An <code>address</code> value is a 128-bit (16 byte) identifier. At a given address, two things can be stored: <a href="./modules-and-scripts.html">Modules</a> and <a href="./structs-and-resources.html">Resources</a>.</p>
+<p>Although an <code>address</code> is a 128 bit integer under the hood, Move addresses are intentionally opaque---they cannot be created from integers, they do not support arithmetic operations, and they cannot be modified. Even though there might be interesting programs that would use such a feature (e.g., pointer arithmetic in C fills a similar niche), Move does not allow this dynamic behavior because it has been designed from the ground up to support static verification.</p>
+<p>You can use runtime address values (values of type <code>address</code>) to access resources at that address. You <em>cannot</em> access modules at runtime via address values.</p>
+<p><code>地址（address）</code>是 Move 中的内置类型，用于表示全局存储中的的位置（有时称为账户）。<code>地址（address）</code> 值是一个 128 位（16 字节）标识符。在一个给定的地址，可以存储两样东西：<a href="./modules-and-scripts.html">模块（Module）</a>和<a href="./structs-and-resources.html">资源（Resources）</a>。</p>
+<p>虽然<code>地址（address）</code>在底层是一个 128 位整数，但 Move 语言有意让其不透明 —— 它们不能从整数创建，不支持算术运算，也不能修改。即使可能有一些有趣的程序会使用这种特性（例如，C 中的指针算法实现了类似壁龛（niche）的功能），但 Move 语言不允许这种动态行为，因为它从头开始就被设计为支持静态验证。<em>（壁龛指安装在墙壁上的小格子或在墙身上留出的作为贮藏设施的空间，最早在宗教上是指排放佛像的小空间，现在多用在家庭装修上，因其不占建筑面积，使用比较方便，深受大家喜爱，Joe 注）</em></p>
+<p>你可以通过运行时地址值（<code>address</code> 类型的值）来访问该地址处的资源。但<em>无法</em>在运行时通过地址值访问模块。</p>
+<h2 id="地址及其语法addresses-and-their-syntax"><a class="header" href="#地址及其语法addresses-and-their-syntax">地址及其语法（Addresses and Their Syntax）</a></h2>
+<p>Addresses come in two flavors, named or numerical. The syntax for a named address follows the
+same rules for any named identifier in Move. The syntax of a numerical address is not restricted
+to hex-encoded values, and any valid <a href="./integers.html"><code>u128</code> numerical value</a> can be used as an
+address value, e.g., <code>42</code>, <code>0xCAFE</code>, and <code>2021</code> are all valid numerical address
+literals.</p>
+<p>地址有两种形式：<em>命名的</em>或<em>数值的</em>。命名地址的语法遵循 Move 命名标识符的规则。数值地址的语法不受十六进制编码值的限制，任何有效的 <a href="./integers.html"><code>u128</code> 数值</a>都可以用作地址值。例如，<code>42</code>，<code>0xCFAE</code> 和 <code>2021</code> 都是合法有效的数值地址字面量（literal）。</p>
+<p>To distinguish when an address is being used in an expression context or not, the
+syntax when using an address differs depending on the context where it's used:</p>
+<ul>
+<li>When an address is used as an expression the address must be prefixed by the <code>@</code> character, i.e., <a href="./integers.html"><code>@&lt;numerical_value&gt;</code></a> or <code>@&lt;named_address_identifier&gt;</code>.</li>
+<li>Outside of expression contexts, the address may be written without the leading <code>@</code> character, i.e., <a href="./integers.html"><code>&lt;numerical_value&gt;</code></a> or <code>&lt;named_address_identifier&gt;</code>.</li>
+</ul>
+<p>为了区分何时在表达式上下文中使用地址，使用地址时的语法根据使用地址的上下文而有所不同：</p>
+<ul>
+<li>当地址被用作表达式时，地址必须以 <code>@</code> 字符为前缀，例如：<a href="./integers.html"><code>@&lt;numerical_value&gt;</code></a> 或 <code>@&lt;named_address_identifier&gt;</code>。</li>
+<li>在表达式上下文之外，地址可以不带前缀字符 <code>@</code>。例如：<a href="./integers.html"><code>&lt;numerical_value&gt;</code></a> 或 <code>&lt;named_address_identifier&gt;</code>。</li>
+</ul>
+<p>In general, you can think of <code>@</code> as an operator that takes an address from being a namespace item to being an expression item.</p>
+<p>通常，可以将 <code>@</code> 视为将地址从命名空间项变为表达式项的运算符。</p>
+<h2 id="命名地址named-addresses"><a class="header" href="#命名地址named-addresses">命名地址（Named Addresses）</a></h2>
+<p>Named addresses are a feature that allow identifiers to be used in place of
+numerical values in any spot where addresses are used, and not just at the
+value level.  Named addresses are declared and bound as top level elements
+(outside of modules and scripts) in Move Packages, or passed as arguments
+to the Move compiler.</p>
+<p>命名地址是一项特性，它允许在使用地址的任何地方使用标识符代替数值，而不仅仅是在值级别。命名地址被声明并绑定为 Move 包中的顶级元素（模块和脚本之外）或作为参数传递给 Move 编译器。</p>
+<p>Named addresses only exist at the source language level and will be fully
+substituted for their value at the bytecode level. Because of this, modules
+and module members <em>must</em> be accessed through the module's named address
+and not through the numerical value assigned to the named address during
+compilation, e.g., <code>use my_addr::foo</code> is <em>not</em> equivalent to <code>use 0x2::foo</code>
+even if the Move program is compiled with <code>my_addr</code> set to <code>0x2</code>. This
+distinction is discussed in more detail in the section on <a href="./modules-and-scripts.html">Modules and
+Scripts</a>.</p>
+<p>命名地址仅存在于源语言级别，并将在字节码级别完全替代它们的值。因此，模块和模块成员<em>必须</em>通过模块的命名地址而不是编译期间分配给命名地址的数值来访问，例如：<code>use my_addr::foo</code> <em>不等于</em> <code>use 0x2::foo</code>，即使 Move 程序编译时将 <code>my_addr</code> 设置成 <code>0x2</code>。这个区别在<a href="./modules-and-scripts.html">模块和脚本</a>一节中有更详细的讨论。</p>
+<h3 id="例子examples"><a class="header" href="#例子examples">例子（Examples）</a></h3>
+<pre><code class="language-move">let a1: address = @0x1; // 0x00000000000000000000000000000001 的缩写
+let a2: address = @0x42; // 0x00000000000000000000000000000042 的缩写
+let a3: address = @0xDEADBEEF; // 0x000000000000000000000000DEADBEEF 的缩写
+let a4: address = @0x0000000000000000000000000000000A;
+let a5: address = @std; // 将命名地址 `std` 的值赋给 `a5`
+let a6: address = @66;
+let a7: address = @0x42;
+
+module 66::some_module {   // 不在表达式上下文中，所以不需要 @
+    use 0x1::other_module; // 不在表达式上下文中，所以不需要 @
+    use std::vector;       // 使用其他模块时，可以使用命名地址作为命名空间项
+    ...
+}
+
+module std::other_module {  // 可以使用命名地址作为命名空间项来声明模块
+    ...
+}
+</code></pre>
+<h2 id="全局存储操作global-storage-operations"><a class="header" href="#全局存储操作global-storage-operations">全局存储操作（Global Storage Operations）</a></h2>
+<p>The primary purpose of <code>address</code> values are to interact with the global storage operations.</p>
+<p><code>address</code> values are used with the <code>exists</code>, <code>borrow_global</code>, <code>borrow_global_mut</code>, and <code>move_from</code> <a href="./global-storage-operators.html">operations</a>.</p>
+<p>The only global storage operation that <em>does not</em> use <code>address</code> is <code>move_to</code>, which uses <a href="./signer.html"><code>signer</code></a>.</p>
+<p><code>address</code> 值主要用来与全局存储操作进行交互。</p>
+<p><code>address</code> 值与 <code>exists</code>、<code>borrow_global</code>、<code>borrow_global_mut</code> 和 <code>move_from</code> <a href="./global-storage-operators.html">操作（operation）</a>一起使用。</p>
+<p>唯一<em>不使用</em> <code>address</code> 的全局存储操作是 <code>move_to</code>，它使用了 <a href="./signer.html"><code>signer</code></a>。</p>
+<h2 id="所有权ownership"><a class="header" href="#所有权ownership">所有权（Ownership）</a></h2>
+<p>As with the other scalar values built-in to the language, <code>address</code> values are implicitly copyable, meaning they can be copied without an explicit instruction such as <a href="./variables.html#move-and-copy"><code>copy</code></a>.</p>
+<p>与 Move 语言内置的其他标量值一样，<code>address</code> 值是隐式可复制的，这意味着它们可以在没有显式指令（例如 <a href="./variables.html#%E7%A7%BB%E5%8A%A8%E5%92%8C%E5%A4%8D%E5%88%B6move-and-copy"><code>copy</code></a>）的情况下复制。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="bool.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="vector.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="bool.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="vector.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
