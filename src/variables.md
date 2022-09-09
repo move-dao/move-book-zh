@@ -1,4 +1,3 @@
-
 # 局部变量和作用域(Local Variables and Scopes)
 
 Local variables in Move are lexically (statically) scoped. New variables are introduced with the
@@ -78,7 +77,6 @@ let x;
 while (cond) x = 0;
 x + x // ERROR!
 ```
-
 
 ### 有效的变量名 (Valid variable names)
 
@@ -559,7 +557,7 @@ assert!(*vector::borrow(&v, 0) == 100, 42)
 
 For more details, see [Move references](./references.md).
 
-关于更多细节可以参考 [Move references](./references.md).
+关于更多细节可以参考 [Move 引用](./references.md).
 
 ## 作用域 (Scopes)
 
@@ -882,5 +880,3 @@ let addr2 = @0x42; // 复制
 let x_ref2 = x_ref; // 复制
 let coin_ref2 = coin_ref; // 复制
 ```
-
-

@@ -4,7 +4,7 @@ Function syntax in Move is shared between module functions and script functions.
 
 Move中的函数语法在模块函数和脚本函数之间是一致的。模块内部的函数可重复使用，而脚本的函数只能被使用一次用来调用事务。
 
-## 声明 (Declaration)
+# 声明 (Declaration)
 
 Functions are declared with the `fun` keyword followed by the function name, type parameters, parameters, a return type, acquires annotations, and finally the function body.
 
@@ -59,7 +59,7 @@ A `public` function can be called by *any* function defined in *any* module or s
 - other functions defined in the same module,
 - functions defined in another module, or
 - the function defined in a script.
-  
+
 `public` 函数可以被任何模块或脚本中定义的任何函数调用。如以下示例所示，可以通过以下方式调用 `public` 函数：
 
 - 在同一模块中定义的其他函数
@@ -404,7 +404,7 @@ script {
 
 As mentioned in the [tuples section](./tuples.md), these tuple "values" are virtual and do not exist at runtime. So for a function that returns unit `()`, it will not be returning any value at all during execution.
 
-如 [元组部分](./chapter_9_tuples.md) 中所述，这些元组“值”是模拟(virtual)的，且在运行时不存在。所以对于返回 unit `()`的函数，它在执行期间根本不会返回任何值。
+如 [元组部分](./tuples.md) 中所述，这些元组“值”是模拟(virtual)的，且在运行时不存在。所以对于返回 unit `()`的函数，它在执行期间根本不会返回任何值。
 
 ### Function body (函数体)
 

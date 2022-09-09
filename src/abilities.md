@@ -2,7 +2,7 @@
 
 Abilities are a typing feature in Move that control what actions are permissible for values of a given type. This system grants fine grained control over the "linear" typing behavior of values, as well as if and how values are used in global storage. This is implemented by gating access to certain bytecode instructions so that for a value to be used with the bytecode instruction, it must have the ability required (if one is required at all—not every instruction is gated by an ability).
 
-能力是Move语言中的一种类型特性，用于控制对给定类型的值允许哪些操作。 该系统对值的“线性”类型行为以及值如何在全局存储中使用提供细粒度控制。这是通过对某些字节码指令的进行访问控制来实现的，因此对于要与字节码指令一起使用的值，它必须具有所需的能力(如果需要的话，并非每条指令都由能力控制)
+能力是 Move 语言中的一种类型特性，用于控制对给定类型的值允许哪些操作。 该系统对值的“线性”类型行为以及值如何在全局存储中使用提供细粒度控制。这是通过对某些字节码指令的进行访问控制来实现的，因此对于要与字节码指令一起使用的值，它必须具有所需的能力(如果需要的话，并非每条指令都由能力控制)
 
 ## 四种能力 (The Four Abilities)
 
@@ -16,7 +16,7 @@ The four abilities are:
     * Allows values of types with this ability to exist inside a struct in global storage.
 * [`key`](#key)
     * Allows the type to serve as a key for global storage operations.
-  
+
 这四种能力分别是：
 
 * [`copy`](#copy) 复制
@@ -38,7 +38,7 @@ The `copy` ability allows values of types with that ability to be copied. It gat
 
 If a value has `copy`, all values contained inside of that value have `copy`.
 
-`copy` 能力允许具有此能力的类型的值被复制。 它限制了从本地变量通过 [`copy`](./variables.md#.move-and-copy)能力复制值以及通过 [`dereference *e`](./chapter_8_references.html#reading-and-writing-through-references)复制值这两种情况之外的复制操作。
+`copy` 能力允许具有此能力的类型的值被复制。 它限制了从本地变量通过 [`copy`](./variables.md#.move-and-copy)能力复制值以及通过 [`dereference *e`](./references.html#reading-and-writing-through-references)复制值这两种情况之外的复制操作。
 
 如果一个值具有 `copy` 能力，那么这个值内部的所有值都有 `copy` 能力。
 
@@ -55,7 +55,7 @@ If a value has `drop`, all values contained inside of that value have `drop`.
 `drop` 能力允许类型的值被丢弃。丢弃的意思程序执行后值会被有效的销毁而不必被转移。因此，这个能力限制在多个位置忽略使用值的可能性，包括：
 * 未被使用的局部变量或者参数
 * 未被使用的 [`sequence` via `;`](./variables.md#expression-blocks)中的值
-* 覆盖[赋值(assignments)](./chapter_10_variables.html#assignments)变量中的值
+* 覆盖[赋值(assignments)](./variables.html#assignments)变量中的值
 * [写入(writing) `*e1 = e2`](https://move-language.github.io/move/references.html#reading-and-writing-through-references) 时通过引用覆盖的值。
 
 如果一个值具有 `drop` 能力，那么这个值内部的所有值都有 `drop` 能力。
@@ -70,7 +70,7 @@ If a value has `store`, all values contained inside of that value have `store`
 
 如果一个值具有 `store` 能力，那么这个值内部的所有值都有 `store` 能力。
 
-### `key` 
+### `key`
 
 The `key` ability allows the type to serve as a key for [global storage operations](./global-storage-operators.md). It gates all global storage operations, so in order for a type to be used with `move_to`, `borrow_global`, `move_from`, etc., the type must have the `key` ability. Note that the operations still must be used in the module where the `key` type is defined (in a sense, the operations are private to the defining module).
 
@@ -133,7 +133,7 @@ As such: when declaring a struct’s abilities, certain requirements are placed 
 * `store`, all fields must have `store`.
 * `key`, all fields must have `store`.
     * `key` is the only ability currently that doesn’t require itself.
-  
+
 因此：在声明结构体的能力时，对字段提出了某些要求。所有字段都必须满足这些约束。这些规则是必要的，以便结构体满足上述功能的可达性规则。如果一个结构被声明为具有某能力：
 
 * `copy`， 所有的字段必须具有 `copy` 能力。
@@ -210,7 +210,7 @@ Here are examples for this conditional system for each ability:
 
 以下是每个能力的条件系统的示例：
 
-### Example: conditional `copy` 
+### Example: conditional `copy`
 
 ```move
 struct NoAbilities {}
@@ -289,7 +289,7 @@ struct MyResource has key {
 }
 ```
 
-### Example: conditional `key` 
+### Example: conditional `key`
 
 ```move
 struct NoAbilities {}

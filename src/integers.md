@@ -11,8 +11,8 @@ Move supports three unsigned integer types: `u8`, `u64`, and `u128`. Values o
 
 Move 支持三种无符号整数类型：`u8`、`u64` 和 `u128`。这些类型的值范围从 0 到最大值，最大值的具体取值取决于整数类型。
 
-| 类型                      | 取值范围              |
-| -------------------------| ------------------------ |
+| 类型                      | 取值范围                 |
+|---------------------------|--------------------------|
 | 无符号 8位 整数, `u8`     | 0 to 2<sup>8</sup> - 1   |
 | 无符号 64位 整数, `u64`   | 0 to 2<sup>64</sup> - 1  |
 | 无符号 128位 整数, `u128` | 0 to 2<sup>128</sup> - 1 |
@@ -24,7 +24,7 @@ Literal values for these types are specified either as a sequence of digits (e.g
 
 If a literal is too large for its specified (or inferred) size range, an error is reported.
 
-(在Move中)这些类型的字面值指定为数字序列(例如：112)或十六进制文字(例如：0xFF), 可以选择将字面值的类型定义为后缀, 例如 `112u8`。如果未指定类型，编译器将尝试从使用字面值的上下文推断类型。如果无法推断类型，则默认为 u64。 
+(在Move中)这些类型的字面值指定为数字序列(例如：112)或十六进制文字(例如：0xFF), 可以选择将字面值的类型定义为后缀, 例如 `112u8`。如果未指定类型，编译器将尝试从使用字面值的上下文推断类型。如果无法推断类型，则默认为 `u64。
 
 如果字面值太大，超出其指定的(或推断的)大小范围，则会报错。
 
@@ -91,7 +91,7 @@ All arithmetic operations abort instead of behaving in a way that mathematical i
 | `%`    | 取余运算     | 除数为 `0`                       |
 | `/`    | 截断除法     | 除数为 `0`                       |
 
-### 位运算 (Bitwise) 
+### 位运算 (Bitwise)
 
 The integer types support the following bitwise operations that treat each number as a series of individual bits, either 0 or 1, instead of as numerical integer values.
 
@@ -210,6 +210,6 @@ For example:
 
 ## 所有权 (Ownership)
 
-As with the other scalar values built-in to the language, integer values are implicitly copyable, meaning they can be copied without an explicit instruction such as `[copy](<https://move-language.github.io/move/variables.html#move-and-copy>).`
+As with the other scalar values built-in to the language, integer values are implicitly copyable, meaning they can be copied without an explicit instruction such as [`copy`](https://move-language.github.io/move/variables.html#move-and-copy).
 
 与语言内置的其他标量值一样，整数值是隐式可复制的，这意味着它们可以在没有明确指令如[`copy`](./variables.md#move-and-copy)的情况下复制。

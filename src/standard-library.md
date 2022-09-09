@@ -532,7 +532,7 @@ A custom error category for extension points.
 ### 函数（Functions）
 
  Should be used in the case where invalid (global) state is encountered. Constructs an abort code with specified `reason` and category `INVALID_STATE`. Will abort if `reason` does not fit in 56 bits.
- 
+
 在遇到无效(全局)状态的情况下应使用。构造一个具有指定的`reason`和类别`INVALID_STATE`的终止代码。如果`reason`不适合56位，将会终止操作。
 
 ```move
@@ -659,7 +659,7 @@ Divide a u64 integer by a fixed-point number, truncating any fractional part of 
 ---------------------------------------------------------------------------
 Create a fixed-point value from a rational number specified by its numerator and denominator. Calling this function should be preferred for using `fixed_point32::create_from_raw_value` which is also available. This will abort if the denominator is zero. It will also abort if the numerator is nonzero and the ratio is not in the range $2^{-32}\ldots2^{32}-1$. When specifying decimal fractions, be careful about rounding errors: if you round to display $N$ digits after the decimal point, you can use a denominator of $10^N$ to avoid numbers where the very small imprecision in the binary representation could change the rounding, e.g., 0.0125 will round down to 0.012 instead of up to 0.013.
 
-从有理数的分子和分母指定的有理数创建定点值。调用这个函数应该优先使用`fixed_point32::create_from_raw_value`，这也是可用的。如果分母为零，该操作将终止。如果分子非零且比率不在$2^{-32}\ldots2^{32}-1$范围内，则终止。当指定十进制分数时，要注意舍入错误:如果你舍入以显示小数点后的$N$数字，你可以使用$10^N$的分母来避免二进制表示中非常小的不精度会改变舍入的数字，例如，0.0125将舍入到0.012而不是最高的0.013。
+根据分子和分母指定的有理数创建定点值。如果`fixed_point32::create_from_raw_value`函数可用，应优先使用。如果分母为零，该操作将终止。如果分子非零且比值不在$2^{-32}\ldots2^{32}-1$范围内，该操作将终止。指定小数时，请注意四舍五入错误：如果要对小数点后$N$位进行四舍五入，则可以用$10^N$做分母，这样就能避免精确度丢失问题，例如，0.0125将四舍五入到0.012而不是0.013。
 
 ```move
     public fun create_from_rational(numerator: u64, denominator: u64): FixedPoint32;

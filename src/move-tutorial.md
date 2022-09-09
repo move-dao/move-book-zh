@@ -1,10 +1,8 @@
-
-
 # Move 教程(Move Tutorial)
 
 Welcome to the Move Tutorial! In this tutorial, we are going to go through some steps of developing Move code including design, implementation, unit testing and formal verification of Move modules.
 
-欢迎来到 Move 语言教程，在本教程中，我们通过一些具体的步骤进行Move语言代码的开发，包括 Move 模块的设计、实现、单元测试和形式化验证。
+欢迎来到 Move 语言教程，在本教程中，我们通过一些具体的步骤进行 Move 语言代码的开发，包括 Move 模块的设计、实现、单元测试和形式化验证。
 
 There are nine steps in total:
 
@@ -119,6 +117,7 @@ cd <path_to_move>/language/documentation/tutorial
 ```
 
 <details>
+
 <summary>Visual Studio Code Move 支持 (Visual Studio Code Move Support)</summary>
 
 There is official Move support for Visual Studio Code. You need to install
@@ -138,7 +137,7 @@ in the extension's [README](https://github.com/move-language/move/tree/main/lang
 
 ## Step 1: 编写第一个Move模块<span id="Step1"><span> (Writing my first Move module)
 
-Change directory into the [`step_1/BasicCoin`](./step_1/BasicCoin) directory.
+Change directory into the [`step_1/BasicCoin`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_1/BasicCoin) directory.
 You should see a directory called `sources` -- this is the place where all
 the Move code for this package lives. You should also see a
 `Move.toml` file as well. This file specifies dependencies and other information about
@@ -146,14 +145,14 @@ the package; if you're familiar with Rust and Cargo, the `Move.toml` file
 is similar to the `Cargo.toml` file, and the `sources` directory similar to
 the `src` directory.
 
-切换当前目录到[`step_1/BasicCoin`](./step_1/BasicCoin)下，您将看到 `sources` 子目录 -- 这个包(package)下所有的 Move 代码都在此目录中，同时您还会看到一个 `Move.toml` 文件。该文件指定当前包的依赖列表和其他信息。
+切换当前目录到[`step_1/BasicCoin`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_1/BasicCoin)下，您将看到 `sources` 子目录 -- 这个包(package)下所有的 Move 代码都在此目录中，同时您还会看到一个 `Move.toml` 文件。该文件指定当前包的依赖列表和其他信息。
 如果您熟悉 `Rust` 和 `Cargo`，那 `Move.toml` 文件类似 `Cargo.toml` 文件， `sources` 目录类似 `src` 目录(它们的作用是一样的)
 
 Let's take a look at some Move code! Open up
-[`sources/FirstModule.move`](./step_1/BasicCoin/sources/FirstModule.move) in
+[`sources/FirstModule.move`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_1/BasicCoin/sources/FirstModule.move) in
 your editor of choice. The first thing you'll see is this:
 
-来一起看看 Move 语言代码内容！ 用你的编辑器打开[`sources/FirstModule.move`](./step_1/BasicCoin/sources/FirstModule.move)文件，会看到如下内容：
+来一起看看 Move 语言代码内容！ 用你的编辑器打开[`sources/FirstModule.move`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_1/BasicCoin/sources/FirstModule.move)文件，会看到如下内容：
 
 ```
 // sources/FirstModule.move
@@ -168,12 +167,12 @@ building block of Move code, and are defined with a specific address -- the addr
 In this case, the `BasicCoin` module can only be published under `0xCAFE`.
 
 这是一个 `Move` [module(模块)](./chpater_1_modules-and-scripts.html)的定义。
-模块是 Move 语言的代码块, 并且它使用指定的地址(address)进行定义 -- 模块只能在该地址下发布. 
+模块是 Move 语言的代码块, 并且它使用指定的地址(address)进行定义 -- 模块只能在该地址下发布。
 当前 `BasicCoin` 模块只能被发布在 `0xCAFE` 地址下。
 
 Let's now take a look at the next part of this file where we define a [struct](https://move-language.github.io/move/structs-and-resources.html) to represent a `Coin` with a given `value`:
 
-再看这个文件的下一部分，这里定义了一个具有字段 `value` 的[结构体](./chapter_16_structs-and-resources.html) `Coin` ;
+再看这个文件的下一部分，这里定义了一个具有字段 `value` 的[结构体](./structs-and-resources.html) `Coin`：
 
 ```
 module 0xCAFE::BasicCoin {
@@ -207,19 +206,20 @@ Let's take a look at this function and what it's saying:
 * It creates a `Coin` with the given value and stores it under the
   `account` using the `move_to` operator.
 
-Let's make sure it builds! This can be done with the `build` command from within the package folder ([`step_1/BasicCoin`](./step_1/BasicCoin/)):
+Let's make sure it builds! This can be done with the `build` command from within the package folder ([`step_1/BasicCoin`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_1/BasicCoin/)):
 
 让我们来看看这个函数和它的含义:
-* 此函数需要一个[`signer`](./chapter_7_signer.html)参数 -- 表示不可伪造的 token 受此特定地址的控制; 和一个需要铸造的数量参数 `value`。
+* 此函数需要一个[`signer`](./signer.html)参数 -- 表示不可伪造的 token 受此特定地址的控制; 和一个需要铸造的数量参数 `value`。
 * 此函数使用给定的参数值铸造一个 `Coin`，然后通过 `move_to` 操作将其保存在(全局存储中)给定的 `account` 账户下。
 
-我们需要确保它真的执行，这可以通过在包文件夹([`step_1/BasicCoin`](./step_1/BasicCoin/))下的运行 `build` 命令来完成：。
+我们需要确保它真的执行，这可以通过在包文件夹([`step_1/BasicCoin`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_1/BasicCoin/))下的运行 `build` 命令来完成：
 
 ```bash
 move build
 ```
 
 <details>
+
 <summary>进阶概念及参考引用 (Advanced concepts and references)</summary>
 
 * You can create an empty Move package by calling:
@@ -234,6 +234,7 @@ move build
     [addresses]
     SomeNamedAddress = "0xC0FFEE"
     ```
+
 * 你可以通过以下命令创建一个空的 Move 包(move package):
     ```bash
     move new <pkg_name>
@@ -246,6 +247,7 @@ move build
     ```
     [addresses]
     SomeNamedAddress = "0xC0FFEE"
+    ```
 
 * [Structures](https://move-language.github.io/move/structs-and-resources.html) in Move can be given different
   [abilities](https://move-language.github.io/move/abilities.html) that describe what can be done with that type. There are four different abilities:
@@ -281,11 +283,11 @@ move build
 
 ## Step 2: 给模块(Module)添加单元测试<span id="Step2"><span> (Adding unit tests to my first Move module)
 
-Now that we've taken a look at our first Move module, we'll take a look at a test to make sure minting works the way we expect it to by changing directory to [`step_2/BasicCoin`](./step_2/BasicCoin).  Unit tests in Move are similar to unit tests in Rust if you're familiar with them -- tests are annotated with `#[test]` and written like normal Move functions.
+Now that we've taken a look at our first Move module, we'll take a look at a test to make sure minting works the way we expect it to by changing directory to [`step_2/BasicCoin`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_2/BasicCoin).  Unit tests in Move are similar to unit tests in Rust if you're familiar with them -- tests are annotated with `#[test]` and written like normal Move functions.
 
 You can run the tests with the `move test` command: (原文是 `package test`，应该有误)
 
-现在我们已经完成了我们的第一个 Move 模块，我们将切换到目录[`step_2/BasicCoin`](./step_2/BasicCoin)下并完成一个测试，确保铸币按我们预期的方式工作
+现在我们已经完成了我们的第一个 Move 模块，我们将切换到目录[`step_2/BasicCoin`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_2/BasicCoin)下并完成一个测试，确保铸币按我们预期的方式工作。
 如果你熟悉它们(Move 和 Rust)的话，Move 中的单元测试类似于 Rust 中的单元测试 —— 测试代码使用 `#[test]` 注解，并像编写普通的 Move 函数一样。
 
 可以通过 `move test` 命令来执行测试:
@@ -294,10 +296,10 @@ You can run the tests with the `move test` command: (原文是 `package test`，
 move test
 ```
 
-Let's now take a look at the contents of the [`FirstModule.move`file](./step_2/BasicCoin/sources/FirstModule.move). The first new thing you'll
+Let's now take a look at the contents of the [`FirstModule.move`file](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_2/BasicCoin/sources/FirstModule.move). The first new thing you'll
 see is this test:
 
-现在我们来完成文件[`FirstModule.move`](./step_2/BasicCoin/sources/FirstModule.move)的具体内容，你将看到的第一个新事项是这个测试:
+现在我们来完成文件[`FirstModule.move`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_2/BasicCoin/sources/FirstModule.move)的具体内容，你将看到的第一个新事项是这个测试:
 
 ```
 module 0xCAFE::BasicCoin {
@@ -322,6 +324,7 @@ coin in storage has the value that is expected with the `assert!` call. If the a
 这里声明了一个命名为 `test_mint_10` 的单元测试，它在 `account` 账户地址下铸造了一个包含 `value` 为 `10`的 `Coin`，然后通过 `assert!` 断言检查已经铸造成功并保存在(全局)存储中的 `Coin` 的值是否与期望值一致。如果断言 `assert` 执行失败，则单元测试失败。
 
 <details>
+
 <summary>进阶概念及参考练习 (Advanced concepts and exercises)</summary>
 
 * There are a number of test-related annotations that are worth exploring, they can be found
@@ -386,11 +389,11 @@ coin in storage has the value that is expected with the `assert!` call. If the a
 
 In this section, we are going to design a module implementing a basic coin and balance interface, where coins can be minted and transferred between balances held under different addresses.
 
-在本节中，我们将设计一个具有基本货币和余额(balance)接口功能的模块，通过他们来实现币的挖矿铸造，不同地址之下钱包的转账。
+在本节中，我们将设计一个具有基本代币和余额(balance)接口功能的模块，通过他们来实现币的挖矿铸造，不同地址之下钱包的转账。
 
 The signatures of the public Move function are the following:
 
-Move 语言的 `public function` 签名如下:
+Move 语言的 `public function` 签名如下：
 
 ```
 /// Publish an empty balance resource under `account`'s address. This function must be called before
@@ -419,7 +422,7 @@ Move 语言的模块没有自己的数据存储，相反的是 Move 语言提供
 
 The global storage looks roughly like this in Rust syntax:
 
-全局存储看起来有点像 Rust 的语法:
+在 Rust 语法中，全局存储看起来有点像这样：
 
 ```rust
 struct GlobalStorage {
@@ -460,7 +463,7 @@ public(script) fun transfer(from: signer, to: address, amount: u64) acquires Bal
 ```
 Read more on Move function visibilities [here](https://move-language.github.io/move/functions.html#visibility).
 
-关于函数可见性的更多信息，请参阅[Move function visibilities](./chapter_15_functions.html#visibility)。
+关于函数可见性的更多信息，请参阅[Move function visibilities](./15_functions.html#visibility)。
 
 </details>
 <details>
@@ -474,34 +477,34 @@ The Ethereum blockchain state might look like this:
 
 以太坊区块链的状态看起来大致如下:
 
-![](diagrams/solidity_state.png)
+![](https://raw.githubusercontent.com/move-language/move/main/language/documentation/tutorial/diagrams/solidity_state.png)
 </details>
 
-## Step 4: 实现 `BasicCoin` 模块 <span id="Step4"><span>) (Implementing my `BasicCoin` module) <span id="Step4"><span>
+## Step 4: 实现 `BasicCoin` 模块span id="Step4"><span> (Implementing my `BasicCoin` module)
 
-We have created a Move package for you in folder `step_4` called `BasicCoin`. The `sources` folder contains source code for all your Move modules in the package, including `BasicCoin.move`. In this section, we will take a closer look at the implementation of the methods inside [`BasicCoin.move`](./step_4/sources/BasicCoin.move).
+We have created a Move package for you in folder `step_4` called `BasicCoin`. The `sources` folder contains source code for all your Move modules in the package, including `BasicCoin.move`. In this section, we will take a closer look at the implementation of the methods inside [`BasicCoin.move`](https://github.com/move-language/move/blob/main/language/documentation/tutorial/step_4/BasicCoin/sources/BasicCoin.move).
 
-我们已经在 `step_4` 文件夹上创建了名叫 `BasicCoin` 的 Move 包。`sources` 文件夹包含所有的 Move 包(package)的模块源码，包括 `BasicCoin.move`。 在本节中，我们将仔细研究[`BasicCoin.move`](./step_4/sources/BasicCoin.move)内部方法的实现。
+我们已经在 `step_4` 文件夹上创建了名叫 `BasicCoin` 的 Move 包。`sources` 文件夹包含所有的 Move 包(package)的模块源码，包括 `BasicCoin.move`。 在本节中，我们将仔细研究[`BasicCoin.move`](https://github.com/move-language/move/blob/main/language/documentation/tutorial/step_4/BasicCoin/sources/BasicCoin.move)内部方法的实现。
 
 ### 编译代码 (Compiling our code)
 
-Let's first try building the code using Move package by running the following command in [`step_4/BasicCoin`](./step_4/BasicCoin) folder:
+Let's first try building the code using Move package by running the following command in [`step_4/BasicCoin`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_4/BasicCoin) folder:
 
-首先尝试在文件夹[`step_4/BasicCoin`](./step_4/BasicCoin)中运行以下命令，使用 Move 包构建代码：
+首先尝试在文件夹[`step_4/BasicCoin`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_4/BasicCoin)中运行以下命令，使用 Move 包构建代码：
 
 ```bash
 move build
 ```
 
-### 方法实现 (Implementation of methods)
+### 方法的实现 (Implementation of methods)
 
-Now let's take a closer look at the implementation of the methods inside [`BasicCoin.move`](./step_4/BasicCoin/sources/BasicCoin.move).
+Now let's take a closer look at the implementation of the methods inside [`BasicCoin.move`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_4/BasicCoin/sources/BasicCoin.move).
 
-现在仔细看看[`BasicCoin.move`](./step_4/BasicCoin/sources/BasicCoin.move)中内部方法的实现。
+现在仔细看看[`BasicCoin.move`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_4/BasicCoin/sources/BasicCoin.move)中内部方法的实现。
 
 <details>
 
-<summary>方法 <code>publish_balance</code> (Method <code>publish_balance</code>)</summary>
+<summary><code>publish_balance</code>方法 (Method <code>publish_balance</code>)</summary>
 
 This method publishes a `Balance` resource to a given address. Since this resource is needed to receive coins through minting or transferring, `publish_balance` method must be called by a user before they can receive money, including the module owner.
 
@@ -519,11 +522,12 @@ move_to(account, Balance { coin:  empty_coin });
 </details>
 <details>
 
-<summary>方法 <code>mint</code> (Method <code>mint</code>)</summary>）
+<summary><code>mint</code>方法 (Method <code>mint</code>)</summary>）
+
 Here we require that `mint` must be approved by the module owner. We enforce this using the assert statement:
 `mint` method mints coins to a given account. 
 
-`mint` 方法将货币铸造到指定的帐户。在此我们要求 `mint` 必须得到模块所有者的批准。我们使用 `assert` 语句强制执行此操作：
+`mint` 方法将代币铸造到指定的帐户。在此我们要求 `mint` 必须得到模块所有者的批准。我们使用 `assert` 语句强制执行此操作：
 
 ```
 assert!(signer::address_of(&module_owner) == MODULE_OWNER, errors::requires_address(ENOT_MODULE_OWNER));
@@ -536,7 +540,7 @@ Move 中的 `assert` 语句可以这样使用：`assert!(<predicate>, <abort_cod
 
 We then deposit a coin with value `amount` to the balance of `mint_addr`.
 
-然后将数量为 `amount` 的货币存入 `mint_addr` 的余额中。
+然后将数量为 `amount` 的代币存入 `mint_addr` 的余额中。
 
 ```
 deposit(mint_addr, Coin { value: amount });
@@ -544,7 +548,8 @@ deposit(mint_addr, Coin { value: amount });
 </details>
 
 <details>
-<summary>方法 <code>balance_of</code> (Method <code>balance_of</code>)</summary>
+
+<summary><code>balance_of</code>方法 (Method <code>balance_of</code>)</summary>
 
 We use `borrow_global`, one of the global storage operators, to read from the global storage.
 
@@ -558,11 +563,12 @@ borrow_global<Balance>(owner).coin.value
 </details>
 
 <details>
-<summary>方法 <code>transfer</code> (Method <code>transfer</code>)</summary>
+
+<summary><code>transfer</code>方法 (Method <code>transfer</code>)</summary>
 
 This function withdraws tokens from `from`'s balance and deposits the tokens into `to`s balance. We take a closer look at `withdraw` helper function:
 
-该函数从 `from` 的余额中提取货币并将代币存入 `to` 的余额中。我们仔细研究辅助函数 `withdraw`：
+该函数从 `from` 的余额中提取代币并将代币存入 `to` 的余额中。我们仔细研究帮助函数 `withdraw`：
 
 ```
 fun withdraw(addr: address, amount: u64) : Coin acquires Balance {
@@ -576,7 +582,7 @@ fun withdraw(addr: address, amount: u64) : Coin acquires Balance {
 
 At the beginning of the method, we assert that the withdrawing account has enough balance. We then use `borrow_global_mut` to get a mutable reference to the global storage, and `&mut` is used to create a [mutable reference](https://move-language.github.io/move/references.html) to a field of a struct. We then modify the balance through this mutable reference and return a new coin with the withdrawn amount.
 
-在方法开始，我们断言提款账户有足够的余额。然后我们使用 `borrow_global_mut` 来获得全局存储的可变引用，并用 `&mut` 创建结构体字段的[可变引用](./chapter_8_references.html)。然后我们通过这个可变引用修改余额并返回一个带有提取金额的新货币。
+在方法开始，我们断言提款账户有足够的余额。然后我们使用 `borrow_global_mut` 来获得全局存储的可变引用，并用 `&mut` 创建结构体字段的[可变引用](./references.html)。然后我们通过这个可变引用修改余额并返回一个带有提取金额的新代币。
 
 </details>
 
@@ -590,25 +596,25 @@ There are two `TODO`s in our module, left as exercises for the reader:
 - 完成 `publish_balance` 方法的实现。
 - 实现 `deposit` 方法。
 
-The solution to this exercise can be found in [`step_4_sol`](./step_4_sol) folder.
+The solution to this exercise can be found in [`step_4_sol`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_4_sol) folder.
 
-此练习的解决方案可以在[`step_4_sol`](./step_4_sol)文件夹中找到。
+此练习的解决方案可以在[`step_4_sol`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_4_sol)文件夹中找到。
 
 **额外练习** (**Bonus exercise**)
 
 - What would happen if we deposit too many tokens to a balance?
-- 如果我们在余额中存入太多代币会发生什么？
+- 如果我们在余额中存入太多会发生什么？
 
 
-## Step 5: 在模块 `BasicCoin` 中添加和使用单元测试<span id="Step5"><span> (Adding and using unit tests with the `BasicCoin` module)<span id="Step5"><span>
+## Step 5: 在模块 `BasicCoin` 中添加和使用单元测试<span id="Step5"><span> (Adding and using unit tests with the `BasicCoin` module<span id="Step5"><span>)
 
 In this step we're going to take a look at all the different unit tests we've written to cover the code we wrote in step 4. We're also going to take a look at some tools we can use to help us write tests.
 
 在这一步中，来看看我们为覆盖在 `step 4` 中编写的代码而编写的所有不同的单元测试。还将看看我们可以用来帮助我们编写测试用例的一些工具。
 
-To get started, run the `move test` command in the [`step_5/BasicCoin`](./step_5/BasicCoin) folder
+To get started, run the `move test` command in the [`step_5/BasicCoin`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_5/BasicCoin) folder
 
-首先，请在文件夹 [`step_5/BasicCoin`](./step_5/BasicCoin)中 运行 `move test` 命令。
+首先，请在文件夹 [`step_5/BasicCoin`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_5/BasicCoin)中 运行 `move test` 命令。
 
 ```bash
 move test
@@ -631,9 +637,9 @@ Running Move unit tests
 Test result: OK. Total tests: 7; passed: 7; failed: 0
 ```
 
-Taking a look at the tests in the [`BasicCoin` module](./step_5/BasicCoin/sources/BasicCoin.move) we've tried to keep each unit test to testing one particular behavior.
+Taking a look at the tests in the [`BasicCoin` module](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_5/BasicCoin/sources/BasicCoin.move) we've tried to keep each unit test to testing one particular behavior.
 
-看看 [`BasicCoin` ](./step_5/BasicCoin/sources/BasicCoin.move)模块中的测试，我们试图让每个单元测试都测试一个具体的行为。
+看看 [`BasicCoin` ](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_5/BasicCoin/sources/BasicCoin.move)模块中的测试，我们试图让每个单元测试都测试一个具体的行为。
 
 <details>
 <summary>Exercise (练习)</summary>
@@ -642,9 +648,9 @@ After taking a look at the tests, try and write a unit test called `balance_of_d
 
 在查看测试之后，尝试在 `BasicCoin` 模块中编写一个单元测试 `balance_of_dne`，测试地址没有 `Balance` 资源的情况，调用 `balance_of` 方法的执行结果。它应该只有几行代码。
 
-The solution to this exercise can be found in [`step_5_sol`](./step_5_sol).
+The solution to this exercise can be found in [`step_5_sol`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_5_sol).
 
-练习的答案可以在[`step_5_sol`](./step_5_sol)中找到。
+练习的答案可以在[`step_5_sol`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_5_sol)中找到。
 
 </details>
 
@@ -682,22 +688,23 @@ fun withdraw<CoinType>(addr: address, amount: u64) : Coin<CoinType> acquires Bal
 }
 ```
 
-Take a look at [`step_6/BasicCoin/sources/BasicCoin.move`](./step_6/BasicCoin/sources/BasicCoin.move) to see the full implementation.
+Take a look at [`step_6/BasicCoin/sources/BasicCoin.move`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_6/BasicCoin/sources/BasicCoin.move) to see the full implementation.
 
-查看[`step_6/BasicCoin/sources/BasicCoin.move`](./step_6/BasicCoin/sources/BasicCoin.move)完整的实现。
+查看[`step_6/BasicCoin/sources/BasicCoin.move`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_6/BasicCoin/sources/BasicCoin.move)完整的实现。
 
 At this point, readers who are familiar with Ethereum might notice that this module serves a similar purpose as the [ERC20 token standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/), which provides an interface for implementing fungible tokens in smart contracts. One key advantage of using generics is the ability to reuse code since the generic library module already provides a standard implementation and the instantiating module can provide customizations by wrapping the standard implementation.
 
 此时，熟悉以太坊的读者可能会注意到，该模块的用途与[ERC20 token standard](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/)类似，后者提供了在智能合约中实现可替代代币的接口。使用泛型的一个关键优势是能够重用代码，因为泛型模块库已经提供了标准实现，并且实例化模块可以通过包装标准实现提供定制化功能。
 
-We provide a little module called [`MyOddCoin`](./step_6/BasicCoin/sources/MyOddCoin.move) that instantiates the `Coin` type and customizes its transfer policy: only odd number of coins can be transferred. We also include two [tests](./step_6/BasicCoin/sources/MyOddCoin.move) to test this behavior. You can use the commands you learned in step 2 and step 5 to run the tests.
+We provide a little module called [`MyOddCoin`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_6/BasicCoin/sources/MyOddCoin.move) that instantiates the `Coin` type and customizes its transfer policy: only odd number of coins can be transferred. We also include two [tests](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_6/BasicCoin/sources/MyOddCoin.move) to test this behavior. You can use the commands you learned in step 2 and step 5 to run the tests.
 
-我们提供了一个称为[`MyOddCoin`](./step_6/BasicCoin/sources/MyOddCoin.move)并实例化 `Coin` 类型并自定义其转移策略的小模块：只能转移奇数个代币。其还包括两个 [tests](./step_6/BasicCoin/sources/MyOddCoin.move)来测试这种行为。您可以使用在第 2 步和第 5 步中学到的命令来运行测试。
+我们提供了一个称为[`MyOddCoin`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_6/BasicCoin/sources/MyOddCoin.move)并实例化 `Coin` 类型并自定义其转移策略的小模块：只能转移奇数个代币。其还包括两个 [tests](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_6/BasicCoin/sources/MyOddCoin.move)来测试这种行为。您可以使用在第 2 步和第 5 步中学到的命令来运行测试。
 
 
 #### 进阶主题 (Advanced topics):
 
 <details>
+
 <summary><code>phantom</code> 类型参数 (<code>phantom</code> type parameters)</summary>
 
 In definitions of both `Coin` and `Balance`, we declare the type parameter `CoinType` to be phantom because `CoinType` is not used in the struct definition or is only used as a phantom type parameter.
@@ -728,10 +735,10 @@ source ~/.profile
 
 ## Step 7:  使用Move验证器<span id="Step7"><span>（Use the Move prover<span id="Step7"><span>）
 
-Smart contracts deployed on the blockchain may manipulate high-value assets. As a technique that uses strict mathematical methods to describe behavior and reason correctness of computer systems, formal verification has been used in blockchains to prevent bugs in smart contracts. [The Move prover](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/prover-guide.md) is an evolving formal verification tool for smart contracts written in the Move language. The user can specify functional properties of smart contracts using the [Move Specification Language (MSL)](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) and then use the prover to automatically check them statically. To illustrate how the prover is used, we have added the following code snippet to the [BasicCoin.move](./step_7/BasicCoin/sources/BasicCoin.move):
+Smart contracts deployed on the blockchain may manipulate high-value assets. As a technique that uses strict mathematical methods to describe behavior and reason correctness of computer systems, formal verification has been used in blockchains to prevent bugs in smart contracts. [The Move prover](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/prover-guide.md) is an evolving formal verification tool for smart contracts written in the Move language. The user can specify functional properties of smart contracts using the [Move Specification Language (MSL)](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md) and then use the prover to automatically check them statically. To illustrate how the prover is used, we have added the following code snippet to the [BasicCoin.move](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_7/BasicCoin/sources/BasicCoin.move):
 
 部署在区块链上的智能合约可能会操纵高价值资产。作为一种使用严格的数学方式来描述计算机系统的行为和推理正确性的技术，形式化验证已被用于区块链，以防止智能合约中错误的产生。 [Move验证器](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/prover-guide.md)是一种在进化中、用Move 语言编写的智能合约形式化验证工具。用户可以使用[Move语言规范(Move Specification Language (MSL))](https://github.com/move-language/move/blob/main/language/move-prover/doc/user/spec-lang.md)指定智能合约的功能属性，然后使用验证器自动静态检查它们。
-为了说明如何使用验证器，我们在[BasicCoin.move](./step_7/BasicCoin/sources/BasicCoin.move)中添加了以下代码片段：
+为了说明如何使用验证器，我们在[BasicCoin.move](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_7/BasicCoin/sources/BasicCoin.move)中添加了以下代码片段：
 
 ```
     spec balance_of {
@@ -743,9 +750,9 @@ Informally speaking, the block `spec balance_of {...}` contains the property spe
 
 通俗地说，代码块 `spec balance_of {...}` 包含 `balance_of` 方法的属性规范说明。
 
-Let's first run the prover using the following command inside [`BasicCoin` directory](./step_7/BasicCoin/):
+Let's first run the prover using the following command inside [`BasicCoin` directory](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_7/BasicCoin/):
 
-首先在[`BasicCoin` directory](./step_7/BasicCoin/)目录中使用以下命令运行验证器。
+首先在[`BasicCoin` directory](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_7/BasicCoin/)目录中使用以下命令运行验证器。
 
 ```bash
 move prove
@@ -857,6 +864,7 @@ The next step is to define functional properties, which are described in the two
 </details>
 
 <details>
+
 <summary> 存款方法 (Method deposit) </summary>
 
 The signature of the method `deposit` is given below:
@@ -957,6 +965,6 @@ The property is not held when `addr_from` is equal to `to`. As a result, we coul
 - Implement the specification for the `mint` and `publish_balance` method.
 - 为 `mint` 和 `publish_balance` 方法实现规范。
 
-The solution to this exercise can be found in [`step_8_sol`](./step_8_sol).
+The solution to this exercise can be found in [`step_8_sol`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_8_sol).
 
-练习的解答可以在 [`step_8_sol`](./step_8_sol)中找到。
+练习的解答可以在 [`step_8_sol`](https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_8_sol)中找到。
